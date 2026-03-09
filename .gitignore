@@ -1,4 +1,7 @@
-.venv/
+perfil_chrome/
+perfil_promax/
+*.log
 __pycache__/
 .idea/
-*.log
+.venv/
+Arquivos_Excel/Download/
