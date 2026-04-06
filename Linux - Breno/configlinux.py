@@ -3,28 +3,31 @@ from selenium.webdriver.ie.service import Service
 from selenium.webdriver.ie.options import Options
 
 def obter_config_ie():
-    # --- 1. CAMINHOS ---
-    # Usamos o os.path para pegar a pasta do projeto automaticamente no seu SSD
     base_path = os.path.dirname(os.path.abspath(__file__))
-    
-    # O log será criado na mesma pasta do script
-    log_path = os.path.join(base_path, "iedriver.log")
-
-    # Caminho onde o driver deve estar no Windows
     ie_driver_path = r"C:\Users\Breno\Documents\Projetos\IEDriverServer.exe"
 
-    # --- 2. OPÇÕES DO IE ---
     options = Options()
-
-    # Mantendo exatamente as opções que você pediu:
+    
+    # 1. Compatibilidade com Edge (Obrigatório no Win 11)
+    options.attach_to_edge_chrome = True
+    options.edge_executable_path = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+    
+    # 2. Segurança (Para evitar a barra amarela de erro)
     options.ignore_protected_mode_settings = True
     options.ignore_zoom_level = True
-    options.require_window_focus = False
+    
+    # --- O PULO DO GATO: EVITAR REINICIALIZAÇÃO ---
+    # Força o driver a focar na janela antes de clicar (evita o crash da aba)
+    options.require_window_focus = True 
+    # Impede que o IE tente "limpar" a sessão e causar o refresh infinito
+    options.ensure_clean_session = False
+    
+    # Remove aquele aviso de "sinalizador sem suporte" que aparece no topo
+    options.add_argument("--disable-features=IEToEdge") 
 
-    # --- 3. SERVICE ---
     service = Service(
         executable_path=ie_driver_path,
-        log_output=log_path
+        log_output=os.path.join(base_path, "iedriver.log")
     )
 
     return service, options
