@@ -7,6 +7,26 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
 from datetime import datetime, timedelta
+import pyautogui
+
+import winreg
+
+def definir_pasta_download_ie(pasta_destino):
+    try:
+        # Caminho da chave do IE no registro
+        caminho_chave = r"Software\Microsoft\Internet Explorer\Main"
+        key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, caminho_chave, 0, winreg.KEY_SET_VALUE)
+        
+        # Altera o diretório padrão de download
+        winreg.SetValueEx(key, "Default Download Directory", 0, winreg.REG_SZ, pasta_destino)
+        winreg.CloseKey(key)
+        print(f"📂 Pasta de download do IE alterada para: {pasta_destino}")
+    except Exception as e:
+        print(f"❌ Erro ao alterar registro: {e}")
+
+# Exemplo de uso:
+definir_pasta_download_ie(r"C:\Users\Breno\Documents\Projetos\promax\downloads")
+
 
 # --- CÁLCULO DAS DATAS ---
 hoje = datetime.now()
@@ -93,7 +113,7 @@ def realizar_automacao():
         # 1. Pega todas as janelas abertas
         janela_principal = driver.current_window_handle
 
-    # Espera até que 2 janelas estejam abertas (Sua lógica perfeita)
+        # Espera até que 2 janelas estejam abertas (Sua lógica perfeita)
         wait.until(EC.number_of_windows_to_be(2)) 
 
         janelas = driver.window_handles
@@ -173,29 +193,33 @@ def realizar_automacao():
 
         # 2. Pega todos os IDs e pula para a última janela aberta
         time.sleep(10)
-        # 1. Lista todas as janelas
-        janelas = driver.window_handles
-        print(f"🗔 Janelas abertas detectadas: {len(janelas)}")
+        botaoCsv = driver.find_element(By.NAME, "GerExecl")
+        botaoCsv.click()
+        print("Gerando CSV!!!!!!!!!!")
 
-        # 2. Vamos testar cada uma até achar a que tem frames
-        encontrou_relatorio = False
-        for h in janelas:
-            driver.switch_to.window(h)
-            driver.switch_to.default_content()
+        print("⏳ Aguardando a barra amarela de download aparecer...")
+# Damos 4 segundos porque o IE demora para processar o arquivo antes de perguntar
+        time.sleep(4) 
 
-            # Verificamos se ESSA janela tem frames
-            frames_na_janela = driver.find_elements(By.TAG_NAME, "frame")
-            if len(frames_na_janela) > 0:
-                print(f"🎯 Achei! Esta é a janela do relatório (Frames: {len(frames_na_janela)})")
-                encontrou_relatorio = True
-                break
+        try:
+            # 1. Focar na barra de notificação (Alt + N)
+            print("⌨️ Focando na barra de notificação (Alt+N)...")
+            pyautogui.hotkey('alt', 'n')
+            time.sleep(1)
 
-        if not encontrou_relatorio:
-            print("⚠️ Não achei a janela com frames. Talvez ela ainda esteja carregando...")
-            # Como plano B, voltamos para a última, mas o loop acima é mais seguro
-            driver.switch_to.window(janelas[-1])
+            # 2. Ir até o botão de opções do 'Salvar' (Tab)
+            # A barra do IE foca no 'Salvar' por padrão, o Tab vai para a setinha ao lado
+            print("⌨️ Indo para as opções de salvar...")
+            pyautogui.press('tab')
+            pyautogui.press('tab')
 
-        print("🔎 LISTANDO TODOS OS FRAMES DA PÁGINA (RAIZ)...")
+            time.sleep(0.5)
+
+            pyautogui.press('enter')
+
+        except Exception as e:
+            print(f"❌ Falha na interação com o teclado: {e}")
+
         # --- Esperar ---
         input("\n[Pressione ENTER para encerrar o bot e fechar as janelas]")
 
