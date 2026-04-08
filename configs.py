@@ -1,4 +1,5 @@
 import os
+import winreg
 from selenium.webdriver.ie.service import Service
 from selenium.webdriver.ie.options import Options
 
@@ -31,3 +32,11 @@ def obter_config_ie():
     )
 
     return service, options
+
+def configurar_pasta_download():
+    caminho = r"C:\Users\Breno\Documents\Projetos\promax\downloads"
+    try:
+        key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\Microsoft\Internet Explorer\Main", 0, winreg.KEY_SET_VALUE)
+        winreg.SetValueEx(key, "Default Download Directory", 0, winreg.REG_SZ, caminho)
+        winreg.CloseKey(key)
+    except: pass
