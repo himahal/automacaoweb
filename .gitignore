@@ -5,3 +5,5 @@ __pycache__/
 .idea/
 .venv/
 Arquivos_Excel/Download/
+downloads/*.csv
+downloads/*.inf
