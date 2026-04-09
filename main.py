@@ -62,15 +62,13 @@ if __name__ == "__main__":
         print("🎯 INICIANDO EXECUÇÃO DAS ROTINAS")
         print("-"*50)
 
-        # 🚀 CHAMADA DAS ROTINAS VIA ORQUESTRADOR
+        # 🚀 CHAMADA DAS ROTINAS
         # Basta passar o código, o driver e o wait. 
         # O dicionário lá dentro faz o resto!
 
-        driver.switch_to.default_content()
-        #rotinas.chamar_rotina(driver, wait, "031120")
-        
-        # Se quiser rodar a segunda rotina em sequência, é só descomentar:
+        rotinas.chamar_rotina(driver, wait, "031120")
         rotinas.chamar_rotina(driver, wait, "030224")
+        rotinas.chamar_rotina(driver, wait, "01200147")
         
         print("\n🏆 Todas as rotinas solicitadas foram processadas!")
         

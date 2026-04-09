@@ -50,7 +50,7 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu):
         
         driver.execute_script("""
             var select = arguments[0];
-            var textoParaSelecionar = "Numérica";
+            var textoParaSelecionar = "Numerica";
             for (var i = 0; i < select.options.length; i++) {
                 var textoOption = select.options[i].text.replace(/^\s+|\s+$/g, '');
                 if (textoOption === textoParaSelecionar) {
