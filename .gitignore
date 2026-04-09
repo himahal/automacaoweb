@@ -4,6 +4,7 @@ perfil_promax/
 __pycache__/
 .idea/
 .venv/
+venv/
 Arquivos_Excel/Download/
 downloads/*.csv
 downloads/*.inf
