@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 # Importações de rotinas
 from . import r031120
 from . import r030224
+from . import r01200147
 # from . import r050505  <-- Próximas rotinas entram aqui
 
 # --- CÁLCULO DAS DATAS  ---
@@ -15,7 +16,7 @@ data_fim = (hoje - timedelta(days=1)).strftime("%d/%m/%Y")
 MAPA_ROTINAS = {
     "031120": r031120.executar,
     "030224": r030224.executar,
-    # "050505": r050505.executar,
+    "01200147": r01200147.executar,
 }
 
 def chamar_rotina(driver, wait, codigo):

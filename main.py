@@ -67,10 +67,10 @@ if __name__ == "__main__":
         # O dicionário lá dentro faz o resto!
 
         driver.switch_to.default_content()
-        rotinas.chamar_rotina(driver, wait, "031120")
+        #rotinas.chamar_rotina(driver, wait, "031120")
         
         # Se quiser rodar a segunda rotina em sequência, é só descomentar:
-        # rotinas.chamar_rotina(driver, wait, "030224")
+        rotinas.chamar_rotina(driver, wait, "030224")
         
         print("\n🏆 Todas as rotinas solicitadas foram processadas!")
         

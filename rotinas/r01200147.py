@@ -4,10 +4,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 
 def executar(driver, wait, data_inicio, data_fim, janela_menu):
-    """Lógica específica da rotina 030224"""
+    """Lógica específica da rotina 01200147"""
     
     # IMPORTANTE: Definimos o código da rotina aqui dentro ou usamos o que o orquestrador sabe
-    codigo_rotina = "030224" 
+    codigo_rotina = "01200147" 
 
     try:
         # 1. Inserir rotina
@@ -50,7 +50,7 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu):
         
         driver.execute_script("""
             var select = arguments[0];
-            var textoParaSelecionar = "Mapa";
+            var textoParaSelecionar = "Numérica";
             for (var i = 0; i < select.options.length; i++) {
                 var textoOption = select.options[i].text.replace(/^\s+|\s+$/g, '');
                 if (textoOption === textoParaSelecionar) {
@@ -67,22 +67,7 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu):
             }
         """, dropdown_element)
 
-        # Checkboxes (Usando Scroll antes de clicar)
-        checks = ["selecionouAS", "responsabProcesso", "todasOperacoes"]
-        for check in checks:
-            el = wait.until(EC.presence_of_element_located((By.NAME, check)))
-            driver.execute_script("arguments[0].scrollIntoView(true);", el)
-            el.click()
-
-        # 4. Preencher Datas
-        print("📅 Preenchendo datas...")
-        campo_data_ini = wait.until(EC.presence_of_element_located((By.NAME, "dataInicial")))
-        driver.execute_script("arguments[0].value = arguments[1];", campo_data_ini, data_inicio)
-        
-        campo_data_fim = wait.until(EC.presence_of_element_located((By.NAME, "dataFinal")))
-        driver.execute_script("arguments[0].value = arguments[1];", campo_data_fim, data_fim)
-
-        # --- 5. GERAÇÃO E DOWNLOAD ---
+        # --- 4. GERAÇÃO E DOWNLOAD ---
         print("🖱️ Clicando em Visualizar...")
         try:
             btn_v = wait.until(EC.element_to_be_clickable((By.NAME, "BotVisualizar")))
