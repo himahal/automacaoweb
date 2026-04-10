@@ -2,6 +2,7 @@ import time
 import pyautogui
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
+from . import rotinas
 
 def executar(driver, wait, data_inicio, data_fim, janela_menu):
     """Lógica específica da rotina 01200147"""
@@ -83,7 +84,7 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu):
 
         selecUni = wait.until(EC.presence_of_element_located((By.NAME, "BotPesquisaUnidade")))
         driver.execute_script("arguments[0].scrollIntoView(true);", selecUni)
-        selecUni.click()
+        selecUni.click() 
 
 
 
@@ -96,11 +97,12 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu):
             btn_v = driver.find_element(By.XPATH, "//button[contains(., 'Visualizar')]")
             driver.execute_script("arguments[0].click();", btn_v)
 
-        print("🚀 Relatório solicitado! Aguardando botão CSV...")
-        time.sleep(10)
+        time.sleep(2) # Espera 1s para o overlay ser criado no HTML
+        rotinas.matar_overlay_processando(driver)
         
+        print("🚀 Relatório solicitado! Aguardando botão CSV...")
         # 5. Clica no botão CSV (GerExecl)
-        botaoCsv = driver.find_element(By.NAME, "GerExecl")
+        botaoCsv = wait.until(EC.element_to_be_clickable((By.NAME, "GerExecl")))
         botaoCsv.click()
 
         # 6. Salvar via PyAutoGUI

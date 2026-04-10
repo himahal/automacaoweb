@@ -66,10 +66,11 @@ if __name__ == "__main__":
         # Basta passar o código, o driver e o wait. 
         # O dicionário lá dentro faz o resto!
 
-        ##rotinas.chamar_rotina(driver, wait, "031120")
-        #rotinas.chamar_rotina(driver, wait, "030224")
+        #rotinas.chamar_rotina(driver, wait, "031120")
+        rotinas.chamar_rotina(driver, wait, "030224")
         #rotinas.chamar_rotina(driver, wait, "01200147")
         #rotinas.chamar_rotina(driver, wait, "03014701")
+        #rotinas.chamar_rotina(driver, wait, "030237")
         
         print("\n🏆 Todas as rotinas solicitadas foram processadas!")
         

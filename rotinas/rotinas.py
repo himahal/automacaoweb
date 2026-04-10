@@ -1,21 +1,38 @@
-from rotinas import r03014701
-from datetime import datetime, timedelta
 import time
+from datetime import datetime, timedelta
+import pygetwindow as gw
 
-# Importações de rotinas
+# --- IMPORTAÇÕES DAS ROTINAS (Todas relativas para evitar conflitos) ---
 from . import r031120
 from . import r030224
 from . import r01200147
+from . import r03014701  # Ajustado para o padrão
 from . import r030237
-# from . import r050505  <-- Próximas rotinas entram aqui
 
-# --- CÁLCULO DAS DATAS  ---
+# --- CÁLCULO DAS DATAS ---
 hoje = datetime.now()
 data_inicio = hoje.replace(day=1).strftime("%d/%m/%Y")
 data_fim = (hoje - timedelta(days=1)).strftime("%d/%m/%Y")
 
-# 🗺️ MAPA DE ROTINAS
-# Colocar mais rotinas aqui se precisar
+def matar_overlay_processando(driver):
+    """Fecha a janela 'Processando' via Windows (gw)"""
+    print("🎯 Caçando janelas 'Processando' no sistema...")
+    try:
+        # Busca janelas que contenham o texto no título
+        janelas = gw.getWindowsWithTitle('Processando')
+        
+        if janelas:
+            for j in janelas:
+                print(f"💥 Janela encontrada: {j.title}. Fechando agora...")
+                j.close()
+            print("✅ Processo(s) encerrado(s) com sucesso!")
+        else:
+            print("💡 Nenhuma janela 'Processando' detectada no momento.")
+            
+    except Exception as e:
+        print(f"⚠️ Erro ao tentar fechar janela via Windows: {e}")
+
+# 🗺️ MAPA DE ROTINAS (Agora os nomes coincidem com os imports acima)
 MAPA_ROTINAS = {
     "031120": r031120.executar,
     "030224": r030224.executar,
