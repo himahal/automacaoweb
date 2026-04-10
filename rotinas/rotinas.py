@@ -1,3 +1,4 @@
+from rotinas import r03014701
 from datetime import datetime, timedelta
 import time
 
@@ -5,6 +6,7 @@ import time
 from . import r031120
 from . import r030224
 from . import r01200147
+from . import r030237
 # from . import r050505  <-- Próximas rotinas entram aqui
 
 # --- CÁLCULO DAS DATAS  ---
@@ -18,6 +20,8 @@ MAPA_ROTINAS = {
     "031120": r031120.executar,
     "030224": r030224.executar,
     "01200147": r01200147.executar,
+    "03014701": r03014701.executar,
+    "030237": r030237.executar,
 }
 
 def limpar_ambiente(driver, janela_menu):
