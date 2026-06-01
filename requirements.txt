@@ -1,0 +1,22 @@
+selenium
+pyautogui
+pygetwindow
+
+# --- INSTRUÇÕES PARA INSTALAÇÃO (CMD/PowerShell) ---
+# 1. Cria o ambiente isolado
+# python -m venv .venv
+#
+# 2. Ativa o ambiente no Windows
+# .venv\Scripts\activate
+#
+# 3. Instala as bibliotecas
+# pip install -r requirements.txt
+#
+# --- CONTEÚDO DO ARQUIVO .BAT (Para Agendador de Tarefas) ---
+# Crie um arquivo chamado 'iniciar_promax.bat' e cole o código abaixo:
+#
+# @echo off
+# cd /d "C:\Users\Breno\Documents\Projetos\promax"
+# call .venv\Scripts\activate
+# python main.py
+# pause
