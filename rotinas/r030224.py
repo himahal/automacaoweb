@@ -5,17 +5,20 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
+
+from fecharPopups import fechar_popups
 from . import rotinas
 
 
-def executar(driver, wait, data_inicio, data_fim, janela_menu):
+def executar(driver, wait, data_inicio, data_fim, janela_menu, revendas):
     """Lógica específica da rotina 030224"""
 
     # IMPORTANTE: Definimos o código da rotina aqui dentro ou usamos o que o orquestrador sabe
     codigo_rotina = "030224"
 
     try:
-        # 1. Inserir rotina
+        # ----------- 1. Inserindo a rotina ----------------
+
         print("Retornando ao frame de comandos...")
         driver.switch_to.default_content()
         wait.until(EC.frame_to_be_available_and_switch_to_it((By.NAME, "top")))
@@ -44,7 +47,7 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu):
         print("⏳ Aguardando carregamento da rotina...")
         driver.switch_to.default_content()
 
-        # 2. Gestão de Janelas
+        # ----------- 2. Mudando para a janela da rotina----------------
         janela_principal = driver.current_window_handle
         wait.until(EC.number_of_windows_to_be(2))
         janelas = driver.window_handles
@@ -56,9 +59,23 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu):
                 print(f"🔀 Mudamos para a nova janela: {driver.title}")
                 break
 
-        # 3. Preenchimento dos Campos
+        # ----------- 3. Preenchimento de campos ----------------
+
         wait.until(EC.frame_to_be_available_and_switch_to_it(
             (By.NAME, "rotina")))
+
+        if revendas.lower() != "Revalle Juazeiro":
+            print(f"🔄 Trocando sistema para a filial: {revendas}")
+
+            # --- 1. ALTERA O DROPDOWN PARA A REVENDA DA VEZ ---
+
+            # --- 2. LIDA COM OS POP-UPS (O Pedágio) ---
+            print("⏳ Aguardando e fechando pop-ups de carregamento...")
+            time.sleep(2)
+            fechar_popups
+        else:
+            print(
+                "📌 Sistema já carregado em Juazeiro. Pulando etapa de troca e pop-ups...")
 
         print("🎯 Selecionando 'Mapa' no dropdown...")
         dropdown_element = wait.until(
@@ -131,9 +148,19 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu):
         pyautogui.press('tab')
         pyautogui.press('enter')
 
+        dia, mes, ano = data_fim.split("/")
+        # O f"" permite injetar as variáveis direto no texto
+        nome_dinamico = f"Revalle Juazeiro.{mes}.{ano}"
+
+        print(f"🏷️ Nome dinâmico gerado: {nome_dinamico}.csv")
+        rotinas.tratar_arquivo_baixado(
+            prefixo_arquivo="03.11.20",
+            nome_personalizado=nome_dinamico,
+            caminho_destino=r"C:\Users\usuario\Desktop\Promax\promax\downloads"
+        )
         print(f"✅ Rotina {codigo_rotina} finalizada!")
-        driver.close()  # Fecha a janela atual (o relatório)
-        driver.switch_to.window(janela_menu)  # Volta para a janela do menu
+        # driver.close()  # Fecha a janela atual
+        # driver.switch_to.window(janela_menu)  # Volta para a janela do menu
 
     except Exception as e:
         print(f"❌ Erro na rotina {codigo_rotina}: {e}")

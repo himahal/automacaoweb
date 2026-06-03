@@ -1,5 +1,7 @@
 import time
 import os
+import glob
+import shutil
 from datetime import datetime, timedelta
 import pygetwindow as gw
 
@@ -7,7 +9,7 @@ import pygetwindow as gw
 from . import r031120
 from . import r030224
 from . import r01200147
-from . import r03014701  # Ajustado para o padrão
+from . import r03014701
 from . import r030237
 
 # --- CÁLCULO DAS DATAS ---
@@ -73,36 +75,39 @@ def limpar_ambiente(driver, janela_menu):
     driver.switch_to.default_content()
     print("✨ Ambiente limpo e pronto para a próxima!")
 
-def tratar_arquivo_baixado(prefixo_arquivo, nome_personalizado=None, nome_subpasta=""):
-    """Localiza o arquivo, renomeia e move para a pasta e subpasta desejadas"""
-    
+
+def tratar_arquivo_baixado(prefixo_arquivo, nome_personalizado=None, caminho_destino=None):
+    """Localiza o arquivo, renomeia e move para a pasta desejada no computador"""
+
     diretorio_base = os.path.dirname(os.path.abspath(__file__))
     dir_downloads = os.path.join(diretorio_base, "..", "downloads")
-    
-    # 🌟 NOVIDADE 1: Agora ele aceita criar subpastas dentro de 'relatorios_finalizados'
-    dir_final = os.path.join(diretorio_base, "..", "relatorios_finalizados", nome_subpasta)
-    
-    # Garante que a pasta (e a subpasta) existam
+
+    # 🌟 NOVIDADE: Agora ele aceita qualquer caminho do seu computador
+    if caminho_destino:
+        dir_final = caminho_destino
+    else:
+        dir_final = os.path.join(diretorio_base, "..",
+                                 "relatorios_finalizados")
+
+    # Garante que a pasta exista (cria a árvore de pastas se não existir)
     os.makedirs(dir_final, exist_ok=True)
 
     print(f"📂 Processando arquivo da rotina {prefixo_arquivo}...")
-    time.sleep(2) 
-    
+    time.sleep(2)
+
     padrao = os.path.join(dir_downloads, f"*{prefixo_arquivo}*.csv.inf")
     arquivos = glob.glob(padrao)
 
     if arquivos:
         arquivo_original = max(arquivos, key=os.path.getctime)
         nome_base = os.path.basename(arquivo_original)
-        
-        # 🌟 NOVIDADE 2: Decide o novo nome
+
+        # Decide o novo nome
         if nome_personalizado:
-            # Garante que a extensão seja .csv, caso você esqueça de colocar
             if not nome_personalizado.endswith('.csv'):
                 nome_personalizado += '.csv'
             novo_nome = nome_personalizado
         else:
-            # Se não passar nome, ele limpa o .inf como fazia antes
             novo_nome = nome_base.replace(".inf", "")
 
         caminho_final = os.path.join(dir_final, novo_nome)
@@ -125,6 +130,9 @@ def chamar_rotina(driver, wait, codigo):
     print(f"\n" + "🔍" + "-"*30)
     print(f"Buscando lógica para: {codigo}")
 
+    revendas = ["Revalle Juazeio", "Revalle Alagoinhas", "Beira Rio",
+                "Revalle Nordeste", "Revalle SR.BONFIM", "P.AFONSO", "Revalle Serrinha"]
+
     # 🎯 Define a janela principal logo no início
     driver.switch_to.default_content()
     janela_menu = driver.window_handles[0]
@@ -135,7 +143,12 @@ def chamar_rotina(driver, wait, codigo):
     if funcao_rotina:
         try:
             print(f"🎯 Rotina {codigo} localizada! Iniciando...")
-            funcao_rotina(driver, wait, data_inicio, data_fim, janela_menu)
+            for revenda in revendas:
+                print(f"\n🔄 Extraindo dados para a filial: {revenda}")
+                funcao_rotina(driver, wait, data_inicio,
+                              data_fim, janela_menu, revendas)
+                print(
+                    f"\n🏁 Todas as revendas da rotina {codigo} foram processadas com sucesso!")
         except Exception as e:
             print(f"💥 Falha na execução da rotina {codigo}: {e}")
         finally:
