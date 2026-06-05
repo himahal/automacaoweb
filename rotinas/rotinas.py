@@ -130,8 +130,8 @@ def chamar_rotina(driver, wait, codigo):
     print(f"\n" + "🔍" + "-"*30)
     print(f"Buscando lógica para: {codigo}")
 
-    revendas = ["Revalle Juazeiro", "Revalle Alagoinhas", "Beira Rio",
-                "Revalle Nordeste", "Revalle SR.BONFIM", "P.AFONSO", "Revalle Serrinha"]
+    revendas = ["Beira Rio", "Revalle Juazeiro",
+                "Revalle Nordeste", "Revalle Bonfim", "Revalle P Afonso", "Revalle Alagoinhas", "Revalle Serrinha"]
 
     # 🎯 Define a janela principal logo no início
     driver.switch_to.default_content()
@@ -143,10 +143,11 @@ def chamar_rotina(driver, wait, codigo):
     if funcao_rotina:
         try:
             print(f"🎯 Rotina {codigo} localizada! Iniciando...")
-            for revenda in revendas:
+            for indice, revenda in enumerate(revendas):
                 print(f"\n🔄 Extraindo dados para a filial: {revenda}")
+
                 funcao_rotina(driver, wait, data_inicio,
-                              data_fim, janela_menu, revenda)
+                              data_fim, janela_menu, revenda, indice)
                 print(
                     f"\n🏁 Todas as revendas da rotina {codigo} foram processadas com sucesso!")
         except Exception as e:
@@ -157,5 +158,11 @@ def chamar_rotina(driver, wait, codigo):
             limpar_ambiente(driver, janela_menu)
     else:
         print(f"❌ ERRO: A rotina {codigo} não está cadastrada.")
+
+    codigoRotina = MAPA_ROTINAS
+
+    print(f"✅ Rotina {codigoRotina} finalizada!")
+    # driver.close()  # Fecha a janela atual
+    # driver.switch_to.window(janela_menu)  # Volta para a janela do menu
 
     print("-" * 30 + "\n")

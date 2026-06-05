@@ -10,7 +10,7 @@ from fecharPopups import fechar_popups
 from . import rotinas
 
 
-def executar(driver, wait, data_inicio, data_fim, janela_menu, revenda):
+def executar(driver, wait, data_inicio, data_fim, janela_menu, revenda, indice):
     """Lógica específica da rotina 030224"""
 
     # IMPORTANTE: Definimos o código da rotina aqui dentro ou usamos o que o orquestrador sabe
@@ -56,21 +56,20 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, revenda):
 
         driver.switch_to.default_content()
 
-        # Começar pela revenda beira rio
+        # Verifica se está na revenda beira rio, se não estiver ele segue
+        if indice == 0:
+            for _ in range(29):
+                pyautogui.press('tab')
+                time.sleep(0.05)
 
-        for _ in range(29):
-            pyautogui.press('tab')
-            time.sleep(0.05)
-
-        pyautogui.press('space')
-        pyautogui.press('up')
-        pyautogui.press('enter')
+            pyautogui.press('space')
+            pyautogui.press('home')
+            pyautogui.press('enter')
 
         # --- 2. LIDA COM OS POP-UPS (O Pedágio) ---
         print("⏳ Aguardando e fechando pop-ups de carregamento...")
         time.sleep(3)
         fechar_popups(driver, 4)
-
 
         # ----------- 3. Preenchimento de campos ----------------
 
@@ -147,6 +146,7 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, revenda):
         pyautogui.press('tab')
         pyautogui.press('tab')
         pyautogui.press('enter')
+        time.sleep(2)
 
         dia, mes, ano = data_fim.split("/")
         # 👇 Agora o nome será dinâmico de verdade!
@@ -158,9 +158,16 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, revenda):
             nome_personalizado=nome_dinamico,
             caminho_destino=r"C:\Users\usuario\Desktop\Promax\promax\downloads"
         )
-        print(f"✅ Rotina {codigo_rotina} finalizada!")
-        # driver.close()  # Fecha a janela atual
-        # driver.switch_to.window(janela_menu)  # Volta para a janela do menu
+
+        pyautogui.press('tab')
+        pyautogui.press('tab')
+        pyautogui.press('space')
+        pyautogui.press('down')
+        pyautogui.press('enter')
+        time.sleep(0.1)
+        pyautogui.press('enter')
+
+        fechar_popups(driver, 4)
 
     except Exception as e:
         print(f"❌ Erro na rotina {codigo_rotina}: {e}")
