@@ -7,7 +7,7 @@ from selenium.webdriver.common.keys import Keys
 # Importação de módulos personalizados
 from configs import obter_config_ie, configurar_pasta_download
 from fecharPopups import fechar_popups
-from rotinas import rotinas  # 🚀 Orquestrador liberado!
+from rotinas import rotinas
 
 # --- Variáveis Globais ---
 login = "pizolitto"

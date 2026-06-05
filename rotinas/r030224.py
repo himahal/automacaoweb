@@ -146,6 +146,10 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, revenda, indice):
         pyautogui.press('tab')
         pyautogui.press('tab')
         pyautogui.press('enter')
+        time.sleep(1)
+        pyautogui.press('tab')
+        pyautogui.press('tab')
+        pyautogui.press('enter')
         time.sleep(2)
 
         dia, mes, ano = data_fim.split("/")
@@ -168,6 +172,17 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, revenda, indice):
         pyautogui.press('enter')
 
         fechar_popups(driver, 4)
+        time.sleep(3)
+
+        wait.until(EC.number_of_windows_to_be(2))
+        janelas = driver.window_handles
+
+        for janela in janelas:
+            if janela != janela_principal:
+                driver.switch_to.window(janela)
+                time.sleep(1)
+                print(f"🔀 Mudamos para a nova janela: {driver.title}")
+                break
 
     except Exception as e:
         print(f"❌ Erro na rotina {codigo_rotina}: {e}")
