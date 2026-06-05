@@ -130,7 +130,7 @@ def chamar_rotina(driver, wait, codigo):
     print(f"\n" + "🔍" + "-"*30)
     print(f"Buscando lógica para: {codigo}")
 
-    revendas = ["Revalle Juazeio", "Revalle Alagoinhas", "Beira Rio",
+    revendas = ["Revalle Juazeiro", "Revalle Alagoinhas", "Beira Rio",
                 "Revalle Nordeste", "Revalle SR.BONFIM", "P.AFONSO", "Revalle Serrinha"]
 
     # 🎯 Define a janela principal logo no início
@@ -146,7 +146,7 @@ def chamar_rotina(driver, wait, codigo):
             for revenda in revendas:
                 print(f"\n🔄 Extraindo dados para a filial: {revenda}")
                 funcao_rotina(driver, wait, data_inicio,
-                              data_fim, janela_menu, revendas)
+                              data_fim, janela_menu, revenda)
                 print(
                     f"\n🏁 Todas as revendas da rotina {codigo} foram processadas com sucesso!")
         except Exception as e:

@@ -76,11 +76,11 @@ if __name__ == "__main__":
 
         # 🚀 CHAMADA DAS ROTINAS
 
-        # rotinas.chamar_rotina(driver, wait, "031120", revendas)
-        rotinas.chamar_rotina(driver, wait, "030224", revendas)  # está tudo ok
-        # rotinas.chamar_rotina(driver, wait, "01200147", revendas)
-        # rotinas.chamar_rotina(driver, wait, "03014701", revendas)
-        # rotinas.chamar_rotina(driver, wait, "030237", revendas)
+        # rotinas.chamar_rotina(driver, wait, "031120")
+        rotinas.chamar_rotina(driver, wait, "030224")
+        # rotinas.chamar_rotina(driver, wait, "01200147")
+        # rotinas.chamar_rotina(driver, wait, "03014701")
+        # rotinas.chamar_rotina(driver, wait, "030237")
 
         print("\n🏆 Todas as rotinas solicitadas foram processadas!")
 
