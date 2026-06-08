@@ -83,7 +83,6 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                 select_principal = wait.until(
                     EC.presence_of_element_located((By.NAME, "unidade")))
 
-                # 🌟 MÁGICA ANTI-STALE: Selenium apenas clica na caixa para dar foco
                 select_principal.click()
                 time.sleep(0.5)
 
@@ -193,6 +192,7 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                 pyautogui.press('enter')
                 time.sleep(2)
                 pyautogui.hotkey('alt', 'n')
+                pyautogui.press('tab')
                 pyautogui.press('tab')
                 pyautogui.press('tab')
                 pyautogui.press('tab')

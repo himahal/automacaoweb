@@ -131,13 +131,13 @@ def chamar_rotina(driver, wait, codigo):
     print(f"Buscando lógica para: {codigo}")
 
     revendas = [
-        "145.0004 - BEIRA RIO",
-        "156.0001 - REVALLE - JUAZEIRO",
-        "156.0002 - REVALLE - NORDESTE",
-        "156.0003 - REVALLE - SR. BONFIM",
-        "304.0005 - REVALLE - P AFONSO",
-        "341.0006 - REVALLE - ALAGOINHAS",
-        "341.0007 - REVALLE - SERRINHA"
+        "145.0004 - Beira Rio",
+        "156.0001 - Revalle Juazeiro",
+        "156.0002 - Revalle Nordeste",
+        "156.0003 - Revalle Bonfim",
+        "304.0005 - Revalle P Afonso",
+        "341.0006 - Revalle Alagoinhas",
+        "341.0007 - Revalle Serrinha"
     ]
 
     # 🎯 Define a janela principal logo no início
