@@ -77,8 +77,8 @@ if __name__ == "__main__":
         # 🚀 CHAMADA DAS ROTINAS
 
         # rotinas.chamar_rotina(driver, wait, "031120")
-        rotinas.chamar_rotina(driver, wait, "030224")
-        # rotinas.chamar_rotina(driver, wait, "01200147")
+        # rotinas.chamar_rotina(driver, wait, "030224")
+        rotinas.chamar_rotina(driver, wait, "01200147")
         # rotinas.chamar_rotina(driver, wait, "03014701")
         # rotinas.chamar_rotina(driver, wait, "030237")
 

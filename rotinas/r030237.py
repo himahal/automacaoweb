@@ -26,11 +26,11 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
             (By.ID, "iFrameMenu")))
 
         print(f"⌨️ Inserindo a rotina: {codigo_rotina}")
-        botao_rotina = wait.until(
-            EC.visibility_of_element_located((By.ID, "atalho")))
+        print("Procurando campo atalho...")
+
+        botao_rotina = driver.find_element(By.ID, "atalho")
         botao_rotina.clear()
         botao_rotina.send_keys(codigo_rotina)
-
         botao_ok = driver.find_element(
             By.XPATH, '//*[@id="atal"]/div[1]/table/tbody/tr[2]/td/input[2]')
         botao_ok.click()
@@ -215,16 +215,31 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                 botaoCsv.click()
 
                 print("⌨️ Acionando comandos de teclado para salvar...")
-                time.sleep(4)
+                time.sleep(5)
                 pyautogui.hotkey('alt', 'n')
+                time.sleep(2)
+                pyautogui.press('tab')
                 time.sleep(1)
                 pyautogui.press('tab')
+                time.sleep(1)
+                pyautogui.press('enter')
+
+                # Dupla confirmação de teclado (padrão que você estabeleceu)
+                time.sleep(4)
+                pyautogui.hotkey('alt', 'n')
                 pyautogui.press('tab')
+                time.sleep(1)
+                pyautogui.press('tab')
+                time.sleep(1)
+                pyautogui.press('tab')
+                time.sleep(1)
+                pyautogui.press('tab')
+                time.sleep(1)
+                pyautogui.press('tab')
+                time.sleep(1)
                 pyautogui.press('enter')
 
                 # Aguarda o download concluir antes de tentar mover o arquivo
-                time.sleep(10)
-
                 cidade_limpa = revenda.split("-")[-1].strip()
                 dia, mes, ano = data_fim.split("/")
                 nome_dinamico = f"{cidade_limpa}.{mes}.{ano}"

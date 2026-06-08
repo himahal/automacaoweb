@@ -27,17 +27,17 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
         wait.until(EC.frame_to_be_available_and_switch_to_it(
             (By.ID, "iFrameMenu")))
 
-        print(f"⌨️ Inserindo código da rotina: {codigo_rotina}")
-        botao_rotina = wait.until(
-            EC.visibility_of_element_located((By.ID, "atalho")))
+        print(f"⌨️ Inserindo a rotina: {codigo_rotina}")
+        print("Procurando campo atalho...")
+
+        botao_rotina = driver.find_element(By.ID, "atalho")
         botao_rotina.clear()
         botao_rotina.send_keys(codigo_rotina)
-
         botao_ok = driver.find_element(
             By.XPATH, '//*[@id="atal"]/div[1]/table/tbody/tr[2]/td/input[2]')
         botao_ok.click()
 
-        print("⏳ Aguardando abertura da janela do relatório...")
+        print("⏳ Aguardando carregamento da rotina...")
         driver.switch_to.default_content()
 
         # Muda para a nova janela da rotina
@@ -165,24 +165,32 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                 botaoCsv.click()
 
                 print("⌨️ Acionando comandos de teclado para salvar...")
-                time.sleep(4)
+                time.sleep(5)
                 pyautogui.hotkey('alt', 'n')
+                time.sleep(2)
+                pyautogui.press('tab')
                 time.sleep(1)
                 pyautogui.press('tab')
-                pyautogui.press('tab')
+                time.sleep(1)
                 pyautogui.press('enter')
 
                 # Dupla confirmação de teclado (padrão que você estabeleceu)
-                time.sleep(2)
+                time.sleep(4)
                 pyautogui.hotkey('alt', 'n')
                 pyautogui.press('tab')
+                time.sleep(1)
                 pyautogui.press('tab')
+                time.sleep(1)
                 pyautogui.press('tab')
+                time.sleep(1)
                 pyautogui.press('tab')
+                time.sleep(1)
+                pyautogui.press('tab')
+                time.sleep(1)
                 pyautogui.press('enter')
 
                 # Tempo vital para o Windows concluir o download
-                time.sleep(10)
+                # time.sleep(10)
 
                 # LIMPEZA DO NOME E CAMINHO DINÂMICO
                 cidade_limpa = revenda.split("-")[-1].strip()

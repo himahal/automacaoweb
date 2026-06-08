@@ -15,8 +15,6 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
     """Lógica específica da rotina 030224"""
 
     codigo_rotina = "030224"
-
-    # 👇 TRY 1 (EXTERNO): Abre na raiz da função
     try:
         # ====================================================================
         # FASE 1: SETUP E ABERTURA DA JANELA (Roda apenas UMA vez)
@@ -184,21 +182,29 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                 botaoCsv.click()
 
                 print("⌨️ Acionando comandos de teclado para salvar...")
-                time.sleep(4)
+                time.sleep(5)
                 pyautogui.hotkey('alt', 'n')
+                time.sleep(2)
+                pyautogui.press('tab')
                 time.sleep(1)
                 pyautogui.press('tab')
-                pyautogui.press('tab')
+                time.sleep(1)
                 pyautogui.press('enter')
-                time.sleep(2)
+
+                # Dupla confirmação de teclado (padrão que você estabeleceu)
+                time.sleep(4)
                 pyautogui.hotkey('alt', 'n')
                 pyautogui.press('tab')
+                time.sleep(1)
                 pyautogui.press('tab')
+                time.sleep(1)
                 pyautogui.press('tab')
+                time.sleep(1)
                 pyautogui.press('tab')
+                time.sleep(1)
                 pyautogui.press('tab')
+                time.sleep(1)
                 pyautogui.press('enter')
-                time.sleep(2)
 
                 # LIMPEZA DO NOME (Remove o "145.0004 - REVALLE - ")
                 cidade_limpa = revenda.split("-")[-1].strip()
