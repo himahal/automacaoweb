@@ -162,9 +162,6 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                 titulo_janela_atual = driver.title
                 titulo_seguro = re.escape(titulo_janela_atual)
                 try:
-                    # Em vez de Application, usamos Desktop.
-                    # Ele vai varrer as janelas abertas e achar a que contém o título que o Selenium pegou.
-                    # Usamos f".*{titulo_janela_atual}.*" para ignorar sufixos como "- Internet Explorer"
                     # 1. Isola a janela principal do navegador
                     janela_ie = Desktop(backend="uia").window(
                         title_re=f".*{titulo_seguro}.*")
@@ -185,23 +182,6 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
 
                 except Exception as e:
                     print(f"Erro ao interagir com a barra de download: {e}")
-
-                # print("⌨️ Acionando comandos de teclado para salvar...")
-                # time.sleep(4)
-                # pyautogui.hotkey('alt', 'n')
-                # time.sleep(1)
-                # pyautogui.press('tab')
-                # pyautogui.press('tab')
-                # pyautogui.press('enter')
-                # time.sleep(2)
-                # pyautogui.hotkey('alt', 'n')
-                # pyautogui.press('tab')
-                # pyautogui.press('tab')
-                # pyautogui.press('tab')
-                # pyautogui.press('tab')
-                # pyautogui.press('enter')
-
-                # time.sleep(10)  # Tempo para o Windows processar o arquivo
 
                 # LIMPEZA DO NOME E DIRETÓRIO
                 cidade_limpa = revenda.split("-")[-1].strip()

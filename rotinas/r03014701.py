@@ -1,5 +1,7 @@
 import time
 import pyautogui
+import re
+from pywinauto import Desktop
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -28,12 +30,11 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
             (By.ID, "iFrameMenu")))
 
         print(f"⌨️ Inserindo a rotina: {codigo_rotina}")
-        botao_rotina = wait.until(
-            EC.visibility_of_element_located((By.ID, "atalho")))
+        print("Procurando campo atalho...")
+
+        botao_rotina = driver.find_element(By.ID, "atalho")
         botao_rotina.clear()
         botao_rotina.send_keys(codigo_rotina)
-
-        # Botão OK da rotina
         botao_ok = driver.find_element(
             By.XPATH, '//*[@id="atal"]/div[1]/table/tbody/tr[2]/td/input[2]')
         botao_ok.click()
@@ -51,6 +52,7 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                 driver.switch_to.window(janela)
                 time.sleep(1)
                 print(f"🔀 Mudamos para a nova janela: {driver.title}")
+
                 break
 
         # ====================================================================
@@ -185,22 +187,30 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                     EC.element_to_be_clickable((By.NAME, "GerExecl")))
                 botaoCsv.click()
 
-                print("⌨️ Acionando comandos de teclado para salvar...")
-                time.sleep(4)
-                pyautogui.hotkey('alt', 'n')
-                time.sleep(1)
-                pyautogui.press('tab')
-                pyautogui.press('tab')
-                pyautogui.press('enter')
-                time.sleep(2)
-                pyautogui.hotkey('alt', 'n')
-                pyautogui.press('tab')
-                pyautogui.press('tab')
-                pyautogui.press('tab')
-                pyautogui.press('tab')
-                pyautogui.press('enter')
+                # --- INÍCIO DO PYWINAUTO PARA MÚLTIPLAS JANELAS ---
+                titulo_janela_atual = driver.title
+                titulo_seguro = re.escape(titulo_janela_atual)
+                try:
+                    # 1. Isola a janela principal do navegador
+                    janela_ie = Desktop(backend="uia").window(
+                        title_re=f".*{titulo_seguro}.*")
 
-                time.sleep(10)  # Tempo para o Windows processar o arquivo
+                    # 2. Encontra a barra de notificação usando o título exato indicado no log
+                    barra_notificacao = janela_ie.child_window(
+                        title="Notificação", control_type="ToolBar")
+
+                    # 3. Encontra o botão "Salvar" usando o tipo correto: SplitButton
+                    botao_salvar = barra_notificacao.child_window(
+                        title="Salvar", control_type="SplitButton")
+
+                    # Garante o foco na janela e realiza o clique físico com o rato
+                    janela_ie.set_focus()
+                    botao_salvar.click_input()
+
+                    print("Download confirmado com sucesso no SplitButton!")
+
+                except Exception as e:
+                    print(f"Erro ao interagir com a barra de download: {e}")
 
                 # LIMPEZA DO NOME E DIRETÓRIO DINÂMICO
                 cidade_limpa = revenda.split("-")[-1].strip()

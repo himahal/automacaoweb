@@ -1,5 +1,7 @@
 import time
 import pyautogui
+import re
+from pywinauto import Desktop
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait, Select
@@ -181,30 +183,30 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                     EC.presence_of_element_located((By.NAME, "GerExecl")))
                 botaoCsv.click()
 
-                print("⌨️ Acionando comandos de teclado para salvar...")
-                time.sleep(5)
-                pyautogui.hotkey('alt', 'n')
-                time.sleep(2)
-                pyautogui.press('tab')
-                time.sleep(1)
-                pyautogui.press('tab')
-                time.sleep(1)
-                pyautogui.press('enter')
+                # --- INÍCIO DO PYWINAUTO PARA MÚLTIPLAS JANELAS ---
+                titulo_janela_atual = driver.title
+                titulo_seguro = re.escape(titulo_janela_atual)
+                try:
+                    # 1. Isola a janela principal do navegador
+                    janela_ie = Desktop(backend="uia").window(
+                        title_re=f".*{titulo_seguro}.*")
 
-                # Dupla confirmação de teclado (padrão que você estabeleceu)
-                time.sleep(4)
-                pyautogui.hotkey('alt', 'n')
-                pyautogui.press('tab')
-                time.sleep(1)
-                pyautogui.press('tab')
-                time.sleep(1)
-                pyautogui.press('tab')
-                time.sleep(1)
-                pyautogui.press('tab')
-                time.sleep(1)
-                pyautogui.press('tab')
-                time.sleep(1)
-                pyautogui.press('enter')
+                    # 2. Encontra a barra de notificação usando o título exato indicado no log
+                    barra_notificacao = janela_ie.child_window(
+                        title="Notificação", control_type="ToolBar")
+
+                    # 3. Encontra o botão "Salvar" usando o tipo correto: SplitButton
+                    botao_salvar = barra_notificacao.child_window(
+                        title="Salvar", control_type="SplitButton")
+
+                    # Garante o foco na janela e realiza o clique físico com o rato
+                    janela_ie.set_focus()
+                    botao_salvar.click_input()
+
+                    print("Download confirmado com sucesso no SplitButton!")
+
+                except Exception as e:
+                    print(f"Erro ao interagir com a barra de download: {e}")
 
                 # LIMPEZA DO NOME (Remove o "145.0004 - REVALLE - ")
                 cidade_limpa = revenda.split("-")[-1].strip()
