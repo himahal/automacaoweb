@@ -149,12 +149,15 @@ def chamar_rotina(driver, wait, codigo):
 
     if funcao_rotina:
         try:
-            print(f"🎯 Rotina {codigo} localizada! Iniciando processamento em lote...")
-            
+            print(
+                f"🎯 Rotina {codigo} localizada! Iniciando processamento em lote...")
+
             # 🌟 MUDANÇA AQUI: Removemos o 'for' e passamos a lista 'revendas' inteira
-            funcao_rotina(driver, wait, data_inicio, data_fim, janela_menu, revendas)
-            
-            print(f"\n🏁 Todas as revendas da rotina {codigo} foram processadas com sucesso!")
+            funcao_rotina(driver, wait, data_inicio,
+                          data_fim, janela_menu, revendas)
+
+            print(
+                f"\n🏁 Todas as revendas da rotina {codigo} foram processadas com sucesso!")
         except Exception as e:
             print(f"💥 Falha na execução da rotina {codigo}: {e}")
         finally:
