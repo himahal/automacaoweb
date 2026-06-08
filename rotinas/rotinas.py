@@ -130,8 +130,15 @@ def chamar_rotina(driver, wait, codigo):
     print(f"\n" + "🔍" + "-"*30)
     print(f"Buscando lógica para: {codigo}")
 
-    revendas = ["Beira Rio", "Revalle Juazeiro",
-                "Revalle Nordeste", "Revalle Bonfim", "Revalle P Afonso", "Revalle Alagoinhas", "Revalle Serrinha"]
+    revendas = [
+        "145.0004 - BEIRA RIO",
+        "156.0001 - REVALLE - JUAZEIRO",
+        "156.0002 - REVALLE - NORDESTE",
+        "156.0003 - REVALLE - SR. BONFIM",
+        "304.0005 - REVALLE - P AFONSO",
+        "341.0006 - REVALLE - ALAGOINHAS",
+        "341.0007 - REVALLE - SERRINHA"
+    ]
 
     # 🎯 Define a janela principal logo no início
     driver.switch_to.default_content()
@@ -142,14 +149,12 @@ def chamar_rotina(driver, wait, codigo):
 
     if funcao_rotina:
         try:
-            print(f"🎯 Rotina {codigo} localizada! Iniciando...")
-            for indice, revenda in enumerate(revendas):
-                print(f"\n🔄 Extraindo dados para a filial: {revenda}")
-
-                funcao_rotina(driver, wait, data_inicio,
-                              data_fim, janela_menu, revenda, indice)
-                print(
-                    f"\n🏁 Todas as revendas da rotina {codigo} foram processadas com sucesso!")
+            print(f"🎯 Rotina {codigo} localizada! Iniciando processamento em lote...")
+            
+            # 🌟 MUDANÇA AQUI: Removemos o 'for' e passamos a lista 'revendas' inteira
+            funcao_rotina(driver, wait, data_inicio, data_fim, janela_menu, revendas)
+            
+            print(f"\n🏁 Todas as revendas da rotina {codigo} foram processadas com sucesso!")
         except Exception as e:
             print(f"💥 Falha na execução da rotina {codigo}: {e}")
         finally:

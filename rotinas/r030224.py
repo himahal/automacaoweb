@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import UnexpectedAlertPresentException, NoAlertPresentException
 
 from fecharPopups import fechar_popups
 from . import rotinas
@@ -31,8 +32,6 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, revenda, indice):
         print("Procurando campo atalho...")
 
         botao_rotina = driver.find_element(By.ID, "atalho")
-
-        print("Tag:", botao_rotina.tag_name)
         botao_rotina.clear()
         botao_rotina.send_keys(codigo_rotina)
         botao_ok = driver.find_element(
@@ -54,17 +53,57 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, revenda, indice):
                 print(f"🔀 Mudamos para a nova janela: {driver.title}")
                 break
 
+        print("📍 DEBUG 1: Resetando para a raiz da página (default_content)...")
         driver.switch_to.default_content()
+        time.sleep(2)  # Respiro vital para o IE estabilizar a nova janela
 
-        # Verifica se está na revenda beira rio, se não estiver ele segue
-        if indice == 0:
-            for _ in range(29):
-                pyautogui.press('tab')
-                time.sleep(0.05)
+        print(f"🔄 Ajustando a filial via Selenium para: {revenda}")
 
-            pyautogui.press('space')
-            pyautogui.press('home')
-            pyautogui.press('enter')
+        # --- TENTATIVA DE ENTRAR NO FRAME ---
+        print("📍 DEBUG 2: Tentando entrar no frame superior...")
+        try:
+            # Atenção: Troquei de "top" para "top_rotina" baseado no seu HTML antigo!
+            wait.until(EC.frame_to_be_available_and_switch_to_it(
+                (By.NAME, "top_rotina")))
+            print("📍 DEBUG 3: Sucesso! Entrou no frame superior.")
+        except Exception as e:
+            print(
+                f"❌ ERRO FATAL: Não encontrou o frame superior. Detalhes: {e}")
+            # Se der erro aqui, nem adianta tentar o XPath abaixo
+
+        # --- TENTATIVA DO XPATH ---
+        print("📍 DEBUG 4: Localizando o dropdown para enviar comandos de teclado...")
+        try:
+            # Pula direto para o dropdown (Adeus, 29 TABs!)
+            select_principal = wait.until(
+                EC.presence_of_element_located((By.NAME, "unidade")))
+
+            # 1. Dá o "foco" e joga a seleção para a primeira opção da lista (Beira Rio)
+            select_principal.send_keys(Keys.HOME)
+            time.sleep(0.5)  # Respiro para o IE mudar a seleção visualmente
+
+            # 2. Desce a quantidade de vezes exata usando o índice
+            if indice > 0:
+                print(
+                    f"⬇️ Descendo {indice} posições via teclado do Selenium...")
+                for _ in range(indice):
+                    select_principal.send_keys(Keys.DOWN)
+                    time.sleep(0.1)
+
+            # 3. Dispara o Enter para o Promax entender que escolhemos a revenda e recarregar
+            select_principal.send_keys(Keys.ENTER)
+            print("✅ Dropdown alterado via Selenium (Modo Teclado)!")
+
+        except UnexpectedAlertPresentException:
+            # Mantemos nosso caça-alertas aqui por segurança!
+            print("⚠️ Alerta do sistema detectado. Fechando...")
+            try:
+                alerta = driver.switch_to.alert
+                alerta.accept()
+            except NoAlertPresentException:
+                pass
+        except Exception as e:
+            print(f"⚠️ Erro ao tentar navegar no dropdown: {e}")
 
         # --- 2. LIDA COM OS POP-UPS (O Pedágio) ---
         print("⏳ Aguardando e fechando pop-ups de carregamento...")
@@ -147,6 +186,10 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, revenda, indice):
         pyautogui.press('tab')
         pyautogui.press('enter')
         time.sleep(1)
+        pyautogui.hotkey('alt', 'n')
+        pyautogui.press('tab')
+        pyautogui.press('tab')
+        pyautogui.press('tab')
         pyautogui.press('tab')
         pyautogui.press('tab')
         pyautogui.press('enter')
@@ -163,27 +206,6 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, revenda, indice):
             caminho_destino=r"C:\Users\usuario\Desktop\Promax\promax\downloads"
         )
 
-        pyautogui.press('tab')
-        pyautogui.press('tab')
-        pyautogui.press('space')
-        pyautogui.press('down')
-        pyautogui.press('enter')
-        time.sleep(0.1)
-        pyautogui.press('enter')
-
-        fechar_popups(driver, 4)
-        time.sleep(3)
-
-        wait.until(EC.number_of_windows_to_be(2))
-        janelas = driver.window_handles
-
-        for janela in janelas:
-            if janela != janela_principal:
-                driver.switch_to.window(janela)
-                time.sleep(1)
-                print(f"🔀 Mudamos para a nova janela: {driver.title}")
-                break
-
     except Exception as e:
         print(f"❌ Erro na rotina {codigo_rotina}: {e}")
-        # Não damos driver.quit() aqui para não matar o processo das outras rotinas
+
