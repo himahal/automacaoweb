@@ -214,13 +214,10 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                         By.XPATH, "//button[contains(., 'Visualizar')]")
                     driver.execute_script("arguments[0].click();", btn_v)
 
-                time.sleep(15)
-                rotinas.matar_overlay_processando(driver)
-
-                print("🚀 Relatório solicitado! Aguardando botão CSV...")
-                botaoCsv = wait.until(
-                    EC.presence_of_element_located((By.NAME, "GerExecl")))
-                botaoCsv.click()
+                print("🚀 Relatório solicitado! Aguardando processamento e botão CSV...")
+                # 5. Clica no botão CSV (GerExecl) com espera ativa do Processando
+                botaoCsv = rotinas.aguardar_processamento_e_botao(driver, wait, By.NAME, "GerExecl", timeout_segundos=300)
+                driver.execute_script("arguments[0].click();", botaoCsv)
 
                 # --- INÍCIO DO PYWINAUTO PARA MÚLTIPLAS JANELAS ---
                 titulo_janela_atual = driver.title

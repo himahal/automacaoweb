@@ -46,6 +46,35 @@ def matar_overlay_processando(driver):
     except Exception as e:
         print(f"⚠️ Erro ao tentar fechar janela via Windows: {e}")
 
+def aguardar_processamento_e_botao(driver, wait_obj, by, identificador, timeout_segundos=300):
+    """Aguarda um elemento ficar presente enquanto fecha janelas 'Processando' do Windows e mede o tempo."""
+    print(f"⏳ Aguardando até {timeout_segundos}s pelo elemento {identificador}...")
+    inicio = time.time()
+    while time.time() - inicio < timeout_segundos:
+        # Tenta fechar janela Processando
+        try:
+            janelas = gw.getWindowsWithTitle('Processando')
+            if janelas:
+                for j in janelas:
+                    print(f"💥 Janela 'Processando' detectada. Fechando {j.title}...")
+                    j.close()
+        except Exception:
+            pass
+        
+        # Verifica se o elemento já está na tela e clicável
+        try:
+            elementos = driver.find_elements(by, identificador)
+            if elementos and elementos[0].is_displayed():
+                tempo_decorrido = round(time.time() - inicio, 2)
+                print(f"✅ Elemento {identificador} carregado! (Tempo de processamento: {tempo_decorrido}s)")
+                return elementos[0]
+        except Exception:
+            pass
+        
+        time.sleep(2) # Pausa curta antes de verificar novamente
+    
+    raise TimeoutError(f"Timeout aguardando {identificador} apos {timeout_segundos} segundos.")
+
 
 # 🗺️ MAPA DE ROTINAS (Agora os nomes coincidem com os imports acima)
 MAPA_ROTINAS = {
