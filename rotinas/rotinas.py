@@ -11,6 +11,7 @@ from . import r030224
 from . import r01200147
 from . import r03014701
 from . import r030237
+from . import r0105070402
 
 # --- CÁLCULO DAS DATAS ---
 hoje = datetime.now()
@@ -53,6 +54,7 @@ MAPA_ROTINAS = {
     "01200147": r01200147.executar,
     "03014701": r03014701.executar,
     "030237": r030237.executar,
+    "0105070402": r0105070402.executar,
 }
 
 
@@ -80,29 +82,27 @@ def tratar_arquivo_baixado(prefixo_arquivo, nome_personalizado=None, caminho_des
     """Localiza o arquivo, renomeia e move para a pasta desejada no computador"""
 
     diretorio_base = os.path.dirname(os.path.abspath(__file__))
-    dir_downloads = os.path.join(diretorio_base, "..", "downloads")
+    dir_downloads = os.path.abspath(
+        os.path.join(diretorio_base, "..", "downloads"))
 
-    # 🌟 NOVIDADE: Agora ele aceita qualquer caminho do seu computador
     if caminho_destino:
         dir_final = caminho_destino
     else:
-        dir_final = os.path.join(diretorio_base, "..",
-                                 "relatorios_finalizados")
+        dir_final = os.path.join(diretorio_base, "relatorios_finalizados")
 
-    # Garante que a pasta exista (cria a árvore de pastas se não existir)
     os.makedirs(dir_final, exist_ok=True)
 
     print(f"📂 Processando arquivo da rotina {prefixo_arquivo}...")
     time.sleep(2)
 
-    padrao = os.path.join(dir_downloads, f"*{prefixo_arquivo}*.csv.inf")
+    # 🌟 CORREÇÃO 2: O asterisco no final garante que ele ache '.csv', '.csv.inf', etc.
+    padrao = os.path.join(dir_downloads, f"*{prefixo_arquivo}*.csv*")
     arquivos = glob.glob(padrao)
 
     if arquivos:
         arquivo_original = max(arquivos, key=os.path.getctime)
         nome_base = os.path.basename(arquivo_original)
 
-        # Decide o novo nome
         if nome_personalizado:
             if not nome_personalizado.endswith('.csv'):
                 nome_personalizado += '.csv'
@@ -112,7 +112,6 @@ def tratar_arquivo_baixado(prefixo_arquivo, nome_personalizado=None, caminho_des
 
         caminho_final = os.path.join(dir_final, novo_nome)
 
-        # Se já existir um arquivo com esse nome exato, substitui
         if os.path.exists(caminho_final):
             os.remove(caminho_final)
 
@@ -122,6 +121,8 @@ def tratar_arquivo_baixado(prefixo_arquivo, nome_personalizado=None, caminho_des
         return caminho_final
     else:
         print(f"⚠️ Nenhum arquivo encontrado com o padrão: {prefixo_arquivo}")
+        # Print extra para você ter certeza de onde ele tentou procurar:
+        print(f"🔍 Procurou na pasta: {dir_downloads}")
         return None
 
 
@@ -131,13 +132,13 @@ def chamar_rotina(driver, wait, codigo):
     print(f"Buscando lógica para: {codigo}")
 
     revendas = [
-        "145.0004 - Beira Rio",
-        "156.0001 - Revalle Juazeiro",
-        "156.0002 - Revalle Nordeste",
-        "156.0003 - Revalle Bonfim",
-        "304.0005 - Revalle P Afonso",
-        "341.0006 - Revalle Alagoinhas",
-        "341.0007 - Revalle Serrinha"
+        "Beira Rio",
+        "Revalle Juazeiro",
+        "Revalle Nordeste",
+        "Revalle Bonfim",
+        "Revalle P Afonso",
+        "Revalle Alagoinhas",
+        "Revalle Serrinha"
     ]
 
     # 🎯 Define a janela principal logo no início

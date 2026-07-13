@@ -97,6 +97,12 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                 time.sleep(0.5)
                 pyautogui.press('tab')
 
+                try:
+                    driver.execute_script(
+                        "document.getElementsByName('unidade')[0].blur();")
+                except:
+                    pass
+
                 # --- 2.2 LIDA COM OS POP-UPS DA TROCA ---
                 print("⏳ Aguardando e fechando pop-ups de carregamento da troca...")
                 try:
@@ -242,9 +248,8 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                     print(f"Erro ao interagir com a barra de download: {e}")
 
                 # Aguarda o download concluir antes de tentar mover o arquivo
-                cidade_limpa = revenda.split("-")[-1].strip()
                 dia, mes, ano = data_fim.split("/")
-                nome_dinamico = f"{cidade_limpa}.{mes}.{ano}"
+                nome_dinamico = f"{revenda}.{mes}.{ano}"
                 print(f"🏷️ Nome dinâmico gerado: {nome_dinamico}.csv")
 
                 rotinas.tratar_arquivo_baixado(

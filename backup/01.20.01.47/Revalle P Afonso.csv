@@ -1,0 +1,113 @@
+Codigo;Nome;Habilitacao;Registro;Validade;CPF;Supervisor Rota;Reg. Conhecimento;Status;Nr. POS;Eq. Padronizada;
+      1;Raniele Matos da Silva        ;  546113090; 1522246886;14/09/2028; 43.470.845.36;   2;   0;Ativo     ;        ;Nao
+      2;Edenilson Fernando Gomes      ; 4924132892; 1534755799;13/09/2034; 89.544.314.70;   1;   0;Ativo     ;        ;Sim
+      3;RICHARD NIXON SANTOS DE ALMEID; 1946903803;    1189439;27/03/2030;585.652.305.97;   2;   0;Bloqueado ;        ;Nao
+      4;Gabriel Cardoso da Silva      ; 6915105808; 2247661718;29/01/2034; 83.000.275.80;   1;   0;Ativo     ;        ;Sim
+      5;EDIVANIO JOSÉ NASCIMENTO      ; 4018552404;  395937035;24/10/2022;403.423.285.49;   3;   0;Ativo     ;        ;Nao
+      6;Damião Lázaro Nogueira Siqueir; 4298102160; 1300338202;19/01/2020;888.888.888.88;   1;   0;Bloqueado ;        ;Nao
+      7;Jose Fernando Souza Santos    ; 7030783448; 1453345892;25/04/2032; 34.760.365.37;   3;   0;Ativo     ;        ;Sim
+      8;FABIANA DE PAULA MAIA         ;  552208860;    1238037;09/05/2031;776.669.765.34;   0;   0;Ativo     ;        ;Nao
+      9;Diego Aleandro Cavalcanti da S; 4695044417; 1358000050;11/10/2032; 38.146.635.35;   1;   0;Ativo     ;        ;Sim
+     10;Alexsandro Rodrigues Gomes    ; 7250121357; 1544932529;21/10/2034; 83.305.565.81;   1;   0;Ativo     ;        ;Sim
+     11;Henrique Cerqueira Santos     ; 4391575424; 1255961201;24/01/2032; 16.992.765.28;   1;   0;Ativo     ;        ;Sim
+     12;Alisson de Macedo Menezes     ; 5939896836; 1386262781;01/02/2032; 54.920.185.82;   0;   0;Ativo     ;        ;Nao
+     13;Tiago Jesus dos Santos        ; 4470958927; 1010851411;07/04/2032; 13.464.195.74;   1;   0;Ativo     ;        ;Nao
+     14;Rafael Santos Costa           ; 5851071773; 1627369163;22/07/2035; 58.819.565.08;   1;   0;Ativo     ;        ;Nao
+     15;José Raimundo Ferreira de Brit; 1642276969;  857550012;26/04/2023;941.293.555.20;   0;   0;Ativo     ;        ;Nao
+     16;EDUARDO CAETANO DA ROCHA      ; 5658663807;    8322666;18/09/2024; 97.727.214.14;   0;   0;Ativo     ;        ;Nao
+     17;Fábio Nascimento Pinto        ; 4245377000;  979990327;18/12/2023; 27.974.765.90;   1;   0;Ativo     ;        ;Nao
+     18;José Nilson Alves dos Santos  ; 3603096005; 1145620671;26/01/2032; 13.002.985.88;   1;   0;Ativo     ;        ;Nao
+     19;Lazaro Nascimento Dantas      ; 3677706404;   33562261;21/02/2032; 15.727.665.14;   3;   0;Ativo     ;        ;Nao
+     20;Lucas Bispo dos Santos        ; 5735832452;   35357649;28/04/2032; 66.324.945.79;   1;   0;Ativo     ;        ;Nao
+     22;Edson dos Santos              ; 7842649249; 2177200482;10/10/2034; 54.234.295.28;   1;   0;Ativo     ;        ;Sim
+     23;Gilvan Souza do Nascimento    ;  605270866;  578271965;03/05/2028; 48.281.505.10;   1;   0;Ativo     ;        ;Nao
+     24;Cirilo Santos da Silva        ; 5468733332; 2054894435;06/09/2034; 60.310.335.93;   2;   0;Ativo     ;        ;Nao
+     25;erivaldo jesus dos santos     ; 4429314854; 1014940680;04/05/2032; 31.196.855.42;   1;   0;Ativo     ;        ;Nao
+     26;jonas henrique santos carvalho; 7277104169; 2106860145;29/07/2031; 77.909.785.86;   1;   0;Ativo     ;        ;Sim
+     27;waldicelio de souza araujo    ; 6671928529; 1650319568;28/09/2031; 61.759.475.92;   1;   0;Ativo     ;        ;Sim
+     29;Breno Cesar Lopis da Silva    ; 6735892168; 1255310014;06/05/2031; 69.086.825.10;   1;   0;Ativo     ;        ;Sim
+     30;RAIMUNDO BATISTA DE SENA      ;  535994880; 1534933808;09/08/2031;944.577.275.04;   2;   0;Ativo     ;        ;Nao
+     31;Gilvan dos Santos             ; 3117920603; 1010794604;13/10/2020;965.056.805.00;   2;   0;Ativo     ;        ;Nao
+     32;Bruno Dias dos Santos         ; 7828207325; 1648709974;14/11/2034; 64.429.175.33;   3;   0;Ativo     ;        ;Sim
+     35;Jose Renilton Santana Silva   ; 1030967228; 3977392102;12/11/2019; 42.076.565.45;   2;   0;Ativo     ;        ;Nao
+     36;Wellyngton Vilella Oliv Santos;  823453016; 4047130508;08/10/2018;320.298.168.41;   2;   0;Ativo     ;        ;Nao
+     43;José Romildo de Lima Patriota ; 1006811420;    1643412;15/11/2021;924.563.755.72;   1;   0;Ativo     ;        ;Nao
+     53;Uelington da Silva Alves      ;  403201256;   53303672;24/07/2023; 21.900.075.18;   1;   0;Ativo     ;        ;Nao
+     54;Donizete dos Santos Ferreira  ;  529830345; 1581924518;11/01/2034; 53.289.165.14;   1;   0;Ativo     ;        ;Nao
+     59;Aldevando da Solidade Santos  ; 6322870230;   26575922;17/08/2024; 62.283.295.61;   2;   0;Bloqueado ;        ;Nao
+     87;JOSE MACKSON DE SOUZA SILVA   ; 1852344863; 1136973842;12/10/2025; 29.449.635.11;   1;   0;Bloqueado ;        ;Nao
+     99;Michel da Silva Ferreira      ;  501412837; 1514646501;04/07/2023; 44.793.405.80;   3;   0;Ativo     ;        ;Nao
+    107;MARIA EVANILDA SANTOS VINHAS E;    2253087;   22530875;02/02/2025; 22.530.875.48;   0;   0;Bloqueado ;        ;Nao
+    110;JOAO WESTE RODRIGUES DE MACEDO;    3740716;   37407165;02/02/2025; 37.407.165.92;   0;   0;Bloqueado ;        ;Nao
+    113;GILMAR SILVA DO NASCIMENTO    ;    3631041;   36310415;02/02/2025; 36.310.415.19;   0;   0;Bloqueado ;        ;Nao
+    116;BRAULIO CARVALHO DE OLIVEIRA N;    6431783;   64317835;02/02/2025; 64.317.835.06;   0;   0;Bloqueado ;        ;Nao
+    121;MACSON CLAUDIO ALVES DA SILVA ;  321278027;  781905176;16/05/2025;944.759.465.49;   2;   0;Bloqueado ;        ;Nao
+    122;WELLINGTON ALENCAR DE LIMA    ; 5626563589;  365423567;26/05/2025; 33.251.265.70;   1;   0;Ativo     ;        ;Sim
+    129;TALISSON ANDRADE CAVALCANTE   ; 6929802838; 1510024794;27/06/2022; 55.739.735.92;   0;   0;Bloqueado ;        ;Nao
+    130;RALYSON DIEGO SOUZA SANTOS    ;  631820830; 2071006321;10/01/2025; 54.466.165.61;   0;   0;Bloqueado ;        ;Nao
+    139;EMERSON PEREIRA DOS SANTOS    ;  654216007; 1531976255;03/06/2025;858.312.075.79;   0;   0;Bloqueado ;        ;Nao
+    140;IVANILDO PEREIRA DOS SANTOS   ; 3999438730;  214546498;02/10/2020; 15.513.355.14;   0;   0;Bloqueado ;        ;Nao
+    142;FABIO FRANCISCO GONCALVES NUNE; 5895921439; 1318334217;02/11/2025; 55.482.835.96;   1;   0;Ativo     ;        ;Sim
+    145;ALEX CARVALHO MOURA           ; 6348426570; 1570490279;24/06/2031; 59.096.835.19;   2;   0;Bloqueado ;        ;Nao
+    146;STHEFANI SOPHIA SILVA SANTOS  ;  709904476; 2081698064;03/01/2023; 77.090.025.95;   0;   0;Bloqueado ;        ;Nao
+    147;DEIVID BARBOSA SOUZA          ; 6008605890;  121545211;21/09/2025; 75.114.415.05;   2;   0;Ativo     ;        ;Nao
+    148;JAILTON ALVES DE CARVALHO     ;  662633061;  306714264;03/04/2024;402.399.695.53;   0;   0;Bloqueado ;        ;Nao
+    149;Jose Fabio Rabelo do Nasciment;  213685846;  913111600;24/11/2031;998.265.935.91;   2;   0;Bloqueado ;        ;Nao
+    150;Jadson de Souza Silva         ;  529546829;   24247979;11/12/2022; 57.706.045.73;   1;   0;Ativo     ;        ;Sim
+    151;FRANCISCO CHAVIER DE LIMA     ;  156461377;  475440153;08/10/2025;227.767.704.30;   0;   0;Bloqueado ;        ;Nao
+    154;Jose Celio Andrade dos Santos ; 2267359470;   20731680;14/01/2024;458.699.445.20;   1;   0;Ativo     ;        ;Sim
+    155;ROBSON LUCIANO ALVES DAMASCENO;  171204460;  706224183;08/03/2023;936.863.585.49;   2;   0;Bloqueado ;        ;Nao
+    156;LUIZ CARLOS SILVA DOS SANTOS  ; 1929945004;  322520230;24/09/2025;272.019.648.79;   2;   0;Bloqueado ;        ;Nao
+    158;MARLON ARAUJO DA SILVA        ;  444766481;  999292366;22/10/2025; 23.305.945.85;   1;   0;Bloqueado ;        ;Nao
+    159;LUZIANIO LOPES DE OIVEIRA     ;  254154090; 1129723496;10/09/2022;  5.970.875.12;   1;   0;Bloqueado ;        ;Nao
+    160;CLAUDIO SOUZA SANTOS          ; 1066233750;  574353160;14/10/2025;493.068.205.34;   2;   0;Bloqueado ;        ;Nao
+    161;Roberto dos Santos Matos      ;  564919119; 1592349641;16/12/2029; 50.617.745.90;   3;   0;Ativo     ;        ;Sim
+    162;Alaelson de Jesus Bomfim      ; 4910223995;  383670214;31/03/2032;988.823.685.72;   1;   0;Bloqueado ;        ;Nao
+    163;Genilson Sena de Miranda Santo; 6108529491;  542671062;19/01/2025;234.112.138.17;   3;   0;Bloqueado ;        ;Sim
+    164;Edvaldo Severo da Silva       ; 6570229148; 2030450170;25/02/2024; 61.454.705.93;   2;   0;Bloqueado ;        ;Nao
+    165;DENILSON RODRIGUES DE SENA    ; 3871032306;   93937733;27/12/2024;996.686.295.15;   2;   0;Bloqueado ;        ;Nao
+    166;Rogerio do Nascimento         ; 5255559305;   50737968;08/06/2032;335.916.848.80;   3;   0;Bloqueado ;        ;Nao
+    167;VINICIUS BATISTA SILVA        ; 6784848939; 1291648283;19/12/2031; 28.160.225.52;   2;   0;Bloqueado ;        ;Nao
+    168;JOSIMAR DA CRUZ ARUAJO        ; 5125463700; 1503800709;14/10/2023; 44.132.635.88;   3;   0;Bloqueado ;        ;Sim
+    169;ALEXANDRE DE LIMA MACEDO      ; 3741450893; 8814937400;12/04/2023;795.076.385.04;   2;   0;Bloqueado ;        ;Nao
+    170;VAN-Fabio Francisco           ;  585595541; 5555555555;02/10/2025;555.555.555.55;   3;   0;Bloqueado ;        ;Sim
+    171;CARRO Italo Henique Teixeira  ; 6582586546; 1540485854;22/10/2020;666.666.666.66;   1;   0;Bloqueado ;        ;Nao
+    173;CRISTIANO DOS SANTOS FERREIRA ;  101488046;    2733456;13/09/2024;256.012.798.96;   1;   0;Bloqueado ;        ;Nao
+    174;Damião Lázaro Nogueir         ; 4298102160; 1300338202;19/01/2022; 29.185.204.11;   5;   0;Ativo     ;        ;Sim
+    175;Murilo Santos da Silva        ;  717877958; 1663230714;20/05/2031; 87.164.665.00;   3;   0;Ativo     ;        ;Nao
+    176;ENEAS GONCALVES DE CARVALHO   ;  797753881;  631820656;21/01/2026;296.593.248.80;   3;   0;Bloqueado ;        ;Nao
+    177;Van - Uelington da Silva      ;  403201256;   53303672;24/07/2023;333.333.333.33;   3;   0;Bloqueado ;        ;Nao
+    178;VAN -WELLINGTON ALENCAR       ; 5626563589;  365423567;26/05/2025;777.777.777.77;   3;   0;Bloqueado ;        ;Nao
+    179;ADRIANO OLIVEIRA BARROS       ; 2552931031; 2877539310;02/02/2033;755.222.095.34;   1;   0;Ativo     ;        ;Nao
+    180;Claudio Cobuci dos Santos     ;  716649307; 2325311104;21/05/2024; 21.645.149.39;   2;   0;Ativo     ;        ;Nao
+    181;Riccardo Wendell Barbosa      ; 1711940280;  798945427;15/07/2023;953.941.845.34;   2;   0;Ativo     ;        ;Nao
+    182;Legno Santos Santana          ;  564267186; 1586648098;19/08/2031; 50.833.995.20;   3;   0;Bloqueado ;        ;Nao
+    183;ARIQUE CASTRO DOS SANTOS      ; 4012527779; 1291925627;19/10/2031;352.739.948.88;   2;   0;Bloqueado ;        ;Nao
+    185;ANDERSON PABLO DOS SANTOS SILV; 4144342010; 1450918727;04/04/2026; 35.380.305.70;   3;   0;Ativo     ;        ;Nao
+    186;CICERO MESSIAS DA SILVA       ;  551761725; 1260003361;23/07/2024;849.781.555.68;   1;   0;Bloqueado ;        ;Nao
+    187;DANILO SILVA VENTURA          ;  462333679; 1117724271;11/09/2033; 29.189.825.47;   1;   0;Ativo     ;        ;Nao
+    188;Agnaldo Vieira da Silva       ;  474768170; 1296248615;17/12/2031;845.547.205.78;   1;   0;Ativo     ;        ;Nao
+    200;JAILSON DOS SANTOS            ;  443447568; 1010931288;09/02/2024;  5.394.425.93;   0;   0;Ativo     ;        ;Nao
+    201;Josiano Lima Rodrigues        ;  103054149;    1480411;09/07/2023;990.096.765.87;   0;   0;Bloqueado ;        ;Nao
+    202;Bruno Novaes de Sousa         ; 4030835795;   45886552;20/09/2024; 22.050.991.32;   3;   0;Bloqueado ;        ;Nao
+    203;Gildo Ferreira da Silva       ; 6221008400; 1580071155;10/08/2023; 53.413.495.55;   1;   0;Bloqueado ;        ;Nao
+    204;ARIQUE CASTRO DOS SANTOS      ; 4012527779; 1291925627;19/10/2031;352.739.948.88;   0;   0;Ativo     ;        ;Nao
+    206;JONILSON ALVES DA SILVA       ;  327096760;  940276763;04/02/2024; 20.395.775.05;   0;   0;Ativo     ;        ;Nao
+    207;RICARDO SOUZA SANTOS          ; 5799018862; 1648228607;16/02/2025; 57.343.695.94;   1;   0;Ativo     ;        ;Nao
+    209;LUIZ GONZAGA DA SILVA FILHO   ;  220237266;  920350941;14/03/2028;492.965.664.87;   0;   0;Ativo     ;        ;Nao
+    210;OSMAN DOS SANTOS DOS REIS     ; 2064652053;  665071892;28/01/2024;907.806.395.53;   0;   0;Ativo     ;        ;Nao
+    211;Legno Santos Santana          ;  564267186; 1586648098;19/08/2031; 50.833.995.20;   1;   0;Ativo     ;        ;Nao
+    212;Rogaciano Almeida de Santana  ; 2552842731;  979504244;28/01/2033;    890.045.07;   1;   0;Ativo     ;        ;Nao
+    213;Joao Paulo Silva dos Santos   ;  548399288; 1580650856;25/01/2025;     78.365.03;   1;   0;Ativo     ;        ;Nao
+    214;GLAUBER BATISTA LIMA          ;  569433919;  986821560;20/10/2025;  8.241.055.08;   1;   0;Ativo     ;        ;Nao
+    215;JOSE SAMIR MATOS DE ANDRADE   ;  560004582; 1583487026;26/08/2031; 57.953.445.67;   1;   0;Bloqueado ;        ;Nao
+    216;CARLOS HENRIQUE RODRIGUES EVAN;  541936618; 1396267190;11/02/2025; 65.873.905.01;   1;   0;Ativo     ;        ;Nao
+    217;ROBERTO DE MATOS TEIXEIRA     ; 2499615645; 1581431910;16/07/2032; 55.096.055.45;   1;   0;Ativo     ;        ;Nao
+    227;JOSE ORLANDO JESUS DE ALMEIDA ; 4389354053; 1408404869;04/05/2032; 31.745.055.77;   1;   0;Ativo     ;        ;Nao
+    993;ERIC BRUNO CRUZ SILVA         ; 5942816522; 1498231268;02/06/2033;859.439.225.71;   0;   0;Ativo     ;        ;Nao
+    994;GERSON ANDRADE CARVALHO       ; 1422024836;  955300886;10/04/2032;  8.515.525.01;   2;   0;Ativo     ;        ;Nao
+    995;ANDRE SOUSA SANTOS            ; 2444920314; 1001489306;14/04/2031;833.375.715.49;   2;   0;Ativo     ;        ;Nao
+    996;GLEITON DOS SANTOS SOUZA      ;  489630711; 1290191867;19/04/2032; 49.509.115.46;   3;   0;Ativo     ;        ;Nao
+    997;CARLITO MARQUES DE SANTANA    ; 1413783600;  306174723;22/02/2026;193.830.705.44;   0;   0;Ativo     ;        ;Nao
+    998;FRETE INDAIA                  ; 1111111111;11111111111;31/12/2099;222.222.222.22;   0;   0;Ativo     ;        ;Nao
+    999;FRETE AMBEV - PUXADA          ; 1111111111;11111111111;31/12/2099;111.111.111.11;   0;   0;Ativo     ;        ;Nao

@@ -1,13 +1,61 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.options import Options
+import os
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
+import time
 
 # Importação de módulos personalizados
 from configs import obter_config_ie, configurar_pasta_download
 from fecharPopups import fechar_popups
 from rotinas import rotinas
+
+import sys
+import os
+from datetime import datetime
+
+# ====================================================================
+# 🛡️ INTERCEPTADOR DE LOGS (Salva tudo no terminal e no arquivo)
+# ====================================================================
+
+
+class InterceptadorLog:
+    def __init__(self, caminho_arquivo):
+        self.terminal = sys.stdout
+        self.arquivo_log = open(caminho_arquivo, "a", encoding="utf-8")
+
+    def write(self, mensagem):
+        # Escreve no terminal (para você ver rodando)
+        self.terminal.write(mensagem)
+        # Escreve no arquivo txt
+        self.arquivo_log.write(mensagem)
+        # Força o salvamento imediato no disco rígido
+        self.arquivo_log.flush()
+
+    def flush(self):
+        self.terminal.flush()
+        self.arquivo_log.flush()
+
+
+# Cria uma pasta chamada 'logs' no mesmo local do main.py (se não existir)
+pasta_logs = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logs")
+os.makedirs(pasta_logs, exist_ok=True)
+
+# Gera um nome de arquivo único com a data e hora atual
+timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+nome_arquivo_log = os.path.join(pasta_logs, f"execucao_{timestamp}.log")
+
+# Aplica a interceptação no sistema
+logger = InterceptadorLog(nome_arquivo_log)
+sys.stdout = logger  # Captura todos os seus 'prints'
+sys.stderr = logger
 
 # --- Variáveis Globais ---
 login = "pizolitto"
@@ -50,6 +98,30 @@ def login_e_menu():
 
     print("✅ Login efetuado com sucesso!")
 
+    try:
+        # Espera BEM CURTA (ex: 3 segundos) para não atrasar o dia a dia
+        # Substitua "ID_DO_POPUP" por algum elemento que só existe nessa tela de senha
+        tela_senha = WebDriverWait(driver, 3).until(
+            EC.presence_of_element_located(
+                (By.ID, "algum_id_da_tela_de_senha"))
+        )
+
+        print("⚠️ Aviso: Tela de alteração de senha detectada!")
+
+        # Salva o HTML para você estudar depois
+        html_senha = driver.page_source
+        with open("html_tela_senha.html", "w", encoding="utf-8") as f:
+            f.write(html_senha)
+        print("💾 HTML da tela de senha salvo como 'html_tela_senha.html'.")
+
+    # TODO: Fechar o popup ou clicar em "Lembrar mais tarde"
+    # botao_fechar = driver.find_element(By.ID, "id_do_botao_fechar")
+    # botao_fechar.click()
+
+    except Exception:
+        # Se der erro por timeout (3s), significa que o popup não apareceu. Vida que segue!
+        print("✅ Nenhum aviso de senha. Seguindo para o sistema...")
+
     # --- Etapa: Unidade/Revenda ---
     driver.switch_to.default_content()
     print("🏢 Selecionando unidade de revenda...")
@@ -76,10 +148,11 @@ if __name__ == "__main__":
 
         # 🚀 CHAMADA DAS ROTINAS
 
-        # rotinas.chamar_rotina(driver, wait, "031120")
-        # rotinas.chamar_rotina(driver, wait, "030224")
+        rotinas.chamar_rotina(driver, wait, "031120")
+        rotinas.chamar_rotina(driver, wait, "030224")
         rotinas.chamar_rotina(driver, wait, "01200147")
-        # rotinas.chamar_rotina(driver, wait, "03014701")
+        rotinas.chamar_rotina(driver, wait, "0105070402")
+        rotinas.chamar_rotina(driver, wait, "03014701")
         # rotinas.chamar_rotina(driver, wait, "030237")
 
         print("\n🏆 Todas as rotinas solicitadas foram processadas!")
@@ -89,6 +162,5 @@ if __name__ == "__main__":
 
     finally:
         print("\n" + "="*50)
-        input("🏁 Automação finalizada. Pressione [ENTER] para sair...")
         print("👋 Fechando navegador e limpando sessão...")
         driver.quit()

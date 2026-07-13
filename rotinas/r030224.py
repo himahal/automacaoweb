@@ -1,6 +1,7 @@
 import time
 import pyautogui
 import re
+import os
 from pywinauto import Desktop
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -100,15 +101,21 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                 time.sleep(0.5)
                 pyautogui.press('tab')
 
+                try:
+                    driver.execute_script(
+                        "document.getElementsByName('unidade')[0].blur();")
+                except:
+                    pass
+
                 # --- 2.2 LIDA COM OS POP-UPS DA TROCA ---
                 print("⏳ Aguardando e fechando pop-ups de carregamento da troca...")
 
                 try:
-                    WebDriverWait(driver, 10).until(EC.alert_is_present())
+                    WebDriverWait(driver, 15).until(EC.alert_is_present())
                     print(
                         "🚨 Primeiro alerta detectado pelo Guarda-Costas! Iniciando limpeza...")
 
-                    fechar_popups(driver, 4)
+                    fechar_popups(driver, 6)
                 except Exception:
                     # Se passarem 10 segundos e nada aparecer, assumimos que o Promax não vai mandar alerta nenhum.
                     print(
@@ -208,17 +215,15 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                 except Exception as e:
                     print(f"Erro ao interagir com a barra de download: {e}")
 
-                # LIMPEZA DO NOME (Remove o "145.0004 - REVALLE - ")
-                cidade_limpa = revenda.split("-")[-1].strip()
                 dia, mes, ano = data_fim.split("/")
-
-                nome_dinamico = f"{cidade_limpa}.{mes}.{ano}"
+                nome_dinamico = f"{revenda}.{mes}.{ano}"
 
                 print(f"🏷️ Nome dinâmico gerado: {nome_dinamico}.csv")
+
                 rotinas.tratar_arquivo_baixado(
                     prefixo_arquivo="03.02.24",
                     nome_personalizado=nome_dinamico,
-                    caminho_destino=r"C:\Users\usuario\Desktop\Promax\promax\downloads"
+                    caminho_destino=r"T:\ATENDIMENTO\BEES DELIVERY\03.02.24"
                 )
 
             except Exception as inner_e:

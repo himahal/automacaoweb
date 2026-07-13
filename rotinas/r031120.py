@@ -99,6 +99,12 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                 time.sleep(0.5)
                 pyautogui.press('tab')
 
+                try:
+                    driver.execute_script(
+                        "document.getElementsByName('unidade')[0].blur();")
+                except:
+                    pass
+
                 # --- 2.2 LIDA COM OS POP-UPS DA TROCA ---
                 print("⏳ Vigiando ativamente a tela aguardando os pop-ups da troca...")
                 try:
@@ -192,19 +198,33 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                     print(f"Erro ao interagir com a barra de download: {e}")
 
                 # LIMPEZA DO NOME E CAMINHO DINÂMICO
-                cidade_limpa = revenda.split("-")[-1].strip()
-                dia, mes, ano = data_fim.split("/")
+                mapeamento_pastas = {
+                    "Beira Rio": "Beira Rio",
+                    "Revalle Juazeiro": "Juazeiro",
+                    "Revalle Nordeste": "Nordeste",
+                    "Revalle Bonfim": "Bonfim",
+                    "Revalle P Afonso": "Paulo Afonso",  # O dicionário traduz automaticamente aqui
+                    "Revalle Alagoinhas": "Alagoinhas",
+                    "Revalle Serrinha": "Serrinha"
+                }
 
-                nome_dinamico = f"{cidade_limpa}.{mes}.{ano}"
+                dia, mes, ano = data_fim.split("/")
+                nome_dinamico = f"{revenda}.{mes}.{ano}"
                 print(f"🏷️ Nome dinâmico gerado: {nome_dinamico}.csv")
 
+                pasta_regiao = mapeamento_pastas.get(revenda, "Outros")
+                # 4. Monta o caminho do diretório dinamicamente com ano e região
+                caminho_base = r"T:\ATENDIMENTO\BEES DELIVERY\03.11.20"
+                caminho_final = rf"{caminho_base}\{pasta_regiao}\{ano}"
+                print(f"📁 Movendo para a pasta: {caminho_final}")
+
                 # O caminho agora se ajusta automaticamente à cidade e ao ano
-                caminho_pasta_dinamico = rf"C:\Users\usuario\Desktop\Promax\promax\downloads"
+                # caminho_pasta_dinamico = rf"C:\Users\usuario\Desktop\Promax\promax\downloads"
 
                 rotinas.tratar_arquivo_baixado(
                     prefixo_arquivo="03.11.20",
                     nome_personalizado=nome_dinamico,
-                    caminho_destino=caminho_pasta_dinamico
+                    caminho_destino=caminho_final
                 )
 
             except Exception as inner_e:

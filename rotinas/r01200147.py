@@ -1,6 +1,14 @@
 import time
+import os
 import pyautogui
+import subprocess
+from datetime import datetime
 import re
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
 from pywinauto import Desktop
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -8,12 +16,12 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import UnexpectedAlertPresentException, NoAlertPresentException
 from . import rotinas
+from subprocess import check_output
 from fecharPopups import fechar_popups
 
 
 def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
     """Lógica específica da rotina 01200147"""
-
     codigo_rotina = "01200147"
     print(f"\n🚀 Iniciando execução da Rotina {codigo_rotina}...")
 
@@ -100,6 +108,13 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                 time.sleep(0.5)
                 pyautogui.press('tab')
 
+                print("📍 Forçando o 'blur' (perda de foco) via JavaScript...")
+                try:
+                    driver.execute_script(
+                        "document.getElementsByName('unidade')[0].blur();")
+                except:
+                    pass
+
                 # --- 2.2 LIDA COM OS POP-UPS DA TROCA (O Guarda-Costas) ---
                 print("⏳ Vigiando ativamente a tela aguardando os pop-ups da troca...")
                 try:
@@ -184,15 +199,14 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                     print(f"Erro ao interagir com a barra de download: {e}")
 
                 # LIMPEZA DO NOME E DIRETÓRIO
-                cidade_limpa = revenda.split("-")[-1].strip()
                 dia, mes, ano = data_fim.split("/")
-                nome_dinamico = f"{cidade_limpa}.{mes}.{ano}"
+                nome_dinamico = f"{revenda}"
 
                 print(f"🏷️ Nome dinâmico gerado: {nome_dinamico}.csv")
                 rotinas.tratar_arquivo_baixado(
                     prefixo_arquivo="01.20.01.47",  # Mantido conforme o padrão do seu template original
                     nome_personalizado=nome_dinamico,
-                    caminho_destino=r"C:\Users\usuario\Desktop\Promax\promax\downloads"
+                    caminho_destino=r"T:\ATENDIMENTO\BEES DELIVERY\01.20.01.47"
                 )
 
             except Exception as inner_e:
