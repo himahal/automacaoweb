@@ -114,11 +114,8 @@ def tratar_arquivo_baixado(prefixo_arquivo, nome_personalizado=None, caminho_des
     dir_downloads = os.path.abspath(
         os.path.join(diretorio_base, "..", "downloads"))
 
-    if caminho_destino:
-        dir_final = caminho_destino
-    else:
-        dir_final = os.path.join(diretorio_base, "relatorios_finalizados")
-
+    # Na branch v2, vamos forçar o salvamento na própria pasta de downloads para conferência
+    dir_final = dir_downloads
     os.makedirs(dir_final, exist_ok=True)
 
     print(f"📂 Processando arquivo da rotina {prefixo_arquivo}...")
