@@ -75,7 +75,11 @@ def capturar_tela_senha():
                 time.sleep(2) # Aguarda renderizar o HTML da nova janela
                 print(f"🔀 Focado na nova janela: {driver.title}")
                 
-                # Gera e salva o HTML da página atual
+                # --- Correção: Focar no frame correto antes de capturar o HTML ---
+                print("🔍 Navegando para o frame 'rotina' onde estão os campos de senha...")
+                wait.until(EC.frame_to_be_available_and_switch_to_it((By.NAME, "rotina")))
+                
+                # Gera e salva o HTML da página atual (agora dentro do frame correto)
                 html_code = driver.page_source
                 caminho_arquivo = os.path.join(os.path.dirname(os.path.abspath(__file__)), "html_tela_senha_capturado.html")
                 
