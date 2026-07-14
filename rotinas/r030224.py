@@ -127,53 +127,67 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                 wait.until(EC.frame_to_be_available_and_switch_to_it(
                     (By.NAME, "rotina")))
 
-                print("🎯 Selecionando 'Mapa' no dropdown...")
-                try:
-                    dropdown_element = wait.until(
-                        EC.presence_of_element_located((By.NAME, "opcaoRel")))
-                except Exception:
-                    print("⚠️ Demora na atualização do frame. Tentando novamente...")
-                    driver.switch_to.default_content()
-                    wait.until(EC.frame_to_be_available_and_switch_to_it((By.NAME, "rotina")))
-                    dropdown_element = wait.until(EC.presence_of_element_located((By.NAME, "opcaoRel")))
+                print("⏳ Verificando se o Promax gerou o relatório automaticamente ou se o form apareceu...")
+                inicio_espera = time.time()
+                relatorio_auto = False
+                dropdown_element = None
+                
+                while time.time() - inicio_espera < 60:
+                    try:
+                        if driver.find_elements(By.NAME, "GerExecl"):
+                            relatorio_auto = True
+                            break
+                        
+                        els = driver.find_elements(By.NAME, "opcaoRel")
+                        if els:
+                            dropdown_element = els[0]
+                            break
+                    except Exception:
+                        pass
+                    time.sleep(1)
+                
+                if relatorio_auto:
+                    print("🚀 O relatório para essa filial foi gerado automaticamente! Pulando o form...")
+                else:
+                    if not dropdown_element:
+                        raise TimeoutError("Nem o formulário nem o relatório apareceram após 60s.")
+                    
+                    print("🎯 Selecionando 'Mapa' no dropdown...")
+                    from rotinas.utils_ui import selecionar_dropdown_pyautogui
+                    selecionar_dropdown_pyautogui(driver, dropdown_element, "Mapa")
 
-                from rotinas.utils_ui import selecionar_dropdown_pyautogui
+                    # Checkboxes
+                    checks = ["selecionouAS",
+                              "responsabProcesso", "todasOperacoes"]
+                    for check in checks:
+                        el = wait.until(
+                            EC.presence_of_element_located((By.NAME, check)))
+                        driver.execute_script(
+                            "arguments[0].scrollIntoView(true);", el)
+                        el.click()
 
-
-                selecionar_dropdown_pyautogui(driver, dropdown_element, "Mapa")
-
-                # Checkboxes
-                checks = ["selecionouAS",
-                          "responsabProcesso", "todasOperacoes"]
-                for check in checks:
-                    el = wait.until(
-                        EC.presence_of_element_located((By.NAME, check)))
+                    # Preencher Datas
+                    print("📅 Preenchendo datas...")
+                    campo_data_ini = wait.until(
+                        EC.presence_of_element_located((By.NAME, "dataInicial")))
                     driver.execute_script(
-                        "arguments[0].scrollIntoView(true);", el)
-                    el.click()
+                        "arguments[0].value = arguments[1];", campo_data_ini, data_inicio)
 
-                # Preencher Datas
-                print("📅 Preenchendo datas...")
-                campo_data_ini = wait.until(
-                    EC.presence_of_element_located((By.NAME, "dataInicial")))
-                driver.execute_script(
-                    "arguments[0].value = arguments[1];", campo_data_ini, data_inicio)
+                    campo_data_fim = wait.until(
+                        EC.presence_of_element_located((By.NAME, "dataFinal")))
+                    driver.execute_script(
+                        "arguments[0].value = arguments[1];", campo_data_fim, data_fim)
 
-                campo_data_fim = wait.until(
-                    EC.presence_of_element_located((By.NAME, "dataFinal")))
-                driver.execute_script(
-                    "arguments[0].value = arguments[1];", campo_data_fim, data_fim)
-
-                # --- 5. GERAÇÃO E DOWNLOAD ---
-                print("🖱️ Clicando em Visualizar...")
-                try:
-                    btn_v = wait.until(EC.element_to_be_clickable(
-                        (By.NAME, "BotVisualizar")))
-                    driver.execute_script("arguments[0].click();", btn_v)
-                except:
-                    btn_v = driver.find_element(
-                        By.XPATH, "//button[contains(., 'Visualizar')]")
-                    driver.execute_script("arguments[0].click();", btn_v)
+                    # --- 5. GERAÇÃO E DOWNLOAD ---
+                    print("🖱️ Clicando em Visualizar...")
+                    try:
+                        btn_v = wait.until(EC.element_to_be_clickable(
+                            (By.NAME, "BotVisualizar")))
+                        driver.execute_script("arguments[0].click();", btn_v)
+                    except:
+                        btn_v = driver.find_element(
+                            By.XPATH, "//button[contains(., 'Visualizar')]")
+                        driver.execute_script("arguments[0].click();", btn_v)
 
                 print("🚀 Relatório solicitado! Aguardando processamento e botão CSV...")
                 # Clica no botão CSV (GerExecl) com espera ativa do Processando
