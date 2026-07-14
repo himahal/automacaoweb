@@ -129,68 +129,23 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                     driver.switch_to.default_content()
                     wait.until(EC.frame_to_be_available_and_switch_to_it((By.NAME, "rotina")))
                     dropdown_element_1 = wait.until(EC.presence_of_element_located((By.NAME, "quebra1")))
-                driver.execute_script(r"""
-                    var select = arguments[0];
-                    var textoParaSelecionar = "Operacao";
-                    for (var i = 0; i < select.options.length; i++) {
-                        var textoOption = select.options[i].text.replace(/^\s+|\s+$/g, '');
-                        if (textoOption === textoParaSelecionar) {
-                            select.selectedIndex = i;
-                            if ("createEvent" in document) {
-                                var evt = document.createEvent("HTMLEvents");
-                                evt.initEvent("change", false, true);
-                                select.dispatchEvent(evt);
-                            } else if ("fireEvent" in select) {
-                                select.fireEvent("onchange");
-                            }
-                            break;
-                        }
-                    }
-                """, dropdown_element_1)
+                from rotinas.utils_ui import selecionar_dropdown_pyautogui
+
+                selecionar_dropdown_pyautogui(driver, dropdown_element_1, "Operacao")
 
                 # Quebra 2
                 dropdown_element_2 = wait.until(
                     EC.presence_of_element_located((By.NAME, "quebra2")))
-                driver.execute_script(r"""
-                    var select = arguments[0];
-                    var textoParaSelecionar = "Vendedor";
-                    for (var i = 0; i < select.options.length; i++) {
-                        var textoOption = select.options[i].text.replace(/^\s+|\s+$/g, '');
-                        if (textoOption === textoParaSelecionar) {
-                            select.selectedIndex = i;
-                            if ("createEvent" in document) {
-                                var evt = document.createEvent("HTMLEvents");
-                                evt.initEvent("change", false, true);
-                                select.dispatchEvent(evt);
-                            } else if ("fireEvent" in select) {
-                                select.fireEvent("onchange");
-                            }
-                            break;
-                        }
-                    }
-                """, dropdown_element_2)
+                from rotinas.utils_ui import selecionar_dropdown_pyautogui
+
+                selecionar_dropdown_pyautogui(driver, dropdown_element_2, "Vendedor")
 
                 # Quebra 3
                 dropdown_element_3 = wait.until(
                     EC.presence_of_element_located((By.NAME, "quebra3")))
-                driver.execute_script(r"""
-                    var select = arguments[0];
-                    var textoParaSelecionar = "Motorista";
-                    for (var i = 0; i < select.options.length; i++) {
-                        var textoOption = select.options[i].text.replace(/^\s+|\s+$/g, '');
-                        if (textoOption === textoParaSelecionar) {
-                            select.selectedIndex = i;
-                            if ("createEvent" in document) {
-                                var evt = document.createEvent("HTMLEvents");
-                                evt.initEvent("change", false, true);
-                                select.dispatchEvent(evt);
-                            } else if ("fireEvent" in select) {
-                                select.fireEvent("onchange");
-                            }
-                            break;
-                        }
-                    }
-                """, dropdown_element_3)
+                from rotinas.utils_ui import selecionar_dropdown_pyautogui
+
+                selecionar_dropdown_pyautogui(driver, dropdown_element_3, "Motorista")
 
                 campo_ini = wait.until(
                     EC.presence_of_element_located((By.NAME, "dataInicial")))

@@ -1,0 +1,134 @@
+
+==================================================
+🚀 INICIANDO PROCESSO DE LOGIN PROMAX
+==================================================
+⚙️ Configurando IE para baixar em: c:\Users\usuario\Desktop\Promax\promax\downloads
+✅ Registro atualizado com sucesso!
+🌐 Abrindo navegador Internet Explorer...
+📥 Acessando a URL do sistema...
+🔑 Identificando frames e preenchendo credenciais...
+✅ Login efetuado com sucesso!
+🏢 Selecionando unidade de revenda...
+📍 Unidade confirmada!
+🧹 Chamando assistente para fechar pop-ups...
+Alerta 1 encontrado: 'O dia 15 de cada mes é o prazo LIMITE para a REORGANIZAÇÃO, após esse prazo o sistema ficara INOPERANTE, portanto, sabendo como proceder execute-a, e em caso de dúvida contate o suporte.'
+
+Alerta 1 fechado com sucesso!
+
+Alerta 2 encontrado: 'Fechamento Financeiro não realizado há  41 dias'
+
+Alerta 2 fechado com sucesso!
+
+Alerta 3 encontrado: 'Fechamento do Estoque não realizado há  10 dias'
+
+Alerta 3 fechado com sucesso!
+
+Não há mais pop-ups ou tempo limite para o alerta 4 atingido.
+
+✅ Total de 3 pop-ups fechados.
+
+✨ Varredura de alertas concluída.
+
+--------------------------------------------------
+🎯 INICIANDO EXECUÇÃO DAS ROTINAS
+--------------------------------------------------
+
+🔍------------------------------
+Buscando lógica para: 0105070402
+🎯 Rotina 0105070402 localizada! Iniciando processamento em lote...
+
+🚀 Iniciando execução da Rotina 0105070402...
+Retornando ao frame de comandos...
+📂 Entrando no IframeMenu...
+⌨️ Inserindo a rotina: 0105070402
+⏳ Aguardando carregamento da rotina...
+🔀 Mudamos para a nova janela: Relatório do Cliente +
+
+========================================
+🔄 PROCESSANDO FILIAL [1/7]: Beira Rio
+========================================
+📍 Abrindo painel modal de unidades via Chave Mestra (JS)...
+⏳ Aguardando o modal renderizar...
+📍 Buscando a filial 'BEIRA RIO' na lista...
+✅ Filial BEIRA RIO selecionada no modal!
+⏳ Aguardando a página recarregar a árvore de opções após a troca...
+🎯 Buscando a caixa de seleção 'Todos' na árvore de Preferências...
+✅ Opção 'Todos' selecionada com sucesso!
+🖱️ Clicando em Gerar CSV...
+❌ Erro crítico ao processar a filial Beira Rio: Message: Error executing JavaScript
+
+⏭️ Pulando para a próxima revenda da lista...
+
+========================================
+🔄 PROCESSANDO FILIAL [2/7]: Revalle Juazeiro
+========================================
+📍 Abrindo painel modal de unidades via Chave Mestra (JS)...
+⏳ Aguardando o modal renderizar...
+📍 Buscando a filial 'REVALLE - JUAZEIRO' na lista...
+✅ Filial REVALLE - JUAZEIRO selecionada no modal!
+⏳ Aguardando a página recarregar a árvore de opções após a troca...
+🎯 Buscando a caixa de seleção 'Todos' na árvore de Preferências...
+✅ Opção 'Todos' selecionada com sucesso!
+🖱️ Clicando em Gerar CSV...
+❌ Erro crítico ao processar a filial Revalle Juazeiro: Message: Error executing JavaScript
+
+⏭️ Pulando para a próxima revenda da lista...
+
+========================================
+🔄 PROCESSANDO FILIAL [3/7]: Revalle Nordeste
+========================================
+📍 Abrindo painel modal de unidades via Chave Mestra (JS)...
+⏳ Aguardando o modal renderizar...
+📍 Buscando a filial 'REVALLE - NORDESTE' na lista...
+✅ Filial REVALLE - NORDESTE selecionada no modal!
+⏳ Aguardando a página recarregar a árvore de opções após a troca...
+🎯 Buscando a caixa de seleção 'Todos' na árvore de Preferências...
+✅ Opção 'Todos' selecionada com sucesso!
+🖱️ Clicando em Gerar CSV...
+❌ Erro crítico ao processar a filial Revalle Nordeste: Message: Error executing JavaScript
+
+⏭️ Pulando para a próxima revenda da lista...
+
+========================================
+🔄 PROCESSANDO FILIAL [4/7]: Revalle Bonfim
+========================================
+📍 Abrindo painel modal de unidades via Chave Mestra (JS)...
+⏳ Aguardando o modal renderizar...
+📍 Buscando a filial 'REVALLE - BONFIM' na lista...
+❌ Erro crítico ao processar a filial Revalle Bonfim: Message: Currently focused window has been closed.
+
+⏭️ Pulando para a próxima revenda da lista...
+
+========================================
+🔄 PROCESSANDO FILIAL [5/7]: Revalle P Afonso
+========================================
+❌ Erro crítico ao processar a filial Revalle P Afonso: Message: Unable to get browser
+
+⏭️ Pulando para a próxima revenda da lista...
+
+========================================
+🔄 PROCESSANDO FILIAL [6/7]: Revalle Alagoinhas
+========================================
+❌ Erro crítico ao processar a filial Revalle Alagoinhas: Message: Unable to get browser
+
+⏭️ Pulando para a próxima revenda da lista...
+
+========================================
+🔄 PROCESSANDO FILIAL [7/7]: Revalle Serrinha
+========================================
+❌ Erro crítico ao processar a filial Revalle Serrinha: Message: Unable to get browser
+
+⏭️ Pulando para a próxima revenda da lista...
+
+🏁 Todas as revendas da rotina 0105070402 foram processadas com sucesso!
+
+🧹 Iniciando faxina de janelas secundárias...
+✨ Ambiente limpo e pronto para a próxima!
+✅ Rotina {'031120': <function executar at 0x000001F975AD1D00>, '030224': <function executar at 0x000001F9770DCC20>, '01200147': <function executar at 0x000001F975AD1C60>, '03014701': <function executar at 0x000001F9770DD080>, '030237': <function executar at 0x000001F9770DCE00>, '0105070402': <function executar at 0x000001F9770DD4E0>} finalizada!
+------------------------------
+
+
+🏆 Todas as rotinas solicitadas foram processadas!
+
+==================================================
+👋 Fechando navegador e limpando sessão...

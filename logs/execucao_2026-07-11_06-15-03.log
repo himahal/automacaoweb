@@ -1,0 +1,102 @@
+
+==================================================
+🚀 INICIANDO PROCESSO DE LOGIN PROMAX
+==================================================
+⚙️ Configurando IE para baixar em: C:\Users\usuario\Desktop\Promax\promax\downloads
+✅ Registro atualizado com sucesso!
+🌐 Abrindo navegador Internet Explorer...
+📥 Acessando a URL do sistema...
+🔑 Identificando frames e preenchendo credenciais...
+✅ Login efetuado com sucesso!
+✅ Nenhum aviso de senha. Seguindo para o sistema...
+🏢 Selecionando unidade de revenda...
+📍 Unidade confirmada!
+🧹 Chamando assistente para fechar pop-ups...
+Alerta 1 encontrado: 'Senha inválida'
+
+Alerta 1 fechado com sucesso!
+
+Não há mais pop-ups ou tempo limite para o alerta 2 atingido.
+
+✅ Total de 1 pop-ups fechados.
+
+✨ Varredura de alertas concluída.
+
+--------------------------------------------------
+🎯 INICIANDO EXECUÇÃO DAS ROTINAS
+--------------------------------------------------
+
+🔍------------------------------
+Buscando lógica para: 031120
+🎯 Rotina 031120 localizada! Iniciando processamento em lote...
+
+🚀 Iniciando execução da Rotina 031120...
+Retornando ao frame de comandos...
+📂 Entrando no IframeMenu...
+❌ Erro fatal na rotina 031120 (Fase de Setup): Message: 
+
+
+🏁 Todas as revendas da rotina 031120 foram processadas com sucesso!
+
+🧹 Iniciando faxina de janelas secundárias...
+✨ Ambiente limpo e pronto para a próxima!
+✅ Rotina {'031120': <function executar at 0x000001BED9781C60>, '030224': <function executar at 0x000001BEDAD8CB80>, '01200147': <function executar at 0x000001BED9781BC0>, '03014701': <function executar at 0x000001BEDAD8CFE0>, '030237': <function executar at 0x000001BEDAD8CD60>, '0105070402': <function executar at 0x000001BEDAD8D4E0>} finalizada!
+------------------------------
+
+
+🔍------------------------------
+Buscando lógica para: 030224
+🎯 Rotina 030224 localizada! Iniciando processamento em lote...
+Retornando ao frame de comandos...
+📂 Entrando no IframeMenu...
+❌ Erro fatal na rotina 030224 (Fase de Setup): Message: 
+
+
+🏁 Todas as revendas da rotina 030224 foram processadas com sucesso!
+
+🧹 Iniciando faxina de janelas secundárias...
+✨ Ambiente limpo e pronto para a próxima!
+✅ Rotina {'031120': <function executar at 0x000001BED9781C60>, '030224': <function executar at 0x000001BEDAD8CB80>, '01200147': <function executar at 0x000001BED9781BC0>, '03014701': <function executar at 0x000001BEDAD8CFE0>, '030237': <function executar at 0x000001BEDAD8CD60>, '0105070402': <function executar at 0x000001BEDAD8D4E0>} finalizada!
+------------------------------
+
+
+🔍------------------------------
+Buscando lógica para: 01200147
+🎯 Rotina 01200147 localizada! Iniciando processamento em lote...
+
+🚀 Iniciando execução da Rotina 01200147...
+Retornando ao frame de comandos...
+📂 Entrando no IframeMenu...
+❌ Erro fatal na rotina 01200147 (Fase de Setup): Message: 
+
+
+🏁 Todas as revendas da rotina 01200147 foram processadas com sucesso!
+
+🧹 Iniciando faxina de janelas secundárias...
+✨ Ambiente limpo e pronto para a próxima!
+✅ Rotina {'031120': <function executar at 0x000001BED9781C60>, '030224': <function executar at 0x000001BEDAD8CB80>, '01200147': <function executar at 0x000001BED9781BC0>, '03014701': <function executar at 0x000001BEDAD8CFE0>, '030237': <function executar at 0x000001BEDAD8CD60>, '0105070402': <function executar at 0x000001BEDAD8D4E0>} finalizada!
+------------------------------
+
+
+🔍------------------------------
+Buscando lógica para: 0105070402
+🎯 Rotina 0105070402 localizada! Iniciando processamento em lote...
+
+🚀 Iniciando execução da Rotina 0105070402...
+Retornando ao frame de comandos...
+📂 Entrando no IframeMenu...
+❌ Erro fatal na rotina 0105070402 (Fase de Setup): Message: 
+
+
+🏁 Todas as revendas da rotina 0105070402 foram processadas com sucesso!
+
+🧹 Iniciando faxina de janelas secundárias...
+✨ Ambiente limpo e pronto para a próxima!
+✅ Rotina {'031120': <function executar at 0x000001BED9781C60>, '030224': <function executar at 0x000001BEDAD8CB80>, '01200147': <function executar at 0x000001BED9781BC0>, '03014701': <function executar at 0x000001BEDAD8CFE0>, '030237': <function executar at 0x000001BEDAD8CD60>, '0105070402': <function executar at 0x000001BEDAD8D4E0>} finalizada!
+------------------------------
+
+
+🏆 Todas as rotinas solicitadas foram processadas!
+
+==================================================
+👋 Fechando navegador e limpando sessão...

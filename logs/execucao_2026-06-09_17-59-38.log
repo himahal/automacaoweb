@@ -1,0 +1,129 @@
+
+==================================================
+🚀 INICIANDO PROCESSO DE LOGIN PROMAX
+==================================================
+⚙️ Configurando IE para baixar em: c:\Users\usuario\Desktop\Promax\promax\downloads
+✅ Registro atualizado com sucesso!
+🌐 Abrindo navegador Internet Explorer...
+📥 Acessando a URL do sistema...
+🔑 Identificando frames e preenchendo credenciais...
+✅ Login efetuado com sucesso!
+🏢 Selecionando unidade de revenda...
+📍 Unidade confirmada!
+🧹 Chamando assistente para fechar pop-ups...
+Alerta 1 encontrado: 'Fechamento Financeiro não realizado há  39 dias'
+
+Alerta 1 fechado com sucesso!
+
+Alerta 2 encontrado: 'Fechamento do Estoque não realizado há   8 dias'
+
+Alerta 2 fechado com sucesso!
+
+Alerta 3 encontrado: 'A licença vencerá em  2 dias. Favor entrar em contato com a HBsis pelo fone (47)2123-5400'
+
+Alerta 3 fechado com sucesso!
+
+Não há mais pop-ups ou tempo limite para o alerta 4 atingido.
+
+✅ Total de 3 pop-ups fechados.
+
+✨ Varredura de alertas concluída.
+
+--------------------------------------------------
+🎯 INICIANDO EXECUÇÃO DAS ROTINAS
+--------------------------------------------------
+
+🔍------------------------------
+Buscando lógica para: 01200147
+🎯 Rotina 01200147 localizada! Iniciando processamento em lote...
+
+🚀 Iniciando execução da Rotina 01200147...
+🌐 Abrindo o Google Chrome...
+💥 Falha na execução da rotina 01200147: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=149.0.7827.54); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff66e3a3435+14875]
+	chromedriver!GetHandleVerifier [0x7ff66e3a3490+148d0]
+	chromedriver!(No symbol) [0x7ff66def778d]
+	chromedriver!(No symbol) [0x7ff66dee2c02]
+	chromedriver!(No symbol) [0x7ff66df08f0c]
+	chromedriver!(No symbol) [0x7ff66df813c0]
+	chromedriver!(No symbol) [0x7ff66df9e2ed]
+	chromedriver!(No symbol) [0x7ff66df43eb0]
+	chromedriver!(No symbol) [0x7ff66df44e23]
+	chromedriver!GetHandleVerifier [0x7ff66e986c91+5f80d1]
+	chromedriver!GetHandleVerifier [0x7ff66e98101b+5f245b]
+	chromedriver!GetHandleVerifier [0x7ff66e9a6305+617745]
+	chromedriver!GetHandleVerifier [0x7ff66e3c03ee+3182e]
+	chromedriver!GetHandleVerifier [0x7ff66e3c8b0c+39f4c]
+	chromedriver!GetHandleVerifier [0x7ff66e3acb04+1df44]
+	chromedriver!GetHandleVerifier [0x7ff66e3acc94+1e0d4]
+	chromedriver!GetHandleVerifier [0x7ff66e390997+1dd7]
+	KERNEL32!BaseThreadInitThunk [0x7ffb5a3b7374+14]
+	ntdll!RtlUserThreadStart [0x7ffb5aa9cc91+21]
+
+
+🧹 Iniciando faxina de janelas secundárias...
+
+❌ OCORREU UM ERRO NO FLUXO DE ROTINAS: Message: Window is closed
+
+
+==================================================
+👋 Fechando navegador e limpando sessão...
+Traceback (most recent call last):
+  File "C:\Users\usuario\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1430, in getresponse
+    response.begin()
+  File "C:\Users\usuario\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\usuario\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 292, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\usuario\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 720, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] Foi forçado o cancelamento de uma conexão existente pelo host remoto
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\usuario\Desktop\Promax\promax\main.py", line 141, in <module>
+    driver.quit()
+  File "C:\Users\usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\common\webdriver.py", line 36, in quit
+    super().quit()
+  File "C:\Users\usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 616, in quit
+    self.execute(Command.QUIT)
+  File "C:\Users\usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 465, in execute
+    response = cast(RemoteConnection, self.command_executor).execute(driver_command, params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 407, in execute
+    return self._request(command_info[0], url, body=data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 431, in _request
+    response = self._conn.request(method, url, body=body, headers=headers, timeout=self._client_config.timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\_request_methods.py", line 135, in request
+    return self.request_encode_url(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\_request_methods.py", line 182, in request_encode_url
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\poolmanager.py", line 457, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\usuario\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1432, in getresponse
+    self.close()
+  File "C:\Users\usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 375, in close
+    def close(self) -> None:
+
+KeyboardInterrupt

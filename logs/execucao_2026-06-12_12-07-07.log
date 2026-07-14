@@ -1,0 +1,54 @@
+
+==================================================
+🚀 INICIANDO PROCESSO DE LOGIN PROMAX
+==================================================
+⚙️ Configurando IE para baixar em: c:\Users\usuario\Desktop\Promax\promax\downloads
+✅ Registro atualizado com sucesso!
+🌐 Abrindo navegador Internet Explorer...
+📥 Acessando a URL do sistema...
+🔑 Identificando frames e preenchendo credenciais...
+✅ Login efetuado com sucesso!
+🏢 Selecionando unidade de revenda...
+📍 Unidade confirmada!
+🧹 Chamando assistente para fechar pop-ups...
+Alerta 1 encontrado: 'O dia 15 de cada mes é o prazo LIMITE para a REORGANIZAÇÃO, após esse prazo o sistema ficara INOPERANTE, portanto, sabendo como proceder execute-a, e em caso de dúvida contate o suporte.'
+
+Alerta 1 fechado com sucesso!
+
+Alerta 2 encontrado: 'Fechamento Financeiro não realizado há  42 dias'
+
+Alerta 2 fechado com sucesso!
+
+Alerta 3 encontrado: 'Fechamento do Estoque não realizado há  11 dias'
+
+Alerta 3 fechado com sucesso!
+
+Não há mais pop-ups ou tempo limite para o alerta 4 atingido.
+
+✅ Total de 3 pop-ups fechados.
+
+✨ Varredura de alertas concluída.
+
+--------------------------------------------------
+🎯 INICIANDO EXECUÇÃO DAS ROTINAS
+--------------------------------------------------
+
+🔍------------------------------
+Buscando lógica para: 01200147
+🎯 Rotina 01200147 localizada! Iniciando processamento em lote...
+
+🚀 Iniciando execução da Rotina 01200147...
+C:\Users\usuario\.wdm\drivers\chromedriver\win64\149.0.7827.115\chromedriver-win64/chromedriver.exe
+ChromeDriver 149.0.7827.115 (daf70f9ddee4b45d4f8870f574fbde61c0db4ca7-refs/branch-heads/7827_102@{#40})
+
+🌐 Abrindo o Google Chrome...
+✅ Conectado! Título da aba: Nova guia
+https://app.powerbi.com/groups/me/apps/a44ca4f3-ad02-4e6d-b2f9-523d74c0a272/reports/67b52c11-a1cb-433f-adee-e18e506d552a/ReportSection?ctid=cef04b19-7776-4a94-b89b-375c77a8f936&experience=power-bi
+✅ Página aberta: Power BI
+
+🧹 Iniciando faxina de janelas secundárias...
+
+❌ OCORREU UM ERRO NO FLUXO DE ROTINAS: HTTPConnectionPool(host='localhost', port=54399): Max retries exceeded with url: /session/43009fde-f311-473d-af7d-de23aebe68d8/window/handles (Caused by NewConnectionError("HTTPConnection(host='localhost', port=54399): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
+
+==================================================
+👋 Fechando navegador e limpando sessão...

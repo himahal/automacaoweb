@@ -140,24 +140,10 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                     wait.until(EC.frame_to_be_available_and_switch_to_it((By.NAME, "rotina")))
                     dropdown_element = wait.until(EC.presence_of_element_located((By.NAME, "opcaoRel")))
 
-                driver.execute_script(r"""
-                    var select = arguments[0];
-                    var textoParaSelecionar = "Numerica";
-                    for (var i = 0; i < select.options.length; i++) {
-                        var textoOption = select.options[i].text.replace(/^\s+|\s+$/g, '');
-                        if (textoOption === textoParaSelecionar) {
-                            select.selectedIndex = i;
-                            if ("createEvent" in document) {
-                                var evt = document.createEvent("HTMLEvents");
-                                evt.initEvent("change", false, true);
-                                select.dispatchEvent(evt);
-                            } else if ("fireEvent" in select) {
-                                select.fireEvent("onchange");
-                            }
-                            break;
-                        }
-                    }
-                """, dropdown_element)
+                from rotinas.utils_ui import selecionar_dropdown_pyautogui
+
+
+                selecionar_dropdown_pyautogui(driver, dropdown_element, "Numerica")
 
                 # --- 2.4 GERAÇÃO E DOWNLOAD ---
                 print("🖱️ Clicando em Visualizar...")

@@ -1,6 +1,7 @@
 perfil_chrome/
 perfil_promax/
-*.log
+# *.log
+!logs_v2/*.log
 __pycache__/
 .idea/
 .venv/

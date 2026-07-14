@@ -1,0 +1,78 @@
+
+==================================================
+🚀 INICIANDO PROCESSO DE LOGIN PROMAX
+==================================================
+⚙️ Configurando IE para baixar em: c:\Users\usuario\Desktop\Promax\promax\downloads
+✅ Registro atualizado com sucesso!
+🌐 Abrindo navegador Internet Explorer...
+📥 Acessando a URL do sistema...
+🔑 Identificando frames e preenchendo credenciais...
+✅ Login efetuado com sucesso!
+🏢 Selecionando unidade de revenda...
+📍 Unidade confirmada!
+🧹 Chamando assistente para fechar pop-ups...
+Alerta 1 encontrado: 'O dia 15 de cada mes é o prazo LIMITE para a REORGANIZAÇÃO, após esse prazo o sistema ficara INOPERANTE, portanto, sabendo como proceder execute-a, e em caso de dúvida contate o suporte.'
+
+Alerta 1 fechado com sucesso!
+
+Alerta 2 encontrado: 'Fechamento Financeiro não realizado há  40 dias'
+
+Alerta 2 fechado com sucesso!
+
+Alerta 3 encontrado: 'Fechamento do Estoque não realizado há   9 dias'
+
+Alerta 3 fechado com sucesso!
+
+Não há mais pop-ups ou tempo limite para o alerta 4 atingido.
+
+✅ Total de 3 pop-ups fechados.
+
+✨ Varredura de alertas concluída.
+
+--------------------------------------------------
+🎯 INICIANDO EXECUÇÃO DAS ROTINAS
+--------------------------------------------------
+
+🔍------------------------------
+Buscando lógica para: 01200147
+🎯 Rotina 01200147 localizada! Iniciando processamento em lote...
+🧹 Processos do Chrome limpos.
+
+🚀 Iniciando execução da Rotina 01200147...
+['C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', '--user-data-dir=C:\\Users\\usuario\\AppData\\Local\\Google\\Chrome\\User Data', '--profile-directory=Default', '--remote-debugging-port=9223', 'https://app.powerbi.com/groups/me/apps/a44ca4f3-ad02-4e6d-b2f9-523d74c0a272/reports/67b52c11-a1cb-433f-adee-e18e506d552a/ReportSection?ctid=cef04b19-7776-4a94-b89b-375c77a8f936&experience=power-bi']
+🌐 Abrindo o Google Chrome...
+💥 Falha na execução da rotina 01200147: Message: session not created: cannot connect to chrome at 127.0.0.1:9223
+from chrome not reachable; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff6bc263435+14875]
+	chromedriver!GetHandleVerifier [0x7ff6bc263490+148d0]
+	chromedriver!(No symbol) [0x7ff6bbdb7576]
+	chromedriver!(No symbol) [0x7ff6bbda7bea]
+	chromedriver!(No symbol) [0x7ff6bbdff28b]
+	chromedriver!(No symbol) [0x7ff6bbdf3a6e]
+	chromedriver!(No symbol) [0x7ff6bbe47f11]
+	chromedriver!(No symbol) [0x7ff6bbe47776]
+	chromedriver!(No symbol) [0x7ff6bbe03eb0]
+	chromedriver!(No symbol) [0x7ff6bbe04e23]
+	chromedriver!GetHandleVerifier [0x7ff6bc846c91+5f80d1]
+	chromedriver!GetHandleVerifier [0x7ff6bc84101b+5f245b]
+	chromedriver!GetHandleVerifier [0x7ff6bc866305+617745]
+	chromedriver!GetHandleVerifier [0x7ff6bc2803ee+3182e]
+	chromedriver!GetHandleVerifier [0x7ff6bc288b0c+39f4c]
+	chromedriver!GetHandleVerifier [0x7ff6bc26cb04+1df44]
+	chromedriver!GetHandleVerifier [0x7ff6bc26cc94+1e0d4]
+	chromedriver!GetHandleVerifier [0x7ff6bc250997+1dd7]
+	KERNEL32!BaseThreadInitThunk [0x7ffb5a3b7374+14]
+	ntdll!RtlUserThreadStart [0x7ffb5aa9cc91+21]
+
+
+🧹 Iniciando faxina de janelas secundárias...
+✨ Ambiente limpo e pronto para a próxima!
+✅ Rotina {'031120': <function executar at 0x000001F1A8821D00>, '030224': <function executar at 0x000001F1AADECC20>, '01200147': <function executar at 0x000001F1A8821C60>, '03014701': <function executar at 0x000001F1AADECFE0>, '030237': <function executar at 0x000001F1AADECD60>, '0105070402': <function executar at 0x000001F1AADED4E0>} finalizada!
+------------------------------
+
+
+🏆 Todas as rotinas solicitadas foram processadas!
+
+==================================================
+👋 Fechando navegador e limpando sessão...
