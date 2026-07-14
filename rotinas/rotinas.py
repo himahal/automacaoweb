@@ -64,10 +64,10 @@ def aguardar_processamento_e_botao(driver, wait_obj, by, identificador, timeout_
         else:
             time.sleep(1)
         
-        # Verifica se o elemento já está na tela e clicável
+        # Verifica se o elemento já está na tela (mesmo que com is_displayed falso)
         try:
             elementos = driver.find_elements(by, identificador)
-            if elementos and elementos[0].is_displayed():
+            if elementos:
                 tempo_decorrido = round(time.time() - inicio, 2)
                 print(f"✅ Elemento {identificador} carregado! (Tempo de processamento: {tempo_decorrido}s)")
                 return elementos[0]
