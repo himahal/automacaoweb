@@ -68,7 +68,6 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
 
                 print("📍 DEBUG 1: Resetando para a raiz da página (default_content)...")
                 driver.switch_to.default_content()
-                time.sleep(2)
 
                 # --- 2.1 TROCA DE REVENDA ---
                 print("📍 DEBUG 2: Tentando entrar no frame superior...")
@@ -122,8 +121,14 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                 print("🎯 Preenchendo campos específicos da rotina...")
 
                 # Quebra 1
-                dropdown_element_1 = wait.until(
-                    EC.presence_of_element_located((By.NAME, "quebra1")))
+                try:
+                    dropdown_element_1 = wait.until(
+                        EC.presence_of_element_located((By.NAME, "quebra1")))
+                except Exception:
+                    print("⚠️ Demora na atualização do frame. Tentando novamente...")
+                    driver.switch_to.default_content()
+                    wait.until(EC.frame_to_be_available_and_switch_to_it((By.NAME, "rotina")))
+                    dropdown_element_1 = wait.until(EC.presence_of_element_located((By.NAME, "quebra1")))
                 driver.execute_script(r"""
                     var select = arguments[0];
                     var textoParaSelecionar = "Operacao";

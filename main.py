@@ -44,8 +44,8 @@ class InterceptadorLog:
         self.arquivo_log.flush()
 
 
-# Cria uma pasta chamada 'logs' no mesmo local do main.py (se não existir)
-pasta_logs = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logs")
+# Cria uma pasta chamada 'logs_v2' no mesmo local do main.py (se não existir)
+pasta_logs = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logs_v2")
 os.makedirs(pasta_logs, exist_ok=True)
 
 # Gera um nome de arquivo único com a data e hora atual
