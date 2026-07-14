@@ -22,8 +22,8 @@ def selecionar_dropdown_pyautogui(driver, elemento_select, texto_alvo):
 
     print(f"🎯 Selecionando '{texto_alvo}' via teclado (posição {indice})...")
     
-    # Focar no elemento
-    elemento_select.click()
+    # Focar no elemento sem clicar (o .click() trava o IEDriver em selects nativos)
+    driver.execute_script("arguments[0].focus();", elemento_select)
     time.sleep(0.5)
     
     # Ir para a primeira opção do dropdown
