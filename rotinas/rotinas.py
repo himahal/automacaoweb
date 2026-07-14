@@ -51,15 +51,18 @@ def aguardar_processamento_e_botao(driver, wait_obj, by, identificador, timeout_
     print(f"⏳ Aguardando até {timeout_segundos}s pelo elemento {identificador}...")
     inicio = time.time()
     while time.time() - inicio < timeout_segundos:
-        # Tenta fechar janela Processando
-        try:
-            janelas = gw.getWindowsWithTitle('Processando')
-            if janelas:
-                for j in janelas:
-                    print(f"💥 Janela 'Processando' detectada. Fechando {j.title}...")
-                    j.close()
-        except Exception:
-            pass
+        # Só tenta matar a janela 'Processando' se já passaram 15 segundos para dar tempo do download iniciar
+        if time.time() - inicio > 15:
+            try:
+                janelas = gw.getWindowsWithTitle('Processando')
+                if janelas:
+                    for j in janelas:
+                        print(f"💥 Janela 'Processando' detectada. Fechando {j.title}...")
+                        j.close()
+            except Exception:
+                pass
+        else:
+            time.sleep(1)
         
         # Verifica se o elemento já está na tela e clicável
         try:
