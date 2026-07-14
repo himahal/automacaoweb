@@ -114,6 +114,8 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                 except Exception:
                     print(
                         "✅ Nenhum alerta detectado nos últimos 10 segundos. Seguindo o fluxo...")
+                time.sleep(3) # Aguarda o frame rotina atualizar após a troca de revenda
+
 
                 # --- 2.3 PREENCHIMENTO DO RELATÓRIO (Específico da 031120) ---
                 driver.switch_to.default_content()

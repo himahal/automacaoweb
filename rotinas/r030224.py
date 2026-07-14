@@ -119,6 +119,8 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                     # Se passarem 10 segundos e nada aparecer, assumimos que o Promax não vai mandar alerta nenhum.
                     print(
                         "✅ Nenhum alerta detectado nos últimos 10 segundos. Seguindo o fluxo...")
+                time.sleep(3) # Aguarda o frame rotina atualizar após a troca de revenda
+
 
                 # --- 2.3 PREENCHIMENTO DE CAMPOS ---
                 driver.switch_to.default_content()
