@@ -47,9 +47,6 @@ def capturar_tela_senha():
         
         driver.find_element(By.ID, "BtnConfirm").click()
         print("✅ Login efetuado com sucesso!")
-        
-        # Volta para o contexto raiz
-        driver.switch_to.default_content()
 
         # --- Etapa: Lidar com o Popup e Nova Janela ---
         print("⏳ Aguardando o popup de alteração de senha...")
@@ -96,5 +93,27 @@ def capturar_tela_senha():
         # Pode comentar o driver.quit() se quiser ver a tela aberta
         driver.quit()
 
+def subir_github():
+    try:
+        resposta = input("\nDeseja subir os arquivos para o GitHub? (s/n): ").strip().lower()
+        if resposta == 's':
+            print("📦 Preparando arquivos para o commit...")
+            import subprocess
+            from datetime import datetime
+            subprocess.run(["git", "add", "."], check=True)
+            
+            commit_msg = f"Atualizacao automatica HTML Senha - {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}"
+            subprocess.run(["git", "commit", "-m", commit_msg], check=True)
+            
+            print("🚀 Enviando para o GitHub (branch atual)...")
+            subprocess.run(["git", "push"], check=True)
+            
+            print("✅ Atualização enviada com sucesso!")
+        else:
+            print("👍 Operação ignorada. Nada foi enviado para o GitHub.")
+    except Exception as e:
+        print(f"❌ Erro ao tentar subir para o GitHub: {e}")
+
 if __name__ == "__main__":
     capturar_tela_senha()
+    subir_github()

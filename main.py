@@ -136,6 +136,25 @@ def login_e_menu():
 
     return driver, wait
 
+def subir_github():
+    try:
+        resposta = input("\nDeseja subir as execuções/relatórios para o GitHub? (s/n): ").strip().lower()
+        if resposta == 's':
+            print("📦 Preparando arquivos para o commit...")
+            import subprocess
+            subprocess.run(["git", "add", "."], check=True)
+            
+            commit_msg = f"Execucao automatica das rotinas - {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}"
+            subprocess.run(["git", "commit", "-m", commit_msg], check=True)
+            
+            print("🚀 Enviando para o GitHub (branch atual)...")
+            subprocess.run(["git", "push"], check=True)
+            
+            print("✅ Atualização enviada com sucesso!")
+        else:
+            print("👍 Operação ignorada. Nada foi enviado para o GitHub.")
+    except Exception as e:
+        print(f"❌ Erro ao tentar subir para o GitHub: {e}")
 
 if __name__ == "__main__":
     # 1. Executa o fluxo de entrada
@@ -164,3 +183,4 @@ if __name__ == "__main__":
         print("\n" + "="*50)
         print("👋 Fechando navegador e limpando sessão...")
         driver.quit()
+        subir_github()
