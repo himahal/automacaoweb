@@ -101,8 +101,10 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                 linha_filial = wait.until(
                     EC.presence_of_element_located((By.XPATH, xpath_filial)))
 
-                # Clique físico simulado direto no elemento encontrado
-                linha_filial.click()
+                # Garante que a filial está visível no modal e clica via JS (evita erro de viewport)
+                driver.execute_script("arguments[0].scrollIntoView(true);", linha_filial)
+                time.sleep(0.3)
+                driver.execute_script("arguments[0].click();", linha_filial)
                 print(f"✅ Filial {nome_busca} selecionada no modal!")
 
                 # --- 2.2 PREENCHIMENTO DE CAMPOS (Árvore jsTree) ---
@@ -126,7 +128,7 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                 # --- 2.3 GERAÇÃO E CAPTURA DO ALERTA ---
                 print("🖱️ Clicando em Gerar CSV...")
                 botaoCSV = driver.find_element(By.ID, "btnGerarCSV")
-                botaoCSV.click()
+                driver.execute_script("arguments[0].click();", botaoCSV)
 
                 print("⏳ Aguardando o servidor processar e gerar o CSV...")
 
