@@ -188,6 +188,9 @@ def chamar_rotina(driver, wait, codigo):
         "Revalle Serrinha"
     ]
 
+    # Aguarda 2 segundos para o navegador processar o fechamento da janela anterior
+    time.sleep(2)
+
     # 🎯 Define a janela principal (menu) de forma persistente
     global JANELA_MENU
     if JANELA_MENU is None:
@@ -201,6 +204,17 @@ def chamar_rotina(driver, wait, codigo):
             print(f"⚠️ Erro ao focar na janela registrada ({e}). Redefinindo handle...")
             JANELA_MENU = driver.window_handles[0]
             driver.switch_to.window(JANELA_MENU)
+
+    # Garante o foco físico da janela no Windows via win32 antes de interagir
+    try:
+        from pywinauto import Application
+        import re
+        titulo_seguro = re.escape(driver.title)
+        app = Application(backend="win32").connect(title_re=f".*{titulo_seguro}.*", timeout=5)
+        app.window(title_re=f".*{titulo_seguro}.*").set_focus()
+        print("🎯 Foco da janela principal (Menu) restaurado via win32!")
+    except Exception as e_foco:
+        print(f"⚠️ Erro ao focar na janela do menu principal: {e_foco}")
 
     # Limpeza preventiva de pop-ups/alertas residuais na janela principal
     try:
