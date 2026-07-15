@@ -37,7 +37,7 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
 
         botao_ok = driver.find_element(
             By.XPATH, '//*[@id="atal"]/div[1]/table/tbody/tr[2]/td/input[2]')
-        botao_ok.click()
+        driver.execute_script("arguments[0].click();", botao_ok)
 
         print("⏳ Aguardando carregamento da rotina...")
         driver.switch_to.default_content()
@@ -51,6 +51,17 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                 driver.switch_to.window(janela)
                 time.sleep(1)
                 print(f"🔀 Mudamos para a nova janela: {driver.title}")
+                
+                # Garante o foco físico na nova janela da rotina via win32
+                try:
+                    from pywinauto import Application
+                    import re
+                    titulo_seguro = re.escape(driver.title)
+                    app = Application(backend="win32").connect(title_re=f".*{titulo_seguro}.*", timeout=5)
+                    app.window(title_re=f".*{titulo_seguro}.*").set_focus()
+                    print("🎯 Foco da nova janela da rotina restaurado via win32!")
+                except Exception as e_foco:
+                    print(f"⚠️ Erro ao focar na nova janela da rotina: {e_foco}")
                 break
 
         # ====================================================================

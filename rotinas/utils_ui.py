@@ -3,45 +3,32 @@ import pyautogui
 
 def selecionar_dropdown_pyautogui(driver, elemento_select, texto_alvo):
     """
-    Seleciona uma opção em um <select> no Promax usando teclado (pyautogui).
-    Isso previne erros de StaleElement e contorna bugs do IE ao disparar eventos onChange.
+    Seleciona uma opção em um <select> no Promax usando o script JS legado do IE.
+    Evita usar PyAutoGUI e contorna de forma estável o disparador onchange do IE.
     """
-    indice = driver.execute_script(r"""
-        var select = arguments[0];
-        var alvo = arguments[1];
-        for (var i = 0; i < select.options.length; i++) {
-            var texto = select.options[i].text.replace(/^\s+|\s+$/g, '');
-            if (texto === alvo) { return i; }
-        }
-        return -1;
-    """, elemento_select, texto_alvo)
-
-    if indice == -1:
-        print(f"⚠️ Alvo '{texto_alvo}' não encontrado no dropdown.")
-        return
-
-    print(f"🎯 Selecionando '{texto_alvo}' via teclado (posição {indice})...")
-    
-    # Focar no elemento sem clicar (o .click() trava o IEDriver em selects nativos)
-    driver.execute_script("arguments[0].focus();", elemento_select)
-    time.sleep(0.5)
-    
-    # Ir para a primeira opção do dropdown
-    pyautogui.press('home')
-    time.sleep(0.5)
-    
-    # Descer a quantidade de vezes necessárias
-    if indice > 0:
-        print(f"⬇️ Descendo {indice} posições via teclado...")
-        for _ in range(indice):
-            pyautogui.press('down')
-            time.sleep(0.1)
-            
-    # Confirmar e sair
-    pyautogui.press('enter')
-    time.sleep(0.5)
-    pyautogui.press('tab')
-    time.sleep(0.5)
+    print(f"🎯 Selecionando '{texto_alvo}' no dropdown via JS Legado IE...")
+    try:
+        driver.execute_script(r"""
+            var select = arguments[0];
+            var textoParaSelecionar = arguments[1];
+            for (var i = 0; i < select.options.length; i++) {
+                var textoOption = select.options[i].text.replace(/^\s+|\s+$/g, '');
+                if (textoOption === textoParaSelecionar) {
+                    select.selectedIndex = i;
+                    if ("createEvent" in document) {
+                        var evt = document.createEvent("HTMLEvents");
+                        evt.initEvent("change", false, true);
+                        select.dispatchEvent(evt);
+                    } else if ("fireEvent" in select) {
+                        select.fireEvent("onchange");
+                    }
+                    break;
+                }
+            }
+        """, elemento_select, texto_alvo)
+        time.sleep(0.5)
+    except Exception as e:
+        print(f"⚠️ Erro ao selecionar dropdown via JS: {e}")
 
 
 def confirmar_download_ie(driver, timeout_segundos=20):
