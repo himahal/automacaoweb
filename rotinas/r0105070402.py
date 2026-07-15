@@ -85,19 +85,22 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                 print("⏳ Aguardando o modal renderizar...")
                 time.sleep(1.5)
 
-                # Tradutor de nomes para o padrão do Promax
-                nome_busca = revenda.split("-")[-1].strip().upper()
-                if "REVALLE" in revenda.upper() and "-" not in revenda:
-                    cidade = revenda.upper().replace("REVALLE", "").strip()
-                    nome_busca = f"REVALLE - {cidade}"
-                elif "BEIRA RIO" in revenda.upper():
-                    nome_busca = "BEIRA RIO"
+                # Mapeamento do termo de busca exclusivo no modal para cada filial
+                mapeamento_busca = {
+                    "Beira Rio": "BEIRA RIO",
+                    "Revalle Juazeiro": "JUAZEIRO",
+                    "Revalle Nordeste": "NORDESTE",
+                    "Revalle Bonfim": "BONFIM",  # Vai casar com "REVALLE - SR. BONFIM"
+                    "Revalle P Afonso": "P AFONSO",
+                    "Revalle Alagoinhas": "ALAGOINHAS",
+                    "Revalle Serrinha": "SERRINHA"
+                }
+                nome_busca = mapeamento_busca.get(revenda, revenda.upper())
 
                 print(f"📍 Buscando a filial '{nome_busca}' na lista...")
 
                 xpath_filial = f"//td[contains(text(), '{nome_busca}')]"
 
-                # 🌟 CORREÇÃO CRUCIAL: Voltamos para presence_of_element_located (igual ao teste)
                 linha_filial = wait.until(
                     EC.presence_of_element_located((By.XPATH, xpath_filial)))
 
@@ -161,6 +164,27 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
             except Exception as inner_e:
                 print(
                     f"❌ Erro crítico ao processar a filial {revenda}: {inner_e}")
+                
+                # Salva o HTML da página e do modal para análise
+                try:
+                    caminho_debug = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "logs_v2", f"debug_{revenda.replace(' ', '_')}.html")
+                    with open(caminho_debug, "w", encoding="utf-8") as f:
+                        f.write(driver.page_source)
+                    print(f"📸 Debug HTML salvo em: {caminho_debug}")
+                except Exception as e_debug:
+                    print(f"⚠️ Não foi possível salvar HTML de debug: {e_debug}")
+
+                # Tenta fechar o modal de unidades se ele ficou aberto para não quebrar a próxima filial
+                try:
+                    botoes_fechar = driver.find_elements(By.XPATH, "//*[contains(@class, 'ui-dialog-titlebar-close')] | //span[text()='Unidades']/following-sibling::a")
+                    for btn in botoes_fechar:
+                        if btn.is_displayed():
+                            driver.execute_script("arguments[0].click();", btn)
+                            print("🧹 Modal de unidades fechado preventivamente após erro.")
+                            break
+                except:
+                    pass
+
                 print("⏭️ Pulando para a próxima revenda da lista...")
                 continue
 
