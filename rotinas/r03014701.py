@@ -73,48 +73,8 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                 driver.switch_to.default_content()
                 time.sleep(2)
 
-                # Garante foco na janela do navegador para o PyAutoGUI não errar
-                try:
-                    from pywinauto import Desktop
-                    import re
-                    titulo_seguro = re.escape(driver.title)
-                    Desktop(backend="uia").window(title_re=f".*{titulo_seguro}.*").set_focus()
-                    print("🎯 Foco da janela principal restaurado via PyWinAuto!")
-                except Exception as e_foco:
-                    print(f"⚠️ Erro ao focar janela: {e_foco}")
-
-                # --- 2.1 TROCA DE REVENDA ---
-                print("📍 DEBUG 2: Tentando entrar no frame superior...")
-                wait.until(EC.frame_to_be_available_and_switch_to_it(
-                    (By.NAME, "top_rotina")))
-                print("📍 DEBUG 3: Sucesso! Entrou no frame superior.")
-
-                print(
-                    "📍 DEBUG 4: Focando no dropdown com Selenium e navegando com PyAutoGUI...")
-                select_principal = wait.until(
-                    EC.presence_of_element_located((By.NAME, "unidade")))
-
-                select_principal.click()
-                time.sleep(0.5)
-
-                pyautogui.press('home')
-                time.sleep(0.5)
-
-                if indice > 0:
-                    print(f"⬇️ Descendo {indice} posições via teclado...")
-                    for _ in range(indice):
-                        pyautogui.press('down')
-                        time.sleep(0.1)
-
-                pyautogui.press('enter')
-                time.sleep(0.5)
-                pyautogui.press('tab')
-
-                try:
-                    driver.execute_script(
-                        "document.getElementsByName('unidade')[0].blur();")
-                except:
-                    pass
+                from rotinas.utils_ui import mudar_revenda_com_fallback
+                mudar_revenda_com_fallback(driver, wait, indice)
 
                 # --- 2.2 LIDA COM OS POP-UPS DA TROCA (O Guarda-Costas) ---
                 print("⏳ Vigiando ativamente a tela aguardando os pop-ups da troca...")
