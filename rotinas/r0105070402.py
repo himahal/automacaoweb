@@ -129,28 +129,9 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                     print(
                         "⚠️ Aviso: O alerta de sucesso não apareceu em 15s. Indo direto para a captura do download...")
 
-                # --- 2.4 INTERAÇÃO COM A BARRA DE DOWNLOADS (PYWINAUTO) ---
-                print("📥 Acionando controle nativo do Windows via PyWinAuto...")
-                time.sleep(2)
-
-                titulo_janela_atual = driver.title
-                titulo_seguro = re.escape(titulo_janela_atual)
-
-                try:
-                    janela_ie = Desktop(backend="uia").window(
-                        title_re=f".*{titulo_seguro}.*", found_index=0)
-                    barra_notificacao = janela_ie.child_window(
-                        title="Notificação", control_type="ToolBar")
-                    botao_salvar = barra_notificacao.child_window(
-                        title="Salvar", control_type="SplitButton")
-
-                    janela_ie.set_focus()
-                    botao_salvar.click_input()
-                    print(
-                        "✅ Download confirmado com sucesso no SplitButton via PyWinAuto!")
-                except Exception as e_win:
-                    print(
-                        f"❌ Erro ao interagir com a barra de download do Windows: {e_win}")
+                # --- CONFIRMAÇÃO DO DOWNLOAD (Nativo do Windows via PyWinAuto) ---
+                from rotinas.utils_ui import confirmar_download_ie
+                confirmar_download_ie(driver)
 
                 # --- 2.5 TRATAMENTO DO ARQUIVO BAIXADO ---
                 time.sleep(10)

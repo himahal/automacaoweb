@@ -192,30 +192,9 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                 botaoCsv = rotinas.aguardar_processamento_e_botao(driver, wait, By.NAME, "GerExecl", timeout_segundos=300)
                 driver.execute_script("arguments[0].click();", botaoCsv)
 
-                # --- INÍCIO DO PYWINAUTO PARA MÚLTIPLAS JANELAS ---
-                titulo_janela_atual = driver.title
-                titulo_seguro = re.escape(titulo_janela_atual)
-                try:
-                    # 1. Isola a janela principal do navegador
-                    janela_ie = Desktop(backend="uia").window(
-                        title_re=f".*{titulo_seguro}.*")
-
-                    # 2. Encontra a barra de notificação usando o título exato indicado no log
-                    barra_notificacao = janela_ie.child_window(
-                        title="Notificação", control_type="ToolBar")
-
-                    # 3. Encontra o botão "Salvar" usando o tipo correto: SplitButton
-                    botao_salvar = barra_notificacao.child_window(
-                        title="Salvar", control_type="SplitButton")
-
-                    # Garante o foco na janela e realiza o clique físico com o rato
-                    janela_ie.set_focus()
-                    botao_salvar.click_input()
-
-                    print("Download confirmado com sucesso no SplitButton!")
-
-                except Exception as e:
-                    print(f"Erro ao interagir com a barra de download: {e}")
+                # --- CONFIRMAÇÃO DO DOWNLOAD (Nativo do Windows via PyWinAuto) ---
+                from rotinas.utils_ui import confirmar_download_ie
+                confirmar_download_ie(driver)
 
                 # LIMPEZA DO NOME E DIRETÓRIO DINÂMICO
                 dia, mes, ano = data_fim.split("/")

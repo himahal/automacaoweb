@@ -122,6 +122,21 @@ def tratar_arquivo_baixado(prefixo_arquivo, nome_personalizado=None, caminho_des
     os.makedirs(dir_final, exist_ok=True)
 
     print(f"📂 Processando arquivo da rotina {prefixo_arquivo}...")
+    
+    # Aguarda a conclusão do download (enquanto houver extensões temporárias de download ativo)
+    inicio_espera = time.time()
+    while time.time() - inicio_espera < 90:
+        parciais = (
+            glob.glob(os.path.join(dir_downloads, "*.partial")) +
+            glob.glob(os.path.join(dir_downloads, "*.crdownload")) +
+            glob.glob(os.path.join(dir_downloads, "*.tmp"))
+        )
+        parciais_rotina = [f for f in parciais if prefixo_arquivo in os.path.basename(f)]
+        if not parciais_rotina:
+            break
+        print("⏳ Aguardando conclusão do download (arquivo temporário/partial ativo)...")
+        time.sleep(1)
+
     time.sleep(2)
 
     # 🌟 CORREÇÃO 2: O asterisco no final garante que ele ache '.csv', '.csv.inf', etc.
