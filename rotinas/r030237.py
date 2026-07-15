@@ -122,73 +122,59 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
 
                 print("🎯 Preenchendo campos específicos da rotina...")
 
-                print("⏳ Verificando se o Promax gerou o relatório automaticamente ou se o form apareceu...")
-                inicio_espera = time.time()
-                relatorio_auto = False
-                dropdown_element_1 = None
-                
-                while time.time() - inicio_espera < 60:
-                    try:
-                        if driver.find_elements(By.NAME, "GerExecl"):
-                            relatorio_auto = True
-                            break
-                        
-                        els = driver.find_elements(By.NAME, "quebra1")
-                        if els:
-                            dropdown_element_1 = els[0]
-                            break
-                    except Exception:
-                        pass
-                    time.sleep(1)
-                
-                if relatorio_auto:
-                    print("🚀 O relatório para essa filial foi gerado automaticamente! Pulando o form...")
-                else:
-                    if not dropdown_element_1:
-                        raise TimeoutError("Nem o formulário nem o relatório apareceram após 60s.")
-                    
-                    print("🎯 Preenchendo campos específicos da rotina...")
-                    from rotinas.utils_ui import selecionar_dropdown_pyautogui
-                    selecionar_dropdown_pyautogui(driver, dropdown_element_1, "Operacao")
+                # Quebra 1
+                try:
+                    dropdown_element_1 = wait.until(
+                        EC.presence_of_element_located((By.NAME, "quebra1")))
+                except Exception:
+                    print("⚠️ Demora na atualização do frame. Tentando novamente...")
+                    driver.switch_to.default_content()
+                    wait.until(EC.frame_to_be_available_and_switch_to_it((By.NAME, "rotina")))
+                    dropdown_element_1 = wait.until(EC.presence_of_element_located((By.NAME, "quebra1")))
+                from rotinas.utils_ui import selecionar_dropdown_pyautogui
 
-                    # Quebra 2
-                    dropdown_element_2 = wait.until(
-                        EC.presence_of_element_located((By.NAME, "quebra2")))
-                    from rotinas.utils_ui import selecionar_dropdown_pyautogui
-                    selecionar_dropdown_pyautogui(driver, dropdown_element_2, "Vendedor")
+                selecionar_dropdown_pyautogui(driver, dropdown_element_1, "Operacao")
 
-                    # Quebra 3
-                    dropdown_element_3 = wait.until(
-                        EC.presence_of_element_located((By.NAME, "quebra3")))
-                    from rotinas.utils_ui import selecionar_dropdown_pyautogui
-                    selecionar_dropdown_pyautogui(driver, dropdown_element_3, "Motorista")
+                # Quebra 2
+                dropdown_element_2 = wait.until(
+                    EC.presence_of_element_located((By.NAME, "quebra2")))
+                from rotinas.utils_ui import selecionar_dropdown_pyautogui
 
-                    campo_ini = wait.until(
-                        EC.presence_of_element_located((By.NAME, "dataInicial")))
-                    driver.execute_script(
-                        "arguments[0].value = arguments[1];", campo_ini, data_inicio)
+                selecionar_dropdown_pyautogui(driver, dropdown_element_2, "Vendedor")
 
-                    campo_fim = wait.until(
-                        EC.presence_of_element_located((By.NAME, "dataFinal")))
-                    driver.execute_script(
-                        "arguments[0].value = arguments[1];", campo_fim, data_fim)
+                # Quebra 3
+                dropdown_element_3 = wait.until(
+                    EC.presence_of_element_located((By.NAME, "quebra3")))
+                from rotinas.utils_ui import selecionar_dropdown_pyautogui
 
-                    itens = wait.until(
-                        EC.presence_of_element_located((By.NAME, "itens")))
-                    driver.execute_script(
-                        "arguments[0].scrollIntoView(true);", itens)
-                    itens.click()
+                selecionar_dropdown_pyautogui(driver, dropdown_element_3, "Motorista")
 
-                    # --- 2.4 GERAÇÃO E DOWNLOAD ---
-                    print("🖱️ Clicando em Visualizar...")
-                    try:
-                        btn_v = wait.until(EC.element_to_be_clickable(
-                            (By.NAME, "BotVisualizar")))
-                        driver.execute_script("arguments[0].click();", btn_v)
-                    except:
-                        btn_v = driver.find_element(
-                            By.XPATH, "//button[contains(., 'Visualizar')]")
-                        driver.execute_script("arguments[0].click();", btn_v)
+                campo_ini = wait.until(
+                    EC.presence_of_element_located((By.NAME, "dataInicial")))
+                driver.execute_script(
+                    "arguments[0].value = arguments[1];", campo_ini, data_inicio)
+
+                campo_fim = wait.until(
+                    EC.presence_of_element_located((By.NAME, "dataFinal")))
+                driver.execute_script(
+                    "arguments[0].value = arguments[1];", campo_fim, data_fim)
+
+                itens = wait.until(
+                    EC.presence_of_element_located((By.NAME, "itens")))
+                driver.execute_script(
+                    "arguments[0].scrollIntoView(true);", itens)
+                itens.click()
+
+                # --- 2.4 GERAÇÃO E DOWNLOAD ---
+                print("🖱️ Clicando em Visualizar...")
+                try:
+                    btn_v = wait.until(EC.element_to_be_clickable(
+                        (By.NAME, "BotVisualizar")))
+                    driver.execute_script("arguments[0].click();", btn_v)
+                except:
+                    btn_v = driver.find_element(
+                        By.XPATH, "//button[contains(., 'Visualizar')]")
+                    driver.execute_script("arguments[0].click();", btn_v)
 
                 print("🚀 Relatório solicitado! Aguardando processamento e botão CSV...")
                 # 5. Clica no botão CSV (GerExecl) com espera ativa do Processando

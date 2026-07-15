@@ -63,11 +63,25 @@ login = "pizolitto"
 senha = "Tatucac1!"
 
 
+def limpar_processos_antigos():
+    """Fecha processos órfãos do IEDriverServer e iexplore para evitar travamento na inicialização"""
+    import subprocess
+    print("🧹 Limpando processos antigos (IEDriverServer e Internet Explorer) do Windows...")
+    try:
+        subprocess.run(["taskkill", "/F", "/IM", "IEDriverServer.exe"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run(["taskkill", "/F", "/IM", "iexplore.exe"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    except Exception:
+        pass
+
+
 def login_e_menu():
     """Realiza o acesso inicial, login e limpeza de alertas do Promax"""
     print("\n" + "="*50)
     print("🚀 INICIANDO PROCESSO DE LOGIN PROMAX")
     print("="*50)
+
+    # Limpa possíveis travamentos de instâncias antigas
+    limpar_processos_antigos()
 
     configurar_pasta_download()
     service, options = obter_config_ie()
