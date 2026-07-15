@@ -70,6 +70,17 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
 
                 print("📍 DEBUG 1: Resetando para a raiz da página (default_content)...")
                 driver.switch_to.default_content()
+                time.sleep(2)
+
+                # Garante foco na janela do navegador para o PyAutoGUI não errar
+                try:
+                    from pywinauto import Desktop
+                    import re
+                    titulo_seguro = re.escape(driver.title)
+                    Desktop(backend="uia").window(title_re=f".*{titulo_seguro}.*").set_focus()
+                    print("🎯 Foco da janela principal restaurado via PyWinAuto!")
+                except Exception as e_foco:
+                    print(f"⚠️ Erro ao focar janela: {e_foco}")
 
                 # --- 2.1 TROCA DE REVENDA ---
                 print("📍 DEBUG 2: Tentando entrar no frame superior...")
