@@ -1,196 +1,392 @@
-<HTML><HEAD><TITLE></TITLE>
-<META content="Mon, 01 Jan 1996 12:12:00 GMT" http-equiv=Expires>
-<META content=no-cache http-equiv=Pragma>
-<META content="text/html; charset=windows-1252" http-equiv=Content-Type><LINK rel=stylesheet type=text/css href="../scripts/acao.css"></LINK>
-<SCRIPT language=JavaScript src="../scripts/funcoes.js"></SCRIPT>
-
-<SCRIPT language=VbScript src="../scripts/funcoes.vbs"></SCRIPT>
-
-<SCRIPT language=javaScript for=document event=onhelp>
-                   MostraHelp( 'PW99940F', '../cgi-bin/PP00100.exe?SessionID=&ppopcao=6' )
-                   return false;
-               </SCRIPT>
-
-<SCRIPT>
-                   var aJanelas = new Array();
-                   var relatorio = 0;
-               </SCRIPT>
-
-<SCRIPT language=JavaScript for=window event=onunload>
-                   if( relatorio > 0 ){
-                       window.open( "../cgi-bin/PP00100.exe?SessionID=&SubSessionID=&ppopcao=10", "fim", "top=3000,left=0,height=40,width=200,status=no,toolbar=no,menubar=no,location=no,resizable=no,scrollbars=no,channelmode=no" );
-                   }
-                   for( var i=0; i < aJanelas.length; i++ ){
-                       aJanelas[i].close();
-                   }
-               </SCRIPT>
-</HEAD>
-<BODY leftMargin=0 topMargin=0 marginwidth="0" marginheight="0">
-<FORM method=post name=form1>
-<DIV id=divRotinaGenerico></DIV><INPUT type=hidden name=SessionID> <INPUT type=hidden name=SubSessionID> <INPUT type=hidden value=00 name=opcao> <INPUT type=hidden value=12 name=ppopcao> <INPUT type=hidden value=PW99940F name=call> 
-<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
-<TBODY>
-<TR>
-<TD height=20 noWrap>
-<DIV id=imgWait style="DISPLAY: none"><IMG border=0 src="../icons/Process.gif"></IMG></DIV></TD></TR></TBODY></TABLE>
-<SCRIPT>
-                    try{
-                        if( document.parentWindow.parent.document.title == '' ){
-                            document.parentWindow.parent.document.title = '';
-                        }
-                    }
-                    catch( e ){}
-                    try{
-                        document.parentWindow.parent.top_rotina.document.all.versaoprg.outerText = 'i';
-                    }
-                    catch( e ){}
-                </SCRIPT>
-
-<SCRIPT>
-                   function CarregaUsuario(){
-                       if( document.all.idUsuario.disabled ){
-                           return false;
-                       }
-                       if( document.all.idUsuario.value == "" || document.all.idUsuario.value == 0 ){
-                           return false;
-                       }
-                       document.all.opcao.value = 2;
-                       EnviarFormulario();
-                   }
-                   function Salvar(){
-                       if( ! ValidaCampos() ){
-                           return false;
-                       }
-                       document.all.senhaAtual.value = document.all.sa.value;
-                       document.all.senhaNova.value = document.all.sn.value;
-                       document.all.senhaConfirme.value = document.all.sc.value;
-                       if( document.all.senhaNova.value != document.all.senhaConfirme.value ){
-                           alert( 'Senha nova difere de Confirme a Senha' );
-                           document.all.sn.select();
-                       }
-                       else{
-                           document.all.BotSalvar.disabled = true;
-                           document.all.opcao.value = 6;
-                           EnviarFormulario();
-                       }
-                   }
-                   function Cancelar(){
-                       document.form1.reset();
-                       document.all.BotSalvar.disabled = false;
-                       document.all.idUsuario.disabled = false;
-                       document.all.idUsuario.className = 'campo';
-                       if( "" == 0 ){
-                           document.all.idUsuario.value = '';
-                           document.all.idUsuario.focus();
-                       }
-                       else{
-                           document.all.idUsuario.value = "";
-                           CarregaUsuario();
-                       }
-                   }
-               </SCRIPT>
-<INPUT type=hidden name=senhaNova> <INPUT type=hidden name=senhaConfirme> <INPUT type=hidden name=senhaAtual> 
-<TABLE width="100%">
-<TBODY>
-<TR>
-<TD width="100%">
-<TABLE class=WindowScreen borderColor=white cellSpacing=1 borderColorDark=white cellPadding=0 rules=none width="100%" borderColorLight=dimgray border=1>
-<TBODY>
-<TR>
-<TD width="20%">&nbsp; 
-<TD width="60%">&nbsp; 
-<TD width="20%">&nbsp; 
-<TD width="10%">&nbsp; 
-<TR>
-<TD class=tituloCampo>ID Usuário&nbsp;</TD>
-<TD colSpan=3><INPUT onchange=CarregaUsuario(); tabIndex=1 disabled class=clsDisabled maxLength=11 size=10 value=pizolitto name=idUsuario obrigatorio="1"> <IMG onclick=CarregaUsuario(); tabIndex=2 title="Carregar Usuário" onkeydown="VerificaTeclaPress( '13', 'CarregaUsuario();' )" style="CURSOR: hand" src="../icons/check.gif"> 
-<TR>
-<TD class=tituloCampo>Senha Anterior&nbsp;</TD>
-<TD colSpan=3><INPUT tabIndex=3 class=campo maxLength=10 size=10 type=password value="" name=sa obrigatorio="1"> 
-<TR>
-<TD class=titulocampo>Senha Nova&nbsp;</TD>
-<TD colSpan=3><INPUT tabIndex=4 class=campo maxLength=10 size=10 type=password value="" name=sn obrigatorio="1"> 
-<TR>
-<TD class=titulocampo>Confirme a Senha&nbsp;</TD>
-<TD colSpan=3><INPUT tabIndex=5 class=campo maxLength=10 size=10 type=password value="" name=sc obrigatorio="1"> 
-<TR>
-<TD colSpan=4>&nbsp;</TD>
-<TR>
-<TD>&nbsp; 
-<TD class=titulocampo>
-<DIV align=left>Senha deve possuir pelo menos 8 caracteres;</DIV></TD>
-<TD colSpan=2>&nbsp; 
-<TR>
-<TD>&nbsp; 
-<TD class=titulocampo>
-<DIV align=left>Senha deve conter letras maiúsculas e minúsculas e números;</DIV></TD>
-<TD colSpan=2>&nbsp; 
-<TR>
-<TD>&nbsp; 
-<TD class=titulocampo colSpan=2>
-<DIV align=left>Senha pode conter os seguintes caracteres especiais: @ # $ % &amp; * ( ) _ - + = / \ { } [ ] &lt; &gt; , . : ; ? ! |</DIV></TD>
-<TD>&nbsp; 
-<TR>
-<TD>&nbsp; 
-<TD class=titulocampo>
-<DIV align=left>Senha não pode ser igual às últimas 3 senhas utilizadas.</DIV></TD>
-<TD colSpan=2>&nbsp; 
-<TR>
-<TD colSpan=4>&nbsp;</TD></TR></TBODY></TABLE></TR></TBODY></TABLE>
-<TABLE width="100%" border=0>
-<TBODY>
-<TR>
-<TD width="100%">&nbsp; 
-<TD>
-<DIV id=DivBtSalvar><BUTTON onclick=Salvar(); tabIndex=500 class=botao accessKey=S name=BotSalvar><LABEL><U>S</U>alvar </LABEL></BUTTON> </DIV></TD>
-<TD>
-<DIV id=DivBtCancelar><BUTTON onclick=document.form1.reset();Cancelar(); tabIndex=501 class=botao accessKey=C name=BotCancelar><LABEL><U>C</U>ancelar</LABEL></BUTTON> </DIV></TD>
-<TD>
-<DIV id=DivBtReservado style="WHITE-SPACE: nowrap; DISPLAY: inline-block"></DIV></TD></TR></TBODY></TABLE></FORM>
-<SCRIPT>
-                   function ChamaBuscaErros(){
-                       document.parentWindow.parent.top_rotina.BuscaErros();
-                   }
-                   function ZeraTimeOutCtrl(){
-                       document.parentWindow.parent.top_rotina.timeOut = 0;
-                   }
-               </SCRIPT>
-
-<SCRIPT for=imgWait event=onpropertychange>
-                   try{
-                       if( document.all.imgWait.style.display != 'none' ){
-                           ChamaBuscaErros();
-                       }
-                   }
-                   catch( e ){
-                       setTimeout( 'ChamaBuscaErros()', 1000 );
-                   }
-               </SCRIPT>
-
-<SCRIPT> document.parentWindow.parent.bottom_rotina.document.location.href = "../cgi-bin/PP00100.exe?SessionID=&SubSessionID=&ppopcao=12&call=PW99940F&frame=9&opcao=1&idUsuario=pizolitto"; </SCRIPT>
-
-<SCRIPT>
-                   try{
-                       document.parentWindow.parent.rotina.document.all ( 'imgWait' ).style.display = 'none';
-                   }
-                   catch( e ){}
-                   try{
-                       if( '' == 'S' ){
-                           document.parentWindow.parent.top_rotina.document.all.unidade.disabled = false;
-                       }
-                   }
-                   catch( e ){}
-               </SCRIPT>
-<!-- end program -->
-<SCRIPT>
-                   if( document.all.imgWait != null ){
-                       document.all.imgWait.style.display = 'none';
-                   }
-                   try{
-                       if( '' == 'S' ){
-                           document.parentWindow.parent.top_rotina.document.all.unidade.disabled = false;
-                       }
-                   }
-                   catch( e ){}
-               </SCRIPT>
+s
+<HTML><HEAD><TITLE></TITLE>
+
+<META content="Mon, 01 Jan 1996 12:12:00 GMT" http-equiv=Expires>
+
+<META content=no-cache http-equiv=Pragma>
+
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type><LINK rel=stylesheet type=text/css href="../scripts/acao.css"></LINK>
+
+<SCRIPT language=JavaScript src="../scripts/funcoes.js"></SCRIPT>
+
+
+
+<SCRIPT language=VbScript src="../scripts/funcoes.vbs"></SCRIPT>
+
+
+
+<SCRIPT language=javaScript for=document event=onhelp>
+
+                   MostraHelp( 'PW99940F', '../cgi-bin/PP00100.exe?SessionID=&ppopcao=6' )
+
+                   return false;
+
+               </SCRIPT>
+
+
+
+<SCRIPT>
+
+                   var aJanelas = new Array();
+
+                   var relatorio = 0;
+
+               </SCRIPT>
+
+
+
+<SCRIPT language=JavaScript for=window event=onunload>
+
+                   if( relatorio > 0 ){
+
+                       window.open( "../cgi-bin/PP00100.exe?SessionID=&SubSessionID=&ppopcao=10", "fim", "top=3000,left=0,height=40,width=200,status=no,toolbar=no,menubar=no,location=no,resizable=no,scrollbars=no,channelmode=no" );
+
+                   }
+
+                   for( var i=0; i < aJanelas.length; i++ ){
+
+                       aJanelas[i].close();
+
+                   }
+
+               </SCRIPT>
+
+</HEAD>
+
+<BODY leftMargin=0 topMargin=0 marginwidth="0" marginheight="0">
+
+<FORM method=post name=form1>
+
+<DIV id=divRotinaGenerico></DIV><INPUT type=hidden name=SessionID> <INPUT type=hidden name=SubSessionID> <INPUT type=hidden value=00 name=opcao> <INPUT type=hidden value=12 name=ppopcao> <INPUT type=hidden value=PW99940F name=call> 
+
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+
+<TBODY>
+
+<TR>
+
+<TD height=20 noWrap>
+
+<DIV id=imgWait style="DISPLAY: none"><IMG border=0 src="../icons/Process.gif"></IMG></DIV></TD></TR></TBODY></TABLE>
+
+<SCRIPT>
+
+                    try{
+
+                        if( document.parentWindow.parent.document.title == '' ){
+
+                            document.parentWindow.parent.document.title = '';
+
+                        }
+
+                    }
+
+                    catch( e ){}
+
+                    try{
+
+                        document.parentWindow.parent.top_rotina.document.all.versaoprg.outerText = 'i';
+
+                    }
+
+                    catch( e ){}
+
+                </SCRIPT>
+
+
+
+<SCRIPT>
+
+                   function CarregaUsuario(){
+
+                       if( document.all.idUsuario.disabled ){
+
+                           return false;
+
+                       }
+
+                       if( document.all.idUsuario.value == "" || document.all.idUsuario.value == 0 ){
+
+                           return false;
+
+                       }
+
+                       document.all.opcao.value = 2;
+
+                       EnviarFormulario();
+
+                   }
+
+                   function Salvar(){
+
+                       if( ! ValidaCampos() ){
+
+                           return false;
+
+                       }
+
+                       document.all.senhaAtual.value = document.all.sa.value;
+
+                       document.all.senhaNova.value = document.all.sn.value;
+
+                       document.all.senhaConfirme.value = document.all.sc.value;
+
+                       if( document.all.senhaNova.value != document.all.senhaConfirme.value ){
+
+                           alert( 'Senha nova difere de Confirme a Senha' );
+
+                           document.all.sn.select();
+
+                       }
+
+                       else{
+
+                           document.all.BotSalvar.disabled = true;
+
+                           document.all.opcao.value = 6;
+
+                           EnviarFormulario();
+
+                       }
+
+                   }
+
+                   function Cancelar(){
+
+                       document.form1.reset();
+
+                       document.all.BotSalvar.disabled = false;
+
+                       document.all.idUsuario.disabled = false;
+
+                       document.all.idUsuario.className = 'campo';
+
+                       if( "" == 0 ){
+
+                           document.all.idUsuario.value = '';
+
+                           document.all.idUsuario.focus();
+
+                       }
+
+                       else{
+
+                           document.all.idUsuario.value = "";
+
+                           CarregaUsuario();
+
+                       }
+
+                   }
+
+               </SCRIPT>
+
+<INPUT type=hidden name=senhaNova> <INPUT type=hidden name=senhaConfirme> <INPUT type=hidden name=senhaAtual> 
+
+<TABLE width="100%">
+
+<TBODY>
+
+<TR>
+
+<TD width="100%">
+
+<TABLE class=WindowScreen borderColor=white cellSpacing=1 borderColorDark=white cellPadding=0 rules=none width="100%" borderColorLight=dimgray border=1>
+
+<TBODY>
+
+<TR>
+
+<TD width="20%">&nbsp; 
+
+<TD width="60%">&nbsp; 
+
+<TD width="20%">&nbsp; 
+
+<TD width="10%">&nbsp; 
+
+<TR>
+
+<TD class=tituloCampo>ID Usuário&nbsp;</TD>
+
+<TD colSpan=3><INPUT onchange=CarregaUsuario(); tabIndex=1 disabled class=clsDisabled maxLength=11 size=10 value=pizolitto name=idUsuario obrigatorio="1"> <IMG onclick=CarregaUsuario(); tabIndex=2 title="Carregar Usuário" onkeydown="VerificaTeclaPress( '13', 'CarregaUsuario();' )" style="CURSOR: hand" src="../icons/check.gif"> 
+
+<TR>
+
+<TD class=tituloCampo>Senha Anterior&nbsp;</TD>
+
+<TD colSpan=3><INPUT tabIndex=3 class=campo maxLength=10 size=10 type=password value="" name=sa obrigatorio="1"> 
+
+<TR>
+
+<TD class=titulocampo>Senha Nova&nbsp;</TD>
+
+<TD colSpan=3><INPUT tabIndex=4 class=campo maxLength=10 size=10 type=password value="" name=sn obrigatorio="1"> 
+
+<TR>
+
+<TD class=titulocampo>Confirme a Senha&nbsp;</TD>
+
+<TD colSpan=3><INPUT tabIndex=5 class=campo maxLength=10 size=10 type=password value="" name=sc obrigatorio="1"> 
+
+<TR>
+
+<TD colSpan=4>&nbsp;</TD>
+
+<TR>
+
+<TD>&nbsp; 
+
+<TD class=titulocampo>
+
+<DIV align=left>Senha deve possuir pelo menos 8 caracteres;</DIV></TD>
+
+<TD colSpan=2>&nbsp; 
+
+<TR>
+
+<TD>&nbsp; 
+
+<TD class=titulocampo>
+
+<DIV align=left>Senha deve conter letras maiúsculas e minúsculas e números;</DIV></TD>
+
+<TD colSpan=2>&nbsp; 
+
+<TR>
+
+<TD>&nbsp; 
+
+<TD class=titulocampo colSpan=2>
+
+<DIV align=left>Senha pode conter os seguintes caracteres especiais: @ # $ % &amp; * ( ) _ - + = / \ { } [ ] &lt; &gt; , . : ; ? ! |</DIV></TD>
+
+<TD>&nbsp; 
+
+<TR>
+
+<TD>&nbsp; 
+
+<TD class=titulocampo>
+
+<DIV align=left>Senha não pode ser igual às últimas 3 senhas utilizadas.</DIV></TD>
+
+<TD colSpan=2>&nbsp; 
+
+<TR>
+
+<TD colSpan=4>&nbsp;</TD></TR></TBODY></TABLE></TR></TBODY></TABLE>
+
+<TABLE width="100%" border=0>
+
+<TBODY>
+
+<TR>
+
+<TD width="100%">&nbsp; 
+
+<TD>
+
+<DIV id=DivBtSalvar><BUTTON onclick=Salvar(); tabIndex=500 class=botao accessKey=S name=BotSalvar><LABEL><U>S</U>alvar </LABEL></BUTTON> </DIV></TD>
+
+<TD>
+
+<DIV id=DivBtCancelar><BUTTON onclick=document.form1.reset();Cancelar(); tabIndex=501 class=botao accessKey=C name=BotCancelar><LABEL><U>C</U>ancelar</LABEL></BUTTON> </DIV></TD>
+
+<TD>
+
+<DIV id=DivBtReservado style="WHITE-SPACE: nowrap; DISPLAY: inline-block"></DIV></TD></TR></TBODY></TABLE></FORM>
+
+<SCRIPT>
+
+                   function ChamaBuscaErros(){
+
+                       document.parentWindow.parent.top_rotina.BuscaErros();
+
+                   }
+
+                   function ZeraTimeOutCtrl(){
+
+                       document.parentWindow.parent.top_rotina.timeOut = 0;
+
+                   }
+
+               </SCRIPT>
+
+
+
+<SCRIPT for=imgWait event=onpropertychange>
+
+                   try{
+
+                       if( document.all.imgWait.style.display != 'none' ){
+
+                           ChamaBuscaErros();
+
+                       }
+
+                   }
+
+                   catch( e ){
+
+                       setTimeout( 'ChamaBuscaErros()', 1000 );
+
+                   }
+
+               </SCRIPT>
+
+
+
+<SCRIPT> document.parentWindow.parent.bottom_rotina.document.location.href = "../cgi-bin/PP00100.exe?SessionID=&SubSessionID=&ppopcao=12&call=PW99940F&frame=9&opcao=1&idUsuario=pizolitto"; </SCRIPT>
+
+
+
+<SCRIPT>
+
+                   try{
+
+                       document.parentWindow.parent.rotina.document.all ( 'imgWait' ).style.display = 'none';
+
+                   }
+
+                   catch( e ){}
+
+                   try{
+
+                       if( '' == 'S' ){
+
+                           document.parentWindow.parent.top_rotina.document.all.unidade.disabled = false;
+
+                       }
+
+                   }
+
+                   catch( e ){}
+
+               </SCRIPT>
+
+<!-- end program -->
+
+<SCRIPT>
+
+                   if( document.all.imgWait != null ){
+
+                       document.all.imgWait.style.display = 'none';
+
+                   }
+
+                   try{
+
+                       if( '' == 'S' ){
+
+                           document.parentWindow.parent.top_rotina.document.all.unidade.disabled = false;
+
+                       }
+
+                   }
+
+                   catch( e ){}
+
+               </SCRIPT>
+
 </BODY></HTML>
