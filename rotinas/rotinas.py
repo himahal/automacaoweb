@@ -40,6 +40,11 @@ def matar_overlay_processando(driver):
 
         if janelas:
             for j in janelas:
+                titulo = j.title.lower()
+                # Evita fechar a janela principal do Edge/navegador (que costuma ser grande e conter "edge")
+                if "edge" in titulo and (j.width > 600 or j.height > 500):
+                    print(f"🛡️ Ignorando janela principal do navegador: {j.title}")
+                    continue
                 print(f"💥 Janela encontrada: {j.title}. Fechando agora...")
                 j.close()
             print("✅ Processo(s) encerrado(s) com sucesso!")
@@ -60,6 +65,10 @@ def aguardar_processamento_e_botao(driver, wait_obj, by, identificador, timeout_
                 janelas = gw.getWindowsWithTitle('Processando')
                 if janelas:
                     for j in janelas:
+                        titulo = j.title.lower()
+                        # Evita fechar a janela principal do Edge/navegador (que costuma ser grande e conter "edge")
+                        if "edge" in titulo and (j.width > 600 or j.height > 500):
+                            continue
                         print(f"💥 Janela 'Processando' detectada. Fechando {j.title}...")
                         j.close()
             except Exception:
