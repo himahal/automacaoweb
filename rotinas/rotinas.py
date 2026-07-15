@@ -28,6 +28,9 @@ else:
     data_fim = (hoje - timedelta(days=1)).strftime("%d/%m/%Y")
 
 
+JANELA_MENU = None
+
+
 def matar_overlay_processando(driver):
     """Fecha a janela 'Processando' via Windows (gw)"""
     print("🎯 Caçando janelas 'Processando' no sistema...")
@@ -185,9 +188,31 @@ def chamar_rotina(driver, wait, codigo):
         "Revalle Serrinha"
     ]
 
-    # 🎯 Define a janela principal logo no início
+    # 🎯 Define a janela principal (menu) de forma persistente
+    global JANELA_MENU
+    if JANELA_MENU is None:
+        JANELA_MENU = driver.current_window_handle
+        print(f"🔒 Janela principal (Menu) registrada com handle: {JANELA_MENU}")
+    else:
+        try:
+            driver.switch_to.window(JANELA_MENU)
+            print(f"🔄 Retornamos para a janela principal (Menu) registrada: {JANELA_MENU}")
+        except Exception as e:
+            print(f"⚠️ Erro ao focar na janela registrada ({e}). Redefinindo handle...")
+            JANELA_MENU = driver.window_handles[0]
+            driver.switch_to.window(JANELA_MENU)
+
+    # Limpeza preventiva de pop-ups/alertas residuais na janela principal
+    try:
+        alert = driver.switch_to.alert
+        print(f"🚨 Alerta residual detectado e aceito na janela principal: '{alert.text}'")
+        alert.accept()
+        time.sleep(1)
+    except:
+        pass
+
     driver.switch_to.default_content()
-    janela_menu = driver.window_handles[0]
+    janela_menu = JANELA_MENU
 
     # Buscando a função pelo dicionário
     funcao_rotina = MAPA_ROTINAS.get(codigo)
