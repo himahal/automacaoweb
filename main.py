@@ -75,8 +75,10 @@ def limpar_processos_antigos():
     import subprocess
     print("🧹 Limpando processos antigos (IEDriverServer e Internet Explorer) do Windows...")
     try:
-        subprocess.run(["taskkill", "/F", "/IM", "IEDriverServer.exe"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        subprocess.run(["taskkill", "/F", "/IM", "iexplore.exe"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run(["taskkill", "/F", "/IM", "IEDriverServer.exe"],
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run(["taskkill", "/F", "/IM", "iexplore.exe"],
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     except Exception:
         pass
 
@@ -192,11 +194,11 @@ if __name__ == "__main__":
 
         # 🚀 CHAMADA DAS ROTINAS
 
-        rotinas.chamar_rotina(driver, wait, "031120")
-        rotinas.chamar_rotina(driver, wait, "030224")
-        rotinas.chamar_rotina(driver, wait, "01200147")
-        rotinas.chamar_rotina(driver, wait, "0105070402")
-        rotinas.chamar_rotina(driver, wait, "03014701")
+        # rotinas.chamar_rotina(driver, wait, "031120")
+        # rotinas.chamar_rotina(driver, wait, "030224")
+        # rotinas.chamar_rotina(driver, wait, "01200147")
+        # rotinas.chamar_rotina(driver, wait, "0105070402")
+        # rotinas.chamar_rotina(driver, wait, "03014701")
         rotinas.chamar_rotina(driver, wait, "030237")
 
         print("\n🏆 Todas as rotinas solicitadas foram processadas!")
