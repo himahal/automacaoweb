@@ -17,17 +17,24 @@ Alerta 1 encontrado: 'O dia 15 de cada mes é o prazo LIMITE para a REORGANIZAÇ
 
 Alerta 1 fechado com sucesso!
 
-Alerta 2 encontrado: 'Fechamento Financeiro não realizado há  15 dias'
+Alerta 2 encontrado: 'Fechamento Financeiro não realizado há  20 dias'
 
 Alerta 2 fechado com sucesso!
 
-Alerta 3 encontrado: 'Fechamento do Estoque não realizado há  15 dias'
+Alerta 3 encontrado: 'Fechamento do Estoque não realizado há  20 dias'
 
 Alerta 3 fechado com sucesso!
 
-Não há mais pop-ups ou tempo limite para o alerta 4 atingido.
+Alerta 4 encontrado: 'Existem NFs a partir do dia 18/07/2026 com divergências.
 
-✅ Total de 3 pop-ups fechados.
+Verificar no módulo 07.22.23-Rel. de Diverg. Promax x SEFAZ, proceder
+a correção e executar a rotina 07.22.22-Verificação de Divergências.'
+
+Alerta 4 fechado com sucesso!
+
+Não há mais pop-ups ou tempo limite para o alerta 5 atingido.
+
+✅ Total de 4 pop-ups fechados.
 
 ✨ Varredura de alertas concluída.
 
@@ -37,7 +44,7 @@ Não há mais pop-ups ou tempo limite para o alerta 4 atingido.
 
 🔍------------------------------
 Buscando lógica para: 03014701
-🔒 Janela principal (Menu) registrada com handle: 3cbcf0f8-87f9-41a5-abba-9b749f776fd2
+🔒 Janela principal (Menu) registrada com handle: 5e00bdfc-eef3-48f4-a5a6-7e2058e9f6b4
 ⚠️ Erro ao focar na janela do menu principal: There are 2 elements that match the criteria {'title_re': '.*PromaxWEB.*', 'backend': 'win32', 'visible_only': False}
 🎯 Rotina 03014701 localizada! Iniciando processamento em lote...
 
@@ -68,11 +75,11 @@ Não há mais pop-ups ou tempo limite para o alerta 1 atingido.
 ✅ Sucesso! Recarregamento de página detectado após o JS.
 ⏳ Vigiando ativamente a tela aguardando os pop-ups da troca...
 🚨 Primeiro alerta detectado pelo Guarda-Costas! Iniciando limpeza...
-Alerta 1 encontrado: 'Fechamento Financeiro não realizado há  15 dias'
+Alerta 1 encontrado: 'Fechamento Financeiro não realizado há  20 dias'
 
 Alerta 1 fechado com sucesso!
 
-Alerta 2 encontrado: 'Fechamento do Estoque não realizado há  15 dias'
+Alerta 2 encontrado: 'Fechamento do Estoque não realizado há  20 dias'
 
 Alerta 2 fechado com sucesso!
 
@@ -85,11 +92,16 @@ Não há mais pop-ups ou tempo limite para o alerta 3 atingido.
 📅 Preenchendo datas...
 🖱️ Clicando em Visualizar...
 🚀 Relatório solicitado! Aguardando processamento e botão CSV...
-⏳ Aguardando até 300s pelo elemento GerExecl...
-💥 Janela 'Processando' detectada. Fechando Processando [00:26] - Perfil 1 — Microsoft​ Edge...
-❌ Erro crítico ao processar a filial Beira Rio: Timeout aguardando GerExecl apos 300 segundos.
-⏭️ Pulando para a próxima revenda da lista...
-
+📥 Confirmando download na barra do Windows...
+✅ Download confirmado com sucesso no SplitButton!
+🧹 Barra de download fechada para limpar o foco.
+🏷️ Nome dinâmico gerado: Beira Rio.07.2026.csv
+📂 Processando arquivo da rotina 03.01.47...
+✅ Arquivo renomeado para: Beira Rio.07.2026.csv
+📁 Salvo em: C:\Users\usuario\Desktop\Promax\promax\downloads
+🔄 Arquivo antigo removido da rede. Substituindo...
+✅ Arquivo movido com sucesso para: T:\ATENDIMENTO\NÍVEL DE SERVIÇO\03.01.47.01\Beira Rio\2026
+enter para fechar
 ========================================
 🔄 PROCESSANDO FILIAL [2/7]: Revalle Juazeiro
 ========================================
@@ -108,25 +120,32 @@ Não há mais pop-ups ou tempo limite para o alerta 1 atingido.
 ✅ Sucesso! Recarregamento de página detectado após o JS.
 ⏳ Vigiando ativamente a tela aguardando os pop-ups da troca...
 🚨 Primeiro alerta detectado pelo Guarda-Costas! Iniciando limpeza...
-Alerta 1 encontrado: 'Fechamento Financeiro não realizado há  15 dias'
+Alerta 1 encontrado: 'O dia 15 de cada mes é o prazo LIMITE para a REORGANIZAÇÃO, após esse prazo o sistema ficara INOPERANTE, portanto, sabendo como proceder execute-a, e em caso de dúvida contate o suporte.'
 
 Alerta 1 fechado com sucesso!
 
-Alerta 2 encontrado: 'Fechamento do Estoque não realizado há  15 dias'
+Alerta 2 encontrado: 'Fechamento Financeiro não realizado há  20 dias'
 
 Alerta 2 fechado com sucesso!
 
-Não há mais pop-ups ou tempo limite para o alerta 3 atingido.
+Alerta 3 encontrado: 'Fechamento do Estoque não realizado há  20 dias'
 
-✅ Total de 2 pop-ups fechados.
+Alerta 3 fechado com sucesso!
+
+Alerta 4 encontrado: 'Existem NFs a partir do dia 18/07/2026 com divergências.
+
+Verificar no módulo 07.22.23-Rel. de Diverg. Promax x SEFAZ, proceder
+a correção e executar a rotina 07.22.22-Verificação de Divergências.'
+
+Alerta 4 fechado com sucesso!
+
+✅ Total de 4 pop-ups fechados.
 
 🎯 Selecionando 'Geral' no dropdown...
 🎯 Selecionando 'Geral' no dropdown via JS Legado IE...
 📅 Preenchendo datas...
 🖱️ Clicando em Visualizar...
 🚀 Relatório solicitado! Aguardando processamento e botão CSV...
-⏳ Aguardando até 300s pelo elemento GerExecl...
-✅ Elemento GerExecl carregado! (Tempo de processamento: 10.91s)
 📥 Confirmando download na barra do Windows...
 ✅ Download confirmado com sucesso no SplitButton!
 🧹 Barra de download fechada para limpar o foco.
@@ -134,7 +153,9 @@ Não há mais pop-ups ou tempo limite para o alerta 3 atingido.
 📂 Processando arquivo da rotina 03.01.47...
 ✅ Arquivo renomeado para: Revalle Juazeiro.07.2026.csv
 📁 Salvo em: C:\Users\usuario\Desktop\Promax\promax\downloads
-
+🔄 Arquivo antigo removido da rede. Substituindo...
+✅ Arquivo movido com sucesso para: T:\ATENDIMENTO\NÍVEL DE SERVIÇO\03.01.47.01\Revalle Juazeiro\2026
+enter para fechar
 ========================================
 🔄 PROCESSANDO FILIAL [3/7]: Revalle Nordeste
 ========================================
@@ -157,11 +178,11 @@ Alerta 1 encontrado: 'O dia 15 de cada mes é o prazo LIMITE para a REORGANIZAÇ
 
 Alerta 1 fechado com sucesso!
 
-Alerta 2 encontrado: 'Fechamento Financeiro não realizado há  15 dias'
+Alerta 2 encontrado: 'Fechamento Financeiro não realizado há  20 dias'
 
 Alerta 2 fechado com sucesso!
 
-Alerta 3 encontrado: 'Fechamento do Estoque não realizado há  15 dias'
+Alerta 3 encontrado: 'Fechamento do Estoque não realizado há  20 dias'
 
 Alerta 3 fechado com sucesso!
 
@@ -174,11 +195,16 @@ Não há mais pop-ups ou tempo limite para o alerta 4 atingido.
 📅 Preenchendo datas...
 🖱️ Clicando em Visualizar...
 🚀 Relatório solicitado! Aguardando processamento e botão CSV...
-⏳ Aguardando até 300s pelo elemento GerExecl...
-💥 Janela 'Processando' detectada. Fechando Processando [00:27] - Perfil 1 — Microsoft​ Edge...
-❌ Erro crítico ao processar a filial Revalle Nordeste: Timeout aguardando GerExecl apos 300 segundos.
-⏭️ Pulando para a próxima revenda da lista...
-
+📥 Confirmando download na barra do Windows...
+✅ Download confirmado com sucesso no SplitButton!
+🧹 Barra de download fechada para limpar o foco.
+🏷️ Nome dinâmico gerado: Revalle Nordeste.07.2026.csv
+📂 Processando arquivo da rotina 03.01.47...
+✅ Arquivo renomeado para: Revalle Nordeste.07.2026.csv
+📁 Salvo em: C:\Users\usuario\Desktop\Promax\promax\downloads
+🔄 Arquivo antigo removido da rede. Substituindo...
+✅ Arquivo movido com sucesso para: T:\ATENDIMENTO\NÍVEL DE SERVIÇO\03.01.47.01\Revalle Nordeste\2026
+enter para fechar
 ========================================
 🔄 PROCESSANDO FILIAL [4/7]: Revalle Bonfim
 ========================================
@@ -197,35 +223,42 @@ Não há mais pop-ups ou tempo limite para o alerta 1 atingido.
 ✅ Sucesso! Recarregamento de página detectado após o JS.
 ⏳ Vigiando ativamente a tela aguardando os pop-ups da troca...
 🚨 Primeiro alerta detectado pelo Guarda-Costas! Iniciando limpeza...
-Alerta 1 encontrado: 'Fechamento Financeiro não realizado há  15 dias'
+Alerta 1 encontrado: 'O dia 15 de cada mes é o prazo LIMITE para a REORGANIZAÇÃO, após esse prazo o sistema ficara INOPERANTE, portanto, sabendo como proceder execute-a, e em caso de dúvida contate o suporte.'
 
 Alerta 1 fechado com sucesso!
 
-Alerta 2 encontrado: 'Fechamento do Estoque não realizado há  15 dias'
+Alerta 2 encontrado: 'Fechamento Financeiro não realizado há  20 dias'
 
 Alerta 2 fechado com sucesso!
 
-Alerta 3 encontrado: 'Existem NFs a partir do dia 13/07/2026 com divergências.
+Alerta 3 encontrado: 'Fechamento do Estoque não realizado há  20 dias'
+
+Alerta 3 fechado com sucesso!
+
+Alerta 4 encontrado: 'Existem NFs a partir do dia 13/07/2026 com divergências.
 
 Verificar no módulo 07.22.23-Rel. de Diverg. Promax x SEFAZ, proceder
 a correção e executar a rotina 07.22.22-Verificação de Divergências.'
 
-Alerta 3 fechado com sucesso!
+Alerta 4 fechado com sucesso!
 
-Não há mais pop-ups ou tempo limite para o alerta 4 atingido.
-
-✅ Total de 3 pop-ups fechados.
+✅ Total de 4 pop-ups fechados.
 
 🎯 Selecionando 'Geral' no dropdown...
 🎯 Selecionando 'Geral' no dropdown via JS Legado IE...
 📅 Preenchendo datas...
 🖱️ Clicando em Visualizar...
 🚀 Relatório solicitado! Aguardando processamento e botão CSV...
-⏳ Aguardando até 300s pelo elemento GerExecl...
-💥 Janela 'Processando' detectada. Fechando Processando [00:26] - Perfil 1 — Microsoft​ Edge...
-❌ Erro crítico ao processar a filial Revalle Bonfim: Timeout aguardando GerExecl apos 300 segundos.
-⏭️ Pulando para a próxima revenda da lista...
-
+📥 Confirmando download na barra do Windows...
+✅ Download confirmado com sucesso no SplitButton!
+🧹 Barra de download fechada para limpar o foco.
+🏷️ Nome dinâmico gerado: Revalle Bonfim.07.2026.csv
+📂 Processando arquivo da rotina 03.01.47...
+✅ Arquivo renomeado para: Revalle Bonfim.07.2026.csv
+📁 Salvo em: C:\Users\usuario\Desktop\Promax\promax\downloads
+🔄 Arquivo antigo removido da rede. Substituindo...
+✅ Arquivo movido com sucesso para: T:\ATENDIMENTO\NÍVEL DE SERVIÇO\03.01.47.01\Revalle Bonfim\2026
+enter para fechar
 ========================================
 🔄 PROCESSANDO FILIAL [5/7]: Revalle P Afonso
 ========================================
@@ -244,28 +277,37 @@ Não há mais pop-ups ou tempo limite para o alerta 1 atingido.
 ✅ Sucesso! Recarregamento de página detectado após o JS.
 ⏳ Vigiando ativamente a tela aguardando os pop-ups da troca...
 🚨 Primeiro alerta detectado pelo Guarda-Costas! Iniciando limpeza...
-Alerta 1 encontrado: 'Fechamento Financeiro não realizado há  15 dias'
+Alerta 1 encontrado: 'O dia 15 de cada mes é o prazo LIMITE para a REORGANIZAÇÃO, após esse prazo o sistema ficara INOPERANTE, portanto, sabendo como proceder execute-a, e em caso de dúvida contate o suporte.'
 
 Alerta 1 fechado com sucesso!
 
-Alerta 2 encontrado: 'Fechamento do Estoque não realizado há  15 dias'
+Alerta 2 encontrado: 'Fechamento Financeiro não realizado há  20 dias'
 
 Alerta 2 fechado com sucesso!
 
-Não há mais pop-ups ou tempo limite para o alerta 3 atingido.
+Alerta 3 encontrado: 'Fechamento do Estoque não realizado há  20 dias'
 
-✅ Total de 2 pop-ups fechados.
+Alerta 3 fechado com sucesso!
+
+Não há mais pop-ups ou tempo limite para o alerta 4 atingido.
+
+✅ Total de 3 pop-ups fechados.
 
 🎯 Selecionando 'Geral' no dropdown...
 🎯 Selecionando 'Geral' no dropdown via JS Legado IE...
 📅 Preenchendo datas...
 🖱️ Clicando em Visualizar...
 🚀 Relatório solicitado! Aguardando processamento e botão CSV...
-⏳ Aguardando até 300s pelo elemento GerExecl...
-💥 Janela 'Processando' detectada. Fechando Processando [00:27] - Perfil 1 — Microsoft​ Edge...
-❌ Erro crítico ao processar a filial Revalle P Afonso: Timeout aguardando GerExecl apos 300 segundos.
-⏭️ Pulando para a próxima revenda da lista...
-
+📥 Confirmando download na barra do Windows...
+✅ Download confirmado com sucesso no SplitButton!
+🧹 Barra de download fechada para limpar o foco.
+🏷️ Nome dinâmico gerado: Revalle P Afonso.07.2026.csv
+📂 Processando arquivo da rotina 03.01.47...
+✅ Arquivo renomeado para: Revalle P Afonso.07.2026.csv
+📁 Salvo em: C:\Users\usuario\Desktop\Promax\promax\downloads
+🔄 Arquivo antigo removido da rede. Substituindo...
+✅ Arquivo movido com sucesso para: T:\ATENDIMENTO\NÍVEL DE SERVIÇO\03.01.47.01\Revalle P Afonso\2026
+enter para fechar
 ========================================
 🔄 PROCESSANDO FILIAL [6/7]: Revalle Alagoinhas
 ========================================
@@ -284,28 +326,37 @@ Não há mais pop-ups ou tempo limite para o alerta 1 atingido.
 ✅ Sucesso! Recarregamento de página detectado após o JS.
 ⏳ Vigiando ativamente a tela aguardando os pop-ups da troca...
 🚨 Primeiro alerta detectado pelo Guarda-Costas! Iniciando limpeza...
-Alerta 1 encontrado: 'Fechamento Financeiro não realizado há  45 dias'
+Alerta 1 encontrado: 'O dia 15 de cada mes é o prazo LIMITE para a REORGANIZAÇÃO, após esse prazo o sistema ficara INOPERANTE, portanto, sabendo como proceder execute-a, e em caso de dúvida contate o suporte.'
 
 Alerta 1 fechado com sucesso!
 
-Alerta 2 encontrado: 'Fechamento do Estoque não realizado há  15 dias'
+Alerta 2 encontrado: 'Fechamento Financeiro não realizado há  20 dias'
 
 Alerta 2 fechado com sucesso!
 
-Não há mais pop-ups ou tempo limite para o alerta 3 atingido.
+Alerta 3 encontrado: 'Fechamento do Estoque não realizado há  20 dias'
 
-✅ Total de 2 pop-ups fechados.
+Alerta 3 fechado com sucesso!
+
+Não há mais pop-ups ou tempo limite para o alerta 4 atingido.
+
+✅ Total de 3 pop-ups fechados.
 
 🎯 Selecionando 'Geral' no dropdown...
 🎯 Selecionando 'Geral' no dropdown via JS Legado IE...
 📅 Preenchendo datas...
 🖱️ Clicando em Visualizar...
 🚀 Relatório solicitado! Aguardando processamento e botão CSV...
-⏳ Aguardando até 300s pelo elemento GerExecl...
-💥 Janela 'Processando' detectada. Fechando Processando [00:27] - Perfil 1 — Microsoft​ Edge...
-❌ Erro crítico ao processar a filial Revalle Alagoinhas: Timeout aguardando GerExecl apos 300 segundos.
-⏭️ Pulando para a próxima revenda da lista...
-
+📥 Confirmando download na barra do Windows...
+✅ Download confirmado com sucesso no SplitButton!
+🧹 Barra de download fechada para limpar o foco.
+🏷️ Nome dinâmico gerado: Revalle Alagoinhas.07.2026.csv
+📂 Processando arquivo da rotina 03.01.47...
+✅ Arquivo renomeado para: Revalle Alagoinhas.07.2026.csv
+📁 Salvo em: C:\Users\usuario\Desktop\Promax\promax\downloads
+🔄 Arquivo antigo removido da rede. Substituindo...
+✅ Arquivo movido com sucesso para: T:\ATENDIMENTO\NÍVEL DE SERVIÇO\03.01.47.01\Revalle Alagoinhas\2026
+enter para fechar
 ========================================
 🔄 PROCESSANDO FILIAL [7/7]: Revalle Serrinha
 ========================================
@@ -324,18 +375,15 @@ Não há mais pop-ups ou tempo limite para o alerta 1 atingido.
 ✅ Sucesso! Recarregamento de página detectado após o JS.
 ⏳ Vigiando ativamente a tela aguardando os pop-ups da troca...
 🚨 Primeiro alerta detectado pelo Guarda-Costas! Iniciando limpeza...
-Alerta 1 encontrado: 'Fechamento Financeiro não realizado há  15 dias'
+Alerta 1 encontrado: 'O dia 15 de cada mes é o prazo LIMITE para a REORGANIZAÇÃO, após esse prazo o sistema ficara INOPERANTE, portanto, sabendo como proceder execute-a, e em caso de dúvida contate o suporte.'
 
 Alerta 1 fechado com sucesso!
 
-Alerta 2 encontrado: 'Fechamento do Estoque não realizado há  15 dias'
+Alerta 2 encontrado: 'Fechamento Financeiro não realizado há  20 dias'
 
 Alerta 2 fechado com sucesso!
 
-Alerta 3 encontrado: 'Existem NFs a partir do dia 07/07/2026 com divergências.
-
-Verificar no módulo 07.22.23-Rel. de Diverg. Promax x SEFAZ, proceder
-a correção e executar a rotina 07.22.22-Verificação de Divergências.'
+Alerta 3 encontrado: 'Fechamento do Estoque não realizado há  20 dias'
 
 Alerta 3 fechado com sucesso!
 
@@ -348,17 +396,22 @@ Não há mais pop-ups ou tempo limite para o alerta 4 atingido.
 📅 Preenchendo datas...
 🖱️ Clicando em Visualizar...
 🚀 Relatório solicitado! Aguardando processamento e botão CSV...
-⏳ Aguardando até 300s pelo elemento GerExecl...
-💥 Janela 'Processando' detectada. Fechando Processando [00:26] - Perfil 1 — Microsoft​ Edge...
-❌ Erro crítico ao processar a filial Revalle Serrinha: Timeout aguardando GerExecl apos 300 segundos.
-⏭️ Pulando para a próxima revenda da lista...
-
+📥 Confirmando download na barra do Windows...
+✅ Download confirmado com sucesso no SplitButton!
+🧹 Barra de download fechada para limpar o foco.
+🏷️ Nome dinâmico gerado: Revalle Serrinha.07.2026.csv
+📂 Processando arquivo da rotina 03.01.47...
+✅ Arquivo renomeado para: Revalle Serrinha.07.2026.csv
+📁 Salvo em: C:\Users\usuario\Desktop\Promax\promax\downloads
+🔄 Arquivo antigo removido da rede. Substituindo...
+✅ Arquivo movido com sucesso para: T:\ATENDIMENTO\NÍVEL DE SERVIÇO\03.01.47.01\Revalle Serrinha\2026
+enter para fechar
 🏁 Todas as revendas da rotina 03014701 foram processadas com sucesso!
 
 🧹 Iniciando faxina de janelas secundárias...
 ❌ Fechando janela: Rel. Apuração CDP [pizolitto - pizolitt]
 ✨ Ambiente limpo e pronto para a próxima!
-✅ Rotina {'031120': <function executar at 0x000002297B73E020>, '030224': <function executar at 0x000002297DD20FE0>, '01200147': <function executar at 0x000002297B73DF80>, '03014701': <function executar at 0x000002297DD21580>, '030237': <function executar at 0x000002297DD21260>, '0105070402': <function executar at 0x000002297DD21C60>} finalizada!
+✅ Rotina {'031120': <function executar at 0x0000019930BFE020>, '030224': <function executar at 0x00000199331F0FE0>, '01200147': <function executar at 0x0000019930BFDF80>, '03014701': <function executar at 0x00000199331F14E0>, '030237': <function executar at 0x00000199331F1260>, '0105070402': <function executar at 0x00000199331F1A80>} finalizada!
 ------------------------------
 
 
@@ -367,6 +420,4 @@ Não há mais pop-ups ou tempo limite para o alerta 4 atingido.
 ==================================================
 👋 Fechando navegador e limpando sessão...
 
-Deseja subir as execuções/relatórios para o GitHub? (s/n): 📦 Preparando arquivos para o commit...
-🚀 Enviando para o GitHub (branch atual)...
-✅ Atualização enviada com sucesso!
+Deseja subir as execuções/relatórios para o GitHub? (s/n): 👍 Operação ignorada. Nada foi enviado para o GitHub.

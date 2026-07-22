@@ -1,6 +1,8 @@
 import time
+import shutil
 import pyautogui
 import re
+import os
 from pywinauto import Desktop
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -52,17 +54,19 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                 driver.switch_to.window(janela)
                 time.sleep(1)
                 print(f"🔀 Mudamos para a nova janela: {driver.title}")
-                
+
                 # Garante o foco físico na nova janela da rotina via win32
                 try:
                     from pywinauto import Application
                     import re
                     titulo_seguro = re.escape(driver.title)
-                    app = Application(backend="win32").connect(title_re=f".*{titulo_seguro}.*", timeout=5)
+                    app = Application(backend="win32").connect(
+                        title_re=f".*{titulo_seguro}.*", timeout=5)
                     app.window(title_re=f".*{titulo_seguro}.*").set_focus()
                     print("🎯 Foco da nova janela da rotina restaurado via win32!")
                 except Exception as e_foco:
-                    print(f"⚠️ Erro ao focar na nova janela da rotina: {e_foco}")
+                    print(
+                        f"⚠️ Erro ao focar na nova janela da rotina: {e_foco}")
                 break
 
         # ====================================================================
@@ -96,8 +100,8 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                 except Exception:
                     print(
                         "✅ Nenhum alerta detectado nos últimos 10 segundos. Seguindo o fluxo...")
-                time.sleep(3) # Aguarda o frame rotina atualizar após a troca de revenda
-
+                # Aguarda o frame rotina atualizar após a troca de revenda
+                time.sleep(3)
 
                 # --- 2.3 PREENCHIMENTO DE CAMPOS (Específico da 03014701) ---
                 driver.switch_to.default_content()
@@ -111,11 +115,14 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                 except Exception:
                     print("⚠️ Demora na atualização do frame. Tentando novamente...")
                     driver.switch_to.default_content()
-                    wait.until(EC.frame_to_be_available_and_switch_to_it((By.NAME, "rotina")))
-                    dropdown_element = wait.until(EC.presence_of_element_located((By.NAME, "quebra1")))
+                    wait.until(EC.frame_to_be_available_and_switch_to_it(
+                        (By.NAME, "rotina")))
+                    dropdown_element = wait.until(
+                        EC.presence_of_element_located((By.NAME, "quebra1")))
 
                 from rotinas.utils_ui import selecionar_dropdown_pyautogui
-                selecionar_dropdown_pyautogui(driver, dropdown_element, "Geral")
+                selecionar_dropdown_pyautogui(
+                    driver, dropdown_element, "Geral")
 
                 print("📅 Preenchendo datas...")
                 campo_ini = wait.until(
@@ -128,26 +135,46 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                 driver.execute_script(
                     "arguments[0].value = arguments[1];", campo_fim, data_fim)
 
-                todasU = wait.until(EC.presence_of_element_located(
-                    (By.NAME, "selecionaUnidade")))
+                unidade_radio = wait.until(
+                    EC.presence_of_element_located(
+                        (By.XPATH, "//input[@name='selecionaUnidade' and @value='U']"))
+                )
+                # Seleciona "Unidade"
                 driver.execute_script(
-                    "arguments[0].scrollIntoView(true);", todasU)
-                todasU.click()
-
-                pedidosExcluidos = wait.until(
-                    EC.presence_of_element_located((By.NAME, "pedidosExcluidos")))
-                driver.execute_script(
-                    "arguments[0].scrollIntoView(true);", pedidosExcluidos)
-                pedidosExcluidos.click()
-
+                    "arguments[0].scrollIntoView(true);", unidade_radio
+                )
+                unidade_radio.click()
+                # Seleciona "selecionar unidade", por algum motivo tem que passar por essa etapa
                 selecUni = wait.until(EC.presence_of_element_located(
                     (By.NAME, "BotPesquisaUnidade")))
                 driver.execute_script(
                     "arguments[0].scrollIntoView(true);", selecUni)
                 selecUni.click()
 
+                # Busca o botão OK pelo atributo 'name'
+                botao_ok = wait.until(
+                    EC.presence_of_element_located((By.NAME, "BotOk"))
+                )
+
+                # Rola a página até o botão
+
+                driver.execute_script(
+                    "arguments[0].scrollIntoView(true);", botao_ok
+                )
+                # Clica no botão
+                botao_ok.click()
+
+                # pedidosExcluidos = wait.until(
+                #     EC.presence_of_element_located((By.NAME, "pedidosExcluidos")))
+                # driver.execute_script(
+                #     "arguments[0].scrollIntoView(true);", pedidosExcluidos)
+                # pedidosExcluidos.click()
+
                 # --- 2.4 GERAÇÃO E DOWNLOAD ---
                 print("🖱️ Clicando em Visualizar...")
+                time.sleep(3)
+                # driver.execute_script("AdicionaTotalFilial();")
+
                 try:
                     btn_v = wait.until(EC.element_to_be_clickable(
                         (By.NAME, "BotVisualizar")))
@@ -159,8 +186,11 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
 
                 print("🚀 Relatório solicitado! Aguardando processamento e botão CSV...")
                 # 5. Clica no botão CSV (GerExecl) com espera ativa do Processando
-                botaoCsv = rotinas.aguardar_processamento_e_botao(driver, wait, By.NAME, "GerExecl", timeout_segundos=300)
-                driver.execute_script("arguments[0].click();", botaoCsv)
+                # botaoCsv = rotinas.aguardar_processamento_e_botao(driver, wait, By.NAME, "GerExecl", timeout_segundos=300)
+                botao_csv = wait.until(
+                    EC.presence_of_element_located((By.NAME, "GerExecl")))
+
+                driver.execute_script("arguments[0].click();", botao_csv)
 
                 # --- CONFIRMAÇÃO DO DOWNLOAD (Nativo do Windows via PyWinAuto) ---
                 from rotinas.utils_ui import confirmar_download_ie
@@ -176,6 +206,44 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                     nome_personalizado=nome_dinamico,
                     caminho_destino=r"C:\Users\usuario\Desktop\Promax\promax\downloads"
                 )
+                # =========================================================
+                # MOVER ARQUIVO PARA O DIRETÓRIO DEFINITIVO (REDE)
+                # =========================================================
+                diretorio_base_rede = r"T:\ATENDIMENTO\NÍVEL DE SERVIÇO\03.01.47.01"
+
+                # Onde o arquivo está agora (na pasta de downloads)
+                caminho_origem = os.path.join(
+                    r"C:\Users\usuario\Desktop\Promax\promax\downloads", f"{nome_dinamico}.csv")
+
+                # Onde ele deve ir (usando as variáveis revenda e ano que já temos)
+                pasta_regiao = os.path.join(diretorio_base_rede, revenda)
+                pasta_destino_final = os.path.join(pasta_regiao, ano)
+                caminho_destino = os.path.join(
+                    pasta_destino_final, f"{nome_dinamico}.csv")
+
+                # Executa a movimentação
+                if os.path.exists(pasta_regiao):
+                    try:
+                        # Cria a pasta do ano (\2026) se ela não existir
+                        if not os.path.exists(pasta_destino_final):
+                            os.makedirs(pasta_destino_final)
+
+                        # Se o arquivo já existir lá (atualização do mesmo mês), deleta o antigo
+                        if os.path.exists(caminho_destino):
+                            os.remove(caminho_destino)
+                            print(
+                                f"🔄 Arquivo antigo removido da rede. Substituindo...")
+
+                        # Recorta do Desktop e cola na rede
+                        shutil.move(caminho_origem, caminho_destino)
+                        print(
+                            f"✅ Arquivo movido com sucesso para: {pasta_destino_final}")
+
+                    except Exception as e:
+                        print(f"❌ Erro ao mover o arquivo para a rede: {e}")
+                else:
+                    print(
+                        f"⚠️ Aviso: A pasta '{revenda}' não existe na rede. O arquivo continuará na pasta de downloads.")
 
             except Exception as inner_e:
                 print(

@@ -1,0 +1,110 @@
+
+==================================================
+🚀 INICIANDO PROCESSO DE LOGIN PROMAX
+==================================================
+🧹 Limpando processos antigos (IEDriverServer e Internet Explorer) do Windows...
+⚙️ Configurando IE para baixar em: c:\Users\usuario\Desktop\Promax\promax - v2\downloads
+✅ Registro atualizado com sucesso!
+🌐 Abrindo navegador Internet Explorer...
+📥 Acessando a URL do sistema...
+🔑 Identificando frames e preenchendo credenciais...
+✅ Login efetuado com sucesso!
+✅ Nenhum aviso de senha. Seguindo para o sistema...
+🏢 Selecionando unidade de revenda...
+📍 Unidade confirmada!
+🧹 Chamando assistente para fechar pop-ups...
+Alerta 1 encontrado: 'O dia 15 de cada mes é o prazo LIMITE para a REORGANIZAÇÃO, após esse prazo o sistema ficara INOPERANTE, portanto, sabendo como proceder execute-a, e em caso de dúvida contate o suporte.'
+
+Alerta 1 fechado com sucesso!
+
+Alerta 2 encontrado: 'Fechamento Financeiro não realizado há  20 dias'
+
+Alerta 2 fechado com sucesso!
+
+Alerta 3 encontrado: 'Fechamento do Estoque não realizado há  20 dias'
+
+Alerta 3 fechado com sucesso!
+
+Alerta 4 encontrado: 'Existem NFs a partir do dia 18/07/2026 com divergências.
+
+Verificar no módulo 07.22.23-Rel. de Diverg. Promax x SEFAZ, proceder
+a correção e executar a rotina 07.22.22-Verificação de Divergências.'
+
+Alerta 4 fechado com sucesso!
+
+Não há mais pop-ups ou tempo limite para o alerta 5 atingido.
+
+✅ Total de 4 pop-ups fechados.
+
+✨ Varredura de alertas concluída.
+
+--------------------------------------------------
+🎯 INICIANDO EXECUÇÃO DAS ROTINAS
+--------------------------------------------------
+
+🔍------------------------------
+Buscando lógica para: 03014701
+🔒 Janela principal (Menu) registrada com handle: ea9e3664-41d3-41ae-a168-ee94461c7e56
+⚠️ Erro ao focar na janela do menu principal: There are 2 elements that match the criteria {'title_re': '.*PromaxWEB.*', 'backend': 'win32', 'visible_only': False}
+🎯 Rotina 03014701 localizada! Iniciando processamento em lote...
+
+🚀 Iniciando execução da Rotina 03014701...
+Retornando ao frame de comandos...
+📂 Entrando no IframeMenu...
+⌨️ Inserindo a rotina: 03014701
+Procurando campo atalho...
+⏳ Aguardando carregamento da rotina...
+🔀 Mudamos para a nova janela: Rel. Apuração CDP [pizolitto - pizolitt]
+🎯 Foco da nova janela da rotina restaurado via win32!
+
+========================================
+🔄 PROCESSANDO FILIAL [1/7]: Beira Rio
+========================================
+🧹 Limpando alertas iniciais antes de interagir com a tela...
+Não há mais pop-ups ou tempo limite para o alerta 1 atingido.
+
+✅ Total de 0 pop-ups fechados.
+
+📍 DEBUG 1: Resetando para a raiz da página (default_content)...
+📍 default_content para ir para a raiz...
+📍 Entrando no frame top_rotina...
+⚠️ Erro ao capturar HTML do select: Message: Error executing JavaScript
+
+📍 Filial atual no dropdown antes da troca: '156.0001 - REVALLE - JUAZEIRO'
+⚡ Tentando selecionar o índice 0 via JavaScript...
+✅ Sucesso! Recarregamento de página detectado após o JS.
+⏳ Vigiando ativamente a tela aguardando os pop-ups da troca...
+🚨 Primeiro alerta detectado pelo Guarda-Costas! Iniciando limpeza...
+Alerta 1 encontrado: 'Fechamento Financeiro não realizado há  20 dias'
+
+Alerta 1 fechado com sucesso!
+
+Alerta 2 encontrado: 'Fechamento do Estoque não realizado há  20 dias'
+
+Alerta 2 fechado com sucesso!
+
+Não há mais pop-ups ou tempo limite para o alerta 3 atingido.
+
+✅ Total de 2 pop-ups fechados.
+
+🎯 Selecionando 'Geral' no dropdown...
+🎯 Selecionando 'Geral' no dropdown via JS Legado IE...
+📅 Preenchendo datas...
+aprete enter para fechar🖱️ Clicando em Visualizar...
+🚀 Relatório solicitado! Aguardando processamento e botão CSV...
+📥 Confirmando download na barra do Windows...
+
+🧹 Iniciando faxina de janelas secundárias...
+
+❌ OCORREU UM ERRO NO FLUXO DE ROTINAS: HTTPConnectionPool(host='localhost', port=52885): Max retries exceeded with url: /session/9de16886-79e7-4f13-9a47-d44866976381/window/handles (Caused by NewConnectionError("HTTPConnection(host='localhost', port=52885): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
+
+==================================================
+👋 Fechando navegador e limpando sessão...
+
+Deseja subir as execuções/relatórios para o GitHub? (s/n): Traceback (most recent call last):
+  File "c:\Users\usuario\Desktop\Promax\promax - v2\main.py", line 204, in <module>
+    subir_github()
+  File "c:\Users\usuario\Desktop\Promax\promax - v2\main.py", line 157, in subir_github
+    resposta = input(
+               ^^^^^^
+KeyboardInterrupt

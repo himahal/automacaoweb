@@ -1,0 +1,68 @@
+
+==================================================
+🚀 INICIANDO PROCESSO DE LOGIN PROMAX
+==================================================
+🧹 Limpando processos antigos (IEDriverServer e Internet Explorer) do Windows...
+⚙️ Configurando IE para baixar em: c:\Users\usuario\Desktop\Promax\promax - v2\downloads
+✅ Registro atualizado com sucesso!
+🌐 Abrindo navegador Internet Explorer...
+📥 Acessando a URL do sistema...
+🔑 Identificando frames e preenchendo credenciais...
+✅ Login efetuado com sucesso!
+✅ Nenhum aviso de senha. Seguindo para o sistema...
+🏢 Selecionando unidade de revenda...
+📍 Unidade confirmada!
+🧹 Chamando assistente para fechar pop-ups...
+Alerta 1 encontrado: 'O dia 15 de cada mes é o prazo LIMITE para a REORGANIZAÇÃO, após esse prazo o sistema ficara INOPERANTE, portanto, sabendo como proceder execute-a, e em caso de dúvida contate o suporte.'
+
+Alerta 1 fechado com sucesso!
+
+Alerta 2 encontrado: 'Fechamento Financeiro não realizado há  16 dias'
+
+Alerta 2 fechado com sucesso!
+
+Alerta 3 encontrado: 'Fechamento do Estoque não realizado há  16 dias'
+
+Alerta 3 fechado com sucesso!
+
+Não há mais pop-ups ou tempo limite para o alerta 4 atingido.
+
+✅ Total de 3 pop-ups fechados.
+
+✨ Varredura de alertas concluída.
+
+--------------------------------------------------
+🎯 INICIANDO EXECUÇÃO DAS ROTINAS
+--------------------------------------------------
+
+🔍------------------------------
+Buscando lógica para: 03014701
+🔒 Janela principal (Menu) registrada com handle: f84db665-eea8-4dbf-acae-6295a2a4919d
+⚠️ Erro ao focar na janela do menu principal: There are 2 elements that match the criteria {'title_re': '.*PromaxWEB.*', 'backend': 'win32', 'visible_only': False}
+🎯 Rotina 03014701 localizada! Iniciando processamento em lote...
+
+🚀 Iniciando execução da Rotina 03014701...
+Retornando ao frame de comandos...
+📂 Entrando no IframeMenu...
+⌨️ Inserindo a rotina: 03014701
+Procurando campo atalho...
+⏳ Aguardando carregamento da rotina...
+🔀 Mudamos para a nova janela: Rel. Apuração CDP [pizolitto - pizolitt]
+🎯 Foco da nova janela da rotina restaurado via win32!
+❌ Erro fatal na rotina 03014701 (Fase de Setup): 'int' object is not iterable
+
+🏁 Todas as revendas da rotina 03014701 foram processadas com sucesso!
+
+🧹 Iniciando faxina de janelas secundárias...
+❌ Fechando janela: Rel. Apuração CDP [pizolitto - pizolitt]
+✨ Ambiente limpo e pronto para a próxima!
+✅ Rotina {'031120': <function executar at 0x000002052190E020>, '030224': <function executar at 0x0000020522F20FE0>, '01200147': <function executar at 0x000002052190DF80>, '03014701': <function executar at 0x0000020522F21580>, '030237': <function executar at 0x0000020522F21260>, '0105070402': <function executar at 0x0000020522F21C60>} finalizada!
+------------------------------
+
+
+🏆 Todas as rotinas solicitadas foram processadas!
+
+==================================================
+👋 Fechando navegador e limpando sessão...
+
+Deseja subir as execuções/relatórios para o GitHub? (s/n): 👍 Operação ignorada. Nada foi enviado para o GitHub.

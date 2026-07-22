@@ -90,7 +90,7 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                     "Beira Rio": "BEIRA RIO",
                     "Revalle Juazeiro": "JUAZEIRO",
                     "Revalle Nordeste": "NORDESTE",
-                    "Revalle Bonfim": "BONFIM",  # Vai casar com "REVALLE - SR. BONFIM"
+                    "Revalle Bonfim": "BONFIM",  
                     "Revalle P Afonso": "P AFONSO",
                     "Revalle Alagoinhas": "ALAGOINHAS",
                     "Revalle Serrinha": "SERRINHA"

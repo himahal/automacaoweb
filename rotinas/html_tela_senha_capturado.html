@@ -1,0 +1,1015 @@
+<HTML><HEAD><TITLE></TITLE>
+<META content="Mon, 01 Jan 1996 12:12:00 GMT" http-equiv=Expires>
+<META content=no-cache http-equiv=Pragma>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type><LINK rel=stylesheet type=text/css href="../scripts/acao.css"></LINK>
+<SCRIPT language=JavaScript src="../scripts/funcoes.js"></SCRIPT>
+
+<SCRIPT language=VbScript src="../scripts/funcoes.vbs"></SCRIPT>
+
+<SCRIPT language=javaScript for=document event=onhelp>
+                   MostraHelp( 'PW02630R', '../cgi-bin/PP00100.exe?SessionID=413762b93f0512bb4d2c14a907027&ppopcao=6' )
+                   return false;
+               </SCRIPT>
+
+<SCRIPT>
+                   var aJanelas = new Array();
+                   var relatorio = 0;
+               </SCRIPT>
+
+<SCRIPT language=JavaScript for=window event=onunload>
+                   if( relatorio > 0 ){
+                       window.open( "../cgi-bin/PP00100.exe?SessionID=413762b93f0512bb4d2c14a907027&SubSessionID=d2is7C23765868&ppopcao=10", "fim", "top=3000,left=0,height=40,width=200,status=no,toolbar=no,menubar=no,location=no,resizable=no,scrollbars=no,channelmode=no" );
+                   }
+                   for( var i=0; i < aJanelas.length; i++ ){
+                       aJanelas[i].close();
+                   }
+               </SCRIPT>
+</HEAD>
+<BODY leftMargin=0 topMargin=0 marginwidth="0" marginheight="0">
+<FORM method=post name=form1>
+<DIV id=divRotinaGenerico></DIV><INPUT type=hidden value=413762b93f0512bb4d2c14a907027 name=SessionID> <INPUT type=hidden value=d2is7C23765868 name=SubSessionID> <INPUT type=hidden value=00 name=opcao> <INPUT type=hidden value=00 name=ppopcao> <INPUT type=hidden value=PW02630R name=call> 
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+<TBODY>
+<TR>
+<TD height=20 noWrap>
+<DIV id=imgWait style="DISPLAY: none"><IMG border=0 src="../icons/Process.gif"></IMG></DIV></TD></TR></TBODY></TABLE>
+<SCRIPT>
+                    try{
+                        if( document.parentWindow.parent.document.title == '' ){
+                            document.parentWindow.parent.document.title = '';
+                        }
+                    }
+                    catch( e ){}
+                    try{
+                        document.parentWindow.parent.top_rotina.document.all.versaoprg.outerText = 'o';
+                    }
+                    catch( e ){}
+                </SCRIPT>
+
+<SCRIPT>
+                         ExecucaoBackground = false;
+                  var btnCancelar = 1;
+                  function Visualizar(){
+                      if( !ValidaParRel() ){
+                          return false;
+                      }
+                      document.parentWindow.parent.top_rotina.document.all.unidade.disabled = true;
+                      AbreProgressBar(btnCancelar);
+                      document.form1.opcao.value = 1;
+                      document.form1.submit();
+                      return true;
+                  }
+                  function AbreProgressBar(Cancelar){
+                      if( Cancelar == undefined || Cancelar != "0" ){
+                          Cancelar = "1"; // Habilita cancelamento do processo
+                      }
+                      var strURL = '../cgi-bin/PP00100.exe?SessionID=413762b93f0512bb4d2c14a907027&SubSessionID=d2is7C23765868&ppopcao=6&opcaomenu=3&btnCancelar=' + Cancelar;
+                      ProgressBar = window.open( strURL, 'd2is7C23765868' , "top=230, left=220, width=350, height=10, scrollbars=no, status=no, toolbar=no, menubar=no, location=no");
+                      ProgressBar.focus();
+                      return false;
+                  }
+                  function Confirmar(){
+                     if( !ValidaParRel() ){
+                         return false;
+                     }
+                     query="";
+                     var field = document.forms[0];
+                     for (i = 0; i < field.length; i++) {
+                          if ((field.elements[i].type == "text") ||
+                              (field.elements[i].type == "textarea") ||
+                              (field.elements[i].type == "checkbox") ||
+                              (field.elements[i].type == "radio") ||
+                              (field.elements[i].tagName == "SELECT")  ||
+                              (field.elements[i].type == "hidden" && field.elements[i].OcultoRotina == "1" )
+                             )
+                             {
+                              if ((field.elements[i].type == "radio") || (field.elements[i].type == "checkbox"))
+                                 {
+                                  if (field.elements[i].checked == true)
+                                     query = query + field.elements[i].name + "=" + field.elements[i].value + "&"
+                                 }
+                              else
+                                 {
+                                  query = query + field.elements[i].name + "=" + field.elements[i].value + "&"
+                                 }
+                             }
+                     }
+                     parent.window.returnValue = query;
+                     window.parent.parent.close();
+                  }
+               </SCRIPT>
+
+<SCRIPT>
+                  function Desabilita( num ){
+                      for( i=1; i < 4; i++ ){
+                          document.all[ "nomeCampo" + i ].innerHTML = "";
+                          if( i != num ){
+                              document.all[ "quebra" + i ].disabled = true;
+                              document.all[ "quebra" + i ].value = '00';
+                          }
+                          document.all[ "quebra" + i + "Inicial" ].disabled = true;
+                          document.all[ "quebra" + i + "Final" ].disabled = true;
+                          document.all[ "quebra" + i + "Inicial" ].value = '';
+                          document.all[ "quebra" + i + "Final" ].value = '';
+                          document.all[ "quebra" + i + "Inicial" ].className = 'clsDisabled'
+                          document.all[ "quebra" + i + "Final" ].className = 'clsDisabled';
+                      }
+                  }
+                  function Habilita( num ){
+                      HabilitaCombos();
+                      document.all[ "quebra" + num + "Inicial" ].disabled = false;
+                      document.all[ "quebra" + num + "Final" ].disabled = false;
+                      document.all[ "quebra" + num + "Inicial" ].value = '0';
+                      document.all[ "quebra" + num + "Final" ].value = '99999999';
+                      document.all[ "quebra" + num + "Inicial" ].className = 'campo'
+                      document.all[ "quebra" + num + "Final" ].className = 'campo';
+                      document.all[ "quebra" + num + "Inicial" ].maxLength = 8;
+                      document.all[ "quebra" + num + "Final" ].maxLength = 8;
+                  }
+                  function HabilitaCombos(){
+                      for( i=1; i < 4; i++ ){
+                           document.all[ "quebra" + i ].disabled = false;
+                      }
+                  }
+                  function Carrega( num ){
+                      if( document.all[ "quebra" + num ].value == 00 ){
+                          HabilitaCombos();
+                          document.all[ "nomeCampo" + num ].innerHTML = "";
+                          document.all[ "quebra" + num + "Inicial" ].disabled = true;
+                          document.all[ "quebra" + num + "Final" ].disabled = true;
+                          document.all[ "quebra" + num + "Inicial" ].value = '';
+                          document.all[ "quebra" + num + "Final" ].value = '';
+                          document.all[ "quebra" + num + "Inicial" ].className = 'clsDisabled'
+                          document.all[ "quebra" + num + "Final" ].className = 'clsDisabled';
+                          return false;
+                      }
+                      if( document.all[ "quebra" + num ][document.all[ "quebra" + num ].selectedIndex].value != 00 ){
+                          switch( document.all[ "quebra" + num ].value ){
+                          case "01":
+                              Desabilita( num );
+                              document.all[ "nomeCampo" + num ].innerHTML = 'Geral';
+                              document.all[ "quebra" + num + "Inicial" ].value = '0';
+                              document.all[ "quebra" + num + "Final" ].value = '99999999';
+                              break;
+                          case "02":
+                          case "03":
+                          case "17":
+                          case "14":
+                          case "15":
+                          case "16":
+                              HabilitaCombos();
+                              document.all[ "nomeCampo" + num ].innerHTML = document.all[ "quebra" + num ][document.all[ "quebra" + num ].selectedIndex].text;
+                              document.all[ "quebra" + num + "Inicial" ].value = '0';
+                              document.all[ "quebra" + num + "Final" ].value = '99999999';
+                              document.all[ "quebra" + num + "Inicial" ].disabled = true;
+                              document.all[ "quebra" + num + "Final" ].disabled = true;
+                              document.all[ "quebra" + num + "Inicial" ].className = 'clsDisabled'
+                              document.all[ "quebra" + num + "Final" ].className = 'clsDisabled';
+                              break;
+                          case "09":
+                              document.all[ "nomeCampo" + num ].innerHTML = 'Município';
+                              HabilitaCombos();
+                              document.all[ "quebra" + num + "Inicial" ].disabled = false;
+                              document.all[ "quebra" + num + "Final" ].disabled = false;
+                              document.all[ "quebra" + num + "Inicial" ].value = 'AA00000000';
+                              document.all[ "quebra" + num + "Final" ].value = 'ZZ99999999';
+                              document.all[ "quebra" + num + "Inicial" ].className = 'campo'
+                              document.all[ "quebra" + num + "Final" ].className = 'campo';
+                              document.all[ "quebra" + num + "Inicial" ].maxLength = 10;
+                              document.all[ "quebra" + num + "Final" ].maxLength = 10;
+                              break;
+                          default  :
+                              document.all[ "nomeCampo" + num ].innerHTML = document.all[ "quebra" + num ][document.all[ "quebra" + num ].selectedIndex].text;
+                              HabilitaCombos();
+                              Habilita(num);
+                              break;
+                          }
+                      }
+                  }
+                  function DinamicFormatation(num,campo){
+                      switch( document.all[ "quebra" + num ].value ){
+                      case "09":
+                          return FormataCampo( campo , 'XX99999999' );
+                          break;
+                      default  :
+                          return SomenteNumeros();
+                          break;
+                      }
+                  }
+                  function VerificaMotivos(){
+                      for( i=0; document.all.indSubMotivos.length > 0; i++ ){
+                          document.all.indSubMotivos.remove( 0 );
+                      }
+                      if( document.all[ "indMotivos" ][document.all[ "indMotivos" ].selectedIndex].value != 00 ){
+                          switch( document.all[ "indMotivos" ].value ){
+                          case "02":
+                               document.all[ "indSubMotivos" ].disabled = false;
+                               oOption = document.createElement( "OPTION" );
+                               oOption.value = 00;
+                               oOption.text = '--Todos--';
+                               document.all.indSubMotivos.add( oOption );
+                               oOption = null;
+                               oOption = document.createElement( "OPTION" );
+                               oOption.value = 21;
+                               oOption.text = 'Falta Real';
+                               document.all.indSubMotivos.add( oOption );
+                               oOption = null;
+                               oOption = document.createElement( "OPTION" );
+                               oOption.value = 22;
+                               oOption.text = 'Falta Teórica';
+                               document.all.indSubMotivos.add( oOption );
+                               oOption = null;
+                               break;
+                          case "03":
+                               document.all[ "indSubMotivos" ].disabled = false;
+                               oOption = document.createElement( "OPTION" );
+                               oOption.value = 00;
+                               oOption.text = '--Todos--';
+                               document.all.indSubMotivos.add( oOption );
+                               oOption = null;
+                               oOption = document.createElement( "OPTION" );
+                               oOption.value = 31;
+                               oOption.text = 'Código da Alçada';
+                               document.all.indSubMotivos.add( oOption );
+                               oOption = null;
+                               oOption = document.createElement( "OPTION" );
+                               oOption.value = 32;
+                               oOption.text = 'Código da Crítica';
+                               document.all.indSubMotivos.add( oOption );
+                               oOption = null;
+                               break;
+                          case "04":
+                               document.all[ "indSubMotivos" ].disabled = false;
+                               oOption = document.createElement( "OPTION" );
+                               oOption.value = 00;
+                               oOption.text = '--Todos--';
+                               document.all.indSubMotivos.add( oOption );
+                               oOption = null;
+                               oOption = document.createElement( "OPTION" );
+                               oOption.value = 41;
+                               oOption.text = 'Orfão Faturamento Pré';
+                               document.all.indSubMotivos.add( oOption );
+                               oOption = null;
+                               oOption = document.createElement( "OPTION" );
+                               oOption.value = 42;
+                               oOption.text = 'Orfão Faturamento Pós';
+                               document.all.indSubMotivos.add( oOption );
+                               oOption = null;
+                               oOption = document.createElement( "OPTION" );
+                               oOption.value = 43;
+                               oOption.text = 'Orfão Roterização';
+                               document.all.indSubMotivos.add( oOption );
+                               oOption = null;
+                               break;
+                          case "05":
+                               document.all[ "indSubMotivos" ].disabled = false;
+                               oOption = document.createElement( "OPTION" );
+                               oOption.value = 00;
+                               oOption.text = '--Todos--';
+                               document.all.indSubMotivos.add( oOption );
+                               oOption = null;
+                               oOption = document.createElement( "OPTION" );
+                               oOption.value = 51;
+                               oOption.text = 'Código Responsável';
+                               document.all.indSubMotivos.add( oOption );
+                               oOption = null;
+                               oOption = document.createElement( "OPTION" );
+                               oOption.value = 52;
+                               oOption.text = 'Código Motivo';
+                               document.all.indSubMotivos.add( oOption );
+                               oOption = null;
+                               break;
+                          case "06":
+                               document.all[ "indSubMotivos" ].disabled = false;
+                               oOption = document.createElement( "OPTION" );
+                               oOption.value = 00;
+                               oOption.text = '--Todos--';
+                               document.all.indSubMotivos.add( oOption );
+                               oOption = null;
+                               oOption = document.createElement( "OPTION" );
+                               oOption.value = 61;
+                               oOption.text = 'Código Responsável';
+                               document.all.indSubMotivos.add( oOption );
+                               oOption = null;
+                               oOption = document.createElement( "OPTION" );
+                               oOption.value = 62;
+                               oOption.text = 'Código Motivo';
+                               document.all.indSubMotivos.add( oOption );
+                               oOption = null;
+                               break;
+                          case "07":
+                               document.all[ "indSubMotivos" ].disabled = true;
+                               oOption = document.createElement( "OPTION" );
+                               oOption.value = 00;
+                               oOption.text = '--Todos--';
+                               document.all.indSubMotivos.add( oOption );
+                               oOption = null;
+                               break;
+                          case "08":
+                               document.all[ "indSubMotivos" ].disabled = true;
+                               oOption = document.createElement( "OPTION" );
+                               oOption.value = 00;
+                               oOption.text = '--Todos--';
+                               document.all.indSubMotivos.add( oOption );
+                               oOption = null;
+                               break;
+                          default:
+                               oOption = document.createElement( "OPTION" );
+                               oOption.value = 00;
+                               oOption.text = '--Todos--';
+                               document.all.indSubMotivos.add( oOption );
+                               oOption = null;
+                               document.all[ "indSubMotivos" ].disabled = true;
+                          }
+                      }else{
+                               oOption = document.createElement( "OPTION" );
+                               oOption.value = 00;
+                               oOption.text = '--Todos--';
+                               document.all.indSubMotivos.add( oOption );
+                               oOption = null;
+                               document.all[ "indSubMotivos" ].disabled = true;
+                      }
+                      VerificaSubMotivos();
+                  }
+                  function VerificaSubMotivos(){
+                     if(( document.all[ "indSubMotivos" ][document.all[ "indSubMotivos" ].selectedIndex].value != 00) && (document.all[ "indMotivos" ].value != 02 ) &&
+                        (document.all[ "indMotivos" ].value != 04 )){
+                         document.all[ "nomeCampo4" ].innerHTML = document.all[ "indSubMotivos" ][document.all[ "indSubMotivos" ].selectedIndex].text;
+                         if( document.all[ "indSubMotivos" ][document.all[ "indSubMotivos" ].selectedIndex].value != 31 ){
+                             document.all.DivAlcadas.style.display = "none";
+                             document.all.DivSubMotivos.style.display = "";
+                             document.all.subMotivosInicial.value = '0';
+                             document.all.subMotivosFinal.value = '99999';
+                             document.all.subMotivosInicial.disabled = false;
+                             document.all.subMotivosFinal.disabled = false;
+                             document.all.subMotivosInicial.className = 'campo';
+                             document.all.subMotivosFinal.className = 'campo';
+                             document.all.cdAlcadaInicial.disabled = true;
+                             document.all.cdAlcadaFinal.disabled = true;
+                         }else{
+                             document.all.DivSubMotivos.style.display = "none";
+                             document.all.DivAlcadas.style.display = "";
+                             document.all.cdAlcadaInicial.disabled = false;
+                             document.all.cdAlcadaFinal.disabled = false;
+                             document.all[ "nomeCampo4" ].innerHTML = 'Alçada';
+                         }
+                     }else{
+                         document.all[ "nomeCampo4" ].innerHTML = 'SubMotivos';
+                         document.all.DivAlcadas.style.display = "none";
+                         document.all.DivSubMotivos.style.display = "";
+                         document.all.subMotivosInicial.value = '0';
+                         document.all.subMotivosFinal.value = '99999';
+                         document.all.subMotivosInicial.disabled = true;
+                         document.all.subMotivosFinal.disabled = true;
+                         document.all.subMotivosInicial.className = 'clsDisabled';
+                         document.all.subMotivosFinal.className = 'clsDisabled';
+                         document.all.cdAlcadaInicial.disabled = false;
+                         document.all.cdAlcadaFinal.disabled = false;
+                     }
+                  }
+                  function SelecionaUnidade() {
+                      document.all.DivSelUniCDP.style.display = "";
+                      document.all.BotOk.focus();
+                  }
+                  function SelecionarStatus(){
+                      document.all.DivStatusNfe.style.display = "";
+                      document.all.BotOk.focus();
+                  }
+                  function AlteraData(){
+                      if( document.all.notas[0].checked == true && document.all.listaNotaCompra.checked == true ){
+                          document.all.lbData.innerHTML = "Operação";
+                      }
+                      else{
+                          document.all.lbData.innerHTML = "Entrega";
+                      }
+                  }
+                  function RetornaSelecao(){
+                     if( document.all.filiaisSelecionadas.length == 0 ){
+                         alert( 'É obrigatorio ter um CDD nas Unidades Selecionadas' );
+                         return false;
+                     }
+                     document.all.DivSelUniCDP.style.display = "none";
+                  }
+                  function RemoveTodas(){
+                      for( i=0; document.all.filiaisDisponiveis.length > 0; i++ ){
+                          document.all.filiaisDisponiveis.remove( 0 );
+                      }
+                      for( i=0; document.all.filiaisSelecionadas.length > 0; i++ ){
+                          document.all.filiaisSelecionadas.remove( 0 );
+                      }
+                  }
+                  function StrSelecionadas(){
+                      var strRetorno = '';
+                      for( i=0; i < document.all.filiaisSelecionadas.length; i++ ){
+                          strRetorno += document.all.filiaisSelecionadas[i].value;
+                      }
+                      if( document.all.selecionaUnidade[0].checked == true ){
+                          for( i=0; i < document.all.filiaisDisponiveis.length; i++ ){
+                              if( document.all.filiaisDisponiveis[i].projetoHab == "S" ){
+                                  strRetorno += document.all.filiaisDisponiveis[i].value;
+                              }
+                          }
+                      }
+                      return( strRetorno );
+                  }
+                  function AdicionaFilial( filiaisDisponiveis ){
+                      var indice = document.all.filiaisDisponiveis.selectedIndex;
+                      if( indice < 0 ){
+                          alert( 'Nenhum item selecionado' );
+                          return false;
+                      }
+                      if( document.all.filiaisDisponiveis[indice].projetoHab != "S" ){
+                          alert("Prj. 216 – Calculo CDP não habilitado. Utilização não permitida");
+                          return false;
+                      }
+                      Adicionar();
+                  }
+                  function AdicionaTotalFilial(){
+                      var qtItens = document.all.filiaisDisponiveis.length;
+                      if( qtItens == 0 ){
+                          alert( 'Nenhum item encontrado' );
+                          return false;
+                      }
+                      var indice = 0;
+                      for( i=0; i < qtItens; i++ ){
+                           if( document.all.filiaisDisponiveis[indice].projetoHab == "S" ){
+                               oOption = document.createElement( "OPTION" );
+                               oOption.value = document.all.filiaisDisponiveis[indice].value;
+                               oOption.text = document.all.filiaisDisponiveis[indice].text;
+                               oOption.projetoHab = document.all.filiaisDisponiveis[indice].projetoHab;
+                               document.all.filiaisSelecionadas.add( oOption );
+                               oOption = null;
+                               document.all.filiaisDisponiveis.remove( indice );
+                           }
+                           else{
+                               indice++;
+                           }
+                      }
+                  }
+                  function Adicionar(){
+                      indiceAdicionar = document.all.filiaisDisponiveis.selectedIndex;
+                      if( indiceAdicionar >= 0 ){
+                          while( indiceAdicionar >= 0 ){
+                              oOption = document.createElement( "OPTION" );
+                              oOption.value = document.all.filiaisDisponiveis(indiceAdicionar).value;
+                              oOption.text = document.all.filiaisDisponiveis(indiceAdicionar).text;
+                              oOption.projetoHab = document.all.filiaisDisponiveis(indiceAdicionar).projetoHab;
+                              oOption.idCadastrado = "N";
+                              document.all.filiaisSelecionadas.add( oOption );
+                              oOption = null;
+                              document.all.filiaisDisponiveis.remove( indiceAdicionar );
+                              Adicionar();
+                          }
+                      }
+                  }
+                  function RetornaFilial( filiaisDisponiveis ){
+                      var indice = document.all.filiaisSelecionadas.selectedIndex;
+                      if( indice < 0 ){
+                          alert( 'Nenhum item selecionado' );
+                          return false;
+                      }
+                      idNaoRemoveu = "N";
+                      Remover();
+                  }
+                  var idNaoRemoveu = "N";
+                  function RetornaTotalFilial(){
+                      var qtItens = document.all.filiaisSelecionadas.length;
+                      if( qtItens == 0 ){
+                          alert( 'Nenhum item encontrado' );
+                          return false;
+                      }
+                      idNaoRemoveu = "N";
+                      for( var i=0; i < qtItens; i++ ){
+                          if( document.all.filiaisSelecionadas( i ).idCadastrado == "S" ){
+                              document.all.filiaisSelecionadas( i ).selected = false;
+                              idNaoRemoveu = "S";
+                          }
+                          else{
+                              oOption = document.createElement( "OPTION" );
+                              oOption.value = document.all.filiaisSelecionadas( i ).value;
+                              oOption.text = document.all.filiaisSelecionadas( i ).text;
+                              oOption.projetoHab = document.all.filiaisSelecionadas( i ).projetoHab;
+                              oOption.idCadastrado = "N";
+                              document.all.filiaisDisponiveis.add( oOption );
+                              oOption = null;
+                              document.all.filiaisSelecionadas.remove( i );
+                              i = i - 1;
+                              qtItens = qtItens - 1;
+                          }
+                      }
+                  }
+                  function Remover(){
+                      indiceRemover = document.all.filiaisSelecionadas.selectedIndex;
+                      if( indiceRemover >= 0 ){
+                          while( indiceRemover >= 0 ){
+                              if( document.all.filiaisSelecionadas(indiceRemover).idCadastrado == "S" ){
+                                  document.all.filiaisSelecionadas(indiceRemover).selected = false;
+                                  idNaoRemoveu = "S";
+                              }
+                              else{
+                                  oOption = document.createElement( "OPTION" );
+                                  oOption.value = document.all.filiaisSelecionadas(indiceRemover).value;
+                                  oOption.text = document.all.filiaisSelecionadas(indiceRemover).text;
+                                  oOption.projetoHab = document.all.filiaisSelecionadas( indiceRemover ).projetoHab;
+                                  oOption.idCadastrado = "N";
+                                  document.all.filiaisDisponiveis.add( oOption );
+                                  oOption = null;
+                                  document.all.filiaisSelecionadas.remove( indiceRemover );
+                              }
+                              Remover();
+                          }
+                      }
+                  }
+               </SCRIPT>
+<INPUT type=hidden name=visaoConsolidadora> <INPUT type=hidden name=quebra1Ini9> <INPUT type=hidden name=quebra1Fim9> <INPUT type=hidden name=quebra2Ini9> <INPUT type=hidden name=quebra2Fim9> <INPUT type=hidden name=quebra3Ini9> <INPUT type=hidden name=quebra3Fim9> <INPUT type=hidden name=listaFiliais> 
+<DIV>
+<TABLE width="100%">
+<TBODY>
+<TR>
+<TD>
+<TABLE class=WindowScreen borderColor=white cellSpacing=1 borderColorDark=white cellPadding=8 rules=none width="100%" borderColorLight=dimgray border=1>
+<TBODY>
+<TR>
+<TD width="50%">
+<TABLE height="100%" width="100%" border=0>
+<TBODY>
+<TR>
+<TD>
+<FIELDSET style="LEFT: 19px; TOP: 19px"><LEGEND><LABEL class=titulocampo>&nbsp;Opções&nbsp;</LABEL></LEGEND>
+<TABLE class=WindowScreen style="MARGIN-TOP: 5px" borderColor=white cellSpacing=1 borderColorDark=white cellPadding=2 rules=none align=center borderColorLight=dimgray border=0>
+<TBODY>
+<TR>
+<TD class=titulocampo>Quebra 1 
+<TD><SELECT onchange=Carrega(1); tabIndex=1 onblur=Carrega(1); class=combo onkeydown="DigitaCombo( this );" style="WIDTH: 160px" name=quebra1> <OPTION value=00>--Selecionar--</OPTION> <OPTION selected value=01>Geral</OPTION> <OPTION value=02>CDD</OPTION> <OPTION value=03>Canal(Rota/AS)</OPTION> <OPTION value=04>Gerente de Vendas</OPTION> <OPTION value=05>Area</OPTION> <OPTION value=06>Setor</OPTION> <OPTION value=07>Vendedor</OPTION> <OPTION value=08>Cliente</OPTION> <OPTION value=09>Município</OPTION> <OPTION value=10>Categoria(do cliente)</OPTION> <OPTION value=11>Operação</OPTION> <OPTION value=12>Transportadora</OPTION> <OPTION value=13>NR Roadshow</OPTION> <OPTION value=14>Tipo Marca</OPTION> <OPTION value=15>Embalagem</OPTION> <OPTION value=16>Mercadoria</OPTION> <OPTION value=17>Origem(VDI/VDE/Fácil/AS)</OPTION> <OPTION value=18>Marca</OPTION> <OPTION value=19>Tipo Movimento</OPTION> <OPTION value=20>Rede</OPTION></SELECT> 
+<TR>
+<TD class=titulocampo>Quebra 2 
+<TD><SELECT onchange=Carrega(2); tabIndex=2 disabled onblur=Carrega(2); class=combo onkeydown="DigitaCombo( this );" style="WIDTH: 160px" name=quebra2> <OPTION selected value=00>--Selecionar--</OPTION> <OPTION value=02>CDD</OPTION> <OPTION value=03>Canal(Rota/AS)</OPTION> <OPTION value=04>Gerente de Vendas</OPTION> <OPTION value=05>Area</OPTION> <OPTION value=06>Setor</OPTION> <OPTION value=07>Vendedor</OPTION> <OPTION value=08>Cliente</OPTION> <OPTION value=09>Município</OPTION> <OPTION value=10>Categoria(do cliente)</OPTION> <OPTION value=11>Operação</OPTION> <OPTION value=12>Transportadora</OPTION> <OPTION value=13>NR Roadshow</OPTION> <OPTION value=14>Tipo Marca</OPTION> <OPTION value=15>Embalagem</OPTION> <OPTION value=16>Mercadoria</OPTION> <OPTION value=17>Origem(VDI/VDE/Fácil/AS)</OPTION> <OPTION value=18>Marca</OPTION> <OPTION value=19>Tipo Movimento</OPTION> <OPTION value=20>Rede</OPTION></SELECT> 
+<TR>
+<TD class=titulocampo>Quebra 3 
+<TD><SELECT onchange=Carrega(3); tabIndex=3 disabled onblur=Carrega(3); class=combo onkeydown="DigitaCombo( this );" style="WIDTH: 160px" name=quebra3> <OPTION selected value=00>--Selecionar--</OPTION> <OPTION value=02>CDD</OPTION> <OPTION value=03>Canal(Rota/AS)</OPTION> <OPTION value=04>Gerente de Vendas</OPTION> <OPTION value=05>Area</OPTION> <OPTION value=06>Setor</OPTION> <OPTION value=07>Vendedor</OPTION> <OPTION value=08>Cliente</OPTION> <OPTION value=09>Município</OPTION> <OPTION value=10>Categoria(do cliente)</OPTION> <OPTION value=11>Operação</OPTION> <OPTION value=12>Transportadora</OPTION> <OPTION value=13>NR Roadshow</OPTION> <OPTION value=14>Tipo Marca</OPTION> <OPTION value=15>Embalagem</OPTION> <OPTION value=16>Mercadoria</OPTION> <OPTION value=17>Origem(VDI/VDE/Fácil/AS)</OPTION> <OPTION value=18>Marca</OPTION> <OPTION value=19>Tipo Movimento</OPTION> <OPTION value=20>Rede</OPTION></SELECT> 
+<TR>
+<TD class=titulocampo>Motivos 
+<TD colSpan=2><SELECT onchange=VerificaMotivos(); tabIndex=4 onblur=VerificaMotivos(); class=combo onkeydown="DigitaCombo( this );" style="WIDTH: 160px" name=indMotivos> <OPTION selected value=00>--Todos--</OPTION> <OPTION value=01>Pedido Excluído</OPTION> <OPTION value=02>Falta Total</OPTION> <OPTION value=03>Crítica de Pedidos</OPTION> <OPTION value=04>Pedido Órfão</OPTION> <OPTION value=05>Cancelamento</OPTION> <OPTION value=06>Devolução</OPTION> <OPTION value=07>Reprogramado</OPTION> <OPTION value=08>Preservado</OPTION></SELECT> 
+<TR>
+<TD class=titulocampo>SubMotivos 
+<TD colSpan=2><SELECT onchange=VerificaSubMotivos(); tabIndex=5 onblur=VerificaSubMotivos(); class=combo onkeydown="DigitaCombo( this );" style="WIDTH: 160px" name=indSubMotivos> <OPTION selected value=00>--Todos--</OPTION></SELECT> 
+<TR>
+<TD class=titulocampo>Origem 
+<TD colSpan=2><SELECT tabIndex=6 class=combo onkeydown="DigitaCombo( this );" style="WIDTH: 160px" name=indPalmtop> <OPTION selected value="">--Todos--</OPTION><OPTION value=S>Palmtop</OPTION><OPTION value=D>Digitado</OPTION><OPTION value=R>Descarga Remota</OPTION><OPTION value=E>EDI</OPTION><OPTION value=T>Telemarketing</OPTION><OPTION value=B>Balcão</OPTION><OPTION value=P>PCA</OPTION><OPTION value=G>Reprogramação de Pedido</OPTION><OPTION value=H>Pedidos Agendados</OPTION><OPTION value=V>Televendas</OPTION><OPTION value=Y>Site</OPTION><OPTION value=C>GCAD</OPTION><OPTION value=J>Evento</OPTION><OPTION value=I>Digitado Televendas</OPTION></SELECT> 
+<TR>
+<TD class=titulocampo>Ajuste 
+<TD colSpan=2><SELECT tabIndex=7 class=combo onkeydown="DigitaCombo( this );" style="WIDTH: 160px" name=indExpurgo> <OPTION selected value=01>Sem Volume Ajustado</OPTION> <OPTION value=02>Com Volume Ajustado</OPTION> <OPTION value=03>Somente Volume Ajustado</OPTION></SELECT> </TR></TBODY></TABLE></FIELDSET> 
+<TR>
+<TD height=1>
+<TR>
+<TD>
+<FIELDSET><LEGEND><LABEL class=titulocampo>&nbsp;Preferências&nbsp;</LABEL></LEGEND>
+<TABLE class=WindowScreen style="MARGIN: 5px 2px 7px" borderColor=white cellSpacing=1 borderColorDark=white cellPadding=2 rules=none align=center borderColorLight=dimgray border=0>
+<TBODY>
+<TR>
+<TD vAlign=top rowSpan=4 align=center>
+<FIELDSET id=fieldsetStatusNota><LEGEND><LABEL class=titulocampo>&nbsp;Opção&nbsp;</LABEL></LEGEND>
+<TABLE class=WindowScreen style="MARGIN: 3px 2px 4px" borderColor=white cellSpacing=1 borderColorDark=white cellPadding=0 width="95%" align=center borderColorLight=dimgray border=0>
+<TBODY>
+<TR>
+<TD class=titulocampo height=4 width="50%">
+<DIV align=left><INPUT tabIndex=7 class=radio type=radio value=T name=selecionaUnidade>&nbsp;Todos CDDs da Geo</DIV>
+<TR>
+<TD class=titulocampo height=4 width="50%">
+<DIV align=left><INPUT tabIndex=7 class=radio CHECKED type=radio value=U name=selecionaUnidade>&nbsp;Unidade</DIV>
+<TR>
+<TD class=titulocampo height=4>
+<DIV align=left><IMG onclick=SelecionaUnidade(); title="Seleciona Unidades" style="CURSOR: hand" name=BotPesquisaUnidade src="../icons/busca.gif">&nbsp;Seleciona Unidades</DIV></TR></TBODY></TABLE></FIELDSET> 
+<TD class=titulocampo>
+<DIV align=left><INPUT tabIndex=9 class=checkbox type=checkbox value=S name=todasOperacoes>&nbsp;Todas as Operações</DIV>
+<TR>
+<TD class=titulocampo colSpan=2>
+<DIV align=left><INPUT tabIndex=10 class=checkbox type=checkbox value=S name=todasAlcadasCriticas>&nbsp;Todas as Alçadas de Criticas</DIV>
+<TR>
+<TD class=titulocampo colSpan=2>
+<DIV align=left><INPUT tabIndex=11 class=checkbox type=checkbox value=S name=todasCriticas>&nbsp;Todas as Criticas</DIV>
+<TR>
+<TD class=titulocampo colSpan=2>
+<DIV align=left><INPUT tabIndex=12 class=checkbox CHECKED type=checkbox value=S name=pedidosExcluidos>&nbsp;Pedidos Excluídos</DIV>
+<TR>
+<TD vAlign=top rowSpan=2 align=center>
+<FIELDSET><LEGEND><LABEL class=titulocampo>&nbsp;Área de Roteirização&nbsp;</LABEL></LEGEND>
+<TABLE class=WindowScreen style="MARGIN: 3px 2px 4px" borderColor=white cellSpacing=1 borderColorDark=white cellPadding=0 width="95%" align=center borderColorLight=dimgray border=0>
+<TBODY>
+<TR>
+<TD class=titulocampo height=4 width="50%">
+<DIV align=left><INPUT tabIndex=8 class=radio CHECKED type=radio value=T name=tipoRoteirizacao>&nbsp;Todas</DIV>
+<TD class=titulocampo height=4 width="50%">
+<DIV align=left><INPUT tabIndex=8 class=radio type=radio value=R name=tipoRoteirizacao>&nbsp;Rota</DIV>
+<TD class=titulocampo height=4 width="50%">
+<DIV align=left><INPUT tabIndex=8 class=radio type=radio value=A name=tipoRoteirizacao>&nbsp;AS</DIV></TR></TBODY></TABLE></FIELDSET> 
+<TD class=titulocampo colSpan=2>
+<DIV align=left><INPUT tabIndex=13 class=checkbox type=checkbox value=S name=apenasPedForaRota>&nbsp;Apenas Pedidos Fora de Rota</DIV>
+<TR>
+<TD class=titulocampo colSpan=2>&nbsp; </TR></TBODY></TABLE></FIELDSET></TD></TR></TBODY></TABLE>
+<TD>
+<TABLE height="100%" width="100%" border=0>
+<TBODY>
+<TR>
+<TD vAlign=top noWrap>
+<FIELDSET><LEGEND><LABEL class=titulocampo>&nbsp;Seleções&nbsp;</LABEL></LEGEND>
+<TABLE class=WindowScreen style="MARGIN-TOP: 5px" borderColor=white cellSpacing=1 borderColorDark=white cellPadding=0 rules=none align=center borderColorLight=dimgray border=0>
+<TBODY>
+<TR>
+<TD width=170>&nbsp;</TD>
+<TD class=titulocampo>
+<DIV align=center>Inicial</DIV></TD>
+<TD class=titulocampo>
+<DIV align=center>Final</DIV></TD>
+<TR>
+<TD id=nomeCampo1 class=titulocampo>Geral
+<TD>&nbsp;<INPUT tabIndex=14 onkeypress="return DinamicFormatation('1',this)" disabled onblur="DinamicFormatation('1',this)" class=clsDisabled size=10 value=0 name=quebra1Inicial> 
+<TD>&nbsp;<INPUT tabIndex=15 onkeypress="return DinamicFormatation('1',this)" disabled onblur="DinamicFormatation('1',this)" class=clsDisabled size=10 value=99999999 name=quebra1Final obrigatorio="1"> 
+<TR>
+<TD id=nomeCampo2 class=titulocampo>
+<TD>&nbsp;<INPUT tabIndex=16 onkeypress="return DinamicFormatation('2',this)" disabled onblur="DinamicFormatation('2',this)" class=clsDisabled size=10 name=quebra2Inicial> 
+<TD>&nbsp;<INPUT tabIndex=17 onkeypress="return DinamicFormatation('2',this)" disabled onblur="DinamicFormatation('2',this)" class=clsDisabled size=10 name=quebra2Final obrigatorio="1"> 
+<TR>
+<TD id=nomeCampo3 class=titulocampo>
+<TD>&nbsp;<INPUT tabIndex=18 onkeypress="return DinamicFormatation('3',this)" disabled onblur="DinamicFormatation('3',this)" class=clsDisabled size=10 name=quebra3Inicial> 
+<TD>&nbsp;<INPUT tabIndex=19 onkeypress="return DinamicFormatation('3',this)" disabled onblur="DinamicFormatation('3',this)" class=clsDisabled size=10 name=quebra3Final obrigatorio="1"> 
+<TR>
+<TD id=nomeCampo4 class=titulocampo>SubMotivos
+<TD colSpan=2>
+<DIV id=DivSubMotivos>&nbsp;<INPUT tabIndex=20 onkeypress="return SomenteNumeros()" disabled class=clsDisabled maxLength=10 size=10 value=0 name=subMotivosInicial> &nbsp;<INPUT tabIndex=21 onkeypress="return SomenteNumeros()" disabled class=clsDisabled maxLength=10 size=10 value=99999999 name=subMotivosFinal obrigatorio="1"> </DIV>
+<DIV id=DivAlcadas style="PADDING-TOP: 2px; DISPLAY: none">&nbsp;<SELECT tabIndex=20 class=combo style="WIDTH: 80px" name=cdAlcadaInicial bloco="1"><OPTION selected value=06>SC</OPTION><OPTION value=05>SC</OPTION><OPTION value=04>SC</OPTION><OPTION value=03>GAF</OPTION><OPTION value=09>CAF</OPTION><OPTION value=11>ETP</OPTION><OPTION value=02>GDD</OPTION><OPTION value=01>GV</OPTION><OPTION value=10>SV</OPTION><OPTION value=07>VD</OPTION><OPTION value=08>GOD</OPTION></SELECT> &nbsp;<SELECT tabIndex=21 class=combo style="WIDTH: 80px" name=cdAlcadaFinal bloco="1"><OPTION value=06>SC</OPTION><OPTION value=05>SC</OPTION><OPTION value=04>SC</OPTION><OPTION value=03>GAF</OPTION><OPTION value=09>CAF</OPTION><OPTION value=11>ETP</OPTION><OPTION value=02>GDD</OPTION><OPTION value=01>GV</OPTION><OPTION value=10>SV</OPTION><OPTION selected value=07>VD</OPTION><OPTION value=08>GOD</OPTION></SELECT> </DIV>
+<TR>
+<TD class=titulocampo>Data Pedido 
+<TD>&nbsp;<INPUT tabIndex=22 onkeypress="return SomenteNumeros( '/' )" onblur="FormataCampo( this,'99/99/9999' );" class=campo maxLength=10 size=10 value=01/07/2026 name=dataInicial obrigatorio="1" data="1"> 
+<TD>&nbsp;<INPUT tabIndex=23 onkeypress="return SomenteNumeros( '/' )" onblur="FormataCampo( this,'99/99/9999' );" class=campo maxLength=10 size=10 value=20/07/2026 name=dataFinal obrigatorio="1" data="1"> 
+<TR>
+<TD class=titulocampo>Tipo Marca 
+<TD>&nbsp;<INPUT tabIndex=24 onkeypress="return SomenteNumeros()" class=campo maxLength=14 size=10 value=0 name=tipoMarcaInicial> 
+<TD>&nbsp;<INPUT tabIndex=25 onkeypress="return SomenteNumeros()" class=campo maxLength=14 size=10 value=99999999 name=tipoMarcaFinal obrigatorio="1"> 
+<TR>
+<TD class=titulocampo>Embalagem 
+<TD>&nbsp;<INPUT tabIndex=26 onkeypress="return SomenteNumeros()" class=campo maxLength=5 size=10 value=0 name=embalagemInicial> 
+<TD>&nbsp;<INPUT tabIndex=27 onkeypress="return SomenteNumeros()" class=campo maxLength=5 size=10 value=99999999 name=embalagemFinal obrigatorio="1"> 
+<TR>
+<TD class=titulocampo>Mercadoria 
+<TD>&nbsp;<INPUT tabIndex=28 onkeypress="return SomenteNumeros()" class=campo maxLength=7 size=10 value=0 name=mercadoriaInicial> 
+<TD>&nbsp;<INPUT tabIndex=29 onkeypress="return SomenteNumeros()" class=campo maxLength=7 size=10 value=99999999 name=mercadoriaFinal obrigatorio="1"> 
+<TR>
+<TD height=22 colSpan=3></TR></TBODY></TABLE></FIELDSET> 
+<TR>
+<TD height=10>
+<TR>
+<TD>
+<TR>
+<TD height=5>
+<TR>
+<TD>
+<FIELDSET id=fildConverte><LEGEND><LABEL class=titulocampo>&nbsp;Visão Multi CDD&nbsp;</LABEL></LEGEND>
+<TABLE class=WindowScreen style="MARGIN: 5px 2px 7px" borderColor=white cellSpacing=1 borderColorDark=white cellPadding=0 rules=none width="98%" align=center borderColorLight=dimgray border=0>
+<TBODY>
+<TR>
+<TD class=titulocampo2 width="24%"><INPUT tabIndex=31 id=radio1 class=radio CHECKED type=radio value=C name=idVisaoMultiCdd>&nbsp;Contábil 
+<TD class=titulocampo2 width="27%"><INPUT tabIndex=31 id=radio1 class=radio type=radio value=G name=idVisaoMultiCdd>&nbsp;Gerencial 
+<TD><SELECT tabIndex=32 class=combo name=idSelecaoMultiCdd obrigatorio="1"> <OPTION selected value=T>Todas as Movimentações</OPTION> <OPTION value=S>Sem Multi-CDD</OPTION> <OPTION value=M>Somente Multi-CDD</OPTION></SELECT> </TR></TBODY></TABLE></FIELDSET> </TR></TBODY></TABLE></TR></TBODY></TABLE></TR></TBODY></TABLE>
+<TABLE width="100%">
+<TBODY>
+<TR>
+<TD width="100%">
+<TD noWrap><BUTTON onclick="return Visualizar();" tabIndex=99 title="Visualizar Impressão" class=botao accessKey=V name=BotVisualizar><LABEL><U>V</U>isualizar</LABEL></BUTTON> <INPUT type=hidden value=1 name=GeraExcel> </TR></TBODY></TABLE>&nbsp; </DIV>
+<DIV id=DivSelUniCDP style="POSITION: absolute; LEFT: 0px; DISPLAY: none; TOP: 20px">
+<TABLE borderColor=white height=440 cellSpacing=0 borderColorDark=dimgray cellPadding=2 rules=none width=780 align=center borderColorLight=white border=2>
+<TBODY>
+<TR vAlign=middle>
+<TD id=titulo style="FONT-SIZE: 11px; CURSOR: hand; FONT-FAMILY: Tahoma; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr=#000066, EndColorStr=LIGHTSKYBLUE )" bgColor=darkblue width="98%">&nbsp; <FONT color=white face=Arial>&nbsp;<B>Seleção de Unidades CDP&nbsp;[ pizolitt ]</B></FONT> 
+<TD onclick=RetornaSelecao(); style="CURSOR: hand; BACKGROUND-COLOR: lightskyblue" bgColor=darkblue height=18 width=5><FONT color=white size=1 face="Arial Black">X</FONT>&nbsp; 
+<TR>
+<TD bgColor=silver colSpan=2><BR>
+<TABLE class=WindowScreen borderColor=white cellSpacing=1 borderColorDark=white cellPadding=0 rules=none width="100%" borderColorLight=dimgray border=1>
+<TBODY>
+<TR>
+<TD colSpan=2>&nbsp; 
+<TR>
+<TD colSpan=2>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+<TBODY>
+<TR>
+<TD class=titulocampo colSpan=3 noWrap>
+<DIV style="MARGIN-LEFT: 20px" align=left><B>Unidades Disponíveis</B></DIV>
+<TD class=titulocampo noWrap>
+<DIV style="MARGIN-LEFT: 20px" align=left><B>Unidades Selecionadas</B></DIV>
+<TR>
+<TD width="48%" colSpan=2><SELECT tabIndex=2 class=combo style="WIDTH: 332px" multiple size=18 name=filiaisDisponiveis align=center bloco2="1"></SELECT> 
+<TD width="4%">
+<TABLE width="100%" align=center border=0>
+<TBODY>
+<TR>
+<TD align=center><BUTTON onclick=AdicionaTotalFilial(); tabIndex=3 title="Adiciona Todas as Filiais" style="WIDTH: 25px" bloco2="1">&gt;&gt;</BUTTON><BR>
+<TR>
+<TD align=center><BUTTON onclick=AdicionaFilial(); tabIndex=4 title="Adiciona Filial Selecionada" style="WIDTH: 25px" bloco2="1">&gt;</BUTTON><BR>
+<TR>
+<TD align=center><BUTTON onclick=RetornaFilial(); tabIndex=5 title="Retorna Filial Selecionada" style="WIDTH: 25px" bloco2="1">&lt;</BUTTON><BR>
+<TR>
+<TD align=center><BUTTON onclick=RetornaTotalFilial(); tabIndex=6 title="Retorna Todas as Filiais" style="WIDTH: 25px" bloco2="1">&lt;&lt;</BUTTON> </TR></TBODY></TABLE>
+<TD><SELECT tabIndex=7 class=combo style="WIDTH: 332px" multiple size=18 name=filiaisSelecionadas align=center bloco2="1"><OPTION value=1450004 projetoHab="S">145.0004 - BEIRA RIO</OPTION><OPTION value=1560001 projetoHab="S">156.0001 - REVALLE - JUAZEIRO</OPTION><OPTION value=1560002 projetoHab="S">156.0002 - REVALLE - NORDESTE</OPTION><OPTION value=1560003 projetoHab="S">156.0003 - REVALLE - SR. BONFIM</OPTION><OPTION value=3040005 projetoHab="S">304.0005 - REVALLE - P AFONSO</OPTION><OPTION value=3410006 projetoHab="S">341.0006 - REVALLE - ALAGOINHAS</OPTION><OPTION value=3410007 projetoHab="S">341.0007 - REVALLE - SERRINHA</OPTION></SELECT>&nbsp; 
+<TR>
+<TD colSpan=4>&nbsp; </TR></TBODY></TABLE></TR></TBODY></TABLE>
+<TABLE width="100%" border=0>
+<TBODY>
+<TR>
+<TD bgColor=silver colSpan=2><BR>
+<TD bgColor=silver height=30 colSpan=2>
+<DIV align=right><BUTTON onclick=RetornaSelecao(); tabIndex=499 class=botao style="WIDTH: 45px" accessKey=O name=BotOk><LABEL><U>O</U>K</LABEL></BUTTON>&nbsp;</DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></DIV>
+<SCRIPT>
+                  function ValidaParRel(){
+                     FormataCampo( document.all.dataInicial, '99/99/9999' );
+                     FormataCampo( document.all.dataFinal, '99/99/9999' );
+                     if( document.all.quebra1.value == 0 && document.all.quebra2.value == 0 && document.all.quebra3.value == 0 ){
+                         alert( 'Informação inválida' );
+                         document.all.quebra1.focus();
+                         return false;
+                     }
+                     var auxQuebra1 = document.all.quebra1.value;
+                     var auxQuebra2 = document.all.quebra2.value;
+                     var auxQuebra3 = document.all.quebra3.value;
+                     if( auxQuebra1 == 0 ){
+                         alert( 'Informação inválida' );
+                         document.all.quebra1.focus();
+                         return false;
+                     }
+                     if( auxQuebra2 == 0 && auxQuebra3 != 0  ){
+                         alert( 'Informação inválida' );
+                         document.all.quebra2.focus();
+                         return false;
+                     }
+                     if( !ValidaCampos() ){
+                         return false;
+                     }
+                     if( document.all.quebra1.selectedIndex > 1 ){
+                         if( !ComparaValor( 'quebra1Inicial', 'quebra1Final', document.all.quebra1[document.all.quebra1.selectedIndex].text ) ){
+                             return false;
+                         }
+                     }
+                     if( document.all.quebra2.selectedIndex > 1 ){
+                         if( !ComparaValor( 'quebra2Inicial', 'quebra2Final', document.all.quebra2[document.all.quebra2.selectedIndex].text ) ){
+                             return false;
+                         }
+                     }
+                     if( document.all.quebra3.selectedIndex > 1 ){
+                         if( !ComparaValor( 'quebra3Inicial', 'quebra3Final', document.all.quebra3[document.all.quebra3.selectedIndex].text ) ){
+                             return false;
+                         }
+                     }
+                     if( document.all.indSubMotivos.selectedIndex > 1 && document.all.subMotivosInicial.disabled == false ){
+                         if( !ComparaValor( 'subMotivosInicial', 'subMotivosFinal', document.all.indSubMotivos[document.all.indSubMotivos.selectedIndex].text ) ){
+                             return false;
+                         }
+                     }
+                     if( DataMaior( document.all.dataInicial.value, document.all.dataFinal.value ) ){
+                         alert( 'Data inicial menor que data final' );
+                         document.all.dataInicial.select();
+                         return false;
+                     }
+                     document.all.tipoMarcaInicial.value = document.all.tipoMarcaInicial.value.replace( ".", "" ).replace( ".", "" )
+                     document.all.tipoMarcaFinal.value = document.all.tipoMarcaFinal.value.replace( ".", "" ).replace( ".", "" )
+                     if( !ComparaValor( 'tipoMarcaInicial', 'tipoMarcaFinal', 'Tipo Marca' ) ){
+                         return false;
+                     }
+                     if( !ComparaValor( 'embalagemInicial', 'embalagemFinal', 'Embalagem' ) ){
+                         return false;
+                     }
+                     if( !ComparaValor( 'mercadoriaInicial', 'mercadoriaFinal', 'Mercadoria' ) ){
+                         return false;
+                     }
+                     if( document.all.quebra1.value == 9 ){
+                         document.all.quebra1Ini9.value = document.all.quebra1Inicial.value;
+                         document.all.quebra1Fim9.value = document.all.quebra1Final.value;
+                     }
+                     if( document.all.quebra2.value == 9 ){
+                         document.all.quebra2Ini9.value = document.all.quebra2Inicial.value;
+                         document.all.quebra2Fim9.value = document.all.quebra2Final.value;
+                     }
+                     if( document.all.quebra3.value == 9 ){
+                         document.all.quebra3Ini9.value = document.all.quebra3Inicial.value;
+                         document.all.quebra3Fim9.value = document.all.quebra3Final.value;
+                     }
+                     document.all.listaFiliais.value = StrSelecionadas();
+                     return true;
+                  }
+               </SCRIPT>
+<INPUT id=hiddenindPalmtop type=hidden value=--Todos-->
+<SCRIPT>
+                        if( document.parentWindow.parent.rotina.document.all ( 'indPalmtop' ).options[0] == null ){
+                            document.all ( 'hiddenindPalmtop' ).value = 'NaoExisteOpcaoInicial';
+                            oOption = document.createElement( "OPTION" );
+                            oOption.value = 'CCC';
+                            oOption.text = ' Carregando ... ';
+                            document.parentWindow.parent.rotina.document.all ( 'indPalmtop' ).add( oOption );
+                            oOption = null;
+                        }
+                        else {
+                            document.all ( 'hiddenindPalmtop' ).value = document.parentWindow.parent.rotina.document.all ( 'indPalmtop' ).options[0].text;
+                            document.parentWindow.parent.rotina.document.all ( 'indPalmtop' ).options[0].text = ' Carregando ... ';
+                        }
+                    </SCRIPT>
+
+<SCRIPT>
+                   function CCmbindPalmtop(vlrCmb,txtCmb){oOpt=document.createElement("OPTION");oOpt.value=vlrCmb;oOpt.text=txtCmb;parent.frames['rotina'].document.all ('indPalmtop').add(oOpt);oOpt=null;}CCmbindPalmtop("S","Palmtop");CCmbindPalmtop("D","Digitado");CCmbindPalmtop("R","Descarga Remota");CCmbindPalmtop("E","EDI");CCmbindPalmtop("T","Telemarketing");CCmbindPalmtop("B","Balcão");CCmbindPalmtop("P","PCA");CCmbindPalmtop("G","Reprogramação de Pedido");CCmbindPalmtop("H","Pedidos Agendados");CCmbindPalmtop("V","Televendas");CCmbindPalmtop("Y","Site");CCmbindPalmtop("C","GCAD");CCmbindPalmtop("J","Evento");CCmbindPalmtop("I","Digitado Televendas");
+               </SCRIPT>
+
+<SCRIPT>
+                        document.parentWindow.parent.rotina.document.all ( 'indPalmtop' ).value = '';
+                    </SCRIPT>
+
+<SCRIPT>
+                        if( document.all ( 'hiddenindPalmtop' ).value == 'NaoExisteOpcaoInicial' ){
+                            document.parentWindow.parent.rotina.document.all ( 'indPalmtop' ).remove( 0 );
+                        }
+                        else {
+                            document.parentWindow.parent.rotina.document.all ( 'indPalmtop' ).options[0].text = document.all ( 'hiddenindPalmtop' ).value;
+                        }
+                        document.parentWindow.parent.rotina.document.all ( 'indPalmtop' ).disabled = false;
+                    </SCRIPT>
+
+<SCRIPT>
+                    option = document.createElement('option');
+                    option.setAttribute('value','1450004');
+                    option.setAttribute('projetoHab','S');
+                    option.appendChild(document.createTextNode('145.0004 - BEIRA RIO'));
+                    document.getElementById ( "filiaisSelecionadas" ).appendChild(option);
+                    option = null;
+                </SCRIPT>
+
+<SCRIPT>
+                    option = document.createElement('option');
+                    option.setAttribute('value','1560001');
+                    option.setAttribute('projetoHab','S');
+                    option.appendChild(document.createTextNode('156.0001 - REVALLE - JUAZEIRO'));
+                    document.getElementById ( "filiaisDisponiveis" ).appendChild(option);
+                    option = null;
+                </SCRIPT>
+
+<SCRIPT>
+                    option = document.createElement('option');
+                    option.setAttribute('value','1560002');
+                    option.setAttribute('projetoHab','S');
+                    option.appendChild(document.createTextNode('156.0002 - REVALLE - NORDESTE'));
+                    document.getElementById ( "filiaisDisponiveis" ).appendChild(option);
+                    option = null;
+                </SCRIPT>
+
+<SCRIPT>
+                    option = document.createElement('option');
+                    option.setAttribute('value','1560003');
+                    option.setAttribute('projetoHab','S');
+                    option.appendChild(document.createTextNode('156.0003 - REVALLE - SR. BONFIM'));
+                    document.getElementById ( "filiaisDisponiveis" ).appendChild(option);
+                    option = null;
+                </SCRIPT>
+
+<SCRIPT>
+                    option = document.createElement('option');
+                    option.setAttribute('value','3040005');
+                    option.setAttribute('projetoHab','S');
+                    option.appendChild(document.createTextNode('304.0005 - REVALLE - P AFONSO'));
+                    document.getElementById ( "filiaisDisponiveis" ).appendChild(option);
+                    option = null;
+                </SCRIPT>
+
+<SCRIPT>
+                    option = document.createElement('option');
+                    option.setAttribute('value','3410006');
+                    option.setAttribute('projetoHab','S');
+                    option.appendChild(document.createTextNode('341.0006 - REVALLE - ALAGOINHAS'));
+                    document.getElementById ( "filiaisDisponiveis" ).appendChild(option);
+                    option = null;
+                </SCRIPT>
+
+<SCRIPT>
+                    option = document.createElement('option');
+                    option.setAttribute('value','3410007');
+                    option.setAttribute('projetoHab','S');
+                    option.appendChild(document.createTextNode('341.0007 - REVALLE - SERRINHA'));
+                    document.getElementById ( "filiaisDisponiveis" ).appendChild(option);
+                    option = null;
+                </SCRIPT>
+ <INPUT id=hiddencdAlcadaInicial type=hidden value=NaoExisteOpcaoInicial>
+<SCRIPT>
+                        if( document.parentWindow.parent.rotina.document.all ( 'cdAlcadaInicial' ).options[0] == null ){
+                            document.all ( 'hiddencdAlcadaInicial' ).value = 'NaoExisteOpcaoInicial';
+                            oOption = document.createElement( "OPTION" );
+                            oOption.value = 'CCC';
+                            oOption.text = ' Carregando ... ';
+                            document.parentWindow.parent.rotina.document.all ( 'cdAlcadaInicial' ).add( oOption );
+                            oOption = null;
+                        }
+                        else {
+                            document.all ( 'hiddencdAlcadaInicial' ).value = document.parentWindow.parent.rotina.document.all ( 'cdAlcadaInicial' ).options[0].text;
+                            document.parentWindow.parent.rotina.document.all ( 'cdAlcadaInicial' ).options[0].text = ' Carregando ... ';
+                        }
+                    </SCRIPT>
+
+<SCRIPT>
+                   function CCmbcdAlcadaInicial(vlrCmb,txtCmb){oOpt=document.createElement("OPTION");oOpt.value=vlrCmb;oOpt.text=txtCmb;parent.frames['rotina'].document.all ('cdAlcadaInicial').add(oOpt);oOpt=null;}CCmbcdAlcadaInicial("06","SC");CCmbcdAlcadaInicial("05","SC");CCmbcdAlcadaInicial("04","SC");CCmbcdAlcadaInicial("03","GAF");CCmbcdAlcadaInicial("09","CAF");CCmbcdAlcadaInicial("11","ETP");CCmbcdAlcadaInicial("02","GDD");CCmbcdAlcadaInicial("01","GV");CCmbcdAlcadaInicial("10","SV");CCmbcdAlcadaInicial("07","VD");CCmbcdAlcadaInicial("08","GOD");
+               </SCRIPT>
+
+<SCRIPT>
+                        document.parentWindow.parent.rotina.document.all ( 'cdAlcadaInicial' ).value = '06';
+                    </SCRIPT>
+
+<SCRIPT>
+                        if( document.all ( 'hiddencdAlcadaInicial' ).value == 'NaoExisteOpcaoInicial' ){
+                            document.parentWindow.parent.rotina.document.all ( 'cdAlcadaInicial' ).remove( 0 );
+                        }
+                        else {
+                            document.parentWindow.parent.rotina.document.all ( 'cdAlcadaInicial' ).options[0].text = document.all ( 'hiddencdAlcadaInicial' ).value;
+                        }
+                        document.parentWindow.parent.rotina.document.all ( 'cdAlcadaInicial' ).disabled = false;
+                    </SCRIPT>
+ <INPUT id=hiddencdAlcadaFinal type=hidden value=NaoExisteOpcaoInicial>
+<SCRIPT>
+                        if( document.parentWindow.parent.rotina.document.all ( 'cdAlcadaFinal' ).options[0] == null ){
+                            document.all ( 'hiddencdAlcadaFinal' ).value = 'NaoExisteOpcaoInicial';
+                            oOption = document.createElement( "OPTION" );
+                            oOption.value = 'CCC';
+                            oOption.text = ' Carregando ... ';
+                            document.parentWindow.parent.rotina.document.all ( 'cdAlcadaFinal' ).add( oOption );
+                            oOption = null;
+                        }
+                        else {
+                            document.all ( 'hiddencdAlcadaFinal' ).value = document.parentWindow.parent.rotina.document.all ( 'cdAlcadaFinal' ).options[0].text;
+                            document.parentWindow.parent.rotina.document.all ( 'cdAlcadaFinal' ).options[0].text = ' Carregando ... ';
+                        }
+                    </SCRIPT>
+
+<SCRIPT>
+                   function CCmbcdAlcadaFinal(vlrCmb,txtCmb){oOpt=document.createElement("OPTION");oOpt.value=vlrCmb;oOpt.text=txtCmb;parent.frames['rotina'].document.all ('cdAlcadaFinal').add(oOpt);oOpt=null;}CCmbcdAlcadaFinal("06","SC");CCmbcdAlcadaFinal("05","SC");CCmbcdAlcadaFinal("04","SC");CCmbcdAlcadaFinal("03","GAF");CCmbcdAlcadaFinal("09","CAF");CCmbcdAlcadaFinal("11","ETP");CCmbcdAlcadaFinal("02","GDD");CCmbcdAlcadaFinal("01","GV");CCmbcdAlcadaFinal("10","SV");CCmbcdAlcadaFinal("07","VD");CCmbcdAlcadaFinal("08","GOD");
+               </SCRIPT>
+
+<SCRIPT>
+                        document.parentWindow.parent.rotina.document.all ( 'cdAlcadaFinal' ).value = '07';
+                    </SCRIPT>
+
+<SCRIPT>
+                        if( document.all ( 'hiddencdAlcadaFinal' ).value == 'NaoExisteOpcaoInicial' ){
+                            document.parentWindow.parent.rotina.document.all ( 'cdAlcadaFinal' ).remove( 0 );
+                        }
+                        else {
+                            document.parentWindow.parent.rotina.document.all ( 'cdAlcadaFinal' ).options[0].text = document.all ( 'hiddencdAlcadaFinal' ).value;
+                        }
+                        document.parentWindow.parent.rotina.document.all ( 'cdAlcadaFinal' ).disabled = false;
+                    </SCRIPT>
+
+<SCRIPT>
+                  document.all.nomeCampo4.innerHTML = 'SubMotivos';
+                  document.all.dataInicial.value = '21' + '/' + '07' + '/' + '2026';
+                  document.all.dataFinal.value = '21' + '/' + '07' + '/' + '2026';
+                  document.all.subMotivosInicial.value = '0';
+                  document.all.subMotivosFinal.value = '99999999';
+                  document.all.tipoMarcaInicial.value = '0';
+                  document.all.tipoMarcaFinal.value = '99999999';
+                  document.all.embalagemInicial.value = '0';
+                  document.all.embalagemFinal.value = '99999999';
+                  document.all.mercadoriaInicial.value = '0';
+                  document.all.mercadoriaFinal.value = '99999999';
+                  if( 'S' == 'S' ){
+                      document.parentWindow.parent.rotina.document.all ( 'pedidosExcluidos' ).checked = true;
+                  }
+                  else{
+                      document.parentWindow.parent.rotina.document.all ( 'pedidosExcluidos' ).checked = false;
+                  }
+               </SCRIPT>
+
+<SCRIPT>
+                   function ChamaBuscaErros(){
+                       document.parentWindow.parent.top_rotina.BuscaErros();
+                   }
+                   function ZeraTimeOutCtrl(){
+                       document.parentWindow.parent.top_rotina.timeOut = 0;
+                   }
+               </SCRIPT>
+
+<SCRIPT for=imgWait event=onpropertychange>
+                   try{
+                       if( document.all.imgWait.style.display != 'none' ){
+                           ChamaBuscaErros();
+                       }
+                   }
+                   catch( e ){
+                       setTimeout( 'ChamaBuscaErros()', 1000 );
+                   }
+               </SCRIPT>
+
+<SCRIPT> document.parentWindow.parent.bottom_rotina.document.location.href = "../cgi-bin/PP00100.exe?SessionID=413762b93f0512bb4d2c14a907027&SubSessionID=d2is7C23765868&ppopcao=00&call=PW02630R&frame=9&opcao=1&"; </SCRIPT>
+
+<SCRIPT>
+                   if( document.all.imgWait != null ){
+                       document.all.imgWait.style.display = 'none';
+                   }
+                   try{
+                       if( 'S' == 'S' ){
+                           document.parentWindow.parent.top_rotina.document.all.unidade.disabled = false;
+                       }
+                   }
+                   catch( e ){}
+               </SCRIPT>
+ </FORM></BODY></HTML>

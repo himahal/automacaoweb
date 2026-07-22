@@ -68,8 +68,10 @@ def limpar_processos_antigos():
     import subprocess
     print("🧹 Limpando processos antigos (IEDriverServer e Internet Explorer) do Windows...")
     try:
-        subprocess.run(["taskkill", "/F", "/IM", "IEDriverServer.exe"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        subprocess.run(["taskkill", "/F", "/IM", "iexplore.exe"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run(["taskkill", "/F", "/IM", "IEDriverServer.exe"],
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run(["taskkill", "/F", "/IM", "iexplore.exe"],
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     except Exception:
         pass
 
@@ -112,7 +114,7 @@ def login_e_menu():
     driver.find_element(By.ID, "BtnConfirm").click()
 
     print("✅ Login efetuado com sucesso!")
-
+    """
     try:
         # Espera BEM CURTA (ex: 3 segundos) para não atrasar o dia a dia
         # Substitua "ID_DO_POPUP" por algum elemento que só existe nessa tela de senha
@@ -129,14 +131,13 @@ def login_e_menu():
             f.write(html_senha)
         print("💾 HTML da tela de senha salvo como 'html_tela_senha.html'.")
 
-    # TODO: Fechar o popup ou clicar em "Lembrar mais tarde"
     # botao_fechar = driver.find_element(By.ID, "id_do_botao_fechar")
     # botao_fechar.click()
 
     except Exception:
         # Se der erro por timeout (3s), significa que o popup não apareceu. Vida que segue!
         print("✅ Nenhum aviso de senha. Seguindo para o sistema...")
-
+    """
     # --- Etapa: Unidade/Revenda ---
     driver.switch_to.default_content()
     print("🏢 Selecionando unidade de revenda...")
@@ -152,28 +153,6 @@ def login_e_menu():
     return driver, wait
 
 
-def subir_github():
-    try:
-        resposta = input(
-            "\nDeseja subir as execuções/relatórios para o GitHub? (s/n): ").strip().lower()
-        if resposta == 's':
-            print("📦 Preparando arquivos para o commit...")
-            import subprocess
-            subprocess.run(["git", "add", "."], check=True)
-
-            commit_msg = f"Execucao automatica das rotinas - {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}"
-            subprocess.run(["git", "commit", "-m", commit_msg], check=True)
-
-            print("🚀 Enviando para o GitHub (branch atual)...")
-            subprocess.run(["git", "push"], check=True)
-
-            print("✅ Atualização enviada com sucesso!")
-        else:
-            print("👍 Operação ignorada. Nada foi enviado para o GitHub.")
-    except Exception as e:
-        print(f"❌ Erro ao tentar subir para o GitHub: {e}")
-
-
 if __name__ == "__main__":
     # 1. Executa o fluxo de entrada
     driver, wait = login_e_menu()
@@ -185,12 +164,13 @@ if __name__ == "__main__":
 
         # 🚀 CHAMADA DAS ROTINAS
 
-        rotinas.chamar_rotina(driver, wait, "031120")
-        rotinas.chamar_rotina(driver, wait, "030224")
-        rotinas.chamar_rotina(driver, wait, "01200147")
-        rotinas.chamar_rotina(driver, wait, "0105070402")
-        rotinas.chamar_rotina(driver, wait, "03014701")
-        rotinas.chamar_rotina(driver, wait, "030237")
+        # rotinas.chamar_rotina(driver, wait, "031120")
+        # rotinas.chamar_rotina(driver, wait, "030224")
+        # rotinas.chamar_rotina(driver, wait, "01200147")
+        # rotinas.chamar_rotina(driver, wait, "0105070402")
+        # rotinas.chamar_rotina(driver, wait, "03014701")
+        # rotinas.chamar_rotina(driver, wait, "030237")
+        input("aprete enter para fechar")
 
         print("\n🏆 Todas as rotinas solicitadas foram processadas!")
 
@@ -201,4 +181,3 @@ if __name__ == "__main__":
         print("\n" + "="*50)
         print("👋 Fechando navegador e limpando sessão...")
         driver.quit()
-        subir_github()
