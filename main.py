@@ -20,6 +20,7 @@ from rotinas import rotinas
 import sys
 import os
 from datetime import datetime
+import atexit
 
 # ====================================================================
 # 🛡️ INTERCEPTADOR DE LOGS (Salva tudo no terminal e no arquivo)
@@ -30,6 +31,7 @@ class InterceptadorLog:
     def __init__(self, caminho_arquivo):
         self.terminal = sys.stdout
         self.arquivo_log = open(caminho_arquivo, "a", encoding="utf-8")
+        atexit.register(self.fechar)
 
     def write(self, mensagem):
         # Escreve no terminal (para você ver rodando)
@@ -42,6 +44,11 @@ class InterceptadorLog:
     def flush(self):
         self.terminal.flush()
         self.arquivo_log.flush()
+
+    def fechar(self):
+        if not self.arquivo_log.closed:
+            self.arquivo_log.flush()
+            self.arquivo_log.close()
 
 
 # Cria uma pasta chamada 'logs_v2' no mesmo local do main.py (se não existir)
