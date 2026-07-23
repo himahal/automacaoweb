@@ -160,17 +160,43 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                     driver.execute_script("arguments[0].click();", btn_v)
 
                 # ==========================================================
-                # CAPTURA DE ALERTA APÓS VISUALIZAR
+                # CAPTURA DE ALERTA APÓS VISUALIZAR (ESPERA INTELIGENTE)
                 # ==========================================================
+                import pygetwindow as gw
+                import time
                 tem_aviso = False
-                try:
-                    alert = WebDriverWait(driver, 3).until(EC.alert_is_present())
-                    print(f"⚠️ Aviso detectado: {alert.text}")
-                    alert.accept()
-                    revendas_com_alerta.append(revenda)
-                    tem_aviso = True
-                except Exception:
-                    pass
+                inicio_espera = time.time()
+                timeout_alerta = 30  # Espera até 30 segundos
+                
+                print(f"⏳ Aguardando até {timeout_alerta}s para verificar se há alerta...")
+                while time.time() - inicio_espera < timeout_alerta:
+                    try:
+                        alert = driver.switch_to.alert
+                        print(f"⚠️ Aviso detectado: {alert.text}")
+                        alert.accept()
+                        revendas_com_alerta.append(revenda)
+                        tem_aviso = True
+                        break
+                    except Exception:
+                        pass
+                    
+                    # Se começou a processar, não terá alerta
+                    try:
+                        janelas = gw.getWindowsWithTitle('Processando')
+                        if any(j for j in janelas if "edge" not in j.title.lower() or j.width < 600):
+                            print("✅ Janela 'Processando' detectada. O relatório está sendo gerado (sem alerta).")
+                            break
+                    except Exception:
+                        pass
+                    
+                    # Se o botão já apareceu, também é sucesso
+                    try:
+                        if driver.find_elements(By.NAME, "GerExecl"):
+                            break
+                    except Exception:
+                        pass
+                        
+                    time.sleep(1)
 
                 if tem_aviso:
                     print(f"⏭️ Pulando geração de CSV para a revenda {revenda} devido ao aviso.")
@@ -332,13 +358,41 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                         except Exception:
                             print("Botao Visualizar nao encontrado na 09.10.")
 
-                    # Lidar com possivel aviso
-                    try:
-                        alert = WebDriverWait(driver, 3).until(EC.alert_is_present())
-                        print(f"⚠️ Aviso detectado: {alert.text}")
-                        alert.accept()
-                    except Exception:
-                        pass
+                    # Lidar com possivel aviso (ESPERA INTELIGENTE NA 09.10)
+                    import pygetwindow as gw
+                    import time
+                    tem_aviso_0910 = False
+                    inicio_espera_0910 = time.time()
+                    
+                    print(f"⏳ Aguardando até {timeout_alerta}s para verificar se há alerta na 09.10...")
+                    while time.time() - inicio_espera_0910 < timeout_alerta:
+                        try:
+                            alert = driver.switch_to.alert
+                            print(f"⚠️ Aviso detectado na 09.10: {alert.text}")
+                            alert.accept()
+                            tem_aviso_0910 = True
+                            break
+                        except Exception:
+                            pass
+                        
+                        try:
+                            janelas = gw.getWindowsWithTitle('Processando')
+                            if any(j for j in janelas if "edge" not in j.title.lower() or j.width < 600):
+                                break
+                        except Exception:
+                            pass
+                            
+                        try:
+                            if driver.find_elements(By.NAME, "GerExecl"):
+                                break
+                        except Exception:
+                            pass
+                            
+                        time.sleep(1)
+                        
+                    if tem_aviso_0910:
+                        print(f"⏭️ Pulando geração de CSV para a revenda {revenda} devido ao aviso na 09.10.")
+                        continue
 
                     print("🚀 Relatório solicitado! Aguardando processamento e botão CSV...")
                     try:
