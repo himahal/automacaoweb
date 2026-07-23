@@ -14,6 +14,7 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
     """Lógica específica da rotina 030237"""
 
     codigo_rotina = "030237"
+    revendas_com_alerta = []
 
     try:
         # ====================================================================
@@ -158,6 +159,23 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                         By.XPATH, "//button[contains(., 'Visualizar')]")
                     driver.execute_script("arguments[0].click();", btn_v)
 
+                # ==========================================================
+                # CAPTURA DE ALERTA APÓS VISUALIZAR
+                # ==========================================================
+                tem_aviso = False
+                try:
+                    alert = WebDriverWait(driver, 3).until(EC.alert_is_present())
+                    print(f"⚠️ Aviso detectado: {alert.text}")
+                    alert.accept()
+                    revendas_com_alerta.append(revenda)
+                    tem_aviso = True
+                except Exception:
+                    pass
+
+                if tem_aviso:
+                    print(f"⏭️ Pulando geração de CSV para a revenda {revenda} devido ao aviso.")
+                    continue
+
                 print("🚀 Relatório solicitado! Aguardando processamento e botão CSV...")
                 # 5. Clica no botão CSV (GerExecl) com espera ativa do Processando
                 botaoCsv = rotinas.aguardar_processamento_e_botao(driver, wait, By.NAME, "GerExecl", timeout_segundos=300)
@@ -183,6 +201,168 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                     f"❌ Erro crítico ao processar a filial {revenda}: {inner_e}")
                 print("⏭️ Pulando para a próxima revenda da lista...")
                 continue
+
+        # ====================================================================
+        # FASE 3: ROTINA 09.10 PARA REVENDAS COM ALERTA
+        # ====================================================================
+        if revendas_com_alerta:
+            print("\n" + "="*40)
+            print("🚀 INICIANDO ROTINA 09.10 PARA AS REVENDAS COM AVISO")
+            print("="*40)
+
+            print("Fechando a janela atual...")
+            driver.close()
+
+            print("Retornando ao menu principal...")
+            driver.switch_to.window(janela_menu)
+            driver.switch_to.default_content()
+            wait.until(EC.frame_to_be_available_and_switch_to_it((By.NAME, "top")))
+            wait.until(EC.frame_to_be_available_and_switch_to_it((By.ID, "iFrameMenu")))
+
+            codigo_rotina_2 = "09.10"
+            print(f"⌨️ Inserindo a rotina: {codigo_rotina_2}")
+            botao_rotina = driver.find_element(By.ID, "atalho")
+            botao_rotina.clear()
+            botao_rotina.send_keys(codigo_rotina_2)
+            botao_ok = driver.find_element(By.XPATH, '//*[@id="atal"]/div[1]/table/tbody/tr[2]/td/input[2]')
+            driver.execute_script("arguments[0].click();", botao_ok)
+
+            print("⏳ Aguardando carregamento da rotina...")
+            driver.switch_to.default_content()
+
+            janela_principal = driver.current_window_handle
+            wait.until(EC.number_of_windows_to_be(2))
+            janelas = driver.window_handles
+
+            for janela in janelas:
+                if janela != janela_principal:
+                    driver.switch_to.window(janela)
+                    time.sleep(1)
+                    print(f"🔀 Mudamos para a nova janela da 09.10: {driver.title}")
+                    
+                    try:
+                        from pywinauto import Application
+                        import re
+                        titulo_seguro = re.escape(driver.title)
+                        app = Application(backend="win32").connect(title_re=f".*{titulo_seguro}.*", timeout=5)
+                        app.window(title_re=f".*{titulo_seguro}.*").set_focus()
+                    except Exception:
+                        pass
+                    break
+            
+            input("\n⏸️ Rotina 09.10 aberta. Confira a página e pressione ENTER para continuar o mesmo processo...")
+
+            for indice_salvo, revenda in enumerate(revendas_com_alerta):
+                print(f"\n{'='*40}")
+                print(f"🔄 PROCESSANDO FILIAL NA 09.10 [{indice_salvo + 1}/{len(revendas_com_alerta)}]: {revenda}")
+                print(f"{'='*40}")
+
+                try:
+                    print("🧹 Limpando alertas iniciais antes de interagir com a tela...")
+                    fechar_popups(driver, 4)
+
+                    driver.switch_to.default_content()
+                    time.sleep(2)
+                    
+                    # Recupera o índice real original para selecionar a revenda corretamente
+                    indice_real = lista_revendas.index(revenda)
+
+                    from rotinas.utils_ui import mudar_revenda_com_fallback
+                    mudar_revenda_com_fallback(driver, wait, indice_real)
+
+                    print("⏳ Aguardando e fechando pop-ups de carregamento da troca...")
+                    try:
+                        WebDriverWait(driver, 10).until(EC.alert_is_present())
+                        fechar_popups(driver, 4)
+                    except Exception:
+                        pass
+                    time.sleep(3)
+
+                    driver.switch_to.default_content()
+                    wait.until(EC.frame_to_be_available_and_switch_to_it((By.NAME, "rotina")))
+
+                    print("🎯 Preenchendo campos específicos da rotina 09.10 (mesmo processo)...")
+
+                    try:
+                        dropdown_element_1 = wait.until(EC.presence_of_element_located((By.NAME, "quebra1")))
+                        from rotinas.utils_ui import selecionar_dropdown_pyautogui
+                        selecionar_dropdown_pyautogui(driver, dropdown_element_1, "Operacao")
+                    except Exception:
+                        print("Campo quebra1 nao encontrado.")
+
+                    try:
+                        dropdown_element_2 = wait.until(EC.presence_of_element_located((By.NAME, "quebra2")))
+                        selecionar_dropdown_pyautogui(driver, dropdown_element_2, "Vendedor")
+                    except Exception:
+                        print("Campo quebra2 nao encontrado.")
+
+                    try:
+                        dropdown_element_3 = wait.until(EC.presence_of_element_located((By.NAME, "quebra3")))
+                        selecionar_dropdown_pyautogui(driver, dropdown_element_3, "Motorista")
+                    except Exception:
+                        print("Campo quebra3 nao encontrado.")
+
+                    try:
+                        campo_ini = wait.until(EC.presence_of_element_located((By.NAME, "dataInicial")))
+                        driver.execute_script("arguments[0].value = arguments[1];", campo_ini, data_inicio)
+                    except Exception:
+                        pass
+
+                    try:
+                        campo_fim = wait.until(EC.presence_of_element_located((By.NAME, "dataFinal")))
+                        driver.execute_script("arguments[0].value = arguments[1];", campo_fim, data_fim)
+                    except Exception:
+                        pass
+
+                    try:
+                        itens = wait.until(EC.presence_of_element_located((By.NAME, "itens")))
+                        driver.execute_script("arguments[0].scrollIntoView(true);", itens)
+                        itens.click()
+                    except Exception:
+                        pass
+
+                    print("🖱️ Clicando em Visualizar na 09.10...")
+                    try:
+                        btn_v = wait.until(EC.element_to_be_clickable((By.NAME, "BotVisualizar")))
+                        driver.execute_script("arguments[0].click();", btn_v)
+                    except:
+                        try:
+                            btn_v = driver.find_element(By.XPATH, "//button[contains(., 'Visualizar')]")
+                            driver.execute_script("arguments[0].click();", btn_v)
+                        except Exception:
+                            print("Botao Visualizar nao encontrado na 09.10.")
+
+                    # Lidar com possivel aviso
+                    try:
+                        alert = WebDriverWait(driver, 3).until(EC.alert_is_present())
+                        print(f"⚠️ Aviso detectado: {alert.text}")
+                        alert.accept()
+                    except Exception:
+                        pass
+
+                    print("🚀 Relatório solicitado! Aguardando processamento e botão CSV...")
+                    try:
+                        botaoCsv = rotinas.aguardar_processamento_e_botao(driver, wait, By.NAME, "GerExecl", timeout_segundos=300)
+                        driver.execute_script("arguments[0].click();", botaoCsv)
+                        
+                        from rotinas.utils_ui import confirmar_download_ie
+                        confirmar_download_ie(driver)
+
+                        dia, mes, ano = data_fim.split("/")
+                        nome_dinamico = f"{revenda}.{mes}.{ano}"
+                        print(f"🏷️ Nome dinâmico gerado: {nome_dinamico}.csv")
+
+                        rotinas.tratar_arquivo_baixado(
+                            prefixo_arquivo="09.10", 
+                            nome_personalizado=nome_dinamico,
+                            caminho_destino=r"C:\Users\usuario\Desktop\Promax\promax\downloads"
+                        )
+                    except Exception:
+                        print("Nao foi possivel baixar o relatorio da 09.10.")
+
+                except Exception as inner_e:
+                    print(f"❌ Erro crítico ao processar a filial {revenda} na 09.10: {inner_e}")
+                    continue
 
     except Exception as e:
         print(f"❌ Erro fatal na rotina {codigo_rotina} (Fase de Setup): {e}")

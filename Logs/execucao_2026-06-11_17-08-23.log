@@ -1,0 +1,57 @@
+
+==================================================
+🚀 INICIANDO PROCESSO DE LOGIN PROMAX
+==================================================
+⚙️ Configurando IE para baixar em: c:\Users\usuario\Desktop\Promax\promax\downloads
+✅ Registro atualizado com sucesso!
+🌐 Abrindo navegador Internet Explorer...
+📥 Acessando a URL do sistema...
+🔑 Identificando frames e preenchendo credenciais...
+✅ Login efetuado com sucesso!
+🏢 Selecionando unidade de revenda...
+📍 Unidade confirmada!
+🧹 Chamando assistente para fechar pop-ups...
+Alerta 1 encontrado: 'O dia 15 de cada mes é o prazo LIMITE para a REORGANIZAÇÃO, após esse prazo o sistema ficara INOPERANTE, portanto, sabendo como proceder execute-a, e em caso de dúvida contate o suporte.'
+
+Alerta 1 fechado com sucesso!
+
+Alerta 2 encontrado: 'Fechamento Financeiro não realizado há  41 dias'
+
+Alerta 2 fechado com sucesso!
+
+Alerta 3 encontrado: 'Fechamento do Estoque não realizado há  10 dias'
+
+Alerta 3 fechado com sucesso!
+
+Não há mais pop-ups ou tempo limite para o alerta 4 atingido.
+
+✅ Total de 3 pop-ups fechados.
+
+✨ Varredura de alertas concluída.
+
+--------------------------------------------------
+🎯 INICIANDO EXECUÇÃO DAS ROTINAS
+--------------------------------------------------
+
+🔍------------------------------
+Buscando lógica para: 01200147
+🎯 Rotina 01200147 localizada! Iniciando processamento em lote...
+
+🚀 Iniciando execução da Rotina 01200147...
+🧹 Processos do Chrome limpos.
+Default
+Profile 2
+🌐 Abrindo o Google Chrome...
+✅ Conectado! Título da aba: 
+https://app.powerbi.com/singleSignOn?ctid=cef04b19-7776-4a94-b89b-375c77a8f936&experience=power-bi&ru=https%3A%2F%2Fapp.powerbi.com%2Fgroups%2Fme%2Fapps%2Fa44ca4f3-ad02-4e6d-b2f9-523d74c0a272%2Freports%2F67b52c11-a1cb-433f-adee-e18e506d552a%2FReportSection%3Fctid%3Dcef04b19-7776-4a94-b89b-375c77a8f936%26experience%3Dpower-bi%26noSignUpCheck%3D1
+✅ Página aberta: Entrar | Microsoft Power BI
+💥 Falha na execução da rotina 01200147: Message: Currently focused window has been closed.
+
+
+🧹 Iniciando faxina de janelas secundárias...
+
+❌ OCORREU UM ERRO NO FLUXO DE ROTINAS: Message: Window is closed
+
+
+==================================================
+👋 Fechando navegador e limpando sessão...

@@ -9,3 +9,6 @@ venv/
 Arquivos_Excel/Download/
 downloads/*.csv
 downloads/*.inf
+.claude/
+CLAUDE.md
+claude.md

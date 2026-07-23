@@ -1,0 +1,68 @@
+
+==================================================
+🚀 INICIANDO PROCESSO DE LOGIN PROMAX
+==================================================
+⚙️ Configurando IE para baixar em: c:\Users\usuario\Desktop\Promax\promax\downloads
+✅ Registro atualizado com sucesso!
+🌐 Abrindo navegador Internet Explorer...
+📥 Acessando a URL do sistema...
+🔑 Identificando frames e preenchendo credenciais...
+✅ Login efetuado com sucesso!
+🏢 Selecionando unidade de revenda...
+📍 Unidade confirmada!
+🧹 Chamando assistente para fechar pop-ups...
+Alerta 1 encontrado: 'O dia 15 de cada mes é o prazo LIMITE para a REORGANIZAÇÃO, após esse prazo o sistema ficara INOPERANTE, portanto, sabendo como proceder execute-a, e em caso de dúvida contate o suporte.'
+
+Alerta 1 fechado com sucesso!
+
+Alerta 2 encontrado: 'Fechamento Financeiro não realizado há  40 dias'
+
+Alerta 2 fechado com sucesso!
+
+Alerta 3 encontrado: 'Fechamento do Estoque não realizado há  40 dias'
+
+Alerta 3 fechado com sucesso!
+
+Alerta 4 encontrado: 'Hoje é o último dia de licença do sistema. Favor entrar em contato com a HBsis pelo fone (47)2123-5400'
+
+Alerta 4 fechado com sucesso!
+
+Não há mais pop-ups ou tempo limite para o alerta 5 atingido.
+
+✅ Total de 4 pop-ups fechados.
+
+✨ Varredura de alertas concluída.
+
+--------------------------------------------------
+🎯 INICIANDO EXECUÇÃO DAS ROTINAS
+--------------------------------------------------
+
+🔍------------------------------
+Buscando lógica para: 0105070402
+🎯 Rotina 0105070402 localizada! Iniciando processamento em lote...
+
+🚀 Iniciando teste isolado da Rotina 0105070402...
+Retornando ao frame de comandos...
+📂 Entrando no IframeMenu...
+⌨️ Inserindo a rotina: 0105070402
+Procurando campo atalho...
+⏳ Aguardando carregamento da rotina...
+🔀 Mudamos para a nova janela: Relatório do Cliente +
+🎯 Buscando a caixa de seleção 'Todos' na árvore de Preferências...
+✅ Opção 'Todos' selecionada com sucesso!
+❌ Erro crítico no fluxo principal: Message: Error executing JavaScript
+
+
+🏁 Todas as revendas da rotina 0105070402 foram processadas com sucesso!
+
+🧹 Iniciando faxina de janelas secundárias...
+❌ Fechando janela: Relatório do Cliente +
+✨ Ambiente limpo e pronto para a próxima!
+✅ Rotina {'031120': <function executar at 0x000001FDBC411C60>, '030224': <function executar at 0x000001FDBDA1CB80>, '01200147': <function executar at 0x000001FDBC411BC0>, '03014701': <function executar at 0x000001FDBDA1CFE0>, '030237': <function executar at 0x000001FDBDA1CD60>, '0105070402': <function executar at 0x000001FDBDA1D260>} finalizada!
+------------------------------
+
+
+🏆 Todas as rotinas solicitadas foram processadas!
+
+==================================================
+👋 Fechando navegador e limpando sessão...
