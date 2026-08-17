@@ -22,23 +22,21 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
         # ====================================================================
         # FASE 1: SETUP E ABERTURA DA JANELA (Roda apenas UMA vez)
         # ====================================================================
-        print("Retornando ao frame de comandos...")
-        driver.switch_to.default_content()
-        wait.until(EC.frame_to_be_available_and_switch_to_it((By.NAME, "top")))
-
-        print("📂 Entrando no IframeMenu...")
-        wait.until(EC.frame_to_be_available_and_switch_to_it(
-            (By.ID, "iFrameMenu")))
 
         print(f"⌨️ Inserindo a rotina: {codigo_rotina}")
         print("Procurando campo atalho...")
 
-        botao_rotina = driver.find_element(By.ID, "atalho")
-        botao_rotina.clear()
-        botao_rotina.send_keys(codigo_rotina)
-        botao_ok = driver.find_element(
-            By.XPATH, '//*[@id="atal"]/div[1]/table/tbody/tr[2]/td/input[2]')
-        driver.execute_script("arguments[0].click();", botao_ok)
+        # 1. Aguarda o campo da rotina carregar na tela
+        wait.until(EC.presence_of_element_located((By.ID, "call")))
+
+        # 2. Localiza o campo, limpa (para evitar sobreposição de texto) e digita o código
+        campo_rotina = driver.find_element(By.ID, "call")
+        campo_rotina.send_keys(Keys.CONTROL + "a")
+        campo_rotina.send_keys(Keys.DELETE)
+        campo_rotina.send_keys("031120")
+
+        # 3. Localiza e clica no botão "Acessar Rotina"
+        driver.find_element(By.ID, "BotAcessar").click()
 
         print("⏳ Aguardando carregamento da rotina...")
         driver.switch_to.default_content()
@@ -53,17 +51,19 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                 driver.switch_to.window(janela)
                 time.sleep(1)
                 print(f"🔀 Mudamos para a nova janela: {driver.title}")
-                
+
                 # Garante o foco físico na nova janela da rotina via win32
                 try:
                     from pywinauto import Application
                     import re
                     titulo_seguro = re.escape(driver.title)
-                    app = Application(backend="win32").connect(title_re=f".*{titulo_seguro}.*", timeout=5)
+                    app = Application(backend="win32").connect(
+                        title_re=f".*{titulo_seguro}.*", timeout=5)
                     app.window(title_re=f".*{titulo_seguro}.*").set_focus()
                     print("🎯 Foco da nova janela da rotina restaurado via win32!")
                 except Exception as e_foco:
-                    print(f"⚠️ Erro ao focar na nova janela da rotina: {e_foco}")
+                    print(
+                        f"⚠️ Erro ao focar na nova janela da rotina: {e_foco}")
                 break
 
         # ====================================================================
@@ -100,8 +100,8 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                     # Se passarem 10 segundos e nada aparecer, assumimos que o Promax não vai mandar alerta nenhum.
                     print(
                         "✅ Nenhum alerta detectado nos últimos 10 segundos. Seguindo o fluxo...")
-                time.sleep(3) # Aguarda o frame rotina atualizar após a troca de revenda
-
+                # Aguarda o frame rotina atualizar após a troca de revenda
+                time.sleep(3)
 
                 # --- 2.3 PREENCHIMENTO DE CAMPOS ---
                 driver.switch_to.default_content()
@@ -115,8 +115,10 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
                 except Exception:
                     print("⚠️ Demora na atualização do frame. Tentando novamente...")
                     driver.switch_to.default_content()
-                    wait.until(EC.frame_to_be_available_and_switch_to_it((By.NAME, "rotina")))
-                    dropdown_element = wait.until(EC.presence_of_element_located((By.NAME, "opcaoRel")))
+                    wait.until(EC.frame_to_be_available_and_switch_to_it(
+                        (By.NAME, "rotina")))
+                    dropdown_element = wait.until(
+                        EC.presence_of_element_located((By.NAME, "opcaoRel")))
 
                 from rotinas.utils_ui import selecionar_dropdown_pyautogui
                 selecionar_dropdown_pyautogui(driver, dropdown_element, "Mapa")
@@ -156,7 +158,8 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
 
                 print("🚀 Relatório solicitado! Aguardando processamento e botão CSV...")
                 # Clica no botão CSV (GerExecl) com espera ativa do Processando
-                botaoCsv = rotinas.aguardar_processamento_e_botao(driver, wait, By.NAME, "GerExecl", timeout_segundos=300)
+                botaoCsv = rotinas.aguardar_processamento_e_botao(
+                    driver, wait, By.NAME, "GerExecl", timeout_segundos=300)
                 driver.execute_script("arguments[0].click();", botaoCsv)
 
                 # --- CONFIRMAÇÃO DO DOWNLOAD (Nativo do Windows via PyWinAuto) ---

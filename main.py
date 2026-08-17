@@ -66,8 +66,8 @@ sys.stdout = logger  # Captura todos os seus 'prints'
 sys.stderr = logger
 
 # --- Variáveis Globais ---
-login = "pizolitto"
-senha = "Tatucac1!"
+login = "Teste"
+senha = "Teste"
 
 
 def limpar_processos_antigos():
@@ -100,25 +100,48 @@ def login_e_menu():
     driver.maximize_window()
     wait = WebDriverWait(driver, 1000)
 
-    print("📥 Acessando a URL do sistema...")
-    driver.get("https://revalle.promaxcloud.com.br/pw/")
+    print("\U0001f4e5 Acessando a URL do sistema (Ambiente Mock)...")
+
+    # 1. Define a raiz do projeto e aponta para a pasta mock
+    diretorio_projeto = os.path.dirname(os.path.abspath(__file__))
+    caminho_mock = os.path.join(diretorio_projeto, "portfolio", "Login.html")
+
+    # 2. Formata para o navegador entender como um link
+    url_mock = "http://localhost:8000/Login.html"
+
+    # 3. Acessa a página local
+    driver.get(url_mock)
 
     # --- Etapa: Login ---
+    # --- Etapa: Login ---
     print("🔑 Identificando frames e preenchendo credenciais...")
-    wait.until(EC.frame_to_be_available_and_switch_to_it(
-        (By.TAG_NAME, "frame")))
 
-    wait.until(EC.presence_of_element_located(
-        (By.NAME, "Usuario")))
-    loginI = driver.find_element(By.NAME, "Usuario")
+    # Tenta localizar pelo nome/id do HTML local ou do site original
+    try:
+        wait.until(EC.presence_of_element_located((By.NAME, "idUsuario")))
+        loginI = driver.find_element(By.NAME, "idUsuario")
+    except Exception:
+        wait.until(EC.presence_of_element_located((By.NAME, "Usuario")))
+        loginI = driver.find_element(By.NAME, "Usuario")
+
     loginI.send_keys(Keys.CONTROL + "a")
     loginI.send_keys(Keys.DELETE)
     loginI.send_keys(login)
-    senhaI = driver.find_element(By.NAME, "Senha")
+
+    try:
+        senhaI = driver.find_element(By.NAME, "senha")
+    except Exception:
+        senhaI = driver.find_element(By.NAME, "Senha")
+
     senhaI.send_keys(Keys.CONTROL + "a")
     senhaI.send_keys(Keys.DELETE)
     senhaI.send_keys(senha)
-    driver.find_element(By.ID, "BtnConfirm").click()
+
+    # Clica no botão de login (BotEntrar ou BtnConfirm)
+    try:
+        driver.find_element(By.ID, "BotEntrar").click()
+    except Exception:
+        driver.find_element(By.ID, "BtnConfirm").click()
 
     print("✅ Login efetuado com sucesso!")
 
@@ -149,8 +172,7 @@ def login_e_menu():
     # --- Etapa: Unidade/Revenda ---
     driver.switch_to.default_content()
     print("🏢 Selecionando unidade de revenda...")
-    wait.until(EC.frame_to_be_available_and_switch_to_it((By.NAME, "top")))
-    driver.find_element(By.NAME, "cmdConfirma").click()
+    driver.find_element(By.NAME, "BotConfirmar").click()
     print("📍 Unidade confirmada!")
 
     # --- Etapa: Limpeza de Terreno ---
@@ -199,7 +221,7 @@ if __name__ == "__main__":
         # rotinas.chamar_rotina(driver, wait, "01200147")
         # rotinas.chamar_rotina(driver, wait, "0105070402")
         # rotinas.chamar_rotina(driver, wait, "03014701")
-        rotinas.chamar_rotina(driver, wait, "030237")
+        rotinas.chamar_rotina(driver, wait, "031120")
 
         print("\n🏆 Todas as rotinas solicitadas foram processadas!")
 

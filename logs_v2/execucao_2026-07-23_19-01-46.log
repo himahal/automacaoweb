@@ -17,11 +17,11 @@ Alerta 1 encontrado: 'O dia 15 de cada mes é o prazo LIMITE para a REORGANIZAÇ
 
 Alerta 1 fechado com sucesso!
 
-Alerta 2 encontrado: 'Fechamento Financeiro não realizado há  21 dias'
+Alerta 2 encontrado: 'Fechamento Financeiro não realizado há  22 dias'
 
 Alerta 2 fechado com sucesso!
 
-Alerta 3 encontrado: 'Fechamento do Estoque não realizado há  21 dias'
+Alerta 3 encontrado: 'Fechamento do Estoque não realizado há  22 dias'
 
 Alerta 3 fechado com sucesso!
 
@@ -44,7 +44,7 @@ Não há mais pop-ups ou tempo limite para o alerta 5 atingido.
 
 🔍------------------------------
 Buscando lógica para: 030237
-🔒 Janela principal (Menu) registrada com handle: 334bd512-d9ad-47bf-b04d-8e02c1ef7160
+🔒 Janela principal (Menu) registrada com handle: 9a4c6a53-8b98-4cb6-9263-b759b4dd8138
 ⚠️ Erro ao focar na janela do menu principal: There are 2 elements that match the criteria {'title_re': '.*PromaxWEB.*', 'backend': 'win32', 'visible_only': False}
 🎯 Rotina 030237 localizada! Iniciando processamento em lote...
 Retornando ao frame de comandos...
@@ -73,11 +73,11 @@ Não há mais pop-ups ou tempo limite para o alerta 1 atingido.
 ✅ Sucesso! Recarregamento de página detectado após o JS.
 ⏳ Aguardando e fechando pop-ups de carregamento da troca...
 🚨 Primeiro alerta detectado pelo Guarda-Costas! Iniciando limpeza...
-Alerta 1 encontrado: 'Fechamento Financeiro não realizado há  21 dias'
+Alerta 1 encontrado: 'Fechamento Financeiro não realizado há  22 dias'
 
 Alerta 1 fechado com sucesso!
 
-Alerta 2 encontrado: 'Fechamento do Estoque não realizado há  21 dias'
+Alerta 2 encontrado: 'Fechamento do Estoque não realizado há  22 dias'
 
 Alerta 2 fechado com sucesso!
 
@@ -92,15 +92,61 @@ Não há mais pop-ups ou tempo limite para o alerta 3 atingido.
 🖱️ Clicando em Visualizar...
 🚀 Relatório solicitado! Aguardando processamento e botão CSV...
 ⏳ Aguardando até 300s pelo elemento GerExecl...
-💥 Janela 'Processando' detectada. Fechando Processando [00:27] - Perfil 1 — Microsoft​ Edge...
+💥 Janela 'Processando' detectada. Fechando Processando [00:30] - Perfil 1 — Microsoft​ Edge...
+❌ Erro crítico ao processar a filial Beira Rio: Timeout aguardando GerExecl apos 300 segundos.
+⏭️ Pulando para a próxima revenda da lista...
+
+========================================
+🔄 PROCESSANDO FILIAL [2/7]: Revalle Juazeiro
+========================================
+🧹 Limpando alertas iniciais antes de interagir com a tela...
+Não há mais pop-ups ou tempo limite para o alerta 1 atingido.
+
+✅ Total de 0 pop-ups fechados.
+
+📍 DEBUG 1: Resetando para a raiz da página (default_content)...
+📍 default_content para ir para a raiz...
+📍 Entrando no frame top_rotina...
+⚠️ Erro ao capturar HTML do select: Message: Error executing JavaScript
+
+📍 Filial atual no dropdown antes da troca: '145.0004 - BEIRA RIO'
+⚡ Tentando selecionar o índice 1 via JavaScript...
+✅ Sucesso! Recarregamento de página detectado após o JS.
+⏳ Aguardando e fechando pop-ups de carregamento da troca...
+🚨 Primeiro alerta detectado pelo Guarda-Costas! Iniciando limpeza...
+Alerta 1 encontrado: 'Fechamento Financeiro não realizado há  22 dias'
+
+Alerta 1 fechado com sucesso!
+
+Alerta 2 encontrado: 'Fechamento do Estoque não realizado há  22 dias'
+
+Alerta 2 fechado com sucesso!
+
+Alerta 3 encontrado: 'Existem NFs a partir do dia 18/07/2026 com divergências.
+
+Verificar no módulo 07.22.23-Rel. de Diverg. Promax x SEFAZ, proceder
+a correção e executar a rotina 07.22.22-Verificação de Divergências.'
+
+Alerta 3 fechado com sucesso!
+
+Não há mais pop-ups ou tempo limite para o alerta 4 atingido.
+
+✅ Total de 3 pop-ups fechados.
+
+🎯 Preenchendo campos específicos da rotina...
+🎯 Selecionando 'Operacao' no dropdown via JS Legado IE...
+🎯 Selecionando 'Vendedor' no dropdown via JS Legado IE...
+🎯 Selecionando 'Motorista' no dropdown via JS Legado IE...
+🖱️ Clicando em Visualizar...
+🚀 Relatório solicitado! Aguardando processamento e botão CSV...
+⏳ Aguardando até 300s pelo elemento GerExecl...
+💥 Janela 'Processando' detectada. Fechando Processando [00:30] - Perfil 1 — Microsoft​ Edge...
 
 🧹 Iniciando faxina de janelas secundárias...
 
-❌ OCORREU UM ERRO NO FLUXO DE ROTINAS: HTTPConnectionPool(host='localhost', port=50907): Max retries exceeded with url: /session/3893823c-f7b7-45ee-a128-fcc369bf41ce/window/handles (Caused by NewConnectionError("HTTPConnection(host='localhost', port=50907): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
+❌ OCORREU UM ERRO NO FLUXO DE ROTINAS: HTTPConnectionPool(host='localhost', port=51566): Max retries exceeded with url: /session/10b4e5dc-dbee-4873-b2e5-fbc06eada39e/window/handles (Caused by NewConnectionError("HTTPConnection(host='localhost', port=51566): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
 
 ==================================================
 👋 Fechando navegador e limpando sessão...
 
-Deseja subir as execuções/relatórios para o GitHub? (s/n): 📦 Preparando arquivos para o commit...
-🚀 Enviando para o GitHub (branch atual)...
-✅ Atualização enviada com sucesso!
+Deseja subir as execuções/relatórios para o GitHub? (s/n): 👍 Operação ignorada. Nada foi enviado para o GitHub.
