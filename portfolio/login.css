@@ -4,10 +4,14 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+html, body {
+    height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     background-color: #faf8ff;
 }
 
@@ -26,14 +30,26 @@ body {
     background-color: #faf8ff;
     background-image: radial-gradient(#c5c5d3 1px, transparent 1px);
     background-size: 24px 24px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
 /* Top Navbar */
 .top-navbar {
     background-color: #ffffff;
     border-bottom: 1px solid #c5c5d3;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-pack: justify;
     justify-content: space-between;
+    -ms-flex-align: center;
     align-items: center;
     padding: 0 24px;
     height: 64px;
@@ -51,9 +67,11 @@ body {
 }
 
 .nav-links {
+    display: -ms-flexbox;
     display: flex;
     gap: 16px;
     height: 100%;
+    -ms-flex-align: end;
     align-items: flex-end;
 }
 
@@ -85,7 +103,9 @@ body {
     top: 64px;
     bottom: 0;
     left: 0;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-direction: column;
     flex-direction: column;
     padding: 24px 16px;
     z-index: 40;
@@ -98,7 +118,9 @@ body {
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: #444651;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-align: center;
     align-items: center;
     gap: 12px;
     padding: 12px 16px;
@@ -125,6 +147,7 @@ body {
     padding: 24px;
     padding-bottom: 110px;
     min-height: calc(100vh - 64px);
+    box-sizing: border-box;
 }
 
 .login-card {
@@ -135,7 +158,9 @@ body {
     border: 1px solid #c5c5d3;
     box-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-direction: column;
     flex-direction: column;
     position: relative;
     z-index: 10;
@@ -157,7 +182,9 @@ body {
     margin-bottom: 16px;
     padding-bottom: 8px;
     border-bottom: 1px solid #c5c5d3;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-align: center;
     align-items: center;
     gap: 8px;
 }
@@ -184,6 +211,7 @@ body {
     color: #1a1b21;
     outline: none;
     transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
 }
 
 .form-input-high-density:focus {
@@ -201,8 +229,11 @@ body {
     background-color: #ffffff;
     border-top: 1px solid #c5c5d3;
     padding: 0 24px;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-pack: end;
     justify-content: flex-end;
+    -ms-flex-align: center;
     align-items: center;
     gap: 16px;
     z-index: 30;
@@ -220,8 +251,11 @@ body {
     border: none;
     cursor: pointer;
     transition: background-color 0.2s;
+    display: -ms-inline-flexbox;
     display: inline-flex;
+    -ms-flex-pack: center;
     justify-content: center;
+    -ms-flex-align: center;
     align-items: center;
     gap: 8px;
 }
@@ -242,12 +276,72 @@ body {
     cursor: pointer;
     transition: background-color 0.2s;
     text-align: center;
+    display: -ms-inline-flexbox;
     display: inline-flex;
+    -ms-flex-pack: center;
     justify-content: center;
+    -ms-flex-align: center;
     align-items: center;
     gap: 8px;
 }
 
 .btn-secondary:hover {
     background-color: #e3e1e9;
+}
+
+/* ====================================================================
+   INTERNET EXPLORER SPECIFIC FIXES & RESPONSIVE ADAPTATION
+   ==================================================================== */
+
+/* Grid Fallbacks for IE11 */
+.grid {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.grid > div {
+    box-sizing: border-box;
+}
+
+.col-span-12 { width: 100%; -ms-flex: 0 0 100%; }
+.col-span-8, .md\:col-span-8 { width: 66.666%; -ms-flex: 0 0 66.666%; }
+.col-span-6, .md\:col-span-6 { width: 50%; -ms-flex: 0 0 50%; }
+.col-span-4, .md\:col-span-4 { width: 33.333%; -ms-flex: 0 0 33.333%; }
+.col-span-3, .md\:col-span-3 { width: 25%; -ms-flex: 0 0 25%; }
+.col-span-2, .md\:col-span-2 { width: 100%; -ms-flex: 0 0 100%; }
+
+/* Input & Select IE Native Control Cleanup */
+select::-ms-expand {
+    display: none;
+}
+
+input::-ms-clear, input::-ms-reveal {
+    display: none;
+}
+
+/* Responsive & IE Window Adaptation */
+@media screen and (max-width: 1024px) {
+    .docked-sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        top: 0;
+        bottom: auto;
+    }
+    .main-canvas {
+        margin-left: 0;
+        padding-bottom: 90px;
+    }
+    .floating-action-bar {
+        left: 0;
+    }
+    .col-span-8, .md\:col-span-8,
+    .col-span-6, .md\:col-span-6,
+    .col-span-4, .md\:col-span-4,
+    .col-span-3, .md\:col-span-3 {
+        width: 100% !important;
+        -ms-flex: 0 0 100% !important;
+    }
 }
