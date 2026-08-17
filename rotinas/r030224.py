@@ -1,8 +1,3 @@
-import time
-import pyautogui
-import re
-import os
-from pywinauto import Desktop
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait, Select
@@ -14,7 +9,7 @@ from fecharPopups import fechar_popups
 from . import rotinas
 
 
-def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
+def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_unidades):
     """Lógica específica da rotina 030224"""
 
     codigo_rotina = "030224"
@@ -29,7 +24,7 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
         # 1. Aguarda o campo da rotina carregar na tela
         wait.until(EC.presence_of_element_located((By.ID, "call")))
 
-        # 2. Localiza o campo, limpa (para evitar sobreposição de texto) e digita o código
+        # 2. Localiza o campo, limpa e digita o código
         campo_rotina = driver.find_element(By.ID, "call")
         campo_rotina.send_keys(Keys.CONTROL + "a")
         campo_rotina.send_keys(Keys.DELETE)
@@ -41,6 +36,10 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
         print("⏳ Aguardando carregamento da rotina...")
         driver.switch_to.default_content()
 
+        # ====================================================================
+        # TRECHO ISOLADO: Lógica de Janelas Secundárias e Loop de Revendas
+        # ====================================================================
+        """
         # Muda para a nova janela da rotina
         janela_principal = driver.current_window_handle
         wait.until(EC.number_of_windows_to_be(2))
@@ -50,138 +49,108 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_revendas):
             if janela != janela_principal:
                 driver.switch_to.window(janela)
                 time.sleep(1)
-                print(f"🔀 Mudamos para a nova janela: {driver.title}")
-
-                # Garante o foco físico na nova janela da rotina via win32
+                
+                # Foco via pywinauto...
                 try:
                     from pywinauto import Application
-                    import re
                     titulo_seguro = re.escape(driver.title)
-                    app = Application(backend="win32").connect(
-                        title_re=f".*{titulo_seguro}.*", timeout=5)
+                    app = Application(backend="win32").connect(title_re=f".*{titulo_seguro}.*", timeout=5)
                     app.window(title_re=f".*{titulo_seguro}.*").set_focus()
-                    print("🎯 Foco da nova janela da rotina restaurado via win32!")
-                except Exception as e_foco:
-                    print(
-                        f"⚠️ Erro ao focar na nova janela da rotina: {e_foco}")
+                except Exception:
+                    pass
                 break
 
-        # ====================================================================
-        # FASE 2: O LOOP DE REVENDAS (Repete até acabar a lista)
-        # ====================================================================
-        for indice, revenda in enumerate(lista_revendas):
-            print(f"\n{'='*40}")
-            print(
-                f"🔄 PROCESSANDO FILIAL [{indice + 1}/{len(lista_revendas)}]: {revenda}")
-            print(f"{'='*40}")
-
+        # LOOP DE UNIDADES
+        for indice, unidade in enumerate(lista_unidades):
+            fechar_popups(driver, 4)
+            driver.switch_to.default_content()
+            
+            from rotinas.utils_ui import mudar_revenda_com_fallback
+            mudar_revenda_com_fallback(driver, wait, indice)
+            
             try:
-                # 🛡️ O ESCUDO INICIAL: Limpa a sujeira que a rodada anterior possa ter deixado
-                print("🧹 Limpando alertas iniciais antes de interagir com a tela...")
-                fechar_popups(driver, 4)
+                WebDriverWait(driver, 15).until(EC.alert_is_present())
+                fechar_popups(driver, 6)
+            except Exception:
+                pass
+            time.sleep(3)
+        """
 
-                print("📍 DEBUG 1: Resetando para a raiz da página (default_content)...")
-                driver.switch_to.default_content()
-                time.sleep(2)
+        # ====================================================================
+        # FASE 2: PREENCHIMENTO E DOWNLOAD (Fora do loop para o mock)
+        # ====================================================================
+        print("🎯 Sincronizando com a janela da rotina...")
+        driver.switch_to.default_content()
 
-                from rotinas.utils_ui import mudar_revenda_com_fallback
-                mudar_revenda_com_fallback(driver, wait, indice)
+        # Resiliência de Ambiente (Portfólio vs Produção)
+        try:
+            WebDriverWait(driver, 3).until(
+                EC.frame_to_be_available_and_switch_to_it((By.NAME, "rotina"))
+            )
+        except:
+            print("⚠️ Frame 'rotina' não encontrado (Ambiente local). Operando na raiz.")
 
-                # --- 2.2 LIDA COM OS POP-UPS DA TROCA ---
-                print("⏳ Aguardando e fechando pop-ups de carregamento da troca...")
+        '''
+        print("🎯 Selecionando 'Mapa' no dropdown...")
+        dropdown_element = wait.until(EC.presence_of_element_located((By.NAME, "opcaoRel")))
+        from rotinas.utils_ui import selecionar_dropdown_pyautogui
+        selecionar_dropdown_pyautogui(driver, dropdown_element, "Mapa")
 
-                try:
-                    WebDriverWait(driver, 15).until(EC.alert_is_present())
-                    print(
-                        "🚨 Primeiro alerta detectado pelo Guarda-Costas! Iniciando limpeza...")
+        checks = ["selecionouAS", "responsabProcesso", "todasOperacoes"]
+        for check in checks:
+            el = wait.until(EC.presence_of_element_located((By.NAME, check)))
+            driver.execute_script("arguments[0].scrollIntoView(true);", el)
+            el.click()
+        '''
 
-                    fechar_popups(driver, 6)
-                except Exception:
-                    # Se passarem 10 segundos e nada aparecer, assumimos que o Promax não vai mandar alerta nenhum.
-                    print(
-                        "✅ Nenhum alerta detectado nos últimos 10 segundos. Seguindo o fluxo...")
-                # Aguarda o frame rotina atualizar após a troca de revenda
-                time.sleep(3)
+        # Preencher Datas
+        print("📅 Preenchendo datas...")
+        campo_data_ini = wait.until(
+            EC.presence_of_element_located((By.NAME, "dataInicial")))
+        driver.execute_script(
+            "arguments[0].value = arguments[1];", campo_data_ini, data_inicio)
 
-                # --- 2.3 PREENCHIMENTO DE CAMPOS ---
-                driver.switch_to.default_content()
-                wait.until(EC.frame_to_be_available_and_switch_to_it(
-                    (By.NAME, "rotina")))
+        campo_data_fim = wait.until(
+            EC.presence_of_element_located((By.NAME, "dataFinal")))
+        driver.execute_script(
+            "arguments[0].value = arguments[1];", campo_data_fim, data_fim)
 
-                print("🎯 Selecionando 'Mapa' no dropdown...")
-                try:
-                    dropdown_element = wait.until(
-                        EC.presence_of_element_located((By.NAME, "opcaoRel")))
-                except Exception:
-                    print("⚠️ Demora na atualização do frame. Tentando novamente...")
-                    driver.switch_to.default_content()
-                    wait.until(EC.frame_to_be_available_and_switch_to_it(
-                        (By.NAME, "rotina")))
-                    dropdown_element = wait.until(
-                        EC.presence_of_element_located((By.NAME, "opcaoRel")))
+        # Geração de Relatório
+        print("🖱️ Clicando em Visualizar...")
+        try:
+            btn_v = wait.until(EC.element_to_be_clickable(
+                (By.NAME, "BotVisualizar")))
+            driver.execute_script("arguments[0].click();", btn_v)
+        except:
+            btn_v = driver.find_element(
+                By.XPATH, "//button[contains(., 'Visualizar')]")
+            driver.execute_script("arguments[0].click();", btn_v)
 
-                from rotinas.utils_ui import selecionar_dropdown_pyautogui
-                selecionar_dropdown_pyautogui(driver, dropdown_element, "Mapa")
+        # Aguarda o botão do CSV (Pode remover o comentário se for gravar essa parte)
+        # botaoCsv = rotinas.aguardar_processamento_e_botao(driver, wait, By.NAME, "GerExecl", timeout_segundos=300)
+        # driver.execute_script("arguments[0].click();", botaoCsv)
 
-                # Checkboxes
-                checks = ["selecionouAS",
-                          "responsabProcesso", "todasOperacoes"]
-                for check in checks:
-                    el = wait.until(
-                        EC.presence_of_element_located((By.NAME, check)))
-                    driver.execute_script(
-                        "arguments[0].scrollIntoView(true);", el)
-                    el.click()
+        # Validação do Arquivo
+        from rotinas.utils_ui import confirmar_download_ie
+        confirmar_download_ie(driver)
 
-                # Preencher Datas
-                print("📅 Preenchendo datas...")
-                campo_data_ini = wait.until(
-                    EC.presence_of_element_located((By.NAME, "dataInicial")))
-                driver.execute_script(
-                    "arguments[0].value = arguments[1];", campo_data_ini, data_inicio)
+        dia, mes, ano = data_fim.split("/")
 
-                campo_data_fim = wait.until(
-                    EC.presence_of_element_located((By.NAME, "dataFinal")))
-                driver.execute_script(
-                    "arguments[0].value = arguments[1];", campo_data_fim, data_fim)
+        # Pega a primeira unidade da lista apenas para dar nome ao arquivo falso
+        unidade_mock = lista_unidades[0] if lista_unidades else "unidade_padrao"
+        nome_dinamico = f"{unidade_mock}.{mes}.{ano}"
+        print(f"🏷️ Nome dinâmico gerado: {nome_dinamico}.csv")
 
-                # --- 5. GERAÇÃO E DOWNLOAD ---
-                print("🖱️ Clicando em Visualizar...")
-                try:
-                    btn_v = wait.until(EC.element_to_be_clickable(
-                        (By.NAME, "BotVisualizar")))
-                    driver.execute_script("arguments[0].click();", btn_v)
-                except:
-                    btn_v = driver.find_element(
-                        By.XPATH, "//button[contains(., 'Visualizar')]")
-                    driver.execute_script("arguments[0].click();", btn_v)
+        # Caminho oculto no Github
+        diretorio_saida = os.getenv("CAMINHO_RELATORIOS_SAIDA", "./downloads")
 
-                print("🚀 Relatório solicitado! Aguardando processamento e botão CSV...")
-                # Clica no botão CSV (GerExecl) com espera ativa do Processando
-                botaoCsv = rotinas.aguardar_processamento_e_botao(
-                    driver, wait, By.NAME, "GerExecl", timeout_segundos=300)
-                driver.execute_script("arguments[0].click();", botaoCsv)
+        rotinas.tratar_arquivo_baixado(
+            prefixo_arquivo="03.02.24",
+            nome_personalizado=nome_dinamico,
+            caminho_destino=diretorio_saida
+        )
 
-                # --- CONFIRMAÇÃO DO DOWNLOAD (Nativo do Windows via PyWinAuto) ---
-                from rotinas.utils_ui import confirmar_download_ie
-                confirmar_download_ie(driver)
-
-                dia, mes, ano = data_fim.split("/")
-                nome_dinamico = f"{revenda}.{mes}.{ano}"
-
-                print(f"🏷️ Nome dinâmico gerado: {nome_dinamico}.csv")
-
-                rotinas.tratar_arquivo_baixado(
-                    prefixo_arquivo="03.02.24",
-                    nome_personalizado=nome_dinamico,
-                    caminho_destino=r"T:\ATENDIMENTO\BEES DELIVERY\03.02.24"
-                )
-
-            except Exception as inner_e:
-                print(
-                    f"❌ Erro crítico ao processar a filial {revenda}: {inner_e}")
-                print("⏭️ Pulando para a próxima revenda da lista...")
-                continue
+        print("✅ Fluxo de demonstração concluído com sucesso!")
 
     except Exception as e:
-        print(f"❌ Erro fatal na rotina {codigo_rotina} (Fase de Setup): {e}")
+        print(f"❌ Erro fatal na rotina {codigo_rotina}: {e}")

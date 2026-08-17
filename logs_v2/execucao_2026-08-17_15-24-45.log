@@ -25,25 +25,18 @@ Não há mais pop-ups ou tempo limite para o alerta 1 atingido.
 
 🔍------------------------------
 Buscando lógica para: 031120
-🔒 Janela principal (Menu) registrada com handle: 745a7465-494f-4f38-91cc-aa351affd3bc
+🔒 Janela principal (Menu) registrada com handle: 671dd6d9-957b-4f07-b16c-d42aae7e1ca1
 ⚠️ Erro ao focar na janela do menu principal: There are 2 elements that match the criteria {'title_re': '.*PromaxWEB\\ \\-\\ Escolha\\ da\\ Rotina.*', 'backend': 'win32', 'visible_only': False}
 🎯 Rotina 031120 localizada! Iniciando processamento em lote...
 
 🚀 Iniciando execução da Rotina 031120...
 Retornando ao frame de comandos...
-❌ Erro fatal na rotina 031120 (Fase de Setup): Message: Currently focused window has been closed.
-
-
-🏁 Todas as revendas da rotina 031120 foram processadas com sucesso!
 
 🧹 Iniciando faxina de janelas secundárias...
 
-❌ OCORREU UM ERRO NO FLUXO DE ROTINAS: Message: Window is closed
-
+❌ OCORREU UM ERRO NO FLUXO DE ROTINAS: HTTPConnectionPool(host='localhost', port=53201): Max retries exceeded with url: /session/864e33e4-fe12-40f7-8eab-80ab8c6d837d/window/handles (Caused by NewConnectionError("HTTPConnection(host='localhost', port=53201): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente"))
 
 ==================================================
 👋 Fechando navegador e limpando sessão...
 
-Deseja subir as execuções/relatórios para o GitHub? (s/n): 📦 Preparando arquivos para o commit...
-🚀 Enviando para o GitHub (branch atual)...
-❌ Erro ao tentar subir para o GitHub: Command '['git', 'push']' returned non-zero exit status 128.
+Deseja subir as execuções/relatórios para o GitHub? (s/n): 👍 Operação ignorada. Nada foi enviado para o GitHub.
