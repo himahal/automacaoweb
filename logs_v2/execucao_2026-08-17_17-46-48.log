@@ -1,0 +1,26 @@
+
+==================================================
+🚀 INICIANDO PROCESSO DE LOGIN PROMAX
+==================================================
+🧹 Limpando processos antigos (IEDriverServer e Internet Explorer) do Windows...
+⚙️ Configurando IE para baixar em: c:\Users\usuario\Desktop\Promax\promax - v2\downloads
+✅ Registro atualizado com sucesso!
+🌐 Abrindo navegador Internet Explorer...
+📥 Acessando a URL do sistema (Ambiente Mock)...
+🔑 Identificando frames e preenchendo credenciais...
+✅ Login efetuado com sucesso!
+✅ Nenhum aviso de senha. Seguindo para o sistema...
+Traceback (most recent call last):
+  File "c:\Users\usuario\Desktop\Promax\promax - v2\main.py", line 179, in <module>
+    driver, wait = login_e_menu()
+                   ^^^^^^^^^^^^^^
+  File "c:\Users\usuario\Desktop\Promax\promax - v2\main.py", line 148, in login_e_menu
+    driver.switch_to.default_content()
+  File "C:\Users\usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\switch_to.py", line 58, in default_content
+    self._driver.execute(Command.SWITCH_TO_FRAME, {"id": None})
+  File "C:\Users\usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 468, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchWindowException: Message: Unable to get browser
+
