@@ -1,81 +1,174 @@
-<HTML>
-<HEAD>
-<TITLE>Empresa Ficticia</TITLE>
-<META content="Mon, 01 Jan 1996 12:12:00 GMT" http-equiv=Expires>
-<META content=no-cache http-equiv=Pragma>
-<META content="text/html; charset=utf-8" http-equiv=Content-Type>
-</HEAD>
-<BODY leftMargin=0 topMargin=0 marginwidth="0" marginheight="0">
-<FORM method=get name=form1 action="Escolha de unidade.html">
-<DIV id=divRotinaGenerico></DIV>
-<INPUT type=hidden name=SessionID value="c1ak4A76892162">
-<INPUT type=hidden name=SubSessionID value="r7Cj4A17931563">
-<INPUT type=hidden value=00 name=opcao>
-<INPUT type=hidden value=12 name=ppopcao>
-<INPUT type=hidden value=PW99940F name=call>
+<!DOCTYPE html>
+<html class="light" lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Expires" content="Mon, 01 Jan 1996 12:12:00 GMT">
+    <meta http-equiv="Pragma" content="no-cache">
+    <title>PromaxWEB - Login</title>
 
-<!-- Área reservada para a Logo da Empresa -->
-<DIV id=logoEmpresa class=logoContainer align=center style="MARGIN: 20px 0px 15px 0px; PADDING: 10px;">
-<DIV style="FONT-WEIGHT: bold; FONT-SIZE: 18px; COLOR: #2c3e50; MARGIN-BOTTOM: 5px;">Distribuidora Fictícia S/A</DIV>
-<DIV style="FONT-SIZE: 12px; COLOR: #7f8c8d; FONT-STYLE: italic;">[ Espaço reservado para a Logo da Empresa ]</DIV>
-</DIV>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
 
-<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
-<TBODY>
-<TR>
-<TD height=10 noWrap>
-<DIV id=imgWait style="DISPLAY: none"></DIV>
-</TD>
-</TR>
-</TBODY>
-</TABLE>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#6e2c00",
+                        "primary-fixed": "#dce1ff",
+                        "primary-container": "#1e3a8a",
+                        "secondary-fixed": "#d3e4fe",
+                        "surface-container": "#eeedf4",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#f1f0f7",
+                        "surface-variant": "#e3e1e9",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e3e1e9",
+                        "tertiary-fixed": "#ffdbcb",
+                        "on-tertiary-container": "#f39461",
+                        "on-error-container": "#93000a",
+                        "outline": "#757682",
+                        "secondary-container": "#d0e1fb",
+                        "inverse-surface": "#2f3036",
+                        "primary": "#00236f",
+                        "on-surface": "#1a1b21",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-surface-variant": "#444651",
+                        "on-primary-fixed": "#00164e",
+                        "on-primary-container": "#90a8ff",
+                        "background": "#faf8ff",
+                        "on-primary-fixed-variant": "#264191",
+                        "on-secondary-fixed": "#0b1c30",
+                        "tertiary-fixed-dim": "#ffb691",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#c5c5d3",
+                        "surface-container-low": "#f4f3fa",
+                        "surface-container-high": "#e9e7ef",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#773205",
+                        "surface": "#faf8ff",
+                        "surface-bright": "#faf8ff",
+                        "secondary": "#505f76",
+                        "tertiary": "#4b1c00",
+                        "on-secondary-container": "#54647a",
+                        "surface-dim": "#dad9e1",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-background": "#1a1b21",
+                        "on-tertiary-fixed": "#341100",
+                        "inverse-primary": "#b6c4ff",
+                        "surface-tint": "#4059aa"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "xl": "32px",
+                        "xs": "4px",
+                        "unit": "8px",
+                        "container-margin": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "title-sm": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "data-mono": ["Inter"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "title-sm": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "data-mono": ["13px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background min-h-screen flex items-center justify-center p-md bg-pattern">
 
-<TABLE width="100%">
-<TBODY>
-<TR>
-<TD width="100%">
-<TABLE class=WindowScreen borderColor=white cellSpacing=1 borderColorDark=white cellPadding=6 rules=none width="100%" borderColorLight=dimgray border=1>
-<TBODY>
-<TR>
-<TD width="20%">&nbsp;</TD>
-<TD width="60%">&nbsp;</TD>
-<TD width="20%">&nbsp;</TD>
-<TD width="10%">&nbsp;</TD>
-</TR>
-<TR>
-<TD class=tituloCampo>ID ou Usuário&nbsp;</TD>
-<TD colSpan=3><INPUT tabIndex=1 class=campo maxLength=20 size=20 value="Distribuidora Fictícia S/A" name=idUsuario id=idUsuario obrigatorio="1"></TD>
-</TR>
-<TR>
-<TD class=tituloCampo>Senha&nbsp;</TD>
-<TD colSpan=3><INPUT tabIndex=2 class=campo maxLength=20 size=20 type=password value="" name=senha id=senha obrigatorio="1"></TD>
-</TR>
-<TR>
-<TD colSpan=4>&nbsp;</TD>
-</TR>
-</TBODY>
-</TABLE>
-</TD>
-</TR>
-</TBODY>
-</TABLE>
+<main class="login-card w-full max-w-[440px] bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0px_20px_25px_-5px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col relative z-10">
+    <!-- Header / Logo Area -->
+    <div class="card-header px-xl py-xl border-b border-outline-variant flex flex-col items-center justify-center bg-surface-container-low">
+        <div class="logo-box w-16 h-16 bg-primary-container rounded-lg flex items-center justify-center mb-md shadow-sm">
+            <span class="material-symbols-outlined text-on-primary-container text-3xl" data-icon="inventory_2" data-weight="fill" style="color: #ffffff; font-size: 32px;">inventory_2</span>
+        </div>
+        <h1 class="font-headline-md text-headline-md text-on-surface text-center tracking-tight" style="font-size: 24px; font-weight: 600; color: #1a1b21; margin: 0;">Distribuidora Fictícia S/A</h1>
+        <p class="font-body-md text-body-md text-on-surface-variant text-center mt-xs" style="font-size: 14px; color: #444651; margin-top: 4px; margin-bottom: 0;">Enterprise Logistics Portal</p>
+    </div>
 
-<TABLE width="100%" border=0 style="MARGIN-TOP: 15px">
-<TBODY>
-<TR>
-<TD width="100%">&nbsp;</TD>
-<TD>
-<DIV id=DivBtEntrar><BUTTON tabIndex=500 class=botao accessKey=E name=BotEntrar id=BotEntrar type=submit><LABEL><U>E</U>ntrar</LABEL></BUTTON></DIV>
-</TD>
-<TD>
-<DIV id=DivBtCancelar><BUTTON tabIndex=501 class=botao accessKey=C name=BotCancelar id=BotCancelar type=reset><LABEL><U>C</U>ancelar</LABEL></BUTTON></DIV>
-</TD>
-<TD>
-<DIV id=DivBtReservado style="WHITE-SPACE: nowrap; DISPLAY: inline-block"></DIV>
-</TD>
-</TR>
-</TBODY>
-</TABLE>
-</FORM>
-</BODY>
-</HTML>
+    <!-- Form Area -->
+    <div class="card-body p-xl bg-surface-container-lowest">
+        <form action="Escolha de unidade.html" method="POST" name="form1" class="flex flex-col gap-lg">
+            <div id="divRotinaGenerico"></div>
+            <input type="hidden" name="SessionID" value="c1ak4A76892162">
+            <input type="hidden" name="SubSessionID" value="r7Cj4A17931563">
+            <input type="hidden" name="opcao" value="00">
+            <input type="hidden" name="ppopcao" value="12">
+            <input type="hidden" name="call" value="PW99940F">
+
+            <!-- ID/User Field -->
+            <div class="form-group flex flex-col gap-sm">
+                <label class="form-label font-label-caps text-label-caps text-on-surface" for="idUsuario">ID ou Usuário</label>
+                <div class="input-relative relative">
+                    <div class="input-icon-box absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <span class="material-symbols-outlined text-on-surface-variant text-lg" data-icon="person">person</span>
+                    </div>
+                    <input class="input-field w-full pl-10 pr-3 py-2 bg-surface-container-lowest border border-outline-variant rounded focus:border-primary-container focus:ring-3 focus:ring-primary-container/20 font-body-md text-body-md text-on-surface transition-all outline-none" id="idUsuario" name="idUsuario" required type="text" value="Distribuidora Fictícia S/A" obrigatorio="1">
+                </div>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group flex flex-col gap-sm">
+                <label class="form-label font-label-caps text-label-caps text-on-surface" for="senha">Senha</label>
+                <div class="input-relative relative">
+                    <div class="input-icon-box absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <span class="material-symbols-outlined text-on-surface-variant text-lg" data-icon="lock">lock</span>
+                    </div>
+                    <input class="input-field w-full pl-10 pr-3 py-2 bg-surface-container-lowest border border-outline-variant rounded focus:border-primary-container focus:ring-3 focus:ring-primary-container/20 font-body-md text-body-md text-on-surface transition-all outline-none" id="senha" name="senha" placeholder="••••••••" required type="password" obrigatorio="1">
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex flex-col gap-md mt-sm" style="display: flex; flex-direction: column; gap: 16px; margin-top: 8px;">
+                <button class="btn-primary w-full bg-primary-container hover:bg-on-primary-fixed-variant text-on-primary font-title-sm text-title-sm py-2 px-4 rounded transition-colors flex justify-center items-center gap-2" id="BotEntrar" name="BotEntrar" type="submit" accesskey="E">
+                    Entrar
+                    <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+                </button>
+                <button class="btn-secondary w-full bg-surface-container-lowest hover:bg-surface-container-low border border-outline-variant text-secondary font-body-md text-body-md py-2 px-4 rounded transition-colors text-center" id="BotCancelar" name="BotCancelar" type="reset" accesskey="C">
+                    Cancelar
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer Info -->
+    <div class="card-footer px-lg py-md bg-surface-container-low border-t border-outline-variant flex justify-center items-center">
+        <p class="font-body-sm text-body-sm text-on-surface-variant" style="margin: 0; font-size: 13px; color: #444651;">© 2024 Distribuidora Fictícia S/A. All rights reserved.</p>
+    </div>
+</main>
+
+</body>
+</html>
