@@ -160,22 +160,17 @@ def login_e_menu():
 
 def subir_github():
     try:
-        resposta = input(
-            "\nDeseja subir as execuções/relatórios para o GitHub? (s/n): ").strip().lower()
-        if resposta == 's':
-            print("📦 Preparando arquivos para o commit...")
-            import subprocess
-            subprocess.run(["git", "add", "."], check=True)
+        print("📦 Preparando arquivos para o commit...")
+        import subprocess
+        subprocess.run(["git", "add", "."], check=True)
 
-            commit_msg = f"Execucao automatica das rotinas - {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}"
-            subprocess.run(["git", "commit", "-m", commit_msg], check=True)
+        commit_msg = f"Execucao automatica das rotinas - {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}"
+        subprocess.run(["git", "commit", "-m", commit_msg], check=True)
 
-            print("🚀 Enviando para o GitHub (branch atual)...")
-            subprocess.run(["git", "push"], check=True)
+        print("🚀 Enviando para o GitHub (branch atual)...")
+        subprocess.run(["git", "push"], check=True)
 
-            print("✅ Atualização enviada com sucesso!")
-        else:
-            print("👍 Operação ignorada. Nada foi enviado para o GitHub.")
+        print("✅ Atualização enviada com sucesso!")
     except Exception as e:
         print(f"❌ Erro ao tentar subir para o GitHub: {e}")
 
