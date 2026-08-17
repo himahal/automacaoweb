@@ -23,7 +23,7 @@ from datetime import datetime
 import atexit
 
 # ====================================================================
-# 🛡️ INTERCEPTADOR DE LOGS (Salva tudo no terminal e no arquivo)
+# INTERCEPTADOR DE LOGS
 # ====================================================================
 
 
@@ -34,11 +34,8 @@ class InterceptadorLog:
         atexit.register(self.fechar)
 
     def write(self, mensagem):
-        # Escreve no terminal (para você ver rodando)
         self.terminal.write(mensagem)
-        # Escreve no arquivo txt
         self.arquivo_log.write(mensagem)
-        # Força o salvamento imediato no disco rígido
         self.arquivo_log.flush()
 
     def flush(self):
@@ -51,18 +48,15 @@ class InterceptadorLog:
             self.arquivo_log.close()
 
 
-# Cria uma pasta chamada 'logs_v2' no mesmo local do main.py (se não existir)
 pasta_logs = os.path.join(os.path.dirname(
     os.path.abspath(__file__)), "logs_v2")
 os.makedirs(pasta_logs, exist_ok=True)
 
-# Gera um nome de arquivo único com a data e hora atual
 timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 nome_arquivo_log = os.path.join(pasta_logs, f"execucao_{timestamp}.log")
 
-# Aplica a interceptação no sistema
 logger = InterceptadorLog(nome_arquivo_log)
-sys.stdout = logger  # Captura todos os seus 'prints'
+sys.stdout = logger
 sys.stderr = logger
 
 # --- Variáveis Globais ---
@@ -89,7 +83,6 @@ def login_e_menu():
     print("🚀 INICIANDO PROCESSO DE LOGIN PROMAX")
     print("="*50)
 
-    # Limpa possíveis travamentos de instâncias antigas
     limpar_processos_antigos()
 
     configurar_pasta_download()
@@ -102,21 +95,16 @@ def login_e_menu():
 
     print("\U0001f4e5 Acessando a URL do sistema (Ambiente Mock)...")
 
-    # 1. Define a raiz do projeto e aponta para a pasta mock
     diretorio_projeto = os.path.dirname(os.path.abspath(__file__))
     caminho_mock = os.path.join(diretorio_projeto, "portfolio", "Login.html")
 
-    # 2. Formata para o navegador entender como um link
     url_mock = "http://localhost:8000/Login.html"
 
-    # 3. Acessa a página local
     driver.get(url_mock)
 
     # --- Etapa: Login ---
-    # --- Etapa: Login ---
     print("🔑 Identificando frames e preenchendo credenciais...")
 
-    # Tenta localizar pelo nome/id do HTML local ou do site original
     try:
         wait.until(EC.presence_of_element_located((By.NAME, "idUsuario")))
         loginI = driver.find_element(By.NAME, "idUsuario")
@@ -137,7 +125,6 @@ def login_e_menu():
     senhaI.send_keys(Keys.DELETE)
     senhaI.send_keys(senha)
 
-    # Clica no botão de login (BotEntrar ou BtnConfirm)
     try:
         driver.find_element(By.ID, "BotEntrar").click()
     except Exception:
@@ -146,37 +133,25 @@ def login_e_menu():
     print("✅ Login efetuado com sucesso!")
 
     try:
-        # Espera BEM CURTA (ex: 3 segundos) para não atrasar o dia a dia
-        # Substitua "ID_DO_POPUP" por algum elemento que só existe nessa tela de senha
         tela_senha = WebDriverWait(driver, 3).until(
             EC.presence_of_element_located(
                 (By.ID, "algum_id_da_tela_de_senha"))
         )
-
         print("⚠️ Aviso: Tela de alteração de senha detectada!")
-
-        # Salva o HTML para você estudar depois
         html_senha = driver.page_source
         with open("html_tela_senha.html", "w", encoding="utf-8") as f:
             f.write(html_senha)
-        print("💾 HTML da tela de senha salvo como 'html_tela_senha.html'.")
-
-    # TODO: Fechar o popup ou clicar em "Lembrar mais tarde"
-    # botao_fechar = driver.find_element(By.ID, "id_do_botao_fechar")
-    # botao_fechar.click()
-
     except Exception:
-        # Se der erro por timeout (3s), significa que o popup não apareceu. Vida que segue!
         print("✅ Nenhum aviso de senha. Seguindo para o sistema...")
 
-    # --- Etapa: Unidade/Revenda ---
+    # --- Etapa: Seleção de Unidade ---
     driver.switch_to.default_content()
-    print("🏢 Selecionando unidade de revenda...")
+    print("🏢 Selecionando unidade...")
     driver.find_element(By.NAME, "BotConfirmar").click()
     print("📍 Unidade confirmada!")
 
-    # --- Etapa: Limpeza de Terreno ---
-    print("🧹 Chamando assistente para fechar pop-ups...")
+    # --- Etapa: Limpeza de Alertas ---
+    print("🧹 Fechando pop-ups de alerta...")
     fechar_popups(driver, 5)
     print("✨ Varredura de alertas concluída.")
 
@@ -206,7 +181,6 @@ def subir_github():
 
 
 if __name__ == "__main__":
-    # 1. Executa o fluxo de entrada
     driver, wait = login_e_menu()
 
     try:
@@ -214,14 +188,7 @@ if __name__ == "__main__":
         print("🎯 INICIANDO EXECUÇÃO DAS ROTINAS")
         print("-"*50)
 
-        # 🚀 CHAMADA DAS ROTINAS
-
-        # rotinas.chamar_rotina(driver, wait, "031120")
         rotinas.chamar_rotina(driver, wait, "030224")
-        # rotinas.chamar_rotina(driver, wait, "01200147")
-        # rotinas.chamar_rotina(driver, wait, "0105070402")
-        # rotinas.chamar_rotina(driver, wait, "03014701")
-        # rotinas.chamar_rotina(driver, wait, "031120")
 
         print("\n🏆 Todas as rotinas solicitadas foram processadas!")
 

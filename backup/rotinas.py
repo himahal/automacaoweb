@@ -5,15 +5,8 @@ import shutil
 from datetime import datetime, timedelta
 import pygetwindow as gw
 
-# --- IMPORTAÇÕES DAS ROTINAS (Todas relativas para evitar conflitos) ---
-from . import r031120
 from . import r030224
-from . import r01200147
-from . import r03014701
-from . import r030237
-from . import r0105070402
 
-# --- CÁLCULO DAS DATAS ---
 hoje = datetime.now()
 if hoje.day == 1:
     primeiro_dia_mes_atual = hoje.replace(day=1)
@@ -30,9 +23,8 @@ else:
 
 def matar_overlay_processando(driver):
     """Fecha a janela 'Processando' via Windows (gw)"""
-    print("🎯 Caçando janelas 'Processando' no sistema...")
+    print("🎯 Procurando janelas 'Processando' no sistema...")
     try:
-        # Busca janelas que contenham o texto no título
         janelas = gw.getWindowsWithTitle('Processando')
 
         if janelas:
@@ -47,20 +39,14 @@ def matar_overlay_processando(driver):
         print(f"⚠️ Erro ao tentar fechar janela via Windows: {e}")
 
 
-# 🗺️ MAPA DE ROTINAS (Agora os nomes coincidem com os imports acima)
 MAPA_ROTINAS = {
-    "031120": r031120.executar,
     "030224": r030224.executar,
-    "01200147": r01200147.executar,
-    "03014701": r03014701.executar,
-    "030237": r030237.executar,
-    "0105070402": r0105070402.executar,
 }
 
 
 def limpar_ambiente(driver, janela_menu):
     """Fecha todas as janelas que não são o menu principal"""
-    print("\n🧹 Iniciando faxina de janelas secundárias...")
+    print("\n🧹 Fechando janelas secundárias...")
     todas_janelas = driver.window_handles
 
     for janela in todas_janelas:
@@ -72,10 +58,9 @@ def limpar_ambiente(driver, janela_menu):
             except:
                 pass
 
-    # Retorna o controle para a principal
     driver.switch_to.window(janela_menu)
     driver.switch_to.default_content()
-    print("✨ Ambiente limpo e pronto para a próxima!")
+    print("✨ Ambiente limpo.")
 
 
 def tratar_arquivo_baixado(prefixo_arquivo, nome_personalizado=None, caminho_destino=None):
@@ -95,7 +80,6 @@ def tratar_arquivo_baixado(prefixo_arquivo, nome_personalizado=None, caminho_des
     print(f"📂 Processando arquivo da rotina {prefixo_arquivo}...")
     time.sleep(2)
 
-    # 🌟 CORREÇÃO 2: O asterisco no final garante que ele ache '.csv', '.csv.inf', etc.
     padrao = os.path.join(dir_downloads, f"*{prefixo_arquivo}*.csv*")
     arquivos = glob.glob(padrao)
 
@@ -121,7 +105,6 @@ def tratar_arquivo_baixado(prefixo_arquivo, nome_personalizado=None, caminho_des
         return caminho_final
     else:
         print(f"⚠️ Nenhum arquivo encontrado com o padrão: {prefixo_arquivo}")
-        # Print extra para você ter certeza de onde ele tentou procurar:
         print(f"🔍 Procurou na pasta: {dir_downloads}")
         return None
 
@@ -131,47 +114,33 @@ def chamar_rotina(driver, wait, codigo):
     print(f"\n" + "🔍" + "-"*30)
     print(f"Buscando lógica para: {codigo}")
 
-    revendas = [
+    unidades = [
         "Beira Rio",
-        "Revalle Juazeiro",
-        "Revalle Nordeste",
-        "Revalle Bonfim",
-        "Revalle P Afonso",
-        "Revalle Alagoinhas",
-        "Revalle Serrinha"
+        "Juazeiro",
+        "Nordeste",
+        "Bonfim",
+        "Paulo Afonso",
+        "Alagoinhas",
+        "Serrinha"
     ]
 
-    # 🎯 Define a janela principal logo no início
     driver.switch_to.default_content()
     janela_menu = driver.window_handles[0]
 
-    # Buscando a função pelo dicionário
     funcao_rotina = MAPA_ROTINAS.get(codigo)
 
     if funcao_rotina:
         try:
-            print(
-                f"🎯 Rotina {codigo} localizada! Iniciando processamento em lote...")
-
-            # 🌟 MUDANÇA AQUI: Removemos o 'for' e passamos a lista 'revendas' inteira
-            funcao_rotina(driver, wait, data_inicio,
-                          data_fim, janela_menu, revendas)
-
-            print(
-                f"\n🏁 Todas as revendas da rotina {codigo} foram processadas com sucesso!")
+            print(f"🎯 Rotina {codigo} localizada! Iniciando processamento em lote...")
+            funcao_rotina(driver, wait, data_inicio, data_fim, janela_menu, unidades)
+            print(f"\n🏁 Todas as unidades da rotina {codigo} foram processadas com sucesso!")
         except Exception as e:
             print(f"💥 Falha na execução da rotina {codigo}: {e}")
         finally:
-            # 🏁 FAXINA TOTAL: Garante que o bot não se perca em janelas abertas
             time.sleep(2)
             limpar_ambiente(driver, janela_menu)
     else:
         print(f"❌ ERRO: A rotina {codigo} não está cadastrada.")
 
-    codigoRotina = MAPA_ROTINAS
-
-    print(f"✅ Rotina {codigoRotina} finalizada!")
-    # driver.close()  # Fecha a janela atual
-    # driver.switch_to.window(janela_menu)  # Volta para a janela do menu
-
+    print(f"✅ Rotina {codigo} finalizada!")
     print("-" * 30 + "\n")

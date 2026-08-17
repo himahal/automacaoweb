@@ -5,15 +5,8 @@ import shutil
 from datetime import datetime, timedelta
 import pygetwindow as gw
 
-# --- IMPORTAÇÕES DAS ROTINAS (Todas relativas para evitar conflitos) ---
-from . import r031120
 from . import r030224
-from . import r01200147
-from . import r03014701
-from . import r030237
-from . import r0105070402
 
-# --- CÁLCULO DAS DATAS ---
 hoje = datetime.now()
 if hoje.day == 1:
     primeiro_dia_mes_atual = hoje.replace(day=1)
@@ -33,40 +26,37 @@ JANELA_MENU = None
 
 def matar_overlay_processando(driver):
     """Fecha a janela 'Processando' via Windows (gw)"""
-    print("🎯 Caçando janelas 'Processando' no sistema...")
+    print("🎯 Procurando janelas 'Processando' no sistema...")
     try:
-        # Busca janelas que contenham o texto no título
         janelas = gw.getWindowsWithTitle('Processando')
 
         if janelas:
             for j in janelas:
                 titulo = j.title.lower()
-                # Evita fechar a janela principal do Edge/navegador (que costuma ser grande e conter "edge")
                 if "edge" in titulo and (j.width > 600 or j.height > 500):
                     print(f"🛡️ Ignorando janela principal do navegador: {j.title}")
                     continue
-                print(f"💥 Janela encontrada: {j.title}. Fechando agora...")
+                print(f"💥 Janela encontrada: {j.title}. Fechando...")
                 j.close()
             print("✅ Processo(s) encerrado(s) com sucesso!")
         else:
-            print("💡 Nenhuma janela 'Processando' detectada no momento.")
+            print("💡 Nenhuma janela 'Processando' detectada.")
 
     except Exception as e:
         print(f"⚠️ Erro ao tentar fechar janela via Windows: {e}")
+
 
 def aguardar_processamento_e_botao(driver, wait_obj, by, identificador, timeout_segundos=300):
     """Aguarda um elemento ficar presente enquanto fecha janelas 'Processando' do Windows e mede o tempo."""
     print(f"⏳ Aguardando até {timeout_segundos}s pelo elemento {identificador}...")
     inicio = time.time()
     while time.time() - inicio < timeout_segundos:
-        # Só tenta matar a janela 'Processando' se já passaram 15 segundos para dar tempo do download iniciar
         if time.time() - inicio > 15:
             try:
                 janelas = gw.getWindowsWithTitle('Processando')
                 if janelas:
                     for j in janelas:
                         titulo = j.title.lower()
-                        # Evita fechar a janela principal do Edge/navegador (que costuma ser grande e conter "edge")
                         if "edge" in titulo and (j.width > 600 or j.height > 500):
                             continue
                         print(f"💥 Janela 'Processando' detectada. Fechando {j.title}...")
@@ -75,36 +65,29 @@ def aguardar_processamento_e_botao(driver, wait_obj, by, identificador, timeout_
                 pass
         else:
             time.sleep(1)
-        
-        # Verifica se o elemento já está na tela (mesmo que com is_displayed falso)
+
         try:
             elementos = driver.find_elements(by, identificador)
             if elementos:
                 tempo_decorrido = round(time.time() - inicio, 2)
-                print(f"✅ Elemento {identificador} carregado! (Tempo de processamento: {tempo_decorrido}s)")
+                print(f"✅ Elemento {identificador} carregado! (Tempo: {tempo_decorrido}s)")
                 return elementos[0]
         except Exception:
             pass
-        
-        time.sleep(2) # Pausa curta antes de verificar novamente
-    
+
+        time.sleep(2)
+
     raise TimeoutError(f"Timeout aguardando {identificador} apos {timeout_segundos} segundos.")
 
 
-# 🗺️ MAPA DE ROTINAS (Agora os nomes coincidem com os imports acima)
 MAPA_ROTINAS = {
-    "031120": r031120.executar,
     "030224": r030224.executar,
-    "01200147": r01200147.executar,
-    "03014701": r03014701.executar,
-    "030237": r030237.executar,
-    "0105070402": r0105070402.executar,
 }
 
 
 def limpar_ambiente(driver, janela_menu):
     """Fecha todas as janelas que não são o menu principal"""
-    print("\n🧹 Iniciando faxina de janelas secundárias...")
+    print("\n🧹 Fechando janelas secundárias...")
     todas_janelas = driver.window_handles
 
     for janela in todas_janelas:
@@ -116,26 +99,23 @@ def limpar_ambiente(driver, janela_menu):
             except:
                 pass
 
-    # Retorna o controle para a principal
     driver.switch_to.window(janela_menu)
     driver.switch_to.default_content()
-    print("✨ Ambiente limpo e pronto para a próxima!")
+    print("✨ Ambiente limpo.")
 
 
 def tratar_arquivo_baixado(prefixo_arquivo, nome_personalizado=None, caminho_destino=None):
-    """Localiza o arquivo, renomeia e move para a pasta desejada no computador"""
+    """Localiza o arquivo, renomeia e move para a pasta desejada"""
 
     diretorio_base = os.path.dirname(os.path.abspath(__file__))
     dir_downloads = os.path.abspath(
         os.path.join(diretorio_base, "..", "downloads"))
 
-    # Volta a salvar na pasta original de destino se informada, caso contrário usa a pasta downloads
     dir_final = caminho_destino if caminho_destino else dir_downloads
     os.makedirs(dir_final, exist_ok=True)
 
     print(f"📂 Processando arquivo da rotina {prefixo_arquivo}...")
-    
-    # Aguarda a conclusão do download (enquanto houver extensões temporárias de download ativo)
+
     inicio_espera = time.time()
     while time.time() - inicio_espera < 90:
         parciais = (
@@ -146,12 +126,11 @@ def tratar_arquivo_baixado(prefixo_arquivo, nome_personalizado=None, caminho_des
         parciais_rotina = [f for f in parciais if prefixo_arquivo in os.path.basename(f)]
         if not parciais_rotina:
             break
-        print("⏳ Aguardando conclusão do download (arquivo temporário/partial ativo)...")
+        print("⏳ Aguardando conclusão do download...")
         time.sleep(1)
 
     time.sleep(2)
 
-    # 🌟 CORREÇÃO 2: O asterisco no final garante que ele ache '.csv', '.csv.inf', etc.
     padrao = os.path.join(dir_downloads, f"*{prefixo_arquivo}*.csv*")
     arquivos = glob.glob(padrao)
 
@@ -177,7 +156,6 @@ def tratar_arquivo_baixado(prefixo_arquivo, nome_personalizado=None, caminho_des
         return caminho_final
     else:
         print(f"⚠️ Nenhum arquivo encontrado com o padrão: {prefixo_arquivo}")
-        # Print extra para você ter certeza de onde ele tentou procurar:
         print(f"🔍 Procurou na pasta: {dir_downloads}")
         return None
 
@@ -187,20 +165,18 @@ def chamar_rotina(driver, wait, codigo):
     print(f"\n" + "🔍" + "-"*30)
     print(f"Buscando lógica para: {codigo}")
 
-    revendas = [
+    unidades = [
         "Beira Rio",
-        "Revalle Juazeiro",
-        "Revalle Nordeste",
-        "Revalle Bonfim",
-        "Revalle P Afonso",
-        "Revalle Alagoinhas",
-        "Revalle Serrinha"
+        "Juazeiro",
+        "Nordeste",
+        "Bonfim",
+        "Paulo Afonso",
+        "Alagoinhas",
+        "Serrinha"
     ]
 
-    # Aguarda 2 segundos para o navegador processar o fechamento da janela anterior
     time.sleep(2)
 
-    # 🎯 Define a janela principal (menu) de forma persistente
     global JANELA_MENU
     if JANELA_MENU is None:
         JANELA_MENU = driver.current_window_handle
@@ -214,7 +190,6 @@ def chamar_rotina(driver, wait, codigo):
             JANELA_MENU = driver.window_handles[0]
             driver.switch_to.window(JANELA_MENU)
 
-    # Garante o foco físico da janela no Windows via win32 antes de interagir
     try:
         from pywinauto import Application
         import re
@@ -225,7 +200,6 @@ def chamar_rotina(driver, wait, codigo):
     except Exception as e_foco:
         print(f"⚠️ Erro ao focar na janela do menu principal: {e_foco}")
 
-    # Limpeza preventiva de pop-ups/alertas residuais na janela principal
     try:
         alert = driver.switch_to.alert
         print(f"🚨 Alerta residual detectado e aceito na janela principal: '{alert.text}'")
@@ -237,33 +211,20 @@ def chamar_rotina(driver, wait, codigo):
     driver.switch_to.default_content()
     janela_menu = JANELA_MENU
 
-    # Buscando a função pelo dicionário
     funcao_rotina = MAPA_ROTINAS.get(codigo)
 
     if funcao_rotina:
         try:
-            print(
-                f"🎯 Rotina {codigo} localizada! Iniciando processamento em lote...")
-
-            # 🌟 MUDANÇA AQUI: Removemos o 'for' e passamos a lista 'revendas' inteira
-            funcao_rotina(driver, wait, data_inicio,
-                          data_fim, janela_menu, revendas)
-
-            print(
-                f"\n🏁 Todas as revendas da rotina {codigo} foram processadas com sucesso!")
+            print(f"🎯 Rotina {codigo} localizada! Iniciando processamento em lote...")
+            funcao_rotina(driver, wait, data_inicio, data_fim, janela_menu, unidades)
+            print(f"\n🏁 Todas as unidades da rotina {codigo} foram processadas com sucesso!")
         except Exception as e:
             print(f"💥 Falha na execução da rotina {codigo}: {e}")
         finally:
-            # 🏁 FAXINA TOTAL: Garante que o bot não se perca em janelas abertas
             time.sleep(2)
             limpar_ambiente(driver, janela_menu)
     else:
         print(f"❌ ERRO: A rotina {codigo} não está cadastrada.")
 
-    codigoRotina = MAPA_ROTINAS
-
-    print(f"✅ Rotina {codigoRotina} finalizada!")
-    # driver.close()  # Fecha a janela atual
-    # driver.switch_to.window(janela_menu)  # Volta para a janela do menu
-
+    print(f"✅ Rotina {codigo} finalizada!")
     print("-" * 30 + "\n")
