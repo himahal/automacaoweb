@@ -1,0 +1,29 @@
+
+==================================================
+🚀 INICIANDO PROCESSO DE LOGIN PROMAX
+==================================================
+🧹 Limpando processos antigos (IEDriverServer e Internet Explorer) do Windows...
+⚙️ Configurando IE para baixar em: c:\Users\usuario\Desktop\Promax\promax - v2\downloads
+✅ Registro atualizado com sucesso!
+🌐 Abrindo navegador Internet Explorer...
+📥 Acessando a URL do sistema (Ambiente Mock)...
+🔑 Identificando frames e preenchendo credenciais...
+✅ Login efetuado com sucesso!
+✅ Nenhum aviso de senha. Seguindo para o sistema...
+🏢 Selecionando unidade...
+Traceback (most recent call last):
+  File "c:\Users\usuario\Desktop\Promax\promax - v2\main.py", line 184, in <module>
+    driver, wait = login_e_menu()
+                   ^^^^^^^^^^^^^^
+  File "c:\Users\usuario\Desktop\Promax\promax - v2\main.py", line 150, in login_e_menu
+    driver.find_element(By.NAME, "BotConfirmar").click()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 868, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 468, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: Unable to find element with css selector == [name="BotConfirmar"]; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+

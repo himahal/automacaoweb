@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html class="light" lang="pt-BR">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,8 +12,11 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="login.css">
 
     <script id="tailwind-config">
@@ -108,68 +112,95 @@
         }
     </script>
 </head>
+
 <body class="bg-background min-h-screen flex items-center justify-center p-md bg-pattern">
 
-<main class="login-card w-full max-w-[440px] bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0px_20px_25px_-5px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col relative z-10">
-    <!-- Header / Logo Area -->
-    <div class="card-header px-xl py-xl border-b border-outline-variant flex flex-col items-center justify-center bg-surface-container-low">
-        <div class="logo-box w-16 h-16 bg-primary-container rounded-lg flex items-center justify-center mb-md shadow-sm">
-            <span class="material-symbols-outlined text-on-primary-container text-3xl" data-icon="inventory_2" data-weight="fill" style="color: #ffffff; font-size: 32px;">inventory_2</span>
+    <main
+        class="login-card w-full max-w-[440px] bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0px_20px_25px_-5px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col relative z-10">
+        <!-- Header / Logo Area -->
+        <div
+            class="card-header px-xl py-xl border-b border-outline-variant flex flex-col items-center justify-center bg-surface-container-low">
+            <div
+                class="logo-box w-16 h-16 bg-primary-container rounded-lg flex items-center justify-center mb-md shadow-sm">
+                <span class="material-symbols-outlined text-on-primary-container text-3xl" data-icon="inventory_2"
+                    data-weight="fill" style="color: #ffffff; font-size: 32px;">inventory_2</span>
+            </div>
+            <h1 class="font-headline-md text-headline-md text-on-surface text-center tracking-tight"
+                style="font-size: 24px; font-weight: 600; color: #1a1b21; margin: 0;">Distribuidora Fictícia S/A</h1>
+            <p class="font-body-md text-body-md text-on-surface-variant text-center mt-xs"
+                style="font-size: 14px; color: #444651; margin-top: 4px; margin-bottom: 0;">Enterprise Logistics Portal
+            </p>
         </div>
-        <h1 class="font-headline-md text-headline-md text-on-surface text-center tracking-tight" style="font-size: 24px; font-weight: 600; color: #1a1b21; margin: 0;">Distribuidora Fictícia S/A</h1>
-        <p class="font-body-md text-body-md text-on-surface-variant text-center mt-xs" style="font-size: 14px; color: #444651; margin-top: 4px; margin-bottom: 0;">Enterprise Logistics Portal</p>
-    </div>
 
-    <!-- Form Area -->
-    <div class="card-body p-xl bg-surface-container-lowest">
-        <form action="Escolha de unidade.html" method="get" name="form1" class="flex flex-col gap-lg">
-            <div id="divRotinaGenerico"></div>
-            <input type="hidden" name="SessionID" value="c1ak4A76892162">
-            <input type="hidden" name="SubSessionID" value="r7Cj4A17931563">
-            <input type="hidden" name="opcao" value="00">
-            <input type="hidden" name="ppopcao" value="12">
-            <input type="hidden" name="call" value="PW99940F">
+        <!-- Form Area -->
+        <div class="card-body p-xl bg-surface-container-lowest">
+            <form action="Escolha de unidade.html" method="get" name="form1" class="flex flex-col gap-lg">
+                <div id="divRotinaGenerico"></div>
+                <input type="hidden" name="SessionID" value="c1ak4A76892162">
+                <input type="hidden" name="SubSessionID" value="r7Cj4A17931563">
+                <input type="hidden" name="opcao" value="00">
+                <input type="hidden" name="ppopcao" value="12">
+                <input type="hidden" name="call" value="PW99940F">
 
-            <!-- ID/User Field -->
-            <div class="form-group flex flex-col gap-sm">
-                <label class="form-label font-label-caps text-label-caps text-on-surface" for="idUsuario">ID ou Usuário</label>
-                <div class="input-relative relative">
-                    <div class="input-icon-box absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <span class="material-symbols-outlined text-on-surface-variant text-lg" data-icon="person">person</span>
+                <!-- ID/User Field -->
+                <div class="form-group flex flex-col gap-sm">
+                    <label class="form-label font-label-caps text-label-caps text-on-surface" for="idUsuario">ID ou
+                        Usuário</label>
+                    <div class="input-relative relative">
+                        <div
+                            class="input-icon-box absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <span class="material-symbols-outlined text-on-surface-variant text-lg"
+                                data-icon="person">person</span>
+                        </div>
+                        <input
+                            class="input-field w-full pl-10 pr-3 py-2 bg-surface-container-lowest border border-outline-variant rounded focus:border-primary-container focus:ring-3 focus:ring-primary-container/20 font-body-md text-body-md text-on-surface transition-all outline-none"
+                            id="idUsuario" name="idUsuario" required type="text" value="Distribuidora Fictícia S/A"
+                            obrigatorio="1">
                     </div>
-                    <input class="input-field w-full pl-10 pr-3 py-2 bg-surface-container-lowest border border-outline-variant rounded focus:border-primary-container focus:ring-3 focus:ring-primary-container/20 font-body-md text-body-md text-on-surface transition-all outline-none" id="idUsuario" name="idUsuario" required type="text" value="Distribuidora Fictícia S/A" obrigatorio="1">
                 </div>
-            </div>
 
-            <!-- Password Field -->
-            <div class="form-group flex flex-col gap-sm">
-                <label class="form-label font-label-caps text-label-caps text-on-surface" for="senha">Senha</label>
-                <div class="input-relative relative">
-                    <div class="input-icon-box absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <span class="material-symbols-outlined text-on-surface-variant text-lg" data-icon="lock">lock</span>
+                <!-- Password Field -->
+                <div class="form-group flex flex-col gap-sm">
+                    <label class="form-label font-label-caps text-label-caps text-on-surface" for="senha">Senha</label>
+                    <div class="input-relative relative">
+                        <div
+                            class="input-icon-box absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <span class="material-symbols-outlined text-on-surface-variant text-lg"
+                                data-icon="lock">lock</span>
+                        </div>
+                        <input
+                            class="input-field w-full pl-10 pr-3 py-2 bg-surface-container-lowest border border-outline-variant rounded focus:border-primary-container focus:ring-3 focus:ring-primary-container/20 font-body-md text-body-md text-on-surface transition-all outline-none"
+                            id="senha" name="senha" placeholder="••••••••" required type="password" obrigatorio="1">
                     </div>
-                    <input class="input-field w-full pl-10 pr-3 py-2 bg-surface-container-lowest border border-outline-variant rounded focus:border-primary-container focus:ring-3 focus:ring-primary-container/20 font-body-md text-body-md text-on-surface transition-all outline-none" id="senha" name="senha" placeholder="••••••••" required type="password" obrigatorio="1">
                 </div>
-            </div>
 
-            <!-- Actions -->
-            <div class="flex flex-col gap-md mt-sm" style="display: flex; flex-direction: column; gap: 16px; margin-top: 8px;">
-                <button class="btn-primary w-full bg-primary-container hover:bg-on-primary-fixed-variant text-on-primary font-title-sm text-title-sm py-2 px-4 rounded transition-colors flex justify-center items-center gap-2" id="BotEntrar" name="BotEntrar" type="submit" accesskey="E">
-                    Entrar
-                    <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
-                </button>
-                <button class="btn-secondary w-full bg-surface-container-lowest hover:bg-surface-container-low border border-outline-variant text-secondary font-body-md text-body-md py-2 px-4 rounded transition-colors text-center" id="BotCancelar" name="BotCancelar" type="reset" accesskey="C">
-                    Cancelar
-                </button>
-            </div>
-        </form>
-    </div>
+                <!-- Actions -->
+                <div class="flex flex-col gap-md mt-sm"
+                    style="display: flex; flex-direction: column; gap: 16px; margin-top: 8px;">
+                    <button
+                        class="btn-primary w-full bg-primary-container hover:bg-on-primary-fixed-variant text-on-primary font-title-sm text-title-sm py-2 px-4 rounded transition-colors flex justify-center items-center gap-2"
+                        id="BotEntrar" name="BotEntrar" type="submit" accesskey="E">
+                        Entrar
+                        <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+                    </button>
+                    <button
+                        class="btn-secondary w-full bg-surface-container-lowest hover:bg-surface-container-low border border-outline-variant text-secondary font-body-md text-body-md py-2 px-4 rounded transition-colors text-center"
+                        id="BotCancelar" name="BotCancelar" type="reset" accesskey="C">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+        </div>
 
-    <!-- Footer Info -->
-    <div class="card-footer px-lg py-md bg-surface-container-low border-t border-outline-variant flex justify-center items-center">
-        <p class="font-body-sm text-body-sm text-on-surface-variant" style="margin: 0; font-size: 13px; color: #444651;">© 2024 Distribuidora Fictícia S/A. All rights reserved.</p>
-    </div>
-</main>
+        <!-- Footer Info -->
+        <div
+            class="card-footer px-lg py-md bg-surface-container-low border-t border-outline-variant flex justify-center items-center">
+            <p class="font-body-sm text-body-sm text-on-surface-variant"
+                style="margin: 0; font-size: 13px; color: #444651;">© 2024 Distribuidora Fictícia S/A. All rights
+                reserved.</p>
+        </div>
+    </main>
 
 </body>
+
 </html>
