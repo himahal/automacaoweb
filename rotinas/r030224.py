@@ -125,11 +125,7 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_unidades):
             btn_v = driver.find_element(
                 By.XPATH, "//button[contains(., 'Visualizar')]")
             driver.execute_script("arguments[0].click();", btn_v)
-
-        # Aguarda o botão do CSV (Pode remover o comentário se for gravar essa parte)
-        # botaoCsv = rotinas.aguardar_processamento_e_botao(driver, wait, By.NAME, "GerExecl", timeout_segundos=300)
-        # driver.execute_script("arguments[0].click();", botaoCsv)
-
+        """
         # Validação do Arquivo
         from rotinas.utils_ui import confirmar_download_ie
         confirmar_download_ie(driver)
@@ -149,7 +145,7 @@ def executar(driver, wait, data_inicio, data_fim, janela_menu, lista_unidades):
             nome_personalizado=nome_dinamico,
             caminho_destino=diretorio_saida
         )
-
+        """
         print("✅ Fluxo de demonstração concluído com sucesso!")
 
     except Exception as e:
