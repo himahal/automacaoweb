@@ -1,51 +1,236 @@
-<HTML>
-<HEAD>
-<TITLE>PromaxWEB - Escolha da Rotina</TITLE>
-<META content="Mon, 01 Jan 1996 12:12:00 GMT" http-equiv=Expires>
-<META content=no-cache http-equiv=Pragma>
-<META content="text/html; charset=utf-8" http-equiv=Content-Type>
-</HEAD>
-<BODY leftMargin=0 topMargin=0 marginwidth="0" marginheight="0">
-<FORM method=get name=form1 action="Janela da rotina.html">
-<DIV id=divRotinaGenerico></DIV>
-<INPUT type=hidden name=SessionID value="c1ak4A76892162">
-<INPUT type=hidden name=SubSessionID value="r7Cj4A17931563">
-<INPUT type=hidden value=00 name=opcao>
-<INPUT type=hidden value=7 name=ppopcao>
-<TABLE class=WindowScreen borderColor=white cellSpacing=1 borderColorDark=white cellPadding=6 rules=none width="100%" borderColorLight=dimgray border=1>
-<TBODY>
-<TR>
-<TD class=titulocampo colSpan=2 style="BACKGROUND-COLOR: #e0e0e0"><B>Seleção de Rotina do Sistema - [ Distribuidora Fictícia S/A ]</B></TD>
-</TR>
-<TR>
-<TD class=tituloCampo width="30%">Código da Rotina:&nbsp;</TD>
-<TD width="70%">
-<INPUT class=campo maxLength=12 size=15 value="031120" name=call id=call obrigatorio="1">
-</TD>
-</TR>
-<TR>
-<TD class=tituloCampo width="30%">Nome da Rotina:&nbsp;</TD>
-<TD width="70%">
-<SELECT class=combo style="WIDTH: 380px" name=menuRotinas id=menuRotinas>
-<OPTION value="031120" selected>031120 - Planilha de Acompanhamento</OPTION>
-<OPTION value="010507">010507 - Relatório de Vendas</OPTION>
-<OPTION value="012001">012001 - Relatório BI</OPTION>
-<OPTION value="030237">030237 - Fechamento de Caixa</OPTION>
-</SELECT>
-</TD>
-</TR>
-</TBODY>
-</TABLE>
-<TABLE width="100%" border=0 style="MARGIN-TOP: 15px">
-<TBODY>
-<TR>
-<TD width="100%">&nbsp;</TD>
-<TD>
-<DIV id=DivBtAcessar><BUTTON class=botao accessKey=A name=BotAcessar id=BotAcessar type=submit><LABEL><U>A</U>cessar Rotina</LABEL></BUTTON></DIV>
-</TD>
-</TR>
-</TBODY>
-</TABLE>
-</FORM>
-</BODY>
-</HTML>
+<!DOCTYPE html>
+<html class="light" lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Expires" content="Mon, 01 Jan 1996 12:12:00 GMT">
+    <meta http-equiv="Pragma" content="no-cache">
+    <title>Seleção de Rotina do Sistema - Distribuidora Fictícia S/A</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#6e2c00",
+                        "primary-fixed": "#dce1ff",
+                        "primary-container": "#1e3a8a",
+                        "secondary-fixed": "#d3e4fe",
+                        "surface-container": "#eeedf4",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#f1f0f7",
+                        "surface-variant": "#e3e1e9",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e3e1e9",
+                        "tertiary-fixed": "#ffdbcb",
+                        "on-tertiary-container": "#f39461",
+                        "on-error-container": "#93000a",
+                        "outline": "#757682",
+                        "secondary-container": "#d0e1fb",
+                        "inverse-surface": "#2f3036",
+                        "primary": "#00236f",
+                        "on-surface": "#1a1b21",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-surface-variant": "#444651",
+                        "on-primary-fixed": "#00164e",
+                        "on-primary-container": "#90a8ff",
+                        "background": "#faf8ff",
+                        "on-primary-fixed-variant": "#264191",
+                        "on-secondary-fixed": "#0b1c30",
+                        "tertiary-fixed-dim": "#ffb691",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#c5c5d3",
+                        "surface-container-low": "#f4f3fa",
+                        "surface-container-high": "#e9e7ef",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#773205",
+                        "surface": "#faf8ff",
+                        "surface-bright": "#faf8ff",
+                        "secondary": "#505f76",
+                        "tertiary": "#4b1c00",
+                        "on-secondary-container": "#54647a",
+                        "surface-dim": "#dad9e1",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-background": "#1a1b21",
+                        "on-tertiary-fixed": "#341100",
+                        "inverse-primary": "#b6c4ff",
+                        "surface-tint": "#4059aa"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "xl": "32px",
+                        "xs": "4px",
+                        "unit": "8px",
+                        "container-margin": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "title-sm": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "data-mono": ["Inter"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "title-sm": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "data-mono": ["13px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .input-focus-halo:focus-within {
+            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.2);
+            border-color: #1e3a8a;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col bg-pattern">
+
+<!-- TopNavBar -->
+<header class="top-navbar bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline flat no shadows flex justify-between items-center px-lg h-16 w-full fixed top-0 z-50">
+    <div class="flex items-center gap-lg">
+        <div class="nav-brand font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Empresa Fictícia</div>
+        <nav class="hidden md:flex gap-md h-full items-end">
+            <a class="nav-link text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-low dark:hover:bg-on-secondary-fixed-variant transition-colors cursor-pointer active:opacity-80 px-sm pb-1 border-b-2 border-transparent" href="#">Dashboard</a>
+            <a class="nav-link text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-low dark:hover:bg-on-secondary-fixed-variant transition-colors cursor-pointer active:opacity-80 px-sm pb-1 border-b-2 border-transparent" href="#">Analytics</a>
+            <a class="nav-link text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-low dark:hover:bg-on-secondary-fixed-variant transition-colors cursor-pointer active:opacity-80 px-sm pb-1 border-b-2 border-transparent" href="#">Reports</a>
+            <a class="nav-link active text-primary dark:text-primary-fixed border-b-2 border-primary dark:border-primary-fixed pb-1 cursor-pointer active:opacity-80 px-sm" href="#">Settings</a>
+        </nav>
+    </div>
+    <div class="flex items-center gap-md">
+        <!-- Search Bar -->
+        <div class="hidden lg:flex items-center bg-surface-container-low rounded-DEFAULT px-sm h-10 border border-outline-variant">
+            <span class="material-symbols-outlined text-outline text-lg">search</span>
+            <input class="bg-transparent border-none focus:ring-0 text-body-sm w-48 text-on-surface outline-none ml-xs" placeholder="Search..." type="text">
+        </div>
+        <div class="flex items-center gap-xs">
+            <button aria-label="notifications" class="p-xs text-secondary hover:bg-surface-container-low rounded-full transition-colors" type="button">
+                <span class="material-symbols-outlined">notifications</span>
+            </button>
+            <button aria-label="help" class="p-xs text-secondary hover:bg-surface-container-low rounded-full transition-colors" type="button">
+                <span class="material-symbols-outlined">help</span>
+            </button>
+            <button aria-label="apps" class="p-xs text-secondary hover:bg-surface-container-low rounded-full transition-colors" type="button">
+                <span class="material-symbols-outlined">apps</span>
+            </button>
+        </div>
+        <div class="h-8 w-px bg-outline-variant mx-xs"></div>
+        <button class="flex items-center gap-xs text-primary font-title-sm hover:opacity-80 transition-opacity" type="button">
+            <span>Logout</span>
+        </button>
+        <div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-xs" style="background-color: #1e3a8a; color: #ffffff;">
+            DF
+        </div>
+    </div>
+</header>
+
+<!-- Main Content Area -->
+<main class="flex-grow flex items-center justify-center pt-20 p-lg">
+    <!-- Selection Card -->
+    <div class="card-container-lg bg-surface-container-lowest border border-outline-variant rounded-lg w-full max-w-2xl shadow-sm overflow-hidden">
+        <!-- Card Header -->
+        <div class="card-header border-b border-outline-variant px-lg py-md bg-surface-container-low flex justify-between items-center">
+            <div>
+                <h1 class="font-headline-md text-headline-md text-on-surface" style="font-size: 24px; font-weight: 600; color: #1a1b21; margin: 0;">Seleção de Rotina do Sistema</h1>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mt-xs" style="font-size: 13px; color: #444651; margin-top: 4px; margin-bottom: 0;">Distribuidora Fictícia S/A</p>
+            </div>
+            <div class="bg-primary-container text-on-primary-container p-xs rounded-DEFAULT" style="background-color: #1e3a8a; color: #ffffff; padding: 8px; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+                <span class="material-symbols-outlined text-xl" style="font-size: 24px;">settings_applications</span>
+            </div>
+        </div>
+
+        <!-- Card Body / Form -->
+        <div class="card-body p-lg">
+            <form action="Janela da rotina.html" method="get" name="form1">
+                <div id="divRotinaGenerico"></div>
+                <input type="hidden" name="SessionID" value="c1ak4A76892162">
+                <input type="hidden" name="SubSessionID" value="r7Cj4A17931563">
+                <input type="hidden" name="opcao" value="00">
+                <input type="hidden" name="ppopcao" value="7">
+
+                <div class="grid grid-cols-12 gap-md" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px;">
+                    <!-- Código da Rotina -->
+                    <div class="col-span-12 md:col-span-4 flex flex-col gap-xs" style="grid-column: span 4 / span 4; display: flex; flex-direction: column; gap: 4px;">
+                        <label class="form-label font-label-caps text-label-caps text-on-surface-variant" for="call">Código da Rotina</label>
+                        <div class="input-relative relative flex items-center bg-surface-container-lowest border border-outline-variant rounded-DEFAULT h-10 px-sm input-focus-halo group transition-all">
+                            <div class="input-icon-box absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <span class="material-symbols-outlined text-outline text-md" data-icon="tag">tag</span>
+                            </div>
+                            <input class="input-field w-full bg-transparent border-none focus:ring-0 p-0 font-data-mono text-data-mono text-on-surface outline-none" id="call" name="call" type="text" value="031120" obrigatorio="1" maxLength="12" size="15">
+                        </div>
+                    </div>
+
+                    <!-- Nome da Rotina -->
+                    <div class="col-span-12 md:col-span-8 flex flex-col gap-xs" style="grid-column: span 8 / span 8; display: flex; flex-direction: column; gap: 4px;">
+                        <label class="form-label font-label-caps text-label-caps text-on-surface-variant" for="menuRotinas">Nome da Rotina</label>
+                        <div class="input-relative relative flex items-center bg-surface-container-lowest border border-outline-variant rounded-DEFAULT h-10 px-sm input-focus-halo group transition-all">
+                            <div class="input-icon-box absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <span class="material-symbols-outlined text-outline text-md" data-icon="list_alt">list_alt</span>
+                            </div>
+                            <select class="select-field w-full bg-transparent border-none focus:ring-0 p-0 font-body-md text-body-md text-on-surface outline-none appearance-none cursor-pointer" id="menuRotinas" name="menuRotinas">
+                                <option disabled value="">Selecione a Rotina...</option>
+                                <option selected value="031120">031120 - GERACAO DE COMISSOES</option>
+                                <option value="010507">010507 - RELATORIO DE VENDAS</option>
+                                <option value="012001">012001 - RELATORIO BI</option>
+                                <option value="030237">030237 - FECHAMENTO DE CAIXA</option>
+                                <option value="030224">030224 - PLANILHA ACOMPANHAMENTO</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Footer / Actions -->
+                <div class="card-footer border-t border-outline-variant px-lg py-md bg-surface-container flex justify-end gap-md" style="margin-top: 24px; padding-top: 16px;">
+                    <button class="btn-secondary px-md py-sm border border-outline-variant bg-surface-container-lowest text-secondary font-title-sm text-title-sm rounded-DEFAULT hover:bg-surface-variant transition-colors flex items-center gap-xs" type="reset">
+                        Cancelar
+                    </button>
+                    <div id="DivBtAcessar" style="display: inline-block;">
+                        <button class="btn-primary px-md py-sm bg-primary-container text-on-primary font-title-sm text-title-sm rounded-DEFAULT hover:bg-on-primary-fixed-variant transition-colors flex items-center gap-xs shadow-sm hover:shadow-md" id="BotAcessar" name="BotAcessar" type="submit" accesskey="A">
+                            <span class="material-symbols-outlined text-sm" data-icon="login">login</span>
+                            Acessar Rotina
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

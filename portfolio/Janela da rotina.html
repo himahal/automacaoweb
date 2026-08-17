@@ -1,429 +1,513 @@
-<HTML><HEAD><TITLE></TITLE>
-
-<META content="Mon, 01 Jan 1996 12:12:00 GMT" http-equiv=Expires>
-
-<META content=no-cache http-equiv=Pragma>
-
-<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
-
-</HEAD>
-
-<BODY leftMargin=0 topMargin=0 marginwidth="0" marginheight="0">
-
-<FORM method=post name=form1>
-
-<DIV id=divRotinaGenerico></DIV><INPUT type=hidden value=413762b93f0512bb4d2c14a907027 name=SessionID> <INPUT type=hidden value=d2is7C23765868 name=SubSessionID> <INPUT type=hidden value=00 name=opcao> <INPUT type=hidden value=00 name=ppopcao> <INPUT type=hidden value=PW02630R name=call> 
-
-<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
-
-<TBODY>
-
-<TR>
-
-<TD height=20 noWrap>
-
-<DIV id=imgWait style="DISPLAY: none"></DIV></TD></TR></TBODY></TABLE>
-
-<INPUT type=hidden name=visaoConsolidadora> <INPUT type=hidden name=quebra1Ini9> <INPUT type=hidden name=quebra1Fim9> <INPUT type=hidden name=quebra2Ini9> <INPUT type=hidden name=quebra2Fim9> <INPUT type=hidden name=quebra3Ini9> <INPUT type=hidden name=quebra3Fim9> <INPUT type=hidden name=listaFiliais> 
-
-<DIV>
-
-<TABLE width="100%">
-
-<TBODY>
-
-<TR>
-
-<TD>
-
-<TABLE class=WindowScreen borderColor=white cellSpacing=1 borderColorDark=white cellPadding=8 rules=none width="100%" borderColorLight=dimgray border=1>
-
-<TBODY>
-
-<TR>
-
-<TD width="50%">
-
-<TABLE height="100%" width="100%" border=0>
-
-<TBODY>
-
-<TR>
-
-<TD>
-
-<FIELDSET style="LEFT: 19px; TOP: 19px"><LEGEND><LABEL class=titulocampo>&nbsp;Opções&nbsp;</LABEL></LEGEND>
-
-<TABLE class=WindowScreen style="MARGIN-TOP: 5px" borderColor=white cellSpacing=1 borderColorDark=white cellPadding=2 rules=none align=center borderColorLight=dimgray border=0>
-
-<TBODY>
-
-<TR>
-
-<TD class=titulocampo>Quebra 1 
-
-<TD><SELECT onchange=Carrega(1); tabIndex=1 onblur=Carrega(1); class=combo onkeydown="DigitaCombo( this );" style="WIDTH: 160px" name=quebra1> <OPTION value=00>--Selecionar--</OPTION> <OPTION selected value=01>Geral</OPTION> <OPTION value=02>CDD</OPTION> <OPTION value=03>Canal(Rota/AS)</OPTION> <OPTION value=04>Gerente de Vendas</OPTION> <OPTION value=05>Area</OPTION> <OPTION value=06>Setor</OPTION> <OPTION value=07>Vendedor</OPTION> <OPTION value=08>Cliente</OPTION> <OPTION value=09>Município</OPTION> <OPTION value=10>Categoria(do cliente)</OPTION> <OPTION value=11>Operação</OPTION> <OPTION value=12>Transportadora</OPTION> <OPTION value=13>NR Roadshow</OPTION> <OPTION value=14>Tipo Marca</OPTION> <OPTION value=15>Embalagem</OPTION> <OPTION value=16>Mercadoria</OPTION> <OPTION value=17>Origem(VDI/VDE/Fácil/AS)</OPTION> <OPTION value=18>Marca</OPTION> <OPTION value=19>Tipo Movimento</OPTION> <OPTION value=20>Rede</OPTION></SELECT> 
-
-<TR>
-
-<TD class=titulocampo>Quebra 2 
-
-<TD><SELECT onchange=Carrega(2); tabIndex=2 disabled onblur=Carrega(2); class=combo onkeydown="DigitaCombo( this );" style="WIDTH: 160px" name=quebra2> <OPTION selected value=00>--Selecionar--</OPTION> <OPTION value=02>CDD</OPTION> <OPTION value=03>Canal(Rota/AS)</OPTION> <OPTION value=04>Gerente de Vendas</OPTION> <OPTION value=05>Area</OPTION> <OPTION value=06>Setor</OPTION> <OPTION value=07>Vendedor</OPTION> <OPTION value=08>Cliente</OPTION> <OPTION value=09>Município</OPTION> <OPTION value=10>Categoria(do cliente)</OPTION> <OPTION value=11>Operação</OPTION> <OPTION value=12>Transportadora</OPTION> <OPTION value=13>NR Roadshow</OPTION> <OPTION value=14>Tipo Marca</OPTION> <OPTION value=15>Embalagem</OPTION> <OPTION value=16>Mercadoria</OPTION> <OPTION value=17>Origem(VDI/VDE/Fácil/AS)</OPTION> <OPTION value=18>Marca</OPTION> <OPTION value=19>Tipo Movimento</OPTION> <OPTION value=20>Rede</OPTION></SELECT> 
-
-<TR>
-
-<TD class=titulocampo>Quebra 3 
-
-<TD><SELECT onchange=Carrega(3); tabIndex=3 disabled onblur=Carrega(3); class=combo onkeydown="DigitaCombo( this );" style="WIDTH: 160px" name=quebra3> <OPTION selected value=00>--Selecionar--</OPTION> <OPTION value=02>CDD</OPTION> <OPTION value=03>Canal(Rota/AS)</OPTION> <OPTION value=04>Gerente de Vendas</OPTION> <OPTION value=05>Area</OPTION> <OPTION value=06>Setor</OPTION> <OPTION value=07>Vendedor</OPTION> <OPTION value=08>Cliente</OPTION> <OPTION value=09>Município</OPTION> <OPTION value=10>Categoria(do cliente)</OPTION> <OPTION value=11>Operação</OPTION> <OPTION value=12>Transportadora</OPTION> <OPTION value=13>NR Roadshow</OPTION> <OPTION value=14>Tipo Marca</OPTION> <OPTION value=15>Embalagem</OPTION> <OPTION value=16>Mercadoria</OPTION> <OPTION value=17>Origem(VDI/VDE/Fácil/AS)</OPTION> <OPTION value=18>Marca</OPTION> <OPTION value=19>Tipo Movimento</OPTION> <OPTION value=20>Rede</OPTION></SELECT> 
-
-<TR>
-
-<TD class=titulocampo>Motivos 
-
-<TD colSpan=2><SELECT onchange=VerificaMotivos(); tabIndex=4 onblur=VerificaMotivos(); class=combo onkeydown="DigitaCombo( this );" style="WIDTH: 160px" name=indMotivos> <OPTION selected value=00>--Todos--</OPTION> <OPTION value=01>Pedido Excluído</OPTION> <OPTION value=02>Falta Total</OPTION> <OPTION value=03>Crítica de Pedidos</OPTION> <OPTION value=04>Pedido Órfão</OPTION> <OPTION value=05>Cancelamento</OPTION> <OPTION value=06>Devolução</OPTION> <OPTION value=07>Reprogramado</OPTION> <OPTION value=08>Preservado</OPTION></SELECT> 
-
-<TR>
-
-<TD class=titulocampo>SubMotivos 
-
-<TD colSpan=2><SELECT onchange=VerificaSubMotivos(); tabIndex=5 onblur=VerificaSubMotivos(); class=combo onkeydown="DigitaCombo( this );" style="WIDTH: 160px" name=indSubMotivos> <OPTION selected value=00>--Todos--</OPTION></SELECT> 
-
-<TR>
-
-<TD class=titulocampo>Origem 
-
-<TD colSpan=2><SELECT tabIndex=6 class=combo onkeydown="DigitaCombo( this );" style="WIDTH: 160px" name=indPalmtop> <OPTION selected value="">--Todos--</OPTION><OPTION value=S>Palmtop</OPTION><OPTION value=D>Digitado</OPTION><OPTION value=R>Descarga Remota</OPTION><OPTION value=E>EDI</OPTION><OPTION value=T>Telemarketing</OPTION><OPTION value=B>Balcão</OPTION><OPTION value=P>PCA</OPTION><OPTION value=G>Reprogramação de Pedido</OPTION><OPTION value=H>Pedidos Agendados</OPTION><OPTION value=V>Televendas</OPTION><OPTION value=Y>Site</OPTION><OPTION value=C>GCAD</OPTION><OPTION value=J>Evento</OPTION><OPTION value=I>Digitado Televendas</OPTION></SELECT> 
-
-<TR>
-
-<TD class=titulocampo>Ajuste 
-
-<TD colSpan=2><SELECT tabIndex=7 class=combo onkeydown="DigitaCombo( this );" style="WIDTH: 160px" name=indExpurgo> <OPTION selected value=01>Sem Volume Ajustado</OPTION> <OPTION value=02>Com Volume Ajustado</OPTION> <OPTION value=03>Somente Volume Ajustado</OPTION></SELECT> </TR></TBODY></TABLE></FIELDSET> 
-
-<TR>
-
-<TD height=1>
-
-<TR>
-
-<TD>
-
-<FIELDSET><LEGEND><LABEL class=titulocampo>&nbsp;Preferências&nbsp;</LABEL></LEGEND>
-
-<TABLE class=WindowScreen style="MARGIN: 5px 2px 7px" borderColor=white cellSpacing=1 borderColorDark=white cellPadding=2 rules=none align=center borderColorLight=dimgray border=0>
-
-<TBODY>
-
-<TR>
-
-<TD vAlign=top rowSpan=4 align=center>
-
-<FIELDSET id=fieldsetStatusNota><LEGEND><LABEL class=titulocampo>&nbsp;Opção&nbsp;</LABEL></LEGEND>
-
-<TABLE class=WindowScreen style="MARGIN: 3px 2px 4px" borderColor=white cellSpacing=1 borderColorDark=white cellPadding=0 width="95%" align=center borderColorLight=dimgray border=0>
-
-<TBODY>
-
-<TR>
-
-<TD class=titulocampo height=4 width="50%">
-
-<DIV align=left><INPUT tabIndex=7 class=radio type=radio value=T name=selecionaUnidade>&nbsp;Todos CDDs da Geo</DIV>
-
-<TR>
-
-<TD class=titulocampo height=4 width="50%">
-
-<DIV align=left><INPUT tabIndex=7 class=radio CHECKED type=radio value=U name=selecionaUnidade>&nbsp;Unidade</DIV>
-
-<TR>
-
-<TD class=titulocampo height=4>
-
-<DIV align=left>&nbsp;Seleciona Unidades</DIV></TR></TBODY></TABLE></FIELDSET> 
-
-<TD class=titulocampo>
-
-<DIV align=left><INPUT tabIndex=9 class=checkbox type=checkbox value=S name=todasOperacoes>&nbsp;Todas as Operações</DIV>
-
-<TR>
-
-<TD class=titulocampo colSpan=2>
-
-<DIV align=left><INPUT tabIndex=10 class=checkbox type=checkbox value=S name=todasAlcadasCriticas>&nbsp;Todas as Alçadas de Criticas</DIV>
-
-<TR>
-
-<TD class=titulocampo colSpan=2>
-
-<DIV align=left><INPUT tabIndex=11 class=checkbox type=checkbox value=S name=todasCriticas>&nbsp;Todas as Criticas</DIV>
-
-<TR>
-
-<TD class=titulocampo colSpan=2>
-
-<DIV align=left><INPUT tabIndex=12 class=checkbox CHECKED type=checkbox value=S name=pedidosExcluidos>&nbsp;Pedidos Excluídos</DIV>
-
-<TR>
-
-<TD vAlign=top rowSpan=2 align=center>
-
-<FIELDSET><LEGEND><LABEL class=titulocampo>&nbsp;Área de Roteirização&nbsp;</LABEL></LEGEND>
-
-<TABLE class=WindowScreen style="MARGIN: 3px 2px 4px" borderColor=white cellSpacing=1 borderColorDark=white cellPadding=0 width="95%" align=center borderColorLight=dimgray border=0>
-
-<TBODY>
-
-<TR>
-
-<TD class=titulocampo height=4 width="50%">
-
-<DIV align=left><INPUT tabIndex=8 class=radio CHECKED type=radio value=T name=tipoRoteirizacao>&nbsp;Todas</DIV>
-
-<TD class=titulocampo height=4 width="50%">
-
-<DIV align=left><INPUT tabIndex=8 class=radio type=radio value=R name=tipoRoteirizacao>&nbsp;Rota</DIV>
-
-<TD class=titulocampo height=4 width="50%">
-
-<DIV align=left><INPUT tabIndex=8 class=radio type=radio value=A name=tipoRoteirizacao>&nbsp;AS</DIV></TR></TBODY></TABLE></FIELDSET> 
-
-<TD class=titulocampo colSpan=2>
-
-<DIV align=left><INPUT tabIndex=13 class=checkbox type=checkbox value=S name=apenasPedForaRota>&nbsp;Apenas Pedidos Fora de Rota</DIV>
-
-<TR>
-
-<TD class=titulocampo colSpan=2>&nbsp; </TR></TBODY></TABLE></FIELDSET></TD></TR></TBODY></TABLE>
-
-<TD>
-
-<TABLE height="100%" width="100%" border=0>
-
-<TBODY>
-
-<TR>
-
-<TD vAlign=top noWrap>
-
-<FIELDSET><LEGEND><LABEL class=titulocampo>&nbsp;Seleções&nbsp;</LABEL></LEGEND>
-
-<TABLE class=WindowScreen style="MARGIN-TOP: 5px" borderColor=white cellSpacing=1 borderColorDark=white cellPadding=0 rules=none align=center borderColorLight=dimgray border=0>
-
-<TBODY>
-
-<TR>
-
-<TD width=170>&nbsp;</TD>
-
-<TD class=titulocampo>
-
-<DIV align=center>Inicial</DIV></TD>
-
-<TD class=titulocampo>
-
-<DIV align=center>Final</DIV></TD>
-
-<TR>
-
-<TD id=nomeCampo1 class=titulocampo>Geral
-
-<TD>&nbsp;<INPUT tabIndex=14 onkeypress="return DinamicFormatation('1',this)" disabled onblur="DinamicFormatation('1',this)" class=clsDisabled size=10 value=0 name=quebra1Inicial> 
-
-<TD>&nbsp;<INPUT tabIndex=15 onkeypress="return DinamicFormatation('1',this)" disabled onblur="DinamicFormatation('1',this)" class=clsDisabled size=10 value=99999999 name=quebra1Final obrigatorio="1"> 
-
-<TR>
-
-<TD id=nomeCampo2 class=titulocampo>
-
-<TD>&nbsp;<INPUT tabIndex=16 onkeypress="return DinamicFormatation('2',this)" disabled onblur="DinamicFormatation('2',this)" class=clsDisabled size=10 name=quebra2Inicial> 
-
-<TD>&nbsp;<INPUT tabIndex=17 onkeypress="return DinamicFormatation('2',this)" disabled onblur="DinamicFormatation('2',this)" class=clsDisabled size=10 name=quebra2Final obrigatorio="1"> 
-
-<TR>
-
-<TD id=nomeCampo3 class=titulocampo>
-
-<TD>&nbsp;<INPUT tabIndex=18 onkeypress="return DinamicFormatation('3',this)" disabled onblur="DinamicFormatation('3',this)" class=clsDisabled size=10 name=quebra3Inicial> 
-
-<TD>&nbsp;<INPUT tabIndex=19 onkeypress="return DinamicFormatation('3',this)" disabled onblur="DinamicFormatation('3',this)" class=clsDisabled size=10 name=quebra3Final obrigatorio="1"> 
-
-<TR>
-
-<TD id=nomeCampo4 class=titulocampo>SubMotivos
-
-<TD colSpan=2>
-
-<DIV id=DivSubMotivos>&nbsp;<INPUT tabIndex=20 onkeypress="return SomenteNumeros()" disabled class=clsDisabled maxLength=10 size=10 value=0 name=subMotivosInicial> &nbsp;<INPUT tabIndex=21 onkeypress="return SomenteNumeros()" disabled class=clsDisabled maxLength=10 size=10 value=99999999 name=subMotivosFinal obrigatorio="1"> </DIV>
-
-<DIV id=DivAlcadas style="PADDING-TOP: 2px; DISPLAY: none">&nbsp;<SELECT tabIndex=20 class=combo style="WIDTH: 80px" name=cdAlcadaInicial bloco="1"><OPTION selected value=06>SC</OPTION><OPTION value=05>SC</OPTION><OPTION value=04>SC</OPTION><OPTION value=03>GAF</OPTION><OPTION value=09>CAF</OPTION><OPTION value=11>ETP</OPTION><OPTION value=02>GDD</OPTION><OPTION value=01>GV</OPTION><OPTION value=10>SV</OPTION><OPTION value=07>VD</OPTION><OPTION value=08>GOD</OPTION></SELECT> &nbsp;<SELECT tabIndex=21 class=combo style="WIDTH: 80px" name=cdAlcadaFinal bloco="1"><OPTION value=06>SC</OPTION><OPTION value=05>SC</OPTION><OPTION value=04>SC</OPTION><OPTION value=03>GAF</OPTION><OPTION value=09>CAF</OPTION><OPTION value=11>ETP</OPTION><OPTION value=02>GDD</OPTION><OPTION value=01>GV</OPTION><OPTION value=10>SV</OPTION><OPTION selected value=07>VD</OPTION><OPTION value=08>GOD</OPTION></SELECT> </DIV>
-
-<TR>
-
-<TD class=titulocampo>Data Pedido 
-
-<TD>&nbsp;<INPUT tabIndex=22 onkeypress="return SomenteNumeros( '/' )" onblur="FormataCampo( this,'99/99/9999' );" class=campo maxLength=10 size=10 value=01/07/2026 name=dataInicial obrigatorio="1" data="1"> 
-
-<TD>&nbsp;<INPUT tabIndex=23 onkeypress="return SomenteNumeros( '/' )" onblur="FormataCampo( this,'99/99/9999' );" class=campo maxLength=10 size=10 value=20/07/2026 name=dataFinal obrigatorio="1" data="1"> 
-
-<TR>
-
-<TD class=titulocampo>Tipo Marca 
-
-<TD>&nbsp;<INPUT tabIndex=24 onkeypress="return SomenteNumeros()" class=campo maxLength=14 size=10 value=0 name=tipoMarcaInicial> 
-
-<TD>&nbsp;<INPUT tabIndex=25 onkeypress="return SomenteNumeros()" class=campo maxLength=14 size=10 value=99999999 name=tipoMarcaFinal obrigatorio="1"> 
-
-<TR>
-
-<TD class=titulocampo>Embalagem 
-
-<TD>&nbsp;<INPUT tabIndex=26 onkeypress="return SomenteNumeros()" class=campo maxLength=5 size=10 value=0 name=embalagemInicial> 
-
-<TD>&nbsp;<INPUT tabIndex=27 onkeypress="return SomenteNumeros()" class=campo maxLength=5 size=10 value=99999999 name=embalagemFinal obrigatorio="1"> 
-
-<TR>
-
-<TD class=titulocampo>Mercadoria 
-
-<TD>&nbsp;<INPUT tabIndex=28 onkeypress="return SomenteNumeros()" class=campo maxLength=7 size=10 value=0 name=mercadoriaInicial> 
-
-<TD>&nbsp;<INPUT tabIndex=29 onkeypress="return SomenteNumeros()" class=campo maxLength=7 size=10 value=99999999 name=mercadoriaFinal obrigatorio="1"> 
-
-<TR>
-
-<TD height=22 colSpan=3></TR></TBODY></TABLE></FIELDSET> 
-
-<TR>
-
-<TD height=10>
-
-<TR>
-
-<TD>
-
-<TR>
-
-<TD height=5>
-
-<TR>
-
-<TD>
-
-<FIELDSET id=fildConverte><LEGEND><LABEL class=titulocampo>&nbsp;Visão Multi CDD&nbsp;</LABEL></LEGEND>
-
-<TABLE class=WindowScreen style="MARGIN: 5px 2px 7px" borderColor=white cellSpacing=1 borderColorDark=white cellPadding=0 rules=none width="98%" align=center borderColorLight=dimgray border=0>
-
-<TBODY>
-
-<TR>
-
-<TD class=titulocampo2 width="24%"><INPUT tabIndex=31 id=radio1 class=radio CHECKED type=radio value=C name=idVisaoMultiCdd>&nbsp;Contábil 
-
-<TD class=titulocampo2 width="27%"><INPUT tabIndex=31 id=radio1 class=radio type=radio value=G name=idVisaoMultiCdd>&nbsp;Gerencial 
-
-<TD><SELECT tabIndex=32 class=combo name=idSelecaoMultiCdd obrigatorio="1"> <OPTION selected value=T>Todas as Movimentações</OPTION> <OPTION value=S>Sem Multi-CDD</OPTION> <OPTION value=M>Somente Multi-CDD</OPTION></SELECT> </TR></TBODY></TABLE></FIELDSET> </TR></TBODY></TABLE></TR></TBODY></TABLE></TR></TBODY></TABLE>
-
-<TABLE width="100%">
-
-<TBODY>
-
-<TR>
-
-<TD width="100%">
-
-<TD noWrap><BUTTON onclick="return Visualizar();" tabIndex=99 title="Visualizar Impressão" class=botao accessKey=V name=BotVisualizar><LABEL><U>V</U>isualizar</LABEL></BUTTON> <INPUT type=hidden value=1 name=GeraExcel> </TR></TBODY></TABLE>&nbsp; </DIV>
-
-<DIV id=DivSelUniCDP style="POSITION: absolute; LEFT: 0px; DISPLAY: none; TOP: 20px">
-
-<TABLE borderColor=white height=440 cellSpacing=0 borderColorDark=dimgray cellPadding=2 rules=none width=780 align=center borderColorLight=white border=2>
-
-<TBODY>
-
-<TR vAlign=middle>
-
-<TD id=titulo style="FONT-SIZE: 11px; CURSOR: hand; FONT-FAMILY: Tahoma; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr=#000066, EndColorStr=LIGHTSKYBLUE )" bgColor=darkblue width="98%">&nbsp; <FONT color=white face=Arial>&nbsp;<B>Seleção de Unidades CDP&nbsp;[ Distribuidora Fictícia S/A ]</B></FONT> 
-
-<TD onclick=RetornaSelecao(); style="CURSOR: hand; BACKGROUND-COLOR: lightskyblue" bgColor=darkblue height=18 width=5><FONT color=white size=1 face="Arial Black">X</FONT>&nbsp; 
-
-<TR>
-
-<TD bgColor=silver colSpan=2><BR>
-
-<TABLE class=WindowScreen borderColor=white cellSpacing=1 borderColorDark=white cellPadding=0 rules=none width="100%" borderColorLight=dimgray border=1>
-
-<TBODY>
-
-<TR>
-
-<TD colSpan=2>&nbsp; 
-
-<TR>
-
-<TD colSpan=2>
-
-<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
-
-<TBODY>
-
-<TR>
-
-<TD class=titulocampo colSpan=3 noWrap>
-
-<DIV style="MARGIN-LEFT: 20px" align=left><B>Unidades Disponíveis</B></DIV>
-
-<TD class=titulocampo noWrap>
-
-<DIV style="MARGIN-LEFT: 20px" align=left><B>Unidades Selecionadas</B></DIV>
-
-<TR>
-
-<TD width="48%" colSpan=2><SELECT tabIndex=2 class=combo style="WIDTH: 332px" multiple size=18 name=filiaisDisponiveis align=center bloco2="1"></SELECT> 
-
-<TD width="4%">
-
-<TABLE width="100%" align=center border=0>
-
-<TBODY>
-
-<TR>
-
-<TD align=center><BUTTON onclick=AdicionaTotalFilial(); tabIndex=3 title="Adiciona Todas as Filiais" style="WIDTH: 25px" bloco2="1">&gt;&gt;</BUTTON><BR>
-
-<TR>
-
-<TD align=center><BUTTON onclick=AdicionaFilial(); tabIndex=4 title="Adiciona Filial Selecionada" style="WIDTH: 25px" bloco2="1">&gt;</BUTTON><BR>
-
-<TR>
-
-<TD align=center><BUTTON onclick=RetornaFilial(); tabIndex=5 title="Retorna Filial Selecionada" style="WIDTH: 25px" bloco2="1">&lt;</BUTTON><BR>
-
-<TR>
-
-<TD align=center><BUTTON onclick=RetornaTotalFilial(); tabIndex=6 title="Retorna Todas as Filiais" style="WIDTH: 25px" bloco2="1">&lt;&lt;</BUTTON> </TR></TBODY></TABLE>
-
-<TD><SELECT tabIndex=7 class=combo style="WIDTH: 332px" multiple size=18 name=filiaisSelecionadas align=center bloco2="1"><OPTION value=1450004 projetoHab="S">145.0004 - Distribuidora Fictícia S/A</OPTION><OPTION value=1560001 projetoHab="S">156.0001 - Distribuidora Fictícia S/A - JUAZEIRO</OPTION><OPTION value=1560002 projetoHab="S">156.0002 - Distribuidora Fictícia S/A - NORDESTE</OPTION><OPTION value=1560003 projetoHab="S">156.0003 - Distribuidora Fictícia S/A - SR. BONFIM</OPTION><OPTION value=3040005 projetoHab="S">304.0005 - Distribuidora Fictícia S/A - P AFONSO</OPTION><OPTION value=3410006 projetoHab="S">341.0006 - Distribuidora Fictícia S/A - ALAGOINHAS</OPTION><OPTION value=3410007 projetoHab="S">341.0007 - Distribuidora Fictícia S/A - SERRINHA</OPTION></SELECT>&nbsp; 
-
-<TR>
-
-<TD colSpan=4>&nbsp; </TR></TBODY></TABLE></TR></TBODY></TABLE>
-
-<TABLE width="100%" border=0>
-
-<TBODY>
-
-<TR>
-
-<TD bgColor=silver colSpan=2><BR>
-
-<TD bgColor=silver height=30 colSpan=2>
-
-<DIV align=right><BUTTON onclick=RetornaSelecao(); tabIndex=499 class=botao style="WIDTH: 45px" accessKey=O name=BotOk><LABEL><U>O</U>K</LABEL></BUTTON>&nbsp;</DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></DIV>
-
-<INPUT id=hiddenindPalmtop type=hidden value=--Todos-->
-
- <INPUT id=hiddencdAlcadaInicial type=hidden value=NaoExisteOpcaoInicial>
-
- <INPUT id=hiddencdAlcadaFinal type=hidden value=NaoExisteOpcaoInicial>
-
- </FORM></BODY></HTML>
+<!DOCTYPE html>
+<html class="light" lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Expires" content="Mon, 01 Jan 1996 12:12:00 GMT">
+    <meta http-equiv="Pragma" content="no-cache">
+    <title>Janela da Rotina - Planilha de Acompanhamento</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#6e2c00",
+                        "primary-fixed": "#dce1ff",
+                        "primary-container": "#1e3a8a",
+                        "secondary-fixed": "#d3e4fe",
+                        "surface-container": "#eeedf4",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#f1f0f7",
+                        "surface-variant": "#e3e1e9",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e3e1e9",
+                        "tertiary-fixed": "#ffdbcb",
+                        "on-tertiary-container": "#f39461",
+                        "on-error-container": "#93000a",
+                        "outline": "#757682",
+                        "secondary-container": "#d0e1fb",
+                        "inverse-surface": "#2f3036",
+                        "primary": "#00236f",
+                        "on-surface": "#1a1b21",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-surface-variant": "#444651",
+                        "on-primary-fixed": "#00164e",
+                        "on-primary-container": "#90a8ff",
+                        "background": "#faf8ff",
+                        "on-primary-fixed-variant": "#264191",
+                        "on-secondary-fixed": "#0b1c30",
+                        "tertiary-fixed-dim": "#ffb691",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#c5c5d3",
+                        "surface-container-low": "#f4f3fa",
+                        "surface-container-high": "#e9e7ef",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#773205",
+                        "surface": "#faf8ff",
+                        "surface-bright": "#faf8ff",
+                        "secondary": "#505f76",
+                        "tertiary": "#4b1c00",
+                        "on-secondary-container": "#54647a",
+                        "surface-dim": "#dad9e1",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-background": "#1a1b21",
+                        "on-tertiary-fixed": "#341100",
+                        "inverse-primary": "#b6c4ff",
+                        "surface-tint": "#4059aa"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "xl": "32px",
+                        "xs": "4px",
+                        "unit": "8px",
+                        "container-margin": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter", "sans-serif"],
+                        "headline-md": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "title-sm": ["Inter", "sans-serif"],
+                        "body-sm": ["Inter", "sans-serif"],
+                        "data-mono": ["Inter", "monospace"],
+                        "label-caps": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "title-sm": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "data-mono": ["13px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #faf8ff; }
+        .form-input-high-density {
+            width: 100%;
+            height: 40px;
+            padding: 0 12px;
+            background-color: #ffffff;
+            border: 1px solid #c5c5d3;
+            border-radius: 4px;
+            font-size: 13px;
+            color: #1a1b21;
+            outline: none;
+            transition: all 0.2s;
+        }
+        .form-input-high-density:focus {
+            border-color: #1e3a8a;
+            box-shadow: 0 0 0 2px rgba(182, 196, 255, 0.8);
+        }
+        .form-label-high-density {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #505f76;
+        }
+        .card-container {
+            background-color: #ffffff;
+            border: 1px solid #c5c5d3;
+            border-radius: 8px;
+            padding: 24px;
+        }
+        .card-header {
+            font-size: 18px;
+            font-weight: 600;
+            color: #00236f;
+            margin-bottom: 16px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #c5c5d3;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md text-on-surface bg-background min-h-screen overflow-x-hidden">
+
+<form method="post" name="form1">
+    <div id="divRotinaGenerico"></div>
+    <input type="hidden" name="SessionID" value="413762b93f0512bb4d2c14a907027">
+    <input type="hidden" name="SubSessionID" value="d2is7C23765868">
+    <input type="hidden" name="opcao" value="00">
+    <input type="hidden" name="ppopcao" value="00">
+    <input type="hidden" name="call" value="PW02630R">
+    <input type="hidden" name="visaoConsolidadora">
+    <input type="hidden" name="quebra1Ini9">
+    <input type="hidden" name="quebra1Fim9">
+    <input type="hidden" name="quebra2Ini9">
+    <input type="hidden" name="quebra2Fim9">
+    <input type="hidden" name="quebra3Ini9">
+    <input type="hidden" name="quebra3Fim9">
+    <input type="hidden" name="listaFiliais">
+    <input type="hidden" name="GeraExcel" value="1">
+    <input id="hiddenindPalmtop" type="hidden" value="--Todos--">
+    <input id="hiddencdAlcadaInicial" type="hidden" value="NaoExisteOpcaoInicial">
+    <input id="hiddencdAlcadaFinal" type="hidden" value="NaoExisteOpcaoInicial">
+
+    <!-- TopNavBar Component -->
+    <nav class="top-navbar bg-surface-container-lowest border-b border-outline-variant flex justify-between items-center px-lg h-16 w-full fixed top-0 z-50">
+        <div class="flex items-center gap-xl">
+            <div class="nav-brand font-headline-md text-headline-md font-bold text-primary">Empresa Fictícia</div>
+            <div class="hidden md:flex gap-md">
+                <a class="nav-link font-body-md text-body-md text-secondary hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80 px-sm py-xs rounded-DEFAULT" href="#">Dashboard</a>
+                <a class="nav-link font-body-md text-body-md text-secondary hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80 px-sm py-xs rounded-DEFAULT" href="#">Analytics</a>
+                <a class="nav-link active font-body-md text-body-md text-primary border-b-2 border-primary pb-1 cursor-pointer active:opacity-80 px-sm py-xs rounded-DEFAULT" href="#">Reports</a>
+                <a class="nav-link font-body-md text-body-md text-secondary hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80 px-sm py-xs rounded-DEFAULT" href="#">Settings</a>
+            </div>
+        </div>
+        <div class="flex items-center gap-md">
+            <div class="flex items-center gap-sm text-secondary">
+                <span class="material-symbols-outlined hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80 p-xs rounded-full">notifications</span>
+                <span class="material-symbols-outlined hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80 p-xs rounded-full">help</span>
+                <span class="material-symbols-outlined hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80 p-xs rounded-full">apps</span>
+            </div>
+            <div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-xs" style="background-color: #1e3a8a; color: #ffffff;">
+                DF
+            </div>
+            <a class="font-label-caps text-label-caps text-primary hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80 px-sm py-xs rounded-DEFAULT ml-sm" href="#">Logout</a>
+        </div>
+    </nav>
+
+    <!-- SideNavBar Component -->
+    <aside class="docked-sidebar bg-surface-container-low border-r border-outline-variant docked h-full left-0 w-64 fixed top-16 bottom-0 flex flex-col py-lg px-md z-40">
+        <div class="mb-xl px-sm">
+            <h2 class="font-title-sm text-title-sm font-black text-on-surface" style="font-size: 18px; font-weight: 700; color: #1a1b21; margin: 0;">Janela da Rotina</h2>
+            <p class="font-body-sm text-body-sm text-secondary mt-xs" style="font-size: 13px; color: #505f76; margin-top: 4px;">Enterprise Logistics</p>
+        </div>
+        <button class="btn-primary bg-primary text-on-primary font-label-caps text-label-caps py-sm px-md rounded-lg w-full mb-lg hover:bg-on-primary-fixed-variant transition-colors flex items-center justify-center gap-sm" type="button">
+            <span class="material-symbols-outlined text-[18px]">add</span> New Report
+        </button>
+        <nav class="flex-1 flex flex-col gap-xs mt-md">
+            <a class="sidebar-nav-item font-label-caps text-label-caps text-on-surface-variant flex items-center gap-md p-md cursor-pointer hover:bg-secondary-container transition-all rounded-lg" href="#">
+                <span class="material-symbols-outlined">business</span> Company Selector
+            </a>
+            <a class="sidebar-nav-item active font-label-caps text-label-caps bg-primary-container text-on-primary-container font-bold rounded-lg flex items-center gap-md p-md cursor-pointer transition-all" href="#">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">menu_open</span> Routine Menu
+            </a>
+            <a class="sidebar-nav-item font-label-caps text-label-caps text-on-surface-variant flex items-center gap-md p-md cursor-pointer hover:bg-secondary-container transition-all rounded-lg" href="#">
+                <span class="material-symbols-outlined">description</span> Reports
+            </a>
+            <a class="sidebar-nav-item font-label-caps text-label-caps text-on-surface-variant flex items-center gap-md p-md cursor-pointer hover:bg-secondary-container transition-all rounded-lg" href="#">
+                <span class="material-symbols-outlined">settings_input_component</span> Parameters
+            </a>
+            <a class="sidebar-nav-item font-label-caps text-label-caps text-on-surface-variant flex items-center gap-md p-md cursor-pointer hover:bg-secondary-container transition-all rounded-lg" href="#">
+                <span class="material-symbols-outlined">history</span> Audit Log
+            </a>
+        </nav>
+        <div class="mt-auto border-t border-outline-variant pt-md flex flex-col gap-xs">
+            <a class="sidebar-nav-item font-label-caps text-label-caps text-on-surface-variant flex items-center gap-md p-md cursor-pointer hover:bg-secondary-container transition-all rounded-lg" href="#">
+                <span class="material-symbols-outlined">support_agent</span> Support
+            </a>
+            <a class="sidebar-nav-item font-label-caps text-label-caps text-on-surface-variant flex items-center gap-md p-md cursor-pointer hover:bg-secondary-container transition-all rounded-lg" href="#">
+                <span class="material-symbols-outlined">account_circle</span> Account
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content Canvas -->
+    <main class="main-canvas ml-64 mt-16 p-container-margin min-h-[calc(100vh-64px)] pb-32">
+        <header class="mb-lg">
+            <h1 class="font-headline-md text-headline-md font-bold text-on-surface flex items-center gap-sm" style="font-size: 24px; font-weight: 700; color: #1a1b21; margin: 0;">
+                <span class="material-symbols-outlined text-primary text-[28px]" style="color: #1e3a8a; font-size: 28px;">assignment</span>
+                Planilha de Acompanhamento
+            </h1>
+            <p class="font-body-md text-body-md text-secondary mt-xs" style="font-size: 14px; color: #505f76; margin-top: 4px;">Defina os parâmetros de quebra, seleção e preferências para gerar o relatório consolidado.</p>
+        </header>
+
+        <div class="grid grid-cols-1 xl:grid-cols-12 gap-lg max-w-[1400px]" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px;">
+            <!-- Opções Section -->
+            <section class="xl:col-span-12 card-container" style="grid-column: span 12 / span 12;">
+                <h3 class="card-header"><span class="material-symbols-outlined">view_column</span> Opções de Quebra e Agrupamento</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-md mb-lg" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 24px;">
+                    <div>
+                        <label class="form-label-high-density">Quebra 1</label>
+                        <select name="quebra1" class="form-input-high-density">
+                            <option value="00">--Selecionar--</option>
+                            <option value="01">Geral</option>
+                            <option value="02">CDD</option>
+                            <option selected value="03">Rota (Canal/AS)</option>
+                            <option value="04">Gerente de Vendas</option>
+                            <option value="05">Area</option>
+                            <option value="06">Setor</option>
+                            <option value="07">Vendedor</option>
+                            <option value="08">Cliente</option>
+                            <option value="09">Cidade</option>
+                            <option value="10">Categoria</option>
+                            <option value="11">Operação</option>
+                            <option value="12">Transportadora</option>
+                            <option value="13">NR Roadshow</option>
+                            <option value="14">Tipo Marca</option>
+                            <option value="15">Embalagem</option>
+                            <option value="16">Mercadoria</option>
+                            <option value="17">Origem</option>
+                            <option value="18">Marca</option>
+                            <option value="19">Tipo Movimento</option>
+                            <option value="20">Rede</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label-high-density">Quebra 2</label>
+                        <select name="quebra2" class="form-input-high-density">
+                            <option value="00">--Selecionar--</option>
+                            <option value="02">CDD</option>
+                            <option value="03">Canal(Rota/AS)</option>
+                            <option value="04">Gerente de Vendas</option>
+                            <option value="05">Area</option>
+                            <option value="06">Setor</option>
+                            <option value="07">Vendedor</option>
+                            <option selected value="08">Cliente</option>
+                            <option value="09">Município</option>
+                            <option value="10">Categoria(do cliente)</option>
+                            <option value="11">Operação</option>
+                            <option value="12">Transportadora</option>
+                            <option value="13">NR Roadshow</option>
+                            <option value="14">Tipo Marca</option>
+                            <option value="15">Embalagem</option>
+                            <option value="16">Mercadoria</option>
+                            <option value="17">Origem(VDI/VDE/Fácil/AS)</option>
+                            <option value="18">Marca</option>
+                            <option value="19">Tipo Movimento</option>
+                            <option value="20">Rede</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label-high-density">Quebra 3</label>
+                        <select name="quebra3" class="form-input-high-density">
+                            <option selected value="00">Nenhum</option>
+                            <option value="02">CDD</option>
+                            <option value="03">Canal(Rota/AS)</option>
+                            <option value="04">Gerente de Vendas</option>
+                            <option value="05">Area</option>
+                            <option value="06">Setor</option>
+                            <option value="07">Vendedor</option>
+                            <option value="08">Cliente</option>
+                            <option value="09">Município</option>
+                            <option value="10">Categoria(do cliente)</option>
+                            <option value="11">Operação</option>
+                            <option value="12">Transportadora</option>
+                            <option value="13">NR Roadshow</option>
+                            <option value="14">Tipo Marca</option>
+                            <option value="15">Embalagem</option>
+                            <option value="16">Mercadoria</option>
+                            <option value="17">Origem(VDI/VDE/Fácil/AS)</option>
+                            <option value="18">Marca</option>
+                            <option value="19">Tipo Movimento</option>
+                            <option value="20">Rede</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-md border-t border-surface-variant pt-md" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; border-top: 1px solid #c5c5d3; padding-top: 16px;">
+                    <div>
+                        <label class="form-label-high-density">Motivos</label>
+                        <select name="indMotivos" class="form-input-high-density">
+                            <option selected value="00">Todos os Motivos</option>
+                            <option value="01">Pedido Excluído</option>
+                            <option value="02">Falta Total</option>
+                            <option value="03">Crítica de Pedidos</option>
+                            <option value="04">Pedido Órfão</option>
+                            <option value="05">Cancelamento</option>
+                            <option value="06">Devolução</option>
+                            <option value="07">Reprogramado</option>
+                            <option value="08">Preservado</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label-high-density">SubMotivos</label>
+                        <select name="indSubMotivos" class="form-input-high-density" disabled>
+                            <option value="00">Selecione Motivo Primeiro</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label-high-density">Origem</label>
+                        <select name="indPalmtop" class="form-input-high-density">
+                            <option selected value="">Todas as Origens</option>
+                            <option value="S">Palmtop / WMS</option>
+                            <option value="D">Digitado / ERP</option>
+                            <option value="R">Descarga Remota</option>
+                            <option value="E">EDI</option>
+                            <option value="T">Telemarketing</option>
+                            <option value="B">Balcão</option>
+                            <option value="P">PCA</option>
+                            <option value="G">Reprogramação de Pedido</option>
+                            <option value="H">Pedidos Agendados</option>
+                            <option value="V">Televendas</option>
+                            <option value="Y">Site</option>
+                            <option value="C">GCAD</option>
+                            <option value="J">Evento</option>
+                            <option value="I">Digitado Televendas</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label-high-density">Ajuste</label>
+                        <select name="indExpurgo" class="form-input-high-density">
+                            <option selected value="01">Sem Ajuste</option>
+                            <option value="02">Com Ajuste</option>
+                            <option value="03">Somente Volume Ajustado</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seleções Section -->
+            <section class="xl:col-span-8 card-container" style="grid-column: span 8 / span 8;">
+                <h3 class="card-header"><span class="material-symbols-outlined">filter_alt</span> Seleções de Dados</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-lg gap-y-md" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;">
+                    <!-- Date Range -->
+                    <div class="col-span-1 md:col-span-2 bg-surface-container-low p-md rounded-DEFAULT border border-outline-variant" style="grid-column: span 2 / span 2; background-color: #f4f3fa; padding: 16px; border-radius: 4px; border: 1px solid #c5c5d3;">
+                        <label class="form-label-high-density text-primary" style="color: #00236f;">Data Pedido</label>
+                        <div class="flex items-center gap-sm" style="display: flex; align-items: center; gap: 12px;">
+                            <div class="flex-1" style="flex: 1;">
+                                <label class="text-[10px] uppercase text-secondary font-semibold mb-xs block" style="font-size: 10px; text-transform: uppercase; color: #505f76; font-weight: 600; display: block; margin-bottom: 4px;">Início</label>
+                                <input class="form-input-high-density" id="dataInicial" name="dataInicial" type="text" value="01/07/2026" obrigatorio="1" data="1" maxLength="10">
+                            </div>
+                            <span class="material-symbols-outlined text-outline mt-4" style="color: #757682; margin-top: 16px;">arrow_right_alt</span>
+                            <div class="flex-1" style="flex: 1;">
+                                <label class="text-[10px] uppercase text-secondary font-semibold mb-xs block" style="font-size: 10px; text-transform: uppercase; color: #505f76; font-weight: 600; display: block; margin-bottom: 4px;">Fim</label>
+                                <input class="form-input-high-density" id="dataFinal" name="dataFinal" type="text" value="20/07/2026" obrigatorio="1" data="1" maxLength="10">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Range 1 -->
+                    <div>
+                        <label class="form-label-high-density">Tipo Marca</label>
+                        <div class="flex items-center gap-xs" style="display: flex; align-items: center; gap: 4px;">
+                            <input class="form-input-high-density font-data-mono" name="tipoMarcaInicial" placeholder="De..." type="text" value="0">
+                            <span class="text-outline text-sm">-</span>
+                            <input class="form-input-high-density font-data-mono" name="tipoMarcaFinal" placeholder="Até..." type="text" value="99999999" obrigatorio="1">
+                        </div>
+                    </div>
+
+                    <!-- Range 2 -->
+                    <div>
+                        <label class="form-label-high-density">Embalagem</label>
+                        <div class="flex items-center gap-xs" style="display: flex; align-items: center; gap: 4px;">
+                            <input class="form-input-high-density font-data-mono" name="embalagemInicial" placeholder="De..." type="text" value="0">
+                            <span class="text-outline text-sm">-</span>
+                            <input class="form-input-high-density font-data-mono" name="embalagemFinal" placeholder="Até..." type="text" value="99999999" obrigatorio="1">
+                        </div>
+                    </div>
+
+                    <!-- Range 3 -->
+                    <div class="col-span-1 md:col-span-2" style="grid-column: span 2 / span 2;">
+                        <label class="form-label-high-density">Mercadoria (SKU)</label>
+                        <div class="flex items-center gap-xs" style="display: flex; align-items: center; gap: 4px;">
+                            <input class="form-input-high-density font-data-mono" name="mercadoriaInicial" placeholder="Código Inicial..." type="text" value="0">
+                            <span class="text-outline text-sm">-</span>
+                            <input class="form-input-high-density font-data-mono" name="mercadoriaFinal" placeholder="Código Final..." type="text" value="99999999" obrigatorio="1">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Preferências & Multi CDD -->
+            <div class="xl:col-span-4 flex flex-col gap-lg" style="grid-column: span 4 / span 4; display: flex; flex-direction: column; gap: 24px;">
+                <section class="card-container flex-1">
+                    <h3 class="card-header"><span class="material-symbols-outlined">tune</span> Preferências</h3>
+                    <div class="mb-md">
+                        <label class="form-label-high-density">Unidade de Medida</label>
+                        <div class="flex flex-col gap-sm mt-sm" style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px;">
+                            <label class="flex items-center gap-sm cursor-pointer hover:bg-surface-container-low p-xs rounded-DEFAULT -ml-xs transition-colors" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input checked class="text-primary focus:ring-primary h-4 w-4 border-outline" name="selecionaUnidade" type="radio" value="U">
+                                <span class="font-body-sm text-on-surface" style="font-size: 13px;">Caixa Física (Unidade)</span>
+                            </label>
+                            <label class="flex items-center gap-sm cursor-pointer hover:bg-surface-container-low p-xs rounded-DEFAULT -ml-xs transition-colors" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input class="text-primary focus:ring-primary h-4 w-4 border-outline" name="selecionaUnidade" type="radio" value="T">
+                                <span class="font-body-sm text-on-surface" style="font-size: 13px;">Todos CDDs da Geo</span>
+                            </label>
+                            <label class="flex items-center gap-sm cursor-pointer hover:bg-surface-container-low p-xs rounded-DEFAULT -ml-xs transition-colors" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input class="text-primary focus:ring-primary h-4 w-4 border-outline" name="tipoRoteirizacao" type="radio" value="T">
+                                <span class="font-body-sm text-on-surface" style="font-size: 13px;">Todas Roteirizações</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="border-t border-surface-variant pt-md" style="border-top: 1px solid #c5c5d3; padding-top: 16px;">
+                        <label class="form-label-high-density mb-sm">Opções Adicionais</label>
+                        <div class="flex flex-col gap-sm" style="display: flex; flex-direction: column; gap: 8px;">
+                            <label class="flex items-center gap-sm cursor-pointer hover:bg-surface-container-low p-xs rounded-DEFAULT -ml-xs transition-colors" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input checked class="text-primary focus:ring-primary h-4 w-4 border-outline rounded-[2px]" name="todasOperacoes" type="checkbox" value="S">
+                                <span class="font-body-sm text-on-surface" style="font-size: 13px;">Mostrar Todas as Operações</span>
+                            </label>
+                            <label class="flex items-center gap-sm cursor-pointer hover:bg-surface-container-low p-xs rounded-DEFAULT -ml-xs transition-colors" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input checked class="text-primary focus:ring-primary h-4 w-4 border-outline rounded-[2px]" name="pedidosExcluidos" type="checkbox" value="S">
+                                <span class="font-body-sm text-on-surface" style="font-size: 13px;">Pedidos Excluidos</span>
+                            </label>
+                            <label class="flex items-center gap-sm cursor-pointer hover:bg-surface-container-low p-xs rounded-DEFAULT -ml-xs transition-colors" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input class="text-primary focus:ring-primary h-4 w-4 border-outline rounded-[2px]" name="todasCriticas" type="checkbox" value="S">
+                                <span class="font-body-sm text-on-surface" style="font-size: 13px;">Destacar divergências / Críticas</span>
+                            </label>
+                        </div>
+                    </div>
+                </section>
+                <section class="card-container">
+                    <h3 class="card-header"><span class="material-symbols-outlined">hub</span> Visão Multi CDD</h3>
+                    <div class="flex flex-col gap-md" style="display: flex; flex-direction: column; gap: 16px;">
+                        <div class="flex gap-md" style="display: flex; gap: 16px;">
+                            <label class="flex items-center gap-xs cursor-pointer" style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                                <input checked class="text-primary focus:ring-primary h-4 w-4 border-outline" name="idVisaoMultiCdd" type="radio" value="C">
+                                <span class="font-body-sm text-on-surface" style="font-size: 13px;">Consolidado (Contábil)</span>
+                            </label>
+                            <label class="flex items-center gap-xs cursor-pointer" style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                                <input class="text-primary focus:ring-primary h-4 w-4 border-outline" name="idVisaoMultiCdd" type="radio" value="G">
+                                <span class="font-body-sm text-on-surface" style="font-size: 13px;">Separado (Gerencial)</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="form-label-high-density">Centro de Distribuição</label>
+                            <select name="idSelecaoMultiCdd" class="form-input-high-density" obrigatorio="1">
+                                <option selected value="T">Todos os CDDs Ativos</option>
+                                <option value="S">Sem Multi-CDD</option>
+                                <option value="M">Somente Multi-CDD</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Floating / Sticky Action Bar for main submission -->
+    <div class="floating-action-bar fixed bottom-0 right-0 left-64 bg-surface-container-lowest border-t border-outline-variant p-md flex justify-end items-center gap-md z-30 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+        <button class="btn-secondary font-label-caps text-label-caps text-secondary hover:bg-surface-container-low border border-transparent hover:border-outline-variant transition-colors px-lg py-sm rounded-DEFAULT" type="reset">
+            Limpar Filtros
+        </button>
+        <button class="btn-primary bg-primary text-on-primary font-title-sm text-body-sm px-xl py-sm rounded-DEFAULT hover:bg-on-primary-fixed-variant transition-colors shadow-sm flex items-center gap-sm" id="BotVisualizar" name="BotVisualizar" type="submit" accesskey="V">
+            <span class="material-symbols-outlined text-[18px]">visibility</span>
+            Visualizar Relatório
+        </button>
+    </div>
+</form>
+
+</body>
+</html>
